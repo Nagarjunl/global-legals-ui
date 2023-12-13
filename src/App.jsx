@@ -1,9 +1,11 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import "./app.css";
 import Home from "./pages/Home";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Forgetpassword from "./pages/forgetpassword";
 import Newpassword from "./pages/Newpassword";
+
 function App() {
   return (
     <>
