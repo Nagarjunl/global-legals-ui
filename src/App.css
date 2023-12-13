@@ -40,6 +40,9 @@
 .read-the-docs {
   color: #888;
 } */
-.manu{
-  color:"red"
+.background_image {
+  background-image: url(./assets//USA.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  /* background-color: white; */
 }

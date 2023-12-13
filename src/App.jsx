@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import "./app.css";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Forgetpassword from "./pages/Forgetpassword";
@@ -13,6 +14,7 @@ import ClientImage from "./pages/ClientImage";
 import ErrorPage from "./pages/ErrorPage";
 import ServerImage from "./pages/ServerImage";
 import Image404 from "./pages/Image404";
+
 function App() {
   return (
     <>
