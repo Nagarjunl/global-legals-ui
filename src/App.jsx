@@ -5,6 +5,7 @@ import Login from "./pages/Login";
 import Forgetpassword from "./pages/forgetpassword";
 import Newpassword from "./pages/Newpassword";
 import PersonalInformation from "./pages/PersonalInformation";
+import BusinessInformation from "./pages/BusinessInformation";
 function App() {
   return (
     <>
@@ -18,6 +19,10 @@ function App() {
           <Route
             path="/personalinformation"
             element={<PersonalInformation />}
+          />
+          <Route
+            path="/businessinformation"
+            element={<BusinessInformation />}
           />
         </Routes>
       </BrowserRouter>
