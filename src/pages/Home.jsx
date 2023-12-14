@@ -25,7 +25,7 @@ import Globe from "../assets/image131.png";
 const Home = () => {
   return (
     <div className="max-w-screen min-h-screen">
-      <div class="bg-green-900 flex flex-col items-stretch p-4 md:p-8 md:max-w-full">
+      <div class="bg-green-900 flex flex-col items-stretch  md:max-w-full">
         <div class="flex justify-between items-stretch flex-wrap w-full gap-5 mt-1 md:pr-5">
           <div class="items-center mt-5 flex justify-between gap-2">
             <button class="flex">
@@ -85,19 +85,19 @@ const Home = () => {
                 </p>
               </div>
             </div>
-            <div class="relative items-stretch w-full md:w-1/2 ml-0 md:ml-5">
+            <div class="relative items-stretch w-full md:w-1/2  bottom-0 ml-0 md:ml-5">
               <img
                 alt="image"
                 src={RemovalImg}
-                class="aspect-[1.64] object-contain object-center w-full overflow-hidden grow mt-10 md:mt-12"
+                class="aspect-[1.64] object-contain object-center w-full overflow-hidden grow mt-20 md:mt-12"
               />
               <span class="absolute p-2  text-white bottom-[82%] left-[50%] transform -translate-x-1/2 bg-white bg-opacity-20 border border-solid border-white border-opacity-10 rounded-full backdrop-blur-2">
                 Security
               </span>
-              <span class="absolute p-2 text-white bottom-[8%] right-[86%] bg-white bg-opacity-20 border border-solid border-white border-opacity-10 rounded-full backdrop-blur-2">
+              <span class="absolute p-2 text-white bottom-[8%] right-[90%] bg-white bg-opacity-20 border border-solid border-white border-opacity-10 rounded-full backdrop-blur-2">
                 Lawyers
               </span>
-              <span class="absolute p-2 text-white bottom-[8%] right-[17%] bg-white bg-opacity-20 border border-solid border-white border-opacity-10 rounded-full backdrop-blur-2">
+              <span class="absolute p-2 text-white bottom-[8%] right-[23%] bg-white bg-opacity-20 border border-solid border-white border-opacity-10 rounded-full backdrop-blur-2">
                 Private Investigators
               </span>
             </div>
@@ -372,7 +372,7 @@ const Home = () => {
                       <div className="text-black text-xs">
                         Preferred Contact method
                       </div>
-                      <Dropdown className="text-gray-500 text-sm whitespace-nowrap border bg-white justify-center mt-2 pl-3 pr-16 py-3 rounded-lg border-solid border-slate-200 items-start max-md:pr-5" />
+                      <Dropdown className="text-gray-500 text-sm whitespace-nowrap border bg-white justify-center mt-2 pl-3 pr-16 py-3 rounded-lg border-solid border-slate-200 items-start max-md:pr-8" />
                     </div>
                   </div>
                   <div className="text-black text-xs mt-3 max-md:max-w-full">
@@ -388,9 +388,9 @@ const Home = () => {
                       src={Captacha}
                       className="aspect-[2.89] object-contain object-center w-44 overflow-hidden shrink-0 max-w-full"
                     />
-                    <div className="text-white text-sm whitespace-nowrap justify-center items-center bg-blue-600 self-center my-auto px-16 py-3 rounded-lg max-md:px-5">
+                    <button className="text-white text-sm whitespace-nowrap justify-center items-center bg-blue-600 self-center my-auto px-16 py-3 rounded-lg max-md:px-5">
                       Submit
-                    </div>
+                    </button>
                   </div>
                 </div>
               </div>
