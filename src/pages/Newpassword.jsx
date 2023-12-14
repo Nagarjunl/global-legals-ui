@@ -4,6 +4,8 @@ import avatar1 from "../assets/Rectangle3.png";
 import avatar2 from "../assets/Rectangle2.png";
 import avatar3 from "../assets/Rectangle4.png";
 import "../App.css";
+import PrimaryButton from "../components/PrimaryButton";
+import Input from "../components/Input";
 
 const Newpassword = () => {
   return (
@@ -70,15 +72,13 @@ const Newpassword = () => {
                   >
                     New Password
                   </label>
-                  <div className="mt-2">
-                    <input
+                  <div>
+                    <Input
                       id="password"
                       name="password"
                       type="text"
                       placeholder="Enter new password"
                       autoComplete="password"
-                      required
-                      className="block w-full rounded-md border-0 p-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
                     />
                   </div>
                 </div>
@@ -90,15 +90,13 @@ const Newpassword = () => {
                   >
                     Confirm Password
                   </label>
-                  <div className="mt-2">
-                    <input
+                  <div>
+                    <Input
                       id="password"
                       name="password"
                       type="text"
                       placeholder="Enter new password"
                       autoComplete="password"
-                      required
-                      className="block w-full rounded-md border-0 p-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
                     />
                   </div>
                 </div>
@@ -111,14 +109,7 @@ const Newpassword = () => {
                     number and one special character.
                   </span>
                 </div>
-                <div>
-                  <button
-                    type="submit"
-                    className="flex w-full justify-center mt-3 rounded-md bg-blue-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                  >
-                    Submit
-                  </button>
-                </div>
+                <PrimaryButton type="submit" buttonText="Submit" />
               </form>
             </div>
           </div>

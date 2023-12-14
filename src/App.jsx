@@ -14,6 +14,8 @@ import ClientImage from "./pages/ClientImage";
 import ErrorPage from "./pages/ErrorPage";
 import ServerImage from "./pages/ServerImage";
 import Image404 from "./pages/Image404";
+import EnterOtp from "./pages/EnterOtp";
+import CreatePassword from "./pages/CreatePassword";
 
 function App() {
   return (
@@ -23,7 +25,9 @@ function App() {
           <Route path="/" element={<LandingPageNew />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/enterotp" element={<EnterOtp />} />
           <Route path="/forget" element={<Forgetpassword />} />
+          <Route path="/create" element={<CreatePassword />} />
           <Route path="/newpass" element={<Newpassword />} />
           <Route path="/payPremium" element={<PayPremium />} />
           <Route path="/verification" element={<Verification />} />

@@ -5,8 +5,9 @@ import avatar3 from "../assets/Rectangle4.png";
 import "../App.css";
 import Input from "../components/Input";
 import PrimaryButton from "../components/PrimaryButton";
+import Otpinput from "../components/OtpInput";
 
-const Register = () => {
+const EnterOtp = () => {
   return (
     <div>
       <div className="grid grid-cols-1 lg:grid-cols-2 min-h-screen">
@@ -45,7 +46,7 @@ const Register = () => {
 
         <div className="flex flex-col justify-center px-4 gap-10 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
           <div className="mx-auto w-full max-w-sm lg:w-96 ">
-            <div className="flex  items-center mt-10 ">
+            <div className="flex  items-center mt-5 ">
               <img className="h-10 w-auto" src={logo} alt="Your Company" />
               <h2 className="pl-2 text-2xl font-bold leading-9 tracking-tight text-blue-600">
                 Global <br />
@@ -54,15 +55,15 @@ const Register = () => {
             </div>
 
             <div>
-              <h2 className="mt-10 text-2xl font-bold leading-9 tracking-tight text-gray-900">
+              <h2 className="mt-6 text-2xl font-bold leading-9 tracking-tight text-gray-900">
                 Create your account
               </h2>
-              <p className="mt-2 text-sm leading-6 text-gray-500">
+              <p className="mt-2 text-sm leading-6 text-gray-500 justify-start">
                 Empower Your Professional Journey: Create Your Account Today!
               </p>
             </div>
 
-            <div className="mt-10">
+            <div className="mt-5">
               <div>
                 <form action="#" method="POST">
                   <label
@@ -71,7 +72,6 @@ const Register = () => {
                   >
                     Email address
                   </label>
-
                   <Input
                     id="email"
                     name="email"
@@ -79,7 +79,20 @@ const Register = () => {
                     placeholder="name@gmail.com"
                     autoComplete="email"
                   />
-                  <PrimaryButton type="submit" buttonText="Send OTP" />
+                  <label
+                    htmlFor="password"
+                    className="block text-sm pt-1 pb-1 font-medium leading-6 text-gray-900"
+                  >
+                    Enter OTP
+                  </label>
+                  <div>
+                    <Otpinput />
+                  </div>
+
+                  <h2>Enter your received otp</h2>
+                  <div className="pt-4">
+                    <PrimaryButton type="submit" buttonText="Create Account" />
+                  </div>
                 </form>
               </div>
             </div>
@@ -90,4 +103,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default EnterOtp;
