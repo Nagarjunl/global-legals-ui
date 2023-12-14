@@ -7,6 +7,7 @@ import Forgetpassword from "./pages/forgetpassword";
 import Newpassword from "./pages/Newpassword";
 import EnterOtp from "./pages/EnterOtp";
 import CreatePassword from "./pages/CreatePassword";
+import ProfileDetails from "./pages/ProfileDetails";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/forget" element={<Forgetpassword />} />
           <Route path="/create" element={<CreatePassword />} />
           <Route path="/newpass" element={<Newpassword />} />
+          <Route path="/profiledetails" element={<ProfileDetails />} />
         </Routes>
       </BrowserRouter>
     </>
