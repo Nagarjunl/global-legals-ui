@@ -5,6 +5,8 @@ import avatar1 from "../assets/Rectangle3.png";
 import avatar2 from "../assets/Rectangle2.png";
 import avatar3 from "../assets/Rectangle4.png";
 import "../App.css";
+import Input from "../components/Input";
+import PrimaryButton from "../components/PrimaryButton";
 
 const Login = () => {
   return (
@@ -70,45 +72,35 @@ const Login = () => {
           <div className="mt-10">
             <div>
               <form action="#" method="POST">
-                <div>
-                  <label
-                    htmlFor="email"
-                    className="block text-sm font-medium leading-6 text-gray-900"
-                  >
-                    Email address
-                  </label>
-                  <div className="mt-2">
-                    <input
-                      id="email"
-                      name="email"
-                      type="email"
-                      placeholder="name@gmail.com"
-                      autoComplete="email"
-                      required
-                      className="block w-full rounded-md border-0 p-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
-                    />
-                  </div>
-                </div>
+                <label
+                  htmlFor="email"
+                  className="block text-sm font-medium leading-6 text-gray-900"
+                >
+                  Email address
+                </label>
 
-                <div className="">
-                  <label
-                    htmlFor="password"
-                    className="block text-sm font-medium leading-6 text-gray-900"
-                  >
-                    Password
-                  </label>
-                  <div className="mt-2">
-                    <input
-                      id="password"
-                      name="password"
-                      type="password"
-                      placeholder="***********"
-                      autoComplete="current-password"
-                      required
-                      className="block w-full rounded-md border-0 p-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
-                    />
-                  </div>
-                </div>
+                <Input
+                  id="email"
+                  name="email"
+                  type="email"
+                  placeholder="name@gmail.com"
+                  autoComplete="email"
+                />
+
+                <label
+                  htmlFor="password"
+                  className="block text-sm font-medium leading-6 text-gray-900"
+                >
+                  Password
+                </label>
+
+                <Input
+                  id="password"
+                  name="password"
+                  type="password"
+                  placeholder="***********"
+                  autoComplete="current-password"
+                />
 
                 <div className="flex items-center justify-between mt-3">
                   <div className="flex items-center ">
@@ -136,14 +128,7 @@ const Login = () => {
                   </div>
                 </div>
 
-                <div>
-                  <button
-                    type="submit"
-                    className="flex w-full justify-center mt-3 rounded-md bg-blue-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                  >
-                    Login
-                  </button>
-                </div>
+                <PrimaryButton type="submit" buttonText="Login" />
               </form>
             </div>
 

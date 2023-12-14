@@ -5,6 +5,8 @@ import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Forgetpassword from "./pages/forgetpassword";
 import Newpassword from "./pages/Newpassword";
+import EnterOtp from "./pages/EnterOtp";
+import CreatePassword from "./pages/CreatePassword";
 
 function App() {
   return (
@@ -14,7 +16,9 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/enterotp" element={<EnterOtp />} />
           <Route path="/forget" element={<Forgetpassword />} />
+          <Route path="/create" element={<CreatePassword />} />
           <Route path="/newpass" element={<Newpassword />} />
         </Routes>
       </BrowserRouter>
