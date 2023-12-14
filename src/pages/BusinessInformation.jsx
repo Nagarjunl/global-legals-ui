@@ -12,13 +12,13 @@ function BusinessInformation() {
         <img src={profile} alt="Not found" />
       </div>
       <div className="flex-1 border-t border-gray-300 mt-3"></div>
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
         <div>
           <h3 className=" font-semibold leading-6 text-2xl mt-3 text-gray-900">
             Select your profession
           </h3>
 
-          <div className="flex justify-between flex-row w-full mt-2">
+          <div className="flex justify-between  flex-wrap flex-row w-full mt-2">
             <p className="mt-3">
               Choose your profession from the options below to tailor the form
               to your specific needs. Let&apos;s ensure we <br /> provide you
@@ -32,7 +32,7 @@ function BusinessInformation() {
             Business Information
           </h3>
         </div>
-        <div className="flex justify-between mt-2">
+        <div className="flex justify-between flex-wrap mt-2">
           <div>
             <h5 className="mt-2">Full Legal Business Name</h5>
             <div className="mt-2">
@@ -53,7 +53,7 @@ function BusinessInformation() {
             </div>
           </div>
         </div>
-        <div className="flex justify-between mt-2">
+        <div className="flex justify-between flex-wrap mt-2">
           <div>
             <h5 className="mt-2">Business Email Address</h5>
             <div className="mt-2">
@@ -74,7 +74,7 @@ function BusinessInformation() {
             </div>
           </div>
         </div>
-        <div className="flex justify-between mt-2">
+        <div className="flex justify-between flex-wrap mt-2">
           <div>
             <h5 className="mt-2">Company website</h5>
             <div className="mt-2">
@@ -100,7 +100,7 @@ function BusinessInformation() {
             Licensing Credentials
           </h3>
         </div>
-        <div className="flex justify-between mt-2">
+        <div className="flex justify-between flex-wrap mt-2">
           <div>
             <h5 className="mt-2">License Number</h5>
             <div className="mt-2">
@@ -121,7 +121,7 @@ function BusinessInformation() {
             </div>
           </div>
         </div>
-        <div className="flex justify-between mt-2">
+        <div className="flex justify-between flex-wrap mt-2">
           <div>
             <h5 className="mt-2">Licensing Authority</h5>
             <div className="mt-2">
@@ -144,7 +144,7 @@ function BusinessInformation() {
             Insurance Information
           </h3>
         </div>
-        <div className="flex justify-between mt-2">
+        <div className="flex justify-between flex-wrap mt-2">
           <div>
             <h5 className="mt-2">Insurance Policy Number</h5>
             <div className="mt-2">
@@ -165,7 +165,7 @@ function BusinessInformation() {
             </div>
           </div>
         </div>
-        <div className="flex justify-between mt-2">
+        <div className="flex justify-between flex-wrap mt-2">
           <div>
             <h5 className="mt-1">Coverage Amount</h5>
             <div className="mt-1">
@@ -188,7 +188,7 @@ function BusinessInformation() {
             Service Details
           </h3>
         </div>
-        <div className="flex justify-between mt-2">
+        <div className="flex justify-between  flex-wrap mt-2">
           <div>
             <h5 className="mt-2">Areas Covered</h5>
             <div className="mt-2">
@@ -209,7 +209,7 @@ function BusinessInformation() {
             </div>
           </div>
         </div>
-        <div className="flex justify-between mt-2">
+        <div className="flex justify-between flex-wrap mt-2">
           <div>
             <h5 className="mt-2">Types of bonds served</h5>
             <div className="mt-2">
@@ -253,7 +253,7 @@ function BusinessInformation() {
           </div>
         </div>
         <div className="flex-1 border-t border-gray-300 mt-3"></div>
-        <div className="flex justify-between mt-3">
+        <div className="flex justify-between flex-wrap mt-3">
           <div>
             <h5 className="mt-2">Linkedin profile</h5>
             <div className="mt-2">
@@ -295,7 +295,7 @@ function BusinessInformation() {
             References and Permissions
           </h3>
         </div>
-        <div className="flex justify-between mt-2">
+        <div className="flex justify-between flex-wrap mt-2">
           <div>
             <h5 className="mt-2">Cleint References</h5>
             <div className="mt-2">

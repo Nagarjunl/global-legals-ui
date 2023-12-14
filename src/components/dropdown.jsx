@@ -10,7 +10,7 @@ export default function dropdown() {
   return (
     <Menu as="div" className="relative inline-block text-left">
       <div>
-        <Menu.Button className="inline-flex w-full justify-between  gap-x-1.5 rounded-md bg-white py-3 px-28 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
+        <Menu.Button className=" mt-2 inline-flex w-full justify-between  gap-x-1.5 rounded-md bg-white py-3 px-28 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
           Select from dropdown
           <ChevronDownIcon
             className="-mr-6 h-5 w-5 text-gray-400"

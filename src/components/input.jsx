@@ -1,22 +1,22 @@
 function input() {
   return (
     <>
-      <div className="grid grid-cols-3 gap-16">
+      <div className=" grid  grid-cols-3 gap-16">
         <div>
           <div className="mt-2">
             <h5>Enter your full name</h5>
             <div className="mt-2">
               <input
-                className="block w-96  p-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                className="block w-full  p-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 placeholder="you@example.com"
               />
             </div>
           </div>
           <div className="mt-2">
-            <h5>Enter your full name</h5>
+            <h5>Enter Email Address</h5>
             <div className="mt-2">
               <input
-                className="block w-96 p-3  rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                className="block w-full p-3  rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 placeholder="you@example.com"
               />
             </div>
@@ -24,19 +24,19 @@ function input() {
         </div>
         <div>
           <div className="mt-2">
-            <h5>Enter your full name</h5>
+            <h5>Contact number</h5>
             <div className="mt-2">
               <input
-                className="block w-96 p-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                className="block w-full p-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 placeholder="you@example.com"
               />
             </div>
           </div>
           <div className="mt-2">
-            <h5>Enter your full name</h5>
+            <h5>Location / Address</h5>
             <div className="mt-2">
               <input
-                className="block w-96 p-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                className="block w-full p-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 placeholder="you@example.com"
               />
             </div>

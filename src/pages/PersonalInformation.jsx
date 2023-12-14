@@ -23,7 +23,7 @@ function PersonalInformation() {
             Select your profession
           </h3>
 
-          <div className="flex justify-between flex-row w-full mt-2">
+          <div className="flex justify-between flex-row flex-wrap w-full sm: mt-2">
             <p className="mt-3">
               Choose your profession from the options below to tailor the form
               to your specific needs. Let&apos;s ensure we <br />
@@ -43,9 +43,9 @@ function PersonalInformation() {
             Professional details
           </h3>
         </div>
-        <div className="flex justify-between">
+        <div className="flex justify-between flex-wrap">
           <div>
-            <h5 className="mt-2">Name of practicing law firm</h5>
+            <h5 className="mt-4">Name of practicing law firm</h5>
             <div className="mt-2">
               <input
                 className="block w-[580px]  p-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -54,11 +54,11 @@ function PersonalInformation() {
             </div>
           </div>
           <div>
-            <h5 className="mt-2">Legal Specialization</h5>
+            <h5 className="mt-4">Legal Specialization</h5>
             <Dropdown2 />
           </div>
         </div>
-        <div className="flex justify-between">
+        <div className="flex justify-between flex-wrap">
           <div>
             <h5 className="mt-2">years of Experience</h5>
             <Experence />
@@ -73,7 +73,7 @@ function PersonalInformation() {
             </div>
           </div>
         </div>
-        <div className="flex justify-between">
+        <div className=" flex justify-between flex-wrap">
           <div>
             <h5 className="mt-2">Areas Served till now</h5>
             <Areasservices />
@@ -110,7 +110,7 @@ function PersonalInformation() {
           </div>
         </div>
         <div className="flex-1 border-t border-gray-300 mt-3"></div>
-        <div className="flex justify-between mt-3">
+        <div className="flex flex-wrap justify-between mt-3">
           <div>
             <h5 className="mt-2">Linkedin profile</h5>
             <div className="mt-2">
