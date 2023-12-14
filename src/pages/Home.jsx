@@ -1,5 +1,5 @@
 import * as React from "react";
-import RemovalImg from "../assets/removal1.png";
+import RemovalImg from "../assets/card_images/removal.png";
 import { FaRegCheckCircle } from "react-icons/fa";
 import { IoSearchOutline } from "react-icons/io5";
 import image1 from "../assets/image 14.png";
@@ -112,9 +112,9 @@ const Home = () => {
         </p>
         <div className="w-full max-w-[1200px] mt-10 mb-12 max-md:max-w-full max-md:mb-10">
           <div className="gap-5 flex max-md:flex-col max-md:items-stretch max-md:gap-0">
-            <div className="flex flex-col items-stretch w-3/12 max-md:w-full max-md:ml-0">
+            <div className="flex flex-col items-stretch w-3/12 ml-5 max-md:w-full max-md:ml-0">
               <div className="bg-white flex grow flex-col justify-center items-stretch w-full max-md:mt-5">
-                <div className="grid-cols-1 md:grid-cols-2 lg:grid-cols-4 overflow-hidden relative flex aspect-[0.8636363636363636] w-full items-stretch pt-12 pb-4 px-4">
+                <div className="flex-col overflow-hidden relative flex aspect-[0.8636363636363636] w-full items-stretch pt-12 pb-4 px-4">
                   <img
                     alt="image"
                     src={CardOne}
@@ -271,8 +271,8 @@ const Home = () => {
             Your Roadmap to Achieving Growth
           </p>
           <div className="mt-10 max-md:max-w-full">
-            <div className="gap-5 flex max-md:flex-col max-md:items-stretch max-md:gap-0">
-              <div className="flex flex-col items-stretch w-6/12 max-md:w-full max-md:ml-0">
+            <div className="gap-5 flex  max-md:flex-col max-md:items-stretch max-md:gap-0">
+              <div className="flex flex-col flex-wrap items-stretch w-6/12 max-md:w-full max-md:ml-0">
                 <div className="self-stretc flex grow flex-col justify-center items-stretch w-full max-md:max-w-full max-md:mt-10">
                   <div className="flex-col overflow-hidden relative flex min-h-[529px] w-full items-stretch pt-12 pb-7 px-9 max-md:max-w-full max-md:px-5">
                     <img
@@ -280,9 +280,9 @@ const Home = () => {
                       src={image1}
                       className="absolute h-full w-full object-cover object-center inset-0"
                     />
-                    <div className="relative items-stretch bg-white flex flex-col justify-center mt-96 px-8 py-5 rounded-[100px] max-md:max-w-full max-md:mt-10 max-md:px-5">
-                      <div className="justify-between items-stretch flex gap-5 max-md:max-w-full max-md:flex-wrap">
-                        <div className="items-stretch flex grow basis-[0%] flex-col">
+                    <div className="relative items-stretch  bg-white flex flex-wrap flex-col justify-center mt-96 px-8 py-5 rounded-[100px] max-md:max-w-full max-md:mt-10 max-md:px-5">
+                      <div className="justify-between flex-wrap items-stretch flex gap-5 max-md:max-w-full max-md:flex-wrap">
+                        <div className="items-stretch flex grow flex-wrap basis-[0%] flex-col">
                           <p className="text-black text-2xl font-bold">
                             Explore the legal Labyrinth
                           </p>
@@ -296,16 +296,16 @@ const Home = () => {
                   </div>
                 </div>
               </div>
-              <div className="flex flex-col items-stretch w-6/12 ml-5 max-md:w-full max-md:ml-0">
-                <div className="self-stretch bg-pink-950 flex grow flex-col justify-center items-stretch w-full max-md:max-w-full max-md:mt-10">
-                  <div className="flex-col overflow-hidden relative flex min-h-[529px] w-full items-stretch pt-12 pb-7 px-9 max-md:max-w-full max-md:px-5">
+              <div className="flex flex-wrap flex-col items-stretch w-6/12 ml-5 max-md:w-full max-md:ml-0">
+                <div className="self-stret flex-wrap flex grow flex-col justify-center items-stretch w-full max-md:max-w-full max-md:mt-10">
+                  <div className="flex-col flex-wrap overflow-hidden relative flex min-h-[529px] w-full items-stretch pt-12 pb-7 px-9 max-md:max-w-full max-md:px-5">
                     <img
                       src={image2}
                       className="absolute h-full w-full object-cover object-center inset-0"
                     />
-                    <div className="relative items-stretch bg-white flex flex-col justify-center mt-96 px-8 py-5 rounded-[100px] max-md:max-w-full max-md:mt-10 max-md:px-5">
-                      <div className="justify-between items-stretch flex gap-5 max-md:max-w-full max-md:flex-wrap">
-                        <div className="items-stretch flex grow basis-[0%] flex-col">
+                    <div className="relative  items-stretch bg-white flex flex-wrap flex-col justify-center mt-96 px-8 py-5 rounded-[100px] max-md:max-w-full max-md:mt-10 max-md:px-5">
+                      <div className="justify-between flex-wrap items-stretch flex gap-5 max-md:max-w-full max-md:flex-wrap">
+                        <div className="items-stretch flex-wrap flex grow basis-[0%] flex-col">
                           <p className="text-black text-2xl font-bold whitespace-nowrap">
                             From Incarceration to Liberation
                           </p>
@@ -328,19 +328,19 @@ const Home = () => {
             <div className="gap-5 flex max-md:flex-col max-md:items-stretch max-md:gap-0">
               <div className="flex flex-col items-stretch w-[33%] max-md:w-full max-md:ml-0">
                 <div className="items-stretch flex flex-col my-auto max-md:mt-10">
-                  <div className="text-black text-5xl font-semibold">
+                  <p className="text-black text-5xl font-semibold">
                     Get in Touch with Global Legals
-                  </div>
-                  <div className="text-stone-900 text-xs mt-1">
+                  </p>
+                  <p className="text-stone-900 text-xs mt-1">
                     Have questions, need assistance, or looking for legal
                     guidance? Fill out the form below, and our team will get
                     back to you promptly. Your inquiries matter to us!
-                  </div>
+                  </p>
                 </div>
               </div>
-              <div className="flex flex-col items-stretch w-[67%] ml-5 max-md:w-full max-md:ml-0">
-                <div className="items-stretch bg-blue-500 bg-opacity-10 flex grow flex-col w-full px-20 py-12 rounded-3xl max-md:max-w-full max-md:mt-10 max-md:px-5">
-                  <div className="items-stretch flex justify-between gap-3 mt-8 max-md:max-w-full max-md:flex-wrap">
+              <div className="flex flex-col flex-wrap   items-stretch w-[67%] ml-5 max-md:w-full max-md:ml-0">
+                <div className="items-stretch bg-blue-500 bg-opacity-10 flex grow flex-wrap  flex-col w-full px-20 py-12 rounded-3xl max-md:max-w-full max-md:mt-10 max-md:px-5">
+                  <div className="items-stretch flex-wrap  flex justify-between gap-3 mt-8 max-md:max-w-full max-md:flex-wrap">
                     <div className="items-stretch flex grow basis-[0%] flex-col">
                       <div className="text-black text-xs">Full Name</div>
                       <input
@@ -348,15 +348,15 @@ const Home = () => {
                         placeholder="Ente your name"
                       />
                     </div>
-                    <div className="items-stretch flex grow basis-[0%] flex-col">
-                      <div className="text-black text-xs">Email Address</div>
+                    <div className="items-stretchflex-wrap  flex grow basis-[0%] flex-col">
+                      <p className="text-black text-xs">Email Address</p>
                       <input
                         className="text-gray-500 text-sm whitespace-nowrap border bg-white justify-center mt-2 pl-3 pr-16 py-3 rounded-lg border-solid border-slate-200 items-start max-md:pr-5"
                         placeholder="Email Address"
                       />
                     </div>
                   </div>
-                  <div className="items-stretch flex justify-between gap-3 mt-3 max-md:max-w-full max-md:flex-wrap">
+                  <div className="items-stretch flex flex-wrap  justify-between gap-3 mt-3 max-md:max-w-full max-md:flex-wrap">
                     <div className="items-stretch flex grow basis-[0%] flex-col">
                       <div className="text-black text-xs">Phone Number </div>
                       <input
@@ -369,20 +369,20 @@ const Home = () => {
                       className="items-stretch flex-grow flex flex-col mt-0 mb-4
                       max-md:mt-0"
                     >
-                      <div className="text-black text-xs">
+                      <p className="text-black text-xs">
                         Preferred Contact method
-                      </div>
+                      </p>
                       <Dropdown className="text-gray-500 text-sm whitespace-nowrap border bg-white justify-center mt-2 pl-3 pr-16 py-3 rounded-lg border-solid border-slate-200 items-start max-md:pr-8" />
                     </div>
                   </div>
-                  <div className="text-black text-xs mt-3 max-md:max-w-full">
+                  <p className="text-black text-xs mt-3 max-md:max-w-full">
                     Inquiry details
-                  </div>
+                  </p>
                   <TextArea
                     className="text-gray-500 text-sm whitespace-nowrap border bg-white mt-2 pl-3 pr-16 pt-3 pb-28 rounded-lg border-solid border-slate-200 items-start max-md:max-w-full max-md:pr-5 max-md:pb-10"
                     placeholder="  Write a short enquiry details"
                   />
-                  <div className="justify-between items-stretch flex gap-5 mt-3 mb-8 max-md:max-w-full max-md:flex-wrap">
+                  <div className="justify-between flex-wrap items-stretch flex gap-5 mt-3 mb-8 max-md:max-w-full max-md:flex-wrap">
                     <img
                       alt="image"
                       src={Captacha}
@@ -434,7 +434,7 @@ const Home = () => {
                   <p className="text-slate-600 text-xs leading-5 whitespace-nowrap mt-2">
                     Get the latest updates & offers in your inbox
                   </p>
-                  <div className="flex flex-col md:flex-row items-center border-[color:var(--Border,#D5E3EF)] shadow-md bg-white gap-5 mt-2 pl-8 pr-2.5 py-2 rounded-[1000px] border-[1.5px] border-solid max-md:pl-5">
+                  <div className="flex flex-wrap flex-col md:flex-row items-center border-[color:var(--Border,#D5E3EF)] shadow-md bg-white gap-5 mt-2 pl-8 pr-2.5 py-2 rounded-[1000px] border-[1.5px] border-solid max-md:pl-5">
                     <input
                       className="w-full md:w-auto text-slate-400 text-base leading-7 my-auto outline-none focus:outline-none border-none px-4 py-2 rounded-[1000px]"
                       placeholder="Enter Your Email Address"
