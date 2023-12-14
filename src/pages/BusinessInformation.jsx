@@ -4,6 +4,8 @@ import BusinessAmount from "../components/businessAmount";
 import global from "../assets/Frame.png";
 import profile from "../assets/Rectangle 2.png";
 import GoogleImage from "../assets/Google image.png";
+import Stepper from "../components/stepper";
+
 function BusinessInformation() {
   return (
     <>
@@ -12,9 +14,13 @@ function BusinessInformation() {
         <img src={profile} alt="Not found" />
       </div>
       <div className="flex-1 border-t border-gray-300 mt-3"></div>
+
       <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
+        <div className=" ml-72 mt-11 w-[500px]  bg-blue-50 rounded-md ">
+          <Stepper />
+        </div>
         <div>
-          <h3 className=" font-semibold leading-6 text-2xl mt-3 text-gray-900">
+          <h3 className=" font-semibold leading-6 text-2xl mt-11 text-gray-900">
             Select your profession
           </h3>
 
@@ -38,7 +44,7 @@ function BusinessInformation() {
             <div className="mt-2">
               <input
                 className="block w-full sm:w-[580px] p-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                placeholder="you@example.com"
+                placeholder="Enter the number"
               />
             </div>
           </div>
@@ -48,7 +54,7 @@ function BusinessInformation() {
             <div className="mt-2">
               <input
                 className="block w-[580px]  p-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                placeholder="you@example.com"
+                placeholder="Enter Address"
               />
             </div>
           </div>
@@ -59,7 +65,7 @@ function BusinessInformation() {
             <div className="mt-2">
               <input
                 className="block w-[580px]  p-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                placeholder="you@example.com"
+                placeholder="REnter Email Address"
               />
             </div>
           </div>
@@ -69,7 +75,7 @@ function BusinessInformation() {
             <div className="mt-2">
               <input
                 className="block w-[580px]  p-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                placeholder="you@example.com"
+                placeholder="Enter phone number"
               />
             </div>
           </div>
@@ -80,7 +86,7 @@ function BusinessInformation() {
             <div className="mt-2">
               <input
                 className="block w-[580px]  p-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                placeholder="you@example.com"
+                placeholder="company website"
               />
             </div>
           </div>
@@ -90,7 +96,7 @@ function BusinessInformation() {
             <div className="mt-2">
               <input
                 className="block w-[580px]  p-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                placeholder="you@example.com"
+                placeholder="Owner Agent Information"
               />
             </div>
           </div>
@@ -106,7 +112,7 @@ function BusinessInformation() {
             <div className="mt-2">
               <input
                 className="block w-[580px]  p-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                placeholder="you@example.com"
+                placeholder="Enter the number"
               />
             </div>
           </div>
@@ -116,7 +122,7 @@ function BusinessInformation() {
             <div className="mt-2">
               <input
                 className="block w-[580px]  p-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                placeholder="you@example.com"
+                placeholder="Date of Licensing"
               />
             </div>
           </div>
@@ -134,7 +140,7 @@ function BusinessInformation() {
             <div className="mt-2">
               <input
                 className="block w-[580px]  p-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                placeholder="you@example.com"
+                placeholder="Bonding Capacity"
               />
             </div>
           </div>
@@ -150,7 +156,7 @@ function BusinessInformation() {
             <div className="mt-2">
               <input
                 className="block w-[580px]  p-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                placeholder="you@example.com"
+                placeholder="Enter the number"
               />
             </div>
           </div>
@@ -160,7 +166,7 @@ function BusinessInformation() {
             <div className="mt-2">
               <input
                 className="block w-[580px]  p-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                placeholder="you@example.com"
+                placeholder="Insurance Provider"
               />
             </div>
           </div>
@@ -178,7 +184,7 @@ function BusinessInformation() {
             <div className="mt-2">
               <input
                 className="block w-[580px]  p-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                placeholder="you@example.com"
+                placeholder="Experience Date"
               />
             </div>
           </div>
@@ -194,7 +200,7 @@ function BusinessInformation() {
             <div className="mt-2">
               <input
                 className="block w-[580px]  p-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                placeholder="you@example.com"
+                placeholder="Areas Covered"
               />
             </div>
           </div>
@@ -204,7 +210,7 @@ function BusinessInformation() {
             <div className="mt-2">
               <input
                 className="block w-[580px]  p-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                placeholder="you@example.com"
+                placeholder="Fee Structure"
               />
             </div>
           </div>
@@ -215,7 +221,7 @@ function BusinessInformation() {
             <div className="mt-2">
               <input
                 className="block w-[580px]  p-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                placeholder="you@example.com"
+                placeholder="Types of bonds served"
               />
             </div>
           </div>
@@ -225,7 +231,7 @@ function BusinessInformation() {
             <div className="mt-2">
               <input
                 className="block w-[580px]  p-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                placeholder="you@example.com"
+                placeholder="Years of Experience"
               />
             </div>
           </div>
@@ -259,7 +265,7 @@ function BusinessInformation() {
             <div className="mt-2">
               <input
                 className="block w-[580px]  p-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                placeholder="you@example.com"
+                placeholder="Linkedin profile"
               />
             </div>
           </div>
@@ -269,7 +275,7 @@ function BusinessInformation() {
             <div className="mt-2">
               <input
                 className="block w-[580px]  p-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                placeholder="you@example.com"
+                placeholder="Twitter Profile"
               />
             </div>
           </div>
@@ -301,7 +307,7 @@ function BusinessInformation() {
             <div className="mt-2">
               <input
                 className="block w-[580px]  p-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                placeholder="you@example.com"
+                placeholder="Cleint References"
               />
             </div>
           </div>
@@ -311,7 +317,7 @@ function BusinessInformation() {
             <div className="mt-2">
               <input
                 className="block w-[580px]  p-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                placeholder="you@example.com"
+                placeholder="Contact number"
               />
             </div>
           </div>

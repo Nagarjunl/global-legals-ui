@@ -8,6 +8,7 @@ import Areasservices from "../components/Areas services";
 import LawField from "../components/lawField";
 import Languagespoken from "../components/Languagespoken";
 import GoogleImage from "../assets/Google image.png";
+import Stepper from "../components/stepper";
 function PersonalInformation() {
   return (
     <>
@@ -18,8 +19,13 @@ function PersonalInformation() {
       <div className="flex-1 border-t border-gray-300 mt-3"></div>
 
       <div className="mx-auto max-w-7xl sm:px-6 lg:px-12">
+        <div className=" ml-72 mt-11 w-[500px]  bg-blue-50 rounded-md flex flex-wrap ">
+          <Stepper />
+        </div>
+
+        {/*  */}
         <div>
-          <h3 className=" font-semibold leading-6 text-2xl mt-3 text-gray-900">
+          <h3 className=" font-semibold leading-6 text-2xl mt-11 text-gray-900">
             Select your profession
           </h3>
 
@@ -49,7 +55,7 @@ function PersonalInformation() {
             <div className="mt-2">
               <input
                 className="block w-[580px]  p-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                placeholder="you@example.com"
+                placeholder="Name of practicing law firm"
               />
             </div>
           </div>
@@ -68,7 +74,7 @@ function PersonalInformation() {
             <div className="mt-2">
               <input
                 className="block w-[580px]  p-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                placeholder="you@example.com"
+                placeholder="Enter the number"
               />
             </div>
           </div>
@@ -116,7 +122,7 @@ function PersonalInformation() {
             <div className="mt-2">
               <input
                 className="block w-[580px]  p-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                placeholder="you@example.com"
+                placeholder="Linkedin profile "
               />
             </div>
           </div>
@@ -126,7 +132,7 @@ function PersonalInformation() {
             <div className="mt-2">
               <input
                 className="block w-[580px]  p-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                placeholder="you@example.com"
+                placeholder="Twitter Profile"
               />
             </div>
           </div>

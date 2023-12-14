@@ -6,6 +6,7 @@ import Forgetpassword from "./pages/forgetpassword";
 import Newpassword from "./pages/Newpassword";
 import PersonalInformation from "./pages/PersonalInformation";
 import BusinessInformation from "./pages/BusinessInformation";
+import Application from "./pages/Application";
 function App() {
   return (
     <>
@@ -24,6 +25,7 @@ function App() {
             path="/businessinformation"
             element={<BusinessInformation />}
           />
+          <Route path="/application" element={<Application />} />
         </Routes>
       </BrowserRouter>
     </>
