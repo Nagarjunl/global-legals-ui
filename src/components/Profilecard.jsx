@@ -1,16 +1,13 @@
-import React from "react";
-import Frame from "../assets/Frame 20.png";
-import Cups from "../assets/cups.png";
-import Phone from "../assets/image 24.png";
-import CircleImg from "../assets/circle.png";
-// import frame from "../assets/frame22.png";
 
-const Lawercard = ({image}) => {
+import React from 'react'
+
+function ProfileCard() {
   return (
-    <div className="grid-cols-2 border border-gray-500 mt-10 rounded-xl w-full">
+   <>
+    <div className="grid-cols-2 border border-gray-500 mt-10">
       <div class="bg-white p-2 w-80 max-w-auto sm:w-full sm:p-4 h-auto sm:h-auto rounded-2xl flex flex-col sm:flex-row gap-5 select-none">
         <div className="p-5">
-          <img src={image} alt="frame" />
+          <img src="" alt="frame" />
         </div>
         {/*  */}
         <div class="flex sm:flex-1 flex-col justify-end gap-2 p-1">
@@ -81,7 +78,9 @@ const Lawercard = ({image}) => {
         </div>
       </div>
     </div>
-  );
-}; 
+   
+   </>
+  )
+}
 
-export default Lawercard;
+export default ProfileCard

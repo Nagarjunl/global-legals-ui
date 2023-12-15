@@ -6,6 +6,7 @@ import Forgetpassword from "./pages/Forgetpassword";
 import Newpassword from "./pages/Newpassword";
 import Appointments from "./pages/Appointments";
 import SearchProfile from "./pages/SearchProfile";
+import ClientImage from "./pages/ClientImage";
 function App() {
   return (
     <>
@@ -18,6 +19,9 @@ function App() {
           <Route path="/newpass" element={<Newpassword />} />
           <Route path="/appointments" element={<Appointments />} />
           <Route path="/profile" element={<SearchProfile/>} />
+          <Route path="/client" element={<ClientImage/>} />
+
+
 
         </Routes>
       </BrowserRouter>
