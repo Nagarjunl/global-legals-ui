@@ -5,3 +5,26 @@
 .offers_btn {
   background-color: #365660;
 }
+.circular_font_family {
+  font-family: "Circular Std";
+}
+.cardone {
+  background-image: url(/src/assets/card_images/image6.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.cardTwo {
+  background-image: url(/src/assets/card_images/image7.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.cardThree {
+  background-image: url(/src/assets/card_images/image8.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.cardFour {
+  background-image: url(/src/assets/card_images/image9.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+}

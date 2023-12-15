@@ -1,0 +1,39 @@
+/* .typo {
+  color: #fff;
+  font-family: Circular Std;
+  font-size: 44px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.typo2 {
+  color: #fff;
+  font-family: Aleo;
+  font-size: 44px;
+  font-style: italic;
+  font-weight: 300;
+  line-height: normal;
+}
+.headertypo {
+  color: #fff;
+  font-family: Circular Std;
+  font-size: 20px;
+  font-style: italic;
+  font-weight: 700;
+  line-height: normal;
+}
+.removal {
+  width: 633px;
+  height: 422px;
+  flex-shrink: 0;
+}
+.grid_2_badges > li {
+  border: 1.5px solid white;
+  border-style: groove;
+  border-radius: 10px;
+  text-align: center;
+}
+/* css for image container home _ 2 _ area  */
+.image_container > img {
+  width: 304px;
+}
