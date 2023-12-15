@@ -47,11 +47,7 @@ const EnterOtp = () => {
         <div className="flex flex-col justify-center px-4 gap-10 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
           <div className="mx-auto w-full max-w-sm lg:w-96 ">
             <div className="flex  items-center mt-5 ">
-              <img className="h-10 w-auto" src={logo} alt="Your Company" />
-              <h2 className="pl-2 text-2xl font-bold leading-9 tracking-tight text-blue-600">
-                Global <br />
-                <span>Legals</span>
-              </h2>
+              <img className="h-10 w-auto" src={logo} alt=" Company logo" />
             </div>
 
             <div>

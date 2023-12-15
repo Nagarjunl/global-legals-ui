@@ -26,7 +26,7 @@ const Navigation = () => {
                 />
                 <a
                   href={page.href}
-                  className="ml-4 text-sm font-medium text-black hover:text-blue-600    "
+                  className="ml-1 text-sm font-medium text-black hover:text-blue-600 "
                   aria-current={page.current ? "page" : undefined}
                 >
                   {page.name}

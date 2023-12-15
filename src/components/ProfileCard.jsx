@@ -1,29 +1,64 @@
 import profileimg from "../assets/profile.png";
 import trophy from "../assets/tropy.png";
+import telephone from "../assets/telephone.png";
+import circle from "../assets/circle.png";
 import PrimaryButton from "../components/PrimaryButton";
 const ProfileCard = () => {
   return (
     <div>
-      <div className="overflow-hidden rounded-lg bg-white shadow">
-        <div className=" row-auto md:flex md:items-center px-4 py-5 sm:p-6">
-          <img src={profileimg} />
-          <div>
-            <div>
-              <h2> Bill Thompson Moreira</h2>
-              <button className="inline-flex items-center rounded-full bg-yellow-100 px-4 py-2 text-xs font-medium text-orange-500  ">
-                <img src={trophy} />
-                <span className="ml-2">Top Rated Attorney</span>
-              </button>
+      <div className=" rounded-l ">
+        <div className="grid-cols-2 ">
+          <div className="bg-white p-2 w-80 max-w-auto sm:w-full sm:p-4 h-auto sm:h-auto rounded-2xl shadow-lg flex flex-col sm:flex-row gap-5 select-none">
+            <img src={profileimg} alt="frame" />
+
+            <div className="flex sm:flex-1 flex-col justify-end gap-2 p-1">
+              <h1 className="text-lg sm:text-xl font-semibold  text-black">
+                Bill Thompson Moreira
+              </h1>
+              <div className=" flex  ">
+                <span className="inline-flex items-center rounded-xl bg-yellow-50 px-2 py-1 text-xs font-medium text-yellow-800 ring-1 ring-inset ring-yellow-600/20">
+                  <img src={trophy} alt="" className="sm:w-auto" />
+                  Top Rated Attorney
+                </span>
+              </div>
+              <div className=" flex text-lg text-gray-600 ">
+                <span className="inline-flex  py-1 text-sm font-medium ">
+                  <img src={telephone} alt="Phone" className="w-auto px-2" />
+                  {" Practioning at "}
+                  <a href="#" className="text-blue-700 px-2">
+                    Densborn Blachly LLP
+                  </a>
+                </span>
+              </div>
+              <div className=" flex text-lg text-gray-600 ">
+                <span className="inline-flex  py-1 text-sm font-medium ">
+                  <img
+                    src={circle}
+                    alt="Phone"
+                    className=" px-2 w-10 h-6   sm:w-auto"
+                  />
+                  Indiana USA Labor and Employment Attorney
+                </span>
+              </div>
+
+              <div className="  inline-block text-lg text-black ">
+                <h3 className="inline-flex px-1 py-1 text-sm font-small ">
+                  Client / Peer Review
+                </h3>
+                <div className="text-lg  ">4.2 / 5.0</div>
+              </div>
             </div>
-          </div>
-          <div className=" m-5">
-            <button
-              type="button"
-              className="rounded-md  w-full bg-white px-3 py-2 text-sm font-semibold text-blue-600 shadow-sm ring-1 ring-inset ring-blue-600 hover:bg-gray-50"
-            >
-              Call via Phone
-            </button>
-            <PrimaryButton buttonText="Contact via mail" />
+            <div className="mt-auto pb-5 ">
+              <button
+                type="button"
+                className="rounded-md  w-full bg-white px-3 py-2 text-sm font-semibold text-blue-600 shadow-sm ring-1 ring-inset ring-blue-600 hover:bg-gray-50"
+              >
+                Call via Phone
+              </button>
+              <br />
+
+              <PrimaryButton buttonText="Call via mail" />
+            </div>
           </div>
         </div>
       </div>
