@@ -19,7 +19,7 @@ function PersonalInformation() {
       <div className="flex-1 border-t border-gray-300 mt-3"></div>
 
       <div className="mx-auto max-w-7xl sm:px-6 lg:px-12">
-        <div className=" ml-72 mt-11 w-[500px]  bg-blue-50 rounded-md flex flex-wrap ">
+        <div className="  mt-11   bg-blue-50 rounded-md flex flex-wrap justify-center flex-row ">
           <Stepper />
         </div>
 
