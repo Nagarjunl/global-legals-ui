@@ -1,30 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?family=Agbalumo&family=Aleo:ital,wght@1,300&family=Open+Sans:ital,wght@1,300;1,400&family=Poppins:wght@200;300;400&family=Roboto:ital,wght@0,100;0,400;0,700;1,300&display=swap");
 
-.offers_btn {
+/* .offers_btn {
   background-color: #365660;
 }
 .circular_font_family {
   font-family: "Circular Std";
-}
-.cardone {
-  background-image: url(/src/assets/card_images/image6.png);
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-.cardTwo {
-  background-image: url(/src/assets/card_images/image7.png);
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-.cardThree {
-  background-image: url(/src/assets/card_images/image8.png);
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-.cardFour {
-  background-image: url(/src/assets/card_images/image9.png);
-  background-size: contain;
-  background-repeat: no-repeat;
+} */
+#aleo_font {
+  font-family: Aleo;
+  font-style: italic;
 }

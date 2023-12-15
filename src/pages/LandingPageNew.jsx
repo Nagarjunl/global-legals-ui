@@ -1,5 +1,6 @@
 import * as React from "react";
-import RemovalImg from "../assets/card_images/removal.png";
+// import "../App.css";
+import RemovalImg from "../assets/New folder/removal.svg";
 // import { FaRegCheckCircle } from "react-icons/fa";
 import { IoSearchOutline } from "react-icons/io5";
 // import image1 from "../assets/image 14.png";
@@ -21,79 +22,108 @@ import CardFour from "../assets/New folder/image 9.png";
 // import { FaPinterest } from "react-icons/fa";
 // import { FaLinkedinIn } from "react-icons/fa6";
 import Globe from "../assets/image131.png";
-import Card from "../components/Card";
+import ServiceCard from "../components/ServiceCard";
 
 const LandingPageNew = () => {
   return (
     <>
       <div className="bg-[#2C5530]">
-        <div class=" pb-0 bg-right bg-cover  bg-[#2C5530]">
-          <div className="w-full container mx-auto p-6  ">
-            <div className="w-full flex items-center justify-between py-2 gap-2 flex-wrap  ">
+        <div class=" pb-auto w-auto bg-cover h-auto bg-[#2C5530]">
+          <nav class="bg-green border-gray-200 dark:bg-gray-900 py-0 sm:py-14 px-0 sm:px-20">
+            <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
               <a
-                className="flex items-center text-white no-underline hover:no-underline font-bold text-2xl lg:text-2xl"
-                href="#"
+                href="https://flowbite.com/"
+                class="flex items-center space-x-3 rtl:space-x-reverse"
               >
-                <span>
-                  <img src={Globe} alt="" />
+                <img src={Globe} class="h-8" alt="Flowbite Logo" />
+                <span class="self-center text-white text-2xl font-semibold whitespace-nowrap dark:text-white">
+                  Global <br /> Legals
                 </span>
-                Global <br /> Legals
               </a>
-
-              <div className="flex w-1/2 justify-end content-center flex-wrap  ">
-                <a
-                  className="inline-block text-white no-underline hover:text-white hover:text-underline text-center h-10 p-2 md:h-auto md:p-4 sm:block"
-                  data-tippy-content="@twitter_handle"
-                  href="https://twitter.com/intent/tweet?url=#"
+              <button
+                data-collapse-toggle="navbar-default"
+                type="button"
+                class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-white rounded-lg md:hidden hover:bg-green focus:outline-none focus:ring-2 focus:ring-white dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                aria-controls="navbar-default"
+                aria-expanded="false"
+              >
+                <span class="sr-only">Open main menu</span>
+                <svg
+                  class="w-5 h-5"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 17 14"
                 >
-                  {"Home"}
-                </a>
-                <a
-                  className="inline-block text-white no-underline hover:text-white hover:text-underline text-center h-10 p-2 md:h-auto md:p-4 "
-                  data-tippy-content="#facebook_id"
-                  href="https://www.facebook.com/sharer/sharer.php?u=#"
-                >
-                  {" Business Signup"}
-                </a>
-                <a
-                  className="inline-block text-white no-underline hover:text-white hover:text-underline text-center h-10 p-2 md:h-auto md:p-4 "
-                  data-tippy-content="#facebook_id"
-                  href="https://www.facebook.com/sharer/sharer.php?u=#"
-                >
-                  {"FAQ"}
-                </a>
+                  <path
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M1 1h15M1 7h15M1 13h15"
+                  />
+                </svg>
+              </button>
+              <div class="hidden w-full md:block md:w-auto" id="navbar-default">
+                <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 borderrounded-lg bg-green md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-green dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+                  <li>
+                    <a
+                      href="#"
+                      class="block py-2 px-3 text-white hover:bg-transparent   rounded md:bg-transparent md:text-white-700 md:p-0 dark:text-white md:dark:text-white"
+                      aria-current="page"
+                    >
+                      Home
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      class="block py-2 px-3 text-white rounded hover:bg-transparent md:hover:bg-transparent md:border-0 md:hover:text-white md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                    >
+                      Buisness Signup
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      class="block py-2 px-3 text-white rounded hover:bg-transparent md:hover:bg-transparent md:border-0 md:hover:text-white md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                    >
+                      FAQ
+                    </a>
+                  </li>
+                </ul>
               </div>
             </div>
-          </div>
+          </nav>
           <div className="bg-[#2C5530]">
-            <div className="container pt-24 md:pt-38 px-6 mx-auto flex flex-wrap flex-col md:flex-row items-center  ">
-              <div className="flex flex-col w-full xl:w-2/5 justify-center lg:items-start overflow-y-hidden">
-                <h1 className="text-white font-circular-std text-5xl flex font-bold">
+            <div className="container py-19 pb-0  sm:pb-18 px-12 mx-auto flex flex-wrap flex-col md:flex-row items-center  ">
+              <div className="flex flex-col w-full xl:w-2/5 justify-start lg:items-start overflow-y-hidden mb-0  sm:mb-24">
+                <h1 className="text-white font-circular-std  mt-5 text-4xl flex font-bold ">
                   Effortlessly Locate the Ideal
                 </h1>
-                <p className="text-white font-aleo text-5xl italic font-light ">
+                <p className="text-white  text-4xl mt-5 mb-5  " id="aleo_font">
                   Professional Services
                 </p>
                 {/*  */}
 
                 <form>
-                  <div className="flex  ">
+                  <div className="flex ">
                     <input
                       type="search"
                       id="search"
-                      className="  w-96 text-sm  p-3 items-center text-gray-900 border border-gray-300  bg-gray-50 "
+                      className=" w-96 text-sm  p-3 items-center text-gray-900 border border-gray-300  bg-gray-50 "
                       placeholder="Search for any service in your county"
                       required
                     />
                     <button
                       type="submit"
-                      className="text-white inline-flex h-12 px-5 py-3 items-center flex-shrink-0 bg-[#00C26B]"
+                      className="text-white inline-flex h-12 px-5 py-0 sm:py-3 items-center flex-shrink-0 bg-[#00C26B]"
                     >
                       <IoSearchOutline className="h-6 w-6" />
                     </button>
                   </div>
                 </form>
-                <div className="inline-flex flex-wrap mt-4 gap-3 ">
+                <div className="inline-flex flex-wrap mt-4 gap-3 mb-0 sm:mb-0">
                   <span className=" text-white  font-circular-std text-sm font-medium  justify-center  py-1 px-2 items-center   rounded-full border border-white ">
                     Lawyers
                   </span>
@@ -108,10 +138,7 @@ const LandingPageNew = () => {
                   </span>
                 </div>
               </div>
-
-              {/*  */}
-
-              <div className="w-full xl:w-3/5 overflow-y-hidden ">
+              <div className="w-auto xl:w-3/5 overflow-y-hidden invisible md:visible ">
                 <img
                   className="w-5/6 mx-auto sm:h-112 lg:mr-0 mb-0 slide-in-bottom"
                   src={RemovalImg}
@@ -121,17 +148,42 @@ const LandingPageNew = () => {
           </div>
         </div>
       </div>
-      {/* card */}
 
-      <div className="mx-auto py-32  max-w-7xl px-4 sm:px-6 lg:px-8">
-        <h1 className="text-black  font-circular-std md:text-4xl lg:text-3xl max-lg:text-4xl">
-          Services we Offer
-        </h1>
-        <div className=" flex  justify-start  items-start gap-5 flex-wrap ">
-          <Card image={CardOne} />
-          <Card image={CardTwo} />
-          <Card image={CardThree} />
-          <Card image={CardFour} />
+      <div className="mx-auto py-5 sm:py-32  max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="container my-12 mx-auto px-4 md:px-12">
+          <h1 className="text-black  font-circular-std md:text-4xl lg:text-4xl max-lg:text-4xl">
+            Services we Offer
+          </h1>
+          <div class="flex flex-wrap -mx-1 lg:-mx-4">
+            <div class="grid place-items-center overflow-x-scroll rounded-lg p-6 lg:overflow-visible md:w-1/2 lg:my-4 lg:px-4 lg:w-1/4">
+              <ServiceCard
+                image={CardOne}
+                content={"Your Advocate Professionals"}
+                contentBold={"Legal Excellence"}
+              />
+            </div>
+            <div class="grid place-items-center overflow-x-scroll rounded-lg p-6 lg:overflow-visible md:w-1/2 lg:my-4 lg:px-4 lg:w-1/4">
+              <ServiceCard
+                image={CardTwo}
+                content={"Your Advocate Professionals"}
+                contentBold={"Legal Excellence"}
+              />
+            </div>
+            <div class="grid place-items-center overflow-x-scroll rounded-lg p-6 lg:overflow-visible md:w-1/2 lg:my-4 lg:px-4 lg:w-1/4">
+              <ServiceCard
+                image={CardThree}
+                content={"Your Advocate Professionals"}
+                contentBold={"Legal Excellence"}
+              />
+            </div>
+            <div class="grid place-items-center overflow-x-scroll rounded-lg p-6 lg:overflow-visible md:w-1/2 lg:my-4 lg:px-4 lg:w-1/4">
+              <ServiceCard
+                image={CardFour}
+                content={"Your Advocate Professionals"}
+                contentBold={"Legal Excellence"}
+              />
+            </div>
+          </div>
         </div>
       </div>
     </>
