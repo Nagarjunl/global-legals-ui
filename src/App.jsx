@@ -7,6 +7,7 @@ import Newpassword from "./pages/Newpassword";
 import PersonalInformation from "./pages/PersonalInformation";
 import BusinessInformation from "./pages/BusinessInformation";
 import Application from "./pages/Application";
+
 function App() {
   return (
     <>

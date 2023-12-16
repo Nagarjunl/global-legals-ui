@@ -1,92 +1,132 @@
-import { Fragment } from "react";
-import { Menu, Transition } from "@headlessui/react";
-import { ChevronDownIcon } from "@heroicons/react/20/solid";
-
-function classNames(...classes) {
-  return classes.filter(Boolean).join(" ");
-}
-
-export default function dropdown2() {
+export default function Dropdown2() {
   return (
-    <Menu as="div" className="relative inline-block text-left">
-      <div>
-        <Menu.Button className="inline-flex w-[580px] justify-between mt-2 gap-x-1.5 rounded-md bg-white py-2 px-28 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
-          Select from dropdown
-          <ChevronDownIcon
-            className="-mr-6 h-5 w-5 text-gray-400"
-            aria-hidden="true"
+    <div className="mt-3 grid grid-cols-1 gap-x-6  sm:grid-cols-6">
+      <h3 className=" font-semibold leading-6 text-2xl mt-8  text-gray-900 sm:col-span-6">
+        Professional details
+      </h3>
+      <div className="sm:col-span-3 mt-7">
+        <h5 className="mt-2">Name of practicing law firm</h5>
+        <div className="mt-2">
+          <input
+            type="text"
+            name="first-name"
+            id="first-name"
+            autoComplete="given-name"
+            placeholder="Enter Name"
+            className="block w-full rounded-md px-2 border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
           />
-        </Menu.Button>
+        </div>
       </div>
 
-      <Transition
-        as={Fragment}
-        enter="transition ease-out duration-100"
-        enterFrom="transform opacity-0 scale-95"
-        enterTo="transform opacity-100 scale-100"
-        leave="transition ease-in duration-75"
-        leaveFrom="transform opacity-100 scale-100"
-        leaveTo="transform opacity-0 scale-95"
-      >
-        <Menu.Items className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-          <div className="py-1">
-            <Menu.Item>
-              {({ active }) => (
-                <a
-                  href="#"
-                  className={classNames(
-                    active ? "bg-gray-100 text-gray-900" : "text-gray-700",
-                    "block px-4 py-2 text-sm"
-                  )}
-                >
-                  Account settings
-                </a>
-              )}
-            </Menu.Item>
-            <Menu.Item>
-              {({ active }) => (
-                <a
-                  href="#"
-                  className={classNames(
-                    active ? "bg-gray-100 text-gray-900" : "text-gray-700",
-                    "block px-4 py-2 text-sm"
-                  )}
-                >
-                  Support
-                </a>
-              )}
-            </Menu.Item>
-            <Menu.Item>
-              {({ active }) => (
-                <a
-                  href="#"
-                  className={classNames(
-                    active ? "bg-gray-100 text-gray-900" : "text-gray-700",
-                    "block px-4 py-2 text-sm"
-                  )}
-                >
-                  License
-                </a>
-              )}
-            </Menu.Item>
-            <form method="POST" action="#">
-              <Menu.Item>
-                {({ active }) => (
-                  <button
-                    type="submit"
-                    className={classNames(
-                      active ? "bg-gray-100 text-gray-900" : "text-gray-700",
-                      "block w-full px-4 py-2 text-left text-sm"
-                    )}
-                  >
-                    Sign out
-                  </button>
-                )}
-              </Menu.Item>
-            </form>
-          </div>
-        </Menu.Items>
-      </Transition>
-    </Menu>
+      <div className="sm:col-span-3 mt-7">
+        <h5 className="mt-2">Legal Specialization</h5>
+
+        <div className="mt-2">
+          <select
+            id="country"
+            name="country"
+            autoComplete="country-name"
+            className="block w-full rounded-md border-0 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600  sm:text-sm sm:leading-6"
+          >
+            <option value="" disabled selected hidden>
+              Select from dropdown
+            </option>
+            <option>United States</option>
+            <option>Canada</option>
+            <option>Mexico</option>
+          </select>
+        </div>
+      </div>
+      <div className="sm:col-span-3 ">
+        <h5 className="mt-2">Years of Experience</h5>
+
+        <div className="mt-2">
+          <select
+            id="country"
+            name="country"
+            autoComplete="country-name"
+            className="block w-full rounded-md border-0 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600  sm:text-sm sm:leading-6"
+          >
+            <option value="" disabled selected hidden>
+              Select from dropdown
+            </option>
+            <option>0</option>
+            <option>1</option>
+            <option>2</option>
+          </select>
+        </div>
+      </div>
+
+      <div className="sm:col-span-3 ">
+        <h5 className="mt-2">Bar Association License Number</h5>
+        <div className="mt-2">
+          <input
+            type="text"
+            name="last-name"
+            id="last-name"
+            autoComplete="family-name"
+            placeholder="License Number"
+            className="block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+          />
+        </div>
+      </div>
+      <div className="sm:col-span-3">
+        <h5 className="mt-2">Areas Served till now</h5>
+
+        <div className="mt-2">
+          <select
+            id="country"
+            name="country"
+            autoComplete="country-name"
+            className="block w-full rounded-md border-0 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600  sm:text-sm sm:leading-6"
+          >
+            <option value="" disabled selected hidden>
+              Select from dropdown
+            </option>
+            <option>United States</option>
+            <option>Canada</option>
+            <option>Mexico</option>
+          </select>
+        </div>
+      </div>
+      <div className="sm:col-span-3">
+        <h5 className="mt-2">Law Field Specialized in</h5>
+
+        <div className="mt-2">
+          <select
+            id="country"
+            name="country"
+            autoComplete="country-name"
+            className="block w-full rounded-md border-0 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600  sm:text-sm sm:leading-6"
+          >
+            <option value="" disabled selected hidden>
+              Select from dropdown
+            </option>
+            <option>United States</option>
+            <option>Canada</option>
+            <option>Mexico</option>
+          </select>
+        </div>
+      </div>
+      <div className="sm:col-span-3">
+        <h5 className="mt-2">Languages Spoken</h5>
+
+        <div className="mt-2">
+          <select
+            id="country"
+            name="country"
+            autoComplete="country-name"
+            className="block w-full rounded-md border-0 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600  sm:text-sm sm:leading-6"
+          >
+            <option value="" disabled selected hidden>
+              Select from dropdown
+            </option>
+            <option>United States</option>
+            <option>Canada</option>
+            <option>Mexico</option>
+          </select>
+        </div>
+      </div>
+    </div>
   );
 }

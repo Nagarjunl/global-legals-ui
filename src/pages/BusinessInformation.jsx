@@ -1,10 +1,12 @@
 import BusinessList from "../components/bussinesslist";
-import BusinessDrop from "../components/businessdrop";
-import BusinessAmount from "../components/businessAmount";
+
+import LawField from "../components/lawField";
+
 import global from "../assets/Frame.png";
 import profile from "../assets/Rectangle 2.png";
-import GoogleImage from "../assets/Google image.png";
+import GoogleImage from "../assets/Google-image.png";
 import Stepper from "../components/stepper";
+import Experence from "../components/Experence";
 
 function BusinessInformation() {
   return (
@@ -14,11 +16,12 @@ function BusinessInformation() {
         <img src={profile} alt="Not found" />
       </div>
       <div className="flex-1 border-t border-gray-300 mt-3"></div>
-
-      <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
-        <div className="  mt-11   bg-blue-50 rounded-md flex flex-wrap justify-center flex-row ">
+      <div className="mx-auto max-w-7xl sm:px-6 lg:px-12 flex justify-center mt-11">
+        <div className="  w-auto bg-blue-50 rounded-3xl">
           <Stepper />
         </div>
+      </div>
+      <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
         <div>
           <h3 className=" font-semibold leading-6 text-2xl mt-11 text-gray-900">
             Select your profession
@@ -34,205 +37,133 @@ function BusinessInformation() {
           </div>
         </div>
         <div>
-          <h3 className=" font-semibold leading-6 text-2xl mt-12 text-gray-900">
-            Business Information
-          </h3>
+          <Experence />
         </div>
-        <div className="flex justify-between flex-wrap mt-2">
-          <div>
-            <h5 className="mt-2">Full Legal Business Name</h5>
-            <div className="mt-2">
-              <input
-                className="block w-full sm:w-[580px] p-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                placeholder="Enter the number"
-              />
-            </div>
-          </div>
-
-          <div>
-            <h5 className="mt-2">Business Address</h5>
-            <div className="mt-2">
-              <input
-                className="block w-[580px]  p-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                placeholder="Enter Address"
-              />
-            </div>
-          </div>
+        <div>
+          <LawField />
         </div>
-        <div className="flex justify-between flex-wrap mt-2">
-          <div>
-            <h5 className="mt-2">Business Email Address</h5>
-            <div className="mt-2">
-              <input
-                className="block w-[580px]  p-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                placeholder="REnter Email Address"
-              />
+        <div>
+          <div className=" grid grid-cols-1 gap-x-6  sm:grid-cols-6">
+            <h3 className=" font-semibold leading-6 text-2xl mt-12 text-gray-900 sm:col-span-6">
+              Insurance Information
+            </h3>
+            <div className="sm:col-span-3">
+              <h5 className="mt-2">Insurance Policy Number</h5>
+              <div className="mt-2">
+                <input
+                  type="text"
+                  name="first-name"
+                  id="first-name"
+                  placeholder="Enter number"
+                  autoComplete="given-name"
+                  className="block px-2 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                />
+              </div>
             </div>
-          </div>
+            <div className="sm:col-span-3">
+              <h5 className="mt-2">Date of Licensing</h5>
+              <div className="mt-2">
+                <input
+                  type="text"
+                  name="first-name"
+                  id="first-name"
+                  placeholder="Enter date"
+                  autoComplete="given-name"
+                  className="block px-2 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                />
+              </div>
+            </div>
+            <div className="sm:col-span-3 ">
+              <h5 className="mt-2">Licensing Authority</h5>
 
-          <div>
-            <h5 className="mt-2">Business Phone number</h5>
-            <div className="mt-2">
-              <input
-                className="block w-[580px]  p-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                placeholder="Enter phone number"
-              />
+              <div className="mt-2">
+                <select
+                  id="country"
+                  name="country"
+                  autoComplete="country-name"
+                  className="block w-full rounded-md border-0 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600  sm:text-sm sm:leading-6"
+                >
+                  <option value="" disabled selected hidden>
+                    Select from dropdown
+                  </option>
+                  <option>United States</option>
+                  <option>Canada</option>
+                  <option>Mexico</option>
+                </select>
+              </div>
             </div>
-          </div>
-        </div>
-        <div className="flex justify-between flex-wrap mt-2">
-          <div>
-            <h5 className="mt-2">Company website</h5>
-            <div className="mt-2">
-              <input
-                className="block w-[580px]  p-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                placeholder="company website"
-              />
-            </div>
-          </div>
-
-          <div>
-            <h5 className="mt-2">Owner Agent Information</h5>
-            <div className="mt-2">
-              <input
-                className="block w-[580px]  p-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                placeholder="Owner Agent Information"
-              />
+            <div className="sm:col-span-3">
+              <h5 className="mt-2">Bonding Capacity</h5>
+              <div className="mt-2">
+                <input
+                  type="text"
+                  name="first-name"
+                  id="first-name"
+                  placeholder="Bonding capacity"
+                  autoComplete="given-name"
+                  className="block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                />
+              </div>
             </div>
           </div>
         </div>
         <div>
-          <h3 className=" font-semibold leading-6 text-2xl mt-12 text-gray-900">
-            Licensing Credentials
-          </h3>
-        </div>
-        <div className="flex justify-between flex-wrap mt-2">
-          <div>
-            <h5 className="mt-2">License Number</h5>
-            <div className="mt-2">
-              <input
-                className="block w-[580px]  p-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                placeholder="Enter the number"
-              />
+          <div className="mt-10 grid grid-cols-1 gap-x-6  sm:grid-cols-6">
+            <h3 className=" font-semibold leading-6 text-2xl mt-12 text-gray-900 sm:col-span-6">
+              Service Details
+            </h3>
+            <div className="sm:col-span-3">
+              <h5 className="mt-2">Areas Covered</h5>
+              <div className="mt-2">
+                <input
+                  type="text"
+                  name="first-name"
+                  id="first-name"
+                  autoComplete="given-name"
+                  placeholder="Areas covered"
+                  className="block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                />
+              </div>
             </div>
-          </div>
+            <div className="sm:col-span-3">
+              <h5 className="mt-2">Fee Structure</h5>
+              <div className="mt-2">
+                <input
+                  type="text"
+                  name="first-name"
+                  id="first-name"
+                  autoComplete="given-name"
+                  placeholder="Fee structure"
+                  className="block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                />
+              </div>
+            </div>
+            <div className="sm:col-span-3">
+              <h5 className="mt-2">Types of bonds served</h5>
+              <div className="mt-2">
+                <input
+                  type="text"
+                  name="first-name"
+                  id="first-name"
+                  autoComplete="given-name"
+                  placeholder="Types of bonds served"
+                  className="block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                />
+              </div>
+            </div>
 
-          <div>
-            <h5 className="mt-2">Date of Licensing</h5>
-            <div className="mt-2">
-              <input
-                className="block w-[580px]  p-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                placeholder="Date of Licensing"
-              />
-            </div>
-          </div>
-        </div>
-        <div className="flex justify-between flex-wrap mt-2">
-          <div>
-            <h5 className="mt-2">Licensing Authority</h5>
-            <div className="mt-2">
-              <BusinessDrop />
-            </div>
-          </div>
-
-          <div>
-            <h5 className="mt-2">Bonding Capacity</h5>
-            <div className="mt-2">
-              <input
-                className="block w-[580px]  p-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                placeholder="Bonding Capacity"
-              />
-            </div>
-          </div>
-        </div>
-        <div>
-          <h3 className=" font-semibold leading-6 text-2xl mt-12 text-gray-900">
-            Insurance Information
-          </h3>
-        </div>
-        <div className="flex justify-between flex-wrap mt-2">
-          <div>
-            <h5 className="mt-2">Insurance Policy Number</h5>
-            <div className="mt-2">
-              <input
-                className="block w-[580px]  p-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                placeholder="Enter the number"
-              />
-            </div>
-          </div>
-
-          <div>
-            <h5 className="mt-2">Insurance Provider</h5>
-            <div className="mt-2">
-              <input
-                className="block w-[580px]  p-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                placeholder="Insurance Provider"
-              />
-            </div>
-          </div>
-        </div>
-        <div className="flex justify-between flex-wrap mt-2">
-          <div>
-            <h5 className="mt-1">Coverage Amount</h5>
-            <div className="mt-1">
-              <BusinessAmount />
-            </div>
-          </div>
-
-          <div>
-            <h5 className="mt-2">Experience Date of Insurance</h5>
-            <div className="mt-2">
-              <input
-                className="block w-[580px]  p-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                placeholder="Experience Date"
-              />
-            </div>
-          </div>
-        </div>
-        <div>
-          <h3 className=" font-semibold leading-6 text-2xl mt-12 text-gray-900">
-            Service Details
-          </h3>
-        </div>
-        <div className="flex justify-between  flex-wrap mt-2">
-          <div>
-            <h5 className="mt-2">Areas Covered</h5>
-            <div className="mt-2">
-              <input
-                className="block w-[580px]  p-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                placeholder="Areas Covered"
-              />
-            </div>
-          </div>
-
-          <div>
-            <h5 className="mt-2">Fee Structure</h5>
-            <div className="mt-2">
-              <input
-                className="block w-[580px]  p-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                placeholder="Fee Structure"
-              />
-            </div>
-          </div>
-        </div>
-        <div className="flex justify-between flex-wrap mt-2">
-          <div>
-            <h5 className="mt-2">Types of bonds served</h5>
-            <div className="mt-2">
-              <input
-                className="block w-[580px]  p-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                placeholder="Types of bonds served"
-              />
-            </div>
-          </div>
-
-          <div>
-            <h5 className="mt-2">Years of Experience as a Bail Bondsman</h5>
-            <div className="mt-2">
-              <input
-                className="block w-[580px]  p-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                placeholder="Years of Experience"
-              />
+            <div className="sm:col-span-3">
+              <h5 className="mt-2">Years of Experience as a Bail Bondsman</h5>
+              <div className="mt-2">
+                <input
+                  type="text"
+                  name="first-name"
+                  id="first-name"
+                  autoComplete="given-name"
+                  placeholder="year of experience"
+                  className="block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -259,23 +190,31 @@ function BusinessInformation() {
           </div>
         </div>
         <div className="flex-1 border-t border-gray-300 mt-3"></div>
-        <div className="flex justify-between flex-wrap mt-3">
-          <div>
+        <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+          <div className="sm:col-span-3">
             <h5 className="mt-2">Linkedin profile</h5>
             <div className="mt-2">
               <input
-                className="block w-[580px]  p-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                type="text"
+                name="first-name"
+                id="first-name"
                 placeholder="Linkedin profile"
+                autoComplete="given-name"
+                className="block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
             </div>
           </div>
 
-          <div>
+          <div className="sm:col-span-3">
             <h5 className="mt-2">Twitter Profile</h5>
             <div className="mt-2">
               <input
-                className="block w-[580px]  p-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                type="text"
+                name="last-name"
+                id="last-name"
+                autoComplete="family-name"
                 placeholder="Twitter Profile"
+                className="block w-full  px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
             </div>
           </div>
@@ -296,28 +235,33 @@ function BusinessInformation() {
             understanding of the guidelines governing your use of Global Legals
           </label>
         </div>
-        <div>
-          <h3 className=" font-semibold leading-6 text-2xl mt-12 text-gray-900">
+        <div className="mt-10 grid grid-cols-1 gap-x-6  sm:grid-cols-6">
+          <h3 className=" font-semibold leading-6 text-2xl mt-12 text-gray-900 sm:col-span-6">
             References and Permissions
           </h3>
-        </div>
-        <div className="flex justify-between flex-wrap mt-2">
-          <div>
+          <div className="sm:col-span-3">
             <h5 className="mt-2">Cleint References</h5>
             <div className="mt-2">
               <input
-                className="block w-[580px]  p-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                placeholder="Cleint References"
+                type="text"
+                name="first-name"
+                id="first-name"
+                autoComplete="given-name"
+                placeholder="Client reference"
+                className="block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
             </div>
           </div>
-
-          <div>
+          <div className="sm:col-span-3">
             <h5 className="mt-2">Contact number</h5>
             <div className="mt-2">
               <input
-                className="block w-[580px]  p-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                placeholder="Contact number"
+                type="text"
+                name="first-name"
+                id="first-name"
+                autoComplete="given-name"
+                placeholder="Enter number"
+                className="block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
             </div>
           </div>

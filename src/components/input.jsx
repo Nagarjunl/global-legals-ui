@@ -1,9 +1,16 @@
 function input() {
   return (
     <>
-      <div className=" grid  grid-cols-3 gap-16">
+      <div className=" grid  grid-cols-3 gap-4">
+        <h3
+          className="col-span-3
+        	 font-semibold w-full h   leading-6 text-2xl  text-gray-900"
+        >
+          Personal Information
+        </h3>
+
         <div>
-          <div className="mt-2">
+          <div className="mt-2 ">
             <h5>Enter your full name</h5>
             <div className="mt-2">
               <input
@@ -43,8 +50,8 @@ function input() {
           </div>
         </div>
         <div>
-          <div className="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
-            <div className="text-center">
+          <div className="mt-7 flex justify-center rounded-lg border border-dashed border-gray-900/25  ">
+            <div className="text-center mb-2 ">
               <div className="mt-4 flex text-sm leading-6 text-gray-900 ">
                 <span className="ml-6 mb-2">
                   Upload your
@@ -53,7 +60,7 @@ function input() {
               </div>
               <button
                 type="button"
-                className="rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-indigo-700 shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 border border-solid border-blue-500"
+                className="rounded-md bg-white px-3.5  py-2.5 text-sm font-semibold text-indigo-700 shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 border border-solid border-blue-500"
               >
                 Browse & upload
               </button>

@@ -3,13 +3,14 @@ import profile from "../assets/Rectangle 2.png";
 import Dropdown from "../components/dropdown";
 import Input from "../components/input";
 import Dropdown2 from "../components/dropdown2";
-import Experence from "../components/Experence";
-import Areasservices from "../components/Areas services";
-import LawField from "../components/lawField";
-import Languagespoken from "../components/Languagespoken";
-import GoogleImage from "../assets/Google image.png";
+
+import GoogleImage from "../assets/Google-image.png";
 import Stepper from "../components/stepper";
+import ReCAPTCHA from "react-google-recaptcha";
 function PersonalInformation() {
+  const handleChange = () => {
+    console.log("ReCaptcha");
+  };
   return (
     <>
       <div className="flex justify-between flex-row .w-full mt-3 px-10">
@@ -17,12 +18,12 @@ function PersonalInformation() {
         <img src={profile} alt="Not found" />
       </div>
       <div className="flex-1 border-t border-gray-300 mt-3"></div>
-
-      <div className="mx-auto max-w-7xl sm:px-6 lg:px-12">
-        <div className="  mt-11   bg-blue-50 rounded-md flex flex-wrap justify-center flex-row ">
+      <div className="mx-auto max-w-7xl sm:px-6 lg:px-12 flex justify-center mt-11">
+        <div className="  w-auto bg-blue-50 rounded-3xl">
           <Stepper />
         </div>
-
+      </div>
+      <div className="mx-auto max-w-7xl sm:px-6 lg:px-12">
         {/*  */}
         <div>
           <h3 className=" font-semibold leading-6 text-2xl mt-11 text-gray-900">
@@ -38,60 +39,11 @@ function PersonalInformation() {
             <Dropdown />
           </div>
         </div>
-        <div>
-          <h3 className=" font-semibold leading-6 text-2xl mt-11 text-gray-900">
-            Personal Information
-          </h3>
+        <div className="mt-11">
           <Input />
         </div>
         <div>
-          <h3 className=" font-semibold leading-6 text-2xl mt-11 text-gray-900">
-            Professional details
-          </h3>
-        </div>
-        <div className="flex justify-between flex-wrap">
-          <div>
-            <h5 className="mt-4">Name of practicing law firm</h5>
-            <div className="mt-2">
-              <input
-                className="block w-[580px]  p-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                placeholder="Name of practicing law firm"
-              />
-            </div>
-          </div>
-          <div>
-            <h5 className="mt-4">Legal Specialization</h5>
-            <Dropdown2 />
-          </div>
-        </div>
-        <div className="flex justify-between flex-wrap">
-          <div>
-            <h5 className="mt-2">years of Experience</h5>
-            <Experence />
-          </div>
-          <div>
-            <h5 className="mt-2">Bar Association License Number</h5>
-            <div className="mt-2">
-              <input
-                className="block w-[580px]  p-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                placeholder="Enter the number"
-              />
-            </div>
-          </div>
-        </div>
-        <div className=" flex justify-between flex-wrap">
-          <div>
-            <h5 className="mt-2">Areas Served till now</h5>
-            <Areasservices />
-          </div>
-          <div>
-            <h5 className="mt-2">Law Field Specialized in</h5>
-            <LawField />
-          </div>
-        </div>
-        <div>
-          <h5 className="mt-2">Languages Spoken</h5>
-          <Languagespoken />
+          <Dropdown2 />
         </div>
         <div>
           <h3 className=" font-semibold leading-6 text-2xl mt-11 text-gray-900">
@@ -116,27 +68,36 @@ function PersonalInformation() {
           </div>
         </div>
         <div className="flex-1 border-t border-gray-300 mt-3"></div>
-        <div className="flex flex-wrap justify-between mt-3">
-          <div>
+        <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+          <div className="sm:col-span-3">
             <h5 className="mt-2">Linkedin profile</h5>
             <div className="mt-2">
               <input
-                className="block w-[580px]  p-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                placeholder="Linkedin profile "
+                type="text"
+                name="first-name"
+                id="first-name"
+                placeholder="Linkedin profile"
+                autoComplete="given-name"
+                className="block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
             </div>
           </div>
 
-          <div>
+          <div className="sm:col-span-3">
             <h5 className="mt-2">Twitter Profile</h5>
             <div className="mt-2">
               <input
-                className="block w-[580px]  p-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                type="text"
+                name="last-name"
+                id="last-name"
+                autoComplete="family-name"
                 placeholder="Twitter Profile"
+                className="block w-full  px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
             </div>
           </div>
         </div>
+
         <div className="flex items-center">
           <input
             type="checkbox"
@@ -156,9 +117,10 @@ function PersonalInformation() {
         <div className="flex-1 border-t border-gray-300 mt-7"></div>
         <div className="flex justify-between mt-3">
           <div>
-            <button className="rounded-md text-white bg-blue-800 border-blue-800 px-20 py-2 text-sm font-semibol shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 border border-solid">
+            {/* <button className="rounded-md text-white bg-blue-800 border-blue-800 px-20 py-2 text-sm font-semibol shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 border border-solid">
               iam not a robot
-            </button>
+            </button> */}
+            <ReCAPTCHA sitekey="Your client site key" onChange={handleChange} />
           </div>
           <div>
             <button className="rounded-md text-white bg-blue-800 border-blue-800 px-20 py-2 text-sm font-semibol shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 border border-solid ">
