@@ -14,7 +14,7 @@ import CardOne from "../assets/New folder/image 6.png";
 import CardTwo from "../assets/New folder/image 7.png";
 import CardThree from "../assets/New folder/image 8.png";
 import CardFour from "../assets/New folder/image 9.png";
-// import containerThree from "../assets/container_3_image.png";
+import containerThree from "../assets/New folder/usercomputer.svg";
 // import { FaYoutube } from "react-icons/fa";
 // import { FaInstagram } from "react-icons/fa";
 // import { FaFacebook } from "react-icons/fa";
@@ -23,6 +23,8 @@ import CardFour from "../assets/New folder/image 9.png";
 // import { FaLinkedinIn } from "react-icons/fa6";
 import Globe from "../assets/image131.png";
 import ServiceCard from "../components/ServiceCard";
+import BlockText from "../components/BlockText";
+import usersmile from "../assets/New folder/usersmile.svg";
 
 const LandingPageNew = () => {
   return (
@@ -150,38 +152,100 @@ const LandingPageNew = () => {
       </div>
 
       <div className="mx-auto py-5 sm:py-32  max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div class="container my-12 mx-auto px-4 md:px-12">
+        <div class="container my-12  mx-auto px-4 md:px-12">
           <h1 className="text-black  font-circular-std md:text-4xl lg:text-4xl max-lg:text-4xl">
             Services we Offer
           </h1>
-          <div class="flex flex-wrap -mx-1 lg:-mx-4">
-            <div class="grid place-items-center overflow-x-scroll rounded-lg p-6 lg:overflow-visible md:w-1/2 lg:my-4 lg:px-4 lg:w-1/4">
+          <div class="flex flex-wrap -mx-1 lg:-mx-4 justify-center md:justify-center lg:justify-center">
+            <div class="grid place-items-center rounded-lg p-6 lg:overflow-visible md:w-1/2 lg:my-4 lg:px-4 lg:w-1/4">
               <ServiceCard
                 image={CardOne}
                 content={"Your Advocate Professionals"}
                 contentBold={"Legal Excellence"}
               />
             </div>
-            <div class="grid place-items-center overflow-x-scroll rounded-lg p-6 lg:overflow-visible md:w-1/2 lg:my-4 lg:px-4 lg:w-1/4">
+            <div class="grid place-items-center rounded-lg p-6 lg:overflow-visible md:w-1/2 lg:my-4 lg:px-4 lg:w-1/4">
               <ServiceCard
                 image={CardTwo}
                 content={"Your Advocate Professionals"}
                 contentBold={"Legal Excellence"}
               />
             </div>
-            <div class="grid place-items-center overflow-x-scroll rounded-lg p-6 lg:overflow-visible md:w-1/2 lg:my-4 lg:px-4 lg:w-1/4">
+            <div class="grid place-items-center rounded-lg p-6 lg:overflow-visible md:w-1/2 lg:my-4 lg:px-4 lg:w-1/4">
               <ServiceCard
                 image={CardThree}
                 content={"Your Advocate Professionals"}
                 contentBold={"Legal Excellence"}
               />
             </div>
-            <div class="grid place-items-center overflow-x-scroll rounded-lg p-6 lg:overflow-visible md:w-1/2 lg:my-4 lg:px-4 lg:w-1/4">
+            <div class="grid place-items-center rounded-lg p-6 lg:overflow-visible md:w-1/2 lg:my-4 lg:px-4 lg:w-1/4">
               <ServiceCard
                 image={CardFour}
                 content={"Your Advocate Professionals"}
                 contentBold={"Legal Excellence"}
               />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/*  */}
+      <div className="bg-[#FBFFE4]">
+        <div className="mx-auto py-5 sm:py-32  max-w-6xl px-4 sm:px-6 lg:px-8 bg-[#FBFFE4]">
+          <div class="grid grid-cols-1 gap-4 text-center sm:text-start lg:text-start sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
+            <div className="bg-500 p-10 ">
+              <p className="self-stretch text-black text-5xl font-bold max-md:max-w-full ">
+                The best part? Everything.
+              </p>
+              <BlockText
+                heading={"Connect with Skilled Professionals"}
+                content={
+                  "Discover an array of professional services at your fingertips."
+                }
+              />
+              <BlockText
+                heading={"You Trusted Resource"}
+                content={
+                  "Whether you need legal advice, investigative services, bail bonds assistance, or security solutions, we've got you covered"
+                }
+              />
+              <BlockText
+                heading={"Tailored Expertise"}
+                content={
+                  "Find professionals with the specific talents and skills to address your unique needs."
+                }
+              />
+              <BlockText
+                heading={"Swift and Secure Assistance"}
+                content={
+                  "Get prompt and reliable assistance from experienced experts in their respective fields."
+                }
+              />
+            </div>
+
+            <div className="hidden bg-500 md:grid lg:grid justify-center">
+              <img src={containerThree} alt="" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div className="mx-auto py-5 sm:py-32 md:p-32  max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class=" grid  grid-cols-1 gap-4   p-5 sm:p-10 md:p-24 text-center sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
+            <div className="hidden sm:grid">
+              <img src={usersmile} alt="" />
+            </div>
+
+            <div class="  text-start md:text-start lg:text-start  justify-center p-5 pt-2 sm:pt-28 md:p-16 pl-20 md:pl-10">
+              <blockquote class="sm:p-0 text-4xl font-serif italic">
+                “When you want to create a business bigger than yourself, you
+                need a lot of help. thats what Global legals does”
+              </blockquote>
+              <figure class="flex items-start mt-6 space-x-3 rtl:space-x-reverse">
+                <cite class=" text-lg text-gray-500 dark:text-gray-400 font-mono">
+                  Terry John Paul, Founder{" "}
+                </cite>
+              </figure>
             </div>
           </div>
         </div>
