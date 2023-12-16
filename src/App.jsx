@@ -4,6 +4,8 @@ import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Forgetpassword from "./pages/forgetpassword";
 import Newpassword from "./pages/Newpassword";
+import PayPremium from "./pages/PayPremium";
+import Verification from "./pages/Verification";
 function App() {
   return (
     <>
@@ -14,6 +16,8 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/forget" element={<Forgetpassword />} />
           <Route path="/newpass" element={<Newpassword />} />
+          <Route path="/payPremium" element={<PayPremium />} />
+          <Route path="/verification" element={<Verification />} />
         </Routes>
       </BrowserRouter>
     </>
