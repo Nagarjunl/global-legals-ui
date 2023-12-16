@@ -34,7 +34,7 @@ const PayPremium = () => {
       </div>
       <div className="text-center pt-3 text-sm">
         Thank you for choosing Globallegals to enhance your professional
-        presence. <br /> We're excited to offer you an exclusive premium
+        presence. <br /> We`&apos;`re excited to offer you an exclusive premium
         membership that comes <br /> with unparalleled benefits tailored to
         boost your legal practice.
       </div>
