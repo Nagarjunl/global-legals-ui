@@ -34,12 +34,12 @@ const PayPremium = () => {
       </div>
       <div className="text-center pt-3 text-sm">
         Thank you for choosing Globallegals to enhance your professional
-        presence. <br /> We`&apos;`re excited to offer you an exclusive premium
+        presence. <br /> We&lsquo;re excited to offer you an exclusive premium
         membership that comes <br /> with unparalleled benefits tailored to
         boost your legal practice.
       </div>
       <div className="text-center pt-16 text-2xl">Why Go Premium?</div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 pt-3">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-4 pt-3 max-w-screen-lg mx-auto">
         {people.map((person, index) => (
           <div
             className="bg-white p-4 rounded-md border border-solid border-white-200"
