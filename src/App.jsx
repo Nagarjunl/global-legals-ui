@@ -7,6 +7,9 @@ import Newpassword from "./pages/Newpassword";
 import Appointments from "./pages/Appointments";
 import SearchProfile from "./pages/SearchProfile";
 import ClientImage from "./pages/ClientImage";
+import ErrorPage from "./pages/ErrorPage";
+import ServerImage from "./pages/ServerImage";
+import Image404 from "./pages/Image404";
 function App() {
   return (
     <>
@@ -18,8 +21,12 @@ function App() {
           <Route path="/forget" element={<Forgetpassword />} />
           <Route path="/newpass" element={<Newpassword />} />
           <Route path="/appointments" element={<Appointments />} />
-          <Route path="/profile" element={<SearchProfile/>} />
-          <Route path="/client" element={<ClientImage/>} />
+          <Route path="/profile" element={<SearchProfile />} />
+          <Route path="/client" element={<ClientImage />} />
+          <Route path="/error" element={<ErrorPage />} />
+          <Route path="/server" element={<ServerImage/>} />
+          <Route path="/404" element={<Image404/>} />
+
 
 
 
