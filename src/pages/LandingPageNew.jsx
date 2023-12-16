@@ -1,14 +1,13 @@
 import * as React from "react";
-// import "../App.css";
+
 import RemovalImg from "../assets/New_folder/removal.svg";
 // import { FaRegCheckCircle } from "react-icons/fa";
 import { IoSearchOutline } from "react-icons/io5";
 // import image1 from "../assets/image 14.png";
 // import image2 from "../assets/image 12.png";
-// import Captacha from "../assets/image 34.png";
 
-// import TextArea from "../components/textArea";
-// import Dropdown from "../components/dropDown";
+import TextArea from "../components/textArea";
+
 import BanerPerson from "../assets/New_folder/banner_person_img.svg";
 import CardOne from "../assets/New_folder/image 6.png";
 import CardTwo from "../assets/New_folder/image 7.png";
@@ -27,8 +26,8 @@ import BlockText from "../components/BlockText";
 import usersmile from "../assets/New_folder/usersmile.svg";
 import RoadMapImg1 from "../assets/New_folder/image13.svg";
 import RoadMapImg2 from "../assets/New_folder/image14.svg";
-import BadgeButton from "../components/badgeButton";
-import Banner from "../components/Banner";
+import ContactForm from "../components/ContactForm";
+
 const LandingPageNew = () => {
   return (
     <>
@@ -154,7 +153,7 @@ const LandingPageNew = () => {
         </div>
       </div>
 
-      <div className="mx-auto py-5 sm:py-32  max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto py-1 sm:py-12  max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="container my-12  mx-auto px-4 md:px-12">
           <h1 className="text-black  font-circular-std md:text-4xl lg:text-4xl max-lg:text-4xl">
             Services we Offer
@@ -194,9 +193,9 @@ const LandingPageNew = () => {
 
       {/*  */}
       <div className="bg-[#FBFFE4]">
-        <div className="mx-auto py-5 sm:py-12  max-w-6xl px-4 sm:px-6 lg:px-8 bg-[#FBFFE4]">
+        <div className="mx-auto py-1 sm:py-12  max-w-6xl px-4 sm:px-6 lg:px-8 bg-[#FBFFE4]">
           <div class="grid grid-cols-1 gap-4 text-center sm:text-start lg:text-start sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
-            <div className="bg-500 p-10 ">
+            <div className="bg-500  ">
               <p className="self-stretch text-black text-5xl font-bold max-md:max-w-full ">
                 The best part? Everything.
               </p>
@@ -226,20 +225,31 @@ const LandingPageNew = () => {
               />
             </div>
 
-            <div className="hidden bg-500 md:grid lg:grid justify-center">
+            <div className="hidden bg-500 md:grid lg:grid justify-center items-end">
               <img src={containerThree} alt="" />
             </div>
           </div>
         </div>
       </div>
       <div>
-        <div className="mx-auto py-5 sm:py-12 md:p-32  max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div class=" grid  grid-cols-1 gap-4   p-5 sm:p-10 md:p-24 text-center sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
-            <div className="hidden sm:grid">
+        <div className="mx-auto py-5 sm:py-12 md:p-22  max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class=" grid  grid-cols-1 gap-4   p-5 sm:p-10 md:p-14 text-center sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
+            <div className="relative hidden sm:grid">
               <img src={usersmile} alt="" />
+              {/*  */}
+              <div class="absolute m-5 px-10 right-10 bottom-0 rounded-full bg-white bg-opacity-20 p-1  backdrop-blur-md backdrop-filter text-center">
+                <span class="p-1 text-lg font-normal text-white">
+                  Global Legals <br />
+                </span>
+                <span class="p-1 text-sm font-normal text-center text-white">
+                  Founder, CTO
+                </span>
+              </div>
+
+              {/*  */}
             </div>
 
-            <div class="  text-start md:text-start lg:text-start  justify-center p-5 pt-2 sm:pt-28 md:p-16 pl-20 md:pl-10">
+            <div class="  text-start md:text-start lg:text-start  justify-center p-5 pt-2 sm:pt-12 md:p-16 pl-20 md:pl-10">
               <blockquote class="sm:p-0 text-4xl font-serif italic">
                 “When you want to create a business bigger than yourself, you
                 need a lot of help. thats what Global legals does”
@@ -275,165 +285,149 @@ const LandingPageNew = () => {
         </div>
         {/*  */}
       </div>
-      {/* <div className="relative pb-auto w-auto bg-cover gap-5 h-auto py-28 px-20">
-        <div className=" p-10 flex flex-col items-start gap-5 justify-end self-stretch  bg-[#FF9C70] ">
-          <p className="text-black font-CircularStd text-5 italic font-bold leading-normal">
-            Global Legals
-          </p>
-          <div>
-            <p className="text-white font-CircularStd text-5xl font-normal font-bold leading-normal">
-              Discover the Perfect Professionals
+      {/*  */}
+      <div className="mx-auto py-5 sm:py-6 md:p-6  max-w-7xl px-4 sm:px-6 lg:px-0">
+        {" "}
+        <ContactForm />
+      </div>
+
+      {/*  */}
+      <div className="mx-auto py-5 sm:py-5 md:p-0  max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="relative pb-6 md:pb-6 w-full md:w-auto bg-cover gap-5 h-auto px-5 md:px-20 lg:px-32 py-6 md:py-28">
+          <div className="p-5 md:p-10 grid grid-col-2 items-center md:items-start gap-5  self-stretch bg-gradient-to-r from-[#d38b5d] to-[#fea66d]">
+            <p className="text-black font-CircularStd text-3 md:text-5 italic font-bold leading-normal">
+              Global Legals
             </p>
-            <p className="text-white font-CircularStd text-4 font-normal font-medium leading-normal">
-              Your Expertise, Our Network, Perfect Match
-            </p>
+            <div>
+              <p className="text-white font-CircularStd text-4 md:text-5xl font-bold leading-normal">
+                Discover the Perfect Professionals
+              </p>
+              <p className="text-white font-CircularStd text-3 md:text-4 font-medium leading-normal">
+                Your Expertise, Our Network, Perfect Match
+              </p>
+            </div>
+            <button className="p-5 h-[60px] w-[159px] bg-black text-white relative">
+              Explore Services
+            </button>
           </div>
 
-          <button className="p-5 bg-black text-white relative">
-            Explore Services
-          </button>
-        </div>
-        <div className="absolute right-[100px] top-[101px] hidden md:block ">
-          <img
-            src={BanerPerson}
-            alt="image"
-            className="  sm:w-60 md:w-60 lg:w-64 z-10"
-          />
-        </div>
-      </div> */}
-
-      <div className="relative pb-10 md:pb-auto w-full md:w-auto bg-cover gap-5 h-auto px-5 md:px-20 lg:px-32 py-14 md:py-28">
-        <div className="p-5 md:p-10 flex flex-col items-center md:items-start gap-5 justify-end self-stretch bg-[#FF9C70]">
-          <p className="text-black font-CircularStd text-3 md:text-5 italic font-bold leading-normal">
-            Global Legals
-          </p>
-          <div>
-            <p className="text-white font-CircularStd text-4 md:text-5xl font-normal font-bold leading-normal">
-              Discover the Perfect Professionals
-            </p>
-            <p className="text-white font-CircularStd text-3 md:text-4 font-normal font-medium leading-normal">
-              Your Expertise, Our Network, Perfect Match
-            </p>
+          <div className="absolute right-0 md:right-[160px] top-0 md:top-[77px] hidden md:block xl:block">
+            <img
+              src={BanerPerson}
+              alt="image"
+              className="w-40 md:w-60 lg:w-64 z-10"
+            />
           </div>
-          <button className="p-3 md:p-5 bg-black text-white relative">
-            Explore Services
-          </button>
-        </div>
-
-        <div className="absolute right-0 md:right-[160px] top-0 md:top-[77px] hidden md:block">
-          <img
-            src={BanerPerson}
-            alt="image"
-            className="w-40 md:w-60 lg:w-64 z-10"
-          />
         </div>
       </div>
-      <div className="items-stretch bg-white flex flex-col pt-12 pb-6">
-        <div className="justify-center items-center border-b-[color:var(--Border,#D5E3EF)] flex w-full flex-col mt-8 px-16 py-6 border-b border-solid max-md:max-w-full max-md:px-5">
-          <div className="w-full max-w-[1200px] max-md:max-w-full">
-            <div className="gap-5 flex max-md:flex-col max-md:items-stretch max-md:gap-0">
-              <div className="flex flex-col items-stretch w-[38%] max-md:w-full max-md:ml-0">
-                <div className=" gap-2 justify-end items-stretch flex flex-col max-md:mt-10">
-                  <p className="text-slate-600 text-lg font-bold leading-7">
-                    Exclusive Offers For You
-                  </p>
-                  <p className="text-slate-600 text-xs leading-5 whitespace-nowrap mt-2">
-                    Get the latest updates & offers in your inbox
-                  </p>
+      <div className="mx-auto py-5 sm:py-5 md:p-0  max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="items-stretch bg-white flex flex-col pt-12 pb-6">
+          <div className="justify-center items-center border-b-[color:var(--Border,#D5E3EF)] flex w-full flex-col mt-8 px-16 py-6 border-b border-solid max-md:max-w-full max-md:px-5">
+            <div className="w-full max-w-[1200px] max-md:max-w-full">
+              <div className="gap-5 flex max-md:flex-col max-md:items-stretch max-md:gap-0">
+                <div className="flex flex-col items-stretch w-[38%] max-md:w-full max-md:ml-0">
+                  <div className=" gap-2 justify-end items-stretch flex flex-col max-md:mt-10">
+                    <p className="text-slate-600 text-lg font-bold leading-7">
+                      Exclusive Offers For You
+                    </p>
+                    <p className="text-slate-600 text-xs leading-5 whitespace-nowrap mt-2">
+                      Get the latest updates & offers in your inbox
+                    </p>
 
-                  <form>
-                    <div>
-                      <div class="relative">
-                        <input
-                          type="search"
-                          id="search"
-                          class="block w-full rounded-full p-4 ps-10 text-sm text-gray-900 border border-gray-300  bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                          placeholder="Enter Your Email Address"
-                          required
-                        />
-                        <button
-                          type="submit"
-                          class="offers_btn text-white absolute  end-2.5 bottom-2.5 bg-gray-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm px-6 h-9 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                        >
-                          send
-                        </button>
+                    <form>
+                      <div>
+                        <div class="relative">
+                          <input
+                            type="search"
+                            id="search"
+                            class="block w-full rounded-full p-4 ps-10 text-sm text-gray-900 border border-gray-300  bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            placeholder="Enter Your Email Address"
+                            required
+                          />
+                          <button
+                            type="submit"
+                            class="offers_btn text-white absolute  end-2.5 bottom-2.5 bg-gray-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm px-6 h-9 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                          >
+                            send
+                          </button>
+                        </div>
                       </div>
-                    </div>
-                  </form>
+                    </form>
+                  </div>
                 </div>
-              </div>
-              <div className="flex flex-col items-stretch w-[21%] ml-5 max-md:w-full max-md:ml-0">
-                <div className="items-stretch flex flex-col max-md:mt-10">
-                  <p className="text-black text-lg font-bold">Community</p>
-                  <p className="text-zinc-600 text-sm font-[450] whitespace-nowrap mt-2">
-                    Customer Success Stories
-                  </p>
-                  <p className="text-zinc-600 text-sm font-[450] whitespace-nowrap mt-2">
-                    Community Hub
-                  </p>
-                  <p className="text-zinc-600 text-sm font-[450] whitespace-nowrap mt-2">
-                    Forum
-                  </p>
-                  <p className="text-zinc-600 text-sm font-[450] whitespace-nowrap mt-2">
-                    Events
-                  </p>
+                <div className="flex flex-col items-stretch w-[21%] ml-5 max-md:w-full max-md:ml-0">
+                  <div className="items-stretch flex flex-col max-md:mt-10">
+                    <p className="text-black text-lg font-bold">Community</p>
+                    <p className="text-zinc-600 text-sm font-[450] whitespace-nowrap mt-2">
+                      Customer Success Stories
+                    </p>
+                    <p className="text-zinc-600 text-sm font-[450] whitespace-nowrap mt-2">
+                      Community Hub
+                    </p>
+                    <p className="text-zinc-600 text-sm font-[450] whitespace-nowrap mt-2">
+                      Forum
+                    </p>
+                    <p className="text-zinc-600 text-sm font-[450] whitespace-nowrap mt-2">
+                      Events
+                    </p>
+                  </div>
                 </div>
-              </div>
-              <div className="flex flex-col items-stretch w-[21%] ml-5 max-md:w-full max-md:ml-0">
-                <div className="items-stretch flex flex-col max-md:mt-10">
-                  <p className="text-black text-lg font-bold whitespace-nowrap">
-                    Business
-                  </p>
-                  <p className="text-zinc-600 text-sm font-[450] whitespace-nowrap mt-2">
-                    About us
-                  </p>
-                  <p className="text-zinc-600 text-sm font-[450] whitespace-nowrap mt-2">
-                    Global Certified
-                  </p>
-                  <p className="text-zinc-600 text-sm font-[450] whitespace-nowrap mt-2">
-                    Global Enterprises
-                  </p>
-                  <p className="text-zinc-600 text-sm font-[450] whitespace-nowrap mt-2">
-                    Contact Sales
-                  </p>
+                <div className="flex flex-col items-stretch w-[21%] ml-5 max-md:w-full max-md:ml-0">
+                  <div className="items-stretch flex flex-col max-md:mt-10">
+                    <p className="text-black text-lg font-bold whitespace-nowrap">
+                      Business
+                    </p>
+                    <p className="text-zinc-600 text-sm font-[450] whitespace-nowrap mt-2">
+                      About us
+                    </p>
+                    <p className="text-zinc-600 text-sm font-[450] whitespace-nowrap mt-2">
+                      Global Certified
+                    </p>
+                    <p className="text-zinc-600 text-sm font-[450] whitespace-nowrap mt-2">
+                      Global Enterprises
+                    </p>
+                    <p className="text-zinc-600 text-sm font-[450] whitespace-nowrap mt-2">
+                      Contact Sales
+                    </p>
+                  </div>
                 </div>
-              </div>
-              <div className="flex flex-col items-stretch w-[21%] ml-5 max-md:w-full max-md:ml-0">
-                <div className="items-stretch flex grow flex-col max-md:mt-10">
-                  <p className="text-black text-lg font-bold whitespace-nowrap">
-                    About
-                  </p>
-                  <p className="text-zinc-600 text-sm font-[450] whitespace-nowrap mt-2">
-                    Careers
-                  </p>
-                  <p className="text-zinc-600 text-sm font-[450] whitespace-nowrap mt-2">
-                    Press & News
-                  </p>
-                  <p className="text-zinc-600 text-sm font-[450] whitespace-nowrap mt-2">
-                    Partnership
-                  </p>
-                  <p className="text-zinc-600 text-sm font-[450] whitespace-nowrap mt-2">
-                    Privacy Policy
-                  </p>
-                  <p className="text-zinc-600 text-sm font-[450] whitespace-nowrap mt-2">
-                    Terms of Service
-                  </p>
+                <div className="flex flex-col items-stretch w-[21%] ml-5 max-md:w-full max-md:ml-0">
+                  <div className="items-stretch flex grow flex-col max-md:mt-10">
+                    <p className="text-black text-lg font-bold whitespace-nowrap">
+                      About
+                    </p>
+                    <p className="text-zinc-600 text-sm font-[450] whitespace-nowrap mt-2">
+                      Careers
+                    </p>
+                    <p className="text-zinc-600 text-sm font-[450] whitespace-nowrap mt-2">
+                      Press & News
+                    </p>
+                    <p className="text-zinc-600 text-sm font-[450] whitespace-nowrap mt-2">
+                      Partnership
+                    </p>
+                    <p className="text-zinc-600 text-sm font-[450] whitespace-nowrap mt-2">
+                      Privacy Policy
+                    </p>
+                    <p className="text-zinc-600 text-sm font-[450] whitespace-nowrap mt-2">
+                      Terms of Service
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <div className="items-center  flex justify-between gap-5 mt-6 px-[80px] py-[24px] max-md:max-w-full max-md:flex-wrap">
-          <p className="text-slate-600 text-xs font-bold leading-5 grow whitespace-nowrap my-auto max-md:max-w-full">
-            © 2023 Global Legals
-          </p>
-          <div className="items-stretch self-stretch flex justify-between gap-5 max-md:justify-center">
-            <FaInstagram className="text-zinc-600 aspect-square object-contain object-center w-6 h-6 overflow-hidden shrink-0 max-w-full" />
-            <FaFacebook className="text-zinc-600 aspect-square object-contain object-center w-6 h-6 overflow-hidden shrink-0 max-w-full" />
-            <FaYoutube className="text-zinc-600 aspect-square object-contain object-center w-6 h-6 overflow-hidden shrink-0 max-w-full" />
-            <FaTwitter className="text-zinc-600 aspect-square object-contain object-center w-6 h-6 overflow-hidden shrink-0 max-w-full" />
-            <FaPinterest className="text-zinc-600 aspect-square object-contain object-center w-6 h-6 overflow-hidden shrink-0 max-w-full  " />
-            <FaLinkedinIn className="text-zinc-600 aspect-square object-contain object-center w-6 h-6 overflow-hidden shrink-0 max-w-full" />
+          <div className="items-center  flex justify-between gap-5 mt-6 px-[80px] py-[24px] max-md:max-w-full max-md:flex-wrap">
+            <p className="text-slate-600 text-xs font-bold leading-5 grow whitespace-nowrap my-auto max-md:max-w-full">
+              © 2023 Global Legals
+            </p>
+            <div className="items-stretch self-stretch flex justify-between gap-5 max-md:justify-center">
+              <FaInstagram className="text-zinc-600 aspect-square object-contain object-center w-6 h-6 overflow-hidden shrink-0 max-w-full" />
+              <FaFacebook className="text-zinc-600 aspect-square object-contain object-center w-6 h-6 overflow-hidden shrink-0 max-w-full" />
+              <FaYoutube className="text-zinc-600 aspect-square object-contain object-center w-6 h-6 overflow-hidden shrink-0 max-w-full" />
+              <FaTwitter className="text-zinc-600 aspect-square object-contain object-center w-6 h-6 overflow-hidden shrink-0 max-w-full" />
+              <FaPinterest className="text-zinc-600 aspect-square object-contain object-center w-6 h-6 overflow-hidden shrink-0 max-w-full  " />
+              <FaLinkedinIn className="text-zinc-600 aspect-square object-contain object-center w-6 h-6 overflow-hidden shrink-0 max-w-full" />
+            </div>
           </div>
         </div>
       </div>
