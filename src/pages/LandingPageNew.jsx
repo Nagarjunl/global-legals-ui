@@ -1,13 +1,10 @@
 import * as React from "react";
-
 import RemovalImg from "../assets/New_folder/removal.svg";
-// import { FaRegCheckCircle } from "react-icons/fa";
+import { FaArrowCircleRight } from "react-icons/fa";
 import { IoSearchOutline } from "react-icons/io5";
 // import image1 from "../assets/image 14.png";
 // import image2 from "../assets/image 12.png";
-
 import TextArea from "../components/textArea";
-
 import BanerPerson from "../assets/New_folder/banner_person_img.svg";
 import CardOne from "../assets/New_folder/image 6.png";
 import CardTwo from "../assets/New_folder/image 7.png";
@@ -152,7 +149,6 @@ const LandingPageNew = () => {
           </div>
         </div>
       </div>
-
       <div className="mx-auto py-1 sm:py-12  max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="container my-12  mx-auto px-4 md:px-12">
           <h1 className="text-black  font-circular-std md:text-4xl lg:text-4xl max-lg:text-4xl">
@@ -190,8 +186,6 @@ const LandingPageNew = () => {
           </div>
         </div>
       </div>
-
-      {/*  */}
       <div className="bg-[#FBFFE4]">
         <div className="mx-auto py-1 sm:py-12  max-w-6xl px-4 sm:px-6 lg:px-8 bg-[#FBFFE4]">
           <div class="grid grid-cols-1 gap-4 text-center sm:text-start lg:text-start sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
@@ -263,43 +257,63 @@ const LandingPageNew = () => {
           </div>
         </div>
       </div>
-      {/*  */}
 
-      <h1 className="text-black text-center font-circular-std md:text-4xl lg:text-4xl max-lg:text-4xl">
-        Services we Offer
-      </h1>
-      <div class="flex flex-wrap -mx-1 lg:-mx-4 justify-center md:justify-center lg:justify-center">
-        <div class="grid place-items-center rounded-lg p-6 lg:overflow-visible md:w-1/2 lg:my-4 lg:px-4 lg:w-1/4">
-          <ServiceCard
-            image={RoadMapImg2}
-            content={"Your Advocate Professionals"}
-            contentBold={"Legal Excellence"}
-          />
+      <div className="mx-auto py-5 sm:py-12 md:p-22  max-w-7xl px-4 sm:px-6 lg:px-8">
+        <h1 className="text-black font-bold ml-14 text-start font-circular-std md:text-4xl lg:text-4xl max-lg:text-4xl">
+          Services we Offer
+        </h1>
+        <div class=" grid  grid-cols-1 gap-4 p-5 sm:p-10 md:p-14  sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2">
+          <div className="relative">
+            <img src={usersmile} alt="" />
+            <figcaption class="absolute bottom-4 left-2/4  w-[calc(80%-4rem)] -translate-x-2/4   text-start border border-white bg-white rounded-full py-2  shadow-lg shadow-black/5 saturate-200 ">
+              <div className="flex justify-between items-center px-6  ">
+                <div>
+                  <p class=" font-sans text-xl text-start font-bold  text-black">
+                    {"Explore the legal Labyrinth"}
+                  </p>
+
+                  <h5 class=" font-sans text-normal antialiased font-semibold leading-snug tracking-normal text-gray-900">
+                    {"contentBold"}
+                  </h5>
+                </div>
+                <div>
+                  <FaArrowCircleRight className="w-10 h-10" />
+                </div>
+              </div>
+            </figcaption>
+          </div>
+          <div className="relative">
+            <img src={usersmile} alt="" />
+            <figcaption class="absolute bottom-4 left-2/4  w-[calc(80%-4rem)] -translate-x-2/4   text-start border border-white bg-white rounded-full py-2  shadow-lg shadow-black/5 saturate-200 ">
+              <div className="flex justify-between items-center px-6  ">
+                <div>
+                  <p class=" font-sans text-xl text-start font-bold  text-black">
+                    {"Explore the legal Labyrinth"}
+                  </p>
+
+                  <h5 class=" font-sans text-normal antialiased font-semibold leading-snug tracking-normal text-gray-900">
+                    {"contentBold"}
+                  </h5>
+                </div>
+                <div>
+                  <FaArrowCircleRight className="w-10 h-10" />
+                </div>
+              </div>
+            </figcaption>
+          </div>
         </div>
-        <div class="grid place-items-center rounded-lg p-6 lg:overflow-visible md:w-1/2 lg:my-4 lg:px-4 lg:w-1/4">
-          <ServiceCard
-            image={RoadMapImg1}
-            content={"Your Advocate Professionals"}
-            contentBold={"Legal Excellence"}
-          />
-        </div>
-        {/*  */}
       </div>
-      {/*  */}
       <div className="mx-auto py-5 sm:py-6 md:p-6  max-w-7xl px-4 sm:px-6 lg:px-0">
-        {" "}
         <ContactForm />
       </div>
-
-      {/*  */}
       <div className="mx-auto py-5 sm:py-5 md:p-0  max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="relative pb-6 md:pb-6 w-full md:w-auto bg-cover gap-5 h-auto px-5 md:px-20 lg:px-32 py-6 md:py-28">
+        <div className="relative pb-3 md:pb-2 w-auto md:w-auto bg-cover gap-5 h-auto px-5 md:px-20 lg:px-12 py-6 md:py-20">
           <div className="p-5 md:p-10 grid grid-col-2 items-center md:items-start gap-5  self-stretch bg-gradient-to-r from-[#d38b5d] to-[#fea66d]">
             <p className="text-black font-CircularStd text-3 md:text-5 italic font-bold leading-normal">
               Global Legals
             </p>
             <div>
-              <p className="text-white font-CircularStd text-4 md:text-5xl font-bold leading-normal">
+              <p className="text-white font-CircularStd text-4 md:text-4xl font-bold leading-normal">
                 Discover the Perfect Professionals
               </p>
               <p className="text-white font-CircularStd text-3 md:text-4 font-medium leading-normal">
@@ -310,8 +324,7 @@ const LandingPageNew = () => {
               Explore Services
             </button>
           </div>
-
-          <div className="absolute right-0 md:right-[160px] top-0 md:top-[77px] hidden md:block xl:block">
+          <div className="absolute right-0 md:right-10 top-0 md:top-8 bottom-0 hidden md:block xl:block">
             <img
               src={BanerPerson}
               alt="image"
@@ -333,7 +346,6 @@ const LandingPageNew = () => {
                     <p className="text-slate-600 text-xs leading-5 whitespace-nowrap mt-2">
                       Get the latest updates & offers in your inbox
                     </p>
-
                     <form>
                       <div>
                         <div class="relative">

@@ -3,7 +3,7 @@ import Dropdown from "../components/dropDown";
 const ContactForm = () => {
   return (
     <>
-      <div className="grid grid-cols-1 mt-5 mb-5 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-4 items-center p-20">
+      <div className="grid grid-cols-1 mt-5 mb-5 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-4 items-center p-0 sm:p-16">
         <div className=" p-6  ">
           <div className="text-5xl">
             Get in Touch <br />
