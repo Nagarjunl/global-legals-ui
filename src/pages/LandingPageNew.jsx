@@ -2,9 +2,7 @@ import * as React from "react";
 import RemovalImg from "../assets/New_folder/removal.svg";
 import { FaArrowCircleRight } from "react-icons/fa";
 import { IoSearchOutline } from "react-icons/io5";
-// import image1 from "../assets/image 14.png";
-// import image2 from "../assets/image 12.png";
-import TextArea from "../components/textArea";
+// import TextArea from "../components/textArea";
 import BanerPerson from "../assets/New_folder/banner_person_img.svg";
 import CardOne from "../assets/New_folder/image 6.png";
 import CardTwo from "../assets/New_folder/image 7.png";
@@ -21,8 +19,8 @@ import Globe from "../assets/image131.png";
 import ServiceCard from "../components/ServiceCard";
 import BlockText from "../components/BlockText";
 import usersmile from "../assets/New_folder/usersmile.svg";
-import RoadMapImg1 from "../assets/New_folder/image13.svg";
-import RoadMapImg2 from "../assets/New_folder/image14.svg";
+// import RoadMapImg1 from "../assets/New_folder/image13.svg";
+// import RoadMapImg2 from "../assets/New_folder/image14.svg";
 import ContactForm from "../components/ContactForm";
 
 const LandingPageNew = () => {

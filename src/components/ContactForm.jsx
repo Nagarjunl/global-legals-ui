@@ -1,4 +1,5 @@
 import Dropdown from "../components/dropDown";
+import ReCAPTCHA from "react-google-recaptcha";
 
 const ContactForm = () => {
   return (
@@ -91,9 +92,7 @@ const ContactForm = () => {
             ></textarea>
           </div>
           <div className="flex justify-between mt-4">
-            <button className="bg-blue-500 text-white px-4 py-2 rounded-md">
-              Button 1
-            </button>
+            <ReCAPTCHA sitekey="Your client site key" onChange={""} />
             <button className="bg-green-500 text-white px-4 py-2 rounded-md">
               Button 2
             </button>
