@@ -2,7 +2,7 @@ import profileimg from "../assets/profile.png";
 import trophy from "../assets/tropy.png";
 import telephone from "../assets/telephone.png";
 import circle from "../assets/circle.png";
-import PrimaryButton from "../components/PrimaryButton";
+import PrimaryButton from "./PrimaryButton";
 const ProfileCard = () => {
   return (
     <div>

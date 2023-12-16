@@ -9,7 +9,10 @@ const Navigation = () => {
   return (
     <div>
       <nav className="flex" aria-label="Breadcrumb">
-        <ol role="list" className="flex items-center space-x-4">
+        <ol
+          role="list"
+          className="flex items-center space-x-4 max-md:inline-block  "
+        >
           <li>
             <div>
               <a href="#" className="text-black hover:text-blue-600">
