@@ -48,7 +48,7 @@ const PayPremium = () => {
             <h2 className="font-semibold mb-2 text-base text-center">
               {person.name}
             </h2>
-            <p className="text-gray-600 text-xs">{person.title} </p>
+            <p className="text-gray-600 text-xs text-center">{person.title} </p>
           </div>
         ))}
       </div>
