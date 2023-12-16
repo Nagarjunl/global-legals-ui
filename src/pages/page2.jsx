@@ -317,6 +317,7 @@
               </p>
             </div>
           </div>
+          {/*  */}
           <div className="flex flex-col flex-wrap   items-stretch w-[67%] ml-5 max-md:w-full max-md:ml-0">
             <div className="items-stretch bg-blue-500 bg-opacity-10 flex grow flex-wrap  flex-col w-full px-20 py-12 rounded-3xl max-md:max-w-full max-md:mt-10 max-md:px-5">
               <div className="items-stretch flex-wrap  flex justify-between gap-3 mt-8 max-md:max-w-full max-md:flex-wrap">
@@ -371,6 +372,7 @@
               </div>
             </div>
           </div>
+          {/*  */}
         </div>
       </div>
     </div>
@@ -393,8 +395,12 @@
           </p>
         </button>
       </div>
-      <div className="absolute bottom-0 right-5 hidden sm:block">
-        <img src={BanerPerson} className=" sm:w-60 md:w-60 lg:w-64 z-10" />
+      <div className="absolute right-[59px] top-[-48] hidden sm:block md:block lg:block">
+        <img
+          src={BanerPerson}
+          alt="image"
+          className="  sm:w-60 md:w-60 lg:w-64 z-10"
+        />
       </div>
     </div>
   </div>
@@ -509,4 +515,6 @@
       </div>
     </div>
   </div>
+
+  {/*  */}
 </div>;
