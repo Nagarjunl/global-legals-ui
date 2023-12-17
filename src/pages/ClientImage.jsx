@@ -2,7 +2,7 @@ import image1 from "../assets/image 17.png";
 
 function ClientImage() {
   return (
-    <>
+    <div className="container mx-auto">
       <div className="mx-10 h-screen">
         <div className="flex py-10 flex-row justify-between gap-7">
           <p className="text-black text-2xl font-medium">Appoinments</p>
@@ -27,7 +27,7 @@ function ClientImage() {
           </p>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

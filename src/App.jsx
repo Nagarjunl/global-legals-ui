@@ -24,12 +24,8 @@ function App() {
           <Route path="/profile" element={<SearchProfile />} />
           <Route path="/client" element={<ClientImage />} />
           <Route path="/error" element={<ErrorPage />} />
-          <Route path="/server" element={<ServerImage/>} />
-          <Route path="/404" element={<Image404/>} />
-
-
-
-
+          <Route path="/server" element={<ServerImage />} />
+          <Route path="/404" element={<Image404 />} />
         </Routes>
       </BrowserRouter>
     </>
