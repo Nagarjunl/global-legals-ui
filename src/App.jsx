@@ -6,6 +6,7 @@ import Forgetpassword from "./pages/Forgetpassword";
 import Newpassword from "./pages/Newpassword";
 import PayPremium from "./pages/PayPremium";
 import Verification from "./pages/Verification";
+import ProfessionalDetails from "./pages/ProfessionalDetails";
 function App() {
   return (
     <>
@@ -18,6 +19,10 @@ function App() {
           <Route path="/newpass" element={<Newpassword />} />
           <Route path="/payPremium" element={<PayPremium />} />
           <Route path="/verification" element={<Verification />} />
+          <Route
+            path="/professionalDetails"
+            element={<ProfessionalDetails />}
+          />
         </Routes>
       </BrowserRouter>
     </>
