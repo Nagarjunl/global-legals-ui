@@ -4,6 +4,13 @@ import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Forgetpassword from "./pages/forgetpassword";
 import Newpassword from "./pages/Newpassword";
+import LandingPageNew from "./pages/LandingPageNew";
+
+// import Register from "./pages/Register";
+// import Login from "./pages/Login";
+// import NavBar from "./pages/NavBar";
+// import HeaderComponent from "./components/Header";
+
 function App() {
   return (
     <>
@@ -14,6 +21,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/forget" element={<Forgetpassword />} />
           <Route path="/newpass" element={<Newpassword />} />
+          <Route path="/landing" element={<LandingPageNew />} />
         </Routes>
       </BrowserRouter>
     </>
