@@ -1,21 +1,52 @@
 import logo from "../assets/logo.png";
 import Paperplane from "../assets/paper-plane.png";
+import avatar1 from "../assets/Rectangle3.png";
+import avatar2 from "../assets/Rectangle2.png";
+import avatar3 from "../assets/Rectangle4.png";
+import "../App.css";
+import PrimaryButton from "../components/PrimaryButton";
+import Input from "../components/Input";
 
 const Newpassword = () => {
   return (
-    <div className="flex min-h-full flex-1">
-      <div className="relative hidden w-0 flex-1 lg:block">
-        <img
-          className="absolute inset-0 h-full w-full object-cover"
-          src="https://images.unsplash.com/photo-1496917756835-20cb06e75b4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1908&q=80"
-          alt="image"
-        />
+    <div className="grid grid-cols-1 lg:grid-cols-2 min-h-screen">
+      <div className="hidden lg:block bg-blue-600 py-3 mb-0">
+        <div className="container pl-14 pt-10  ">
+          <div className="mb-10 block ">
+            <h2 className=" text-white pb-2 font-semibold text-3xl">
+              Welcome to Globallegals
+            </h2>
+            <p className=" text-white">
+              Connecting you with the professionals you need, right in
+              <br />
+              <span> your neighborhood!</span>
+            </p>
+          </div>
+
+          <div className="background_image fixed w-[420px] h-[400px]">
+            <img
+              className=" inline-block h-16 w-16 rounded-full absolute right-[50%] top-16 "
+              src={avatar1}
+              alt=""
+            />
+            <img
+              className="inline-block h-12 w-12 rounded-full absolute bottom-[8rem] left-6"
+              src={avatar2}
+              alt=""
+            />
+            <img
+              className="inline-block h-14 w-14 rounded-full absolute bottom-16 right-[10%]"
+              src={avatar3}
+              alt=""
+            />
+          </div>
+        </div>
       </div>
-      <div className="flex flex-1 flex-col justify-center px-4 py-12 gap-10 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
-        <div className=" mx-20  w-full max-w-sm lg:w-96">
-          <div className="flex  items-center">
+      <div className="flex flex-col justify-center px-4 gap-10 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
+        <div className="mx-auto w-full max-w-sm lg:w-96">
+          <div className="flex items-center">
             <img className="h-10 w-auto" src={logo} alt="Your Company" />
-            <h2 className="ml-2 text-2xl font-bold leading-9 tracking-tight text-gray-900">
+            <h2 className="ml-2 text-2xl font-bold leading-9 tracking-tight text-blue-600">
               Global <br />
               Legals
             </h2>
@@ -33,7 +64,7 @@ const Newpassword = () => {
 
           <div className="mt-10">
             <div>
-              <form action="#" method="POST">
+              <form action="#" method="POST" className="grid gap-3">
                 <div>
                   <label
                     htmlFor="new password"
@@ -41,15 +72,13 @@ const Newpassword = () => {
                   >
                     New Password
                   </label>
-                  <div className="mt-2">
-                    <input
+                  <div>
+                    <Input
                       id="password"
                       name="password"
                       type="text"
                       placeholder="Enter new password"
                       autoComplete="password"
-                      required
-                      className="block w-full rounded-md border-0 p-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
                     />
                   </div>
                 </div>
@@ -61,15 +90,13 @@ const Newpassword = () => {
                   >
                     Confirm Password
                   </label>
-                  <div className="mt-2">
-                    <input
+                  <div>
+                    <Input
                       id="password"
                       name="password"
                       type="text"
                       placeholder="Enter new password"
                       autoComplete="password"
-                      required
-                      className="block w-full rounded-md border-0 p-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
                     />
                   </div>
                 </div>
@@ -82,14 +109,7 @@ const Newpassword = () => {
                     number and one special character.
                   </span>
                 </div>
-                <div>
-                  <button
-                    type="submit"
-                    className="flex w-full justify-center mt-3 rounded-md bg-blue-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                  >
-                    Submit
-                  </button>
-                </div>
+                <PrimaryButton type="submit" buttonText="Submit" />
               </form>
             </div>
           </div>
