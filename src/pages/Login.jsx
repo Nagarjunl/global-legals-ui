@@ -7,6 +7,7 @@ import avatar3 from "../assets/Rectangle4.png";
 import "../App.css";
 import Input from "../components/Input";
 import PrimaryButton from "../components/PrimaryButton";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   return (
@@ -64,7 +65,9 @@ const Login = () => {
                 href="#"
                 className="font-semibold text-blue-600 hover:text-blue-500"
               >
+                <Link to="/register">
                 Create an account
+                </Link>
               </a>
             </p>
           </div>
@@ -123,12 +126,17 @@ const Login = () => {
                       href="#"
                       className="font-semibold text-blue-600 hover:text-blue-500"
                     >
+                      <Link to="/forget">
                       Forgot password
+                      </Link>
+                      
                     </a>
                   </div>
                 </div>
-
-                <PrimaryButton type="submit" buttonText="Login" />
+                 <Link to="/appointments">
+                 <PrimaryButton type="submit" buttonText="Login" />
+                 </Link>
+                
               </form>
             </div>
 

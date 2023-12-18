@@ -1,4 +1,9 @@
 // import { CheckCircleIcon } from "@heroicons/react/20/solid";
+import LawyerCard from "../components/LawyerCard";
+import Frame from "../assets/Frame 20.png";
+import cupImage from "../assets/image 25.svg";
+
+
 
 import Layer from "../assets/Layer.svg";
 const data = [
@@ -24,7 +29,17 @@ const data = [
 
 const ProfessionalDetails = () => {
   return (
-    <>
+    <>  <div className="w-auto flex justify-center ">
+    <LawyerCard
+      image={Frame}
+      fName="Bill Thompson Moreira "
+      Cups={cupImage}
+      topRated="Top Rated  Attorney"
+      selfIntro="Myseld Bill thompson, served as a trusted adviser, valued legal representative and respected legal counsel..."
+      pratcingAt="Densborn Blachly LLP"
+      designation="Indiana USA Labor and Employment Attorney"
+    />
+  </div>
       <div className="container mx-auto">
         <h2 className="text-2xl font-medium">
           Indiana USA Labor and Employment Attorney

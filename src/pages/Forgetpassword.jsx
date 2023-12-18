@@ -6,6 +6,7 @@ import avatar3 from "../assets/Rectangle4.png";
 import "../App.css";
 import PrimaryButton from "../components/PrimaryButton";
 import Input from "../components/Input";
+import { Link } from "react-router-dom";
 
 const Forgetpassword = () => {
   return (
@@ -79,8 +80,10 @@ const Forgetpassword = () => {
                 placeholder="name@gmail.com"
                 autoComplete="email"
               />
-
-              <PrimaryButton type="submit" buttonText="Rest Password" />
+               <Link to="/newPassword">
+               <PrimaryButton type="submit" buttonText="Rest Password" />
+               </Link>
+             
             </form>
           </div>
 
