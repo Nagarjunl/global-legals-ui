@@ -13,7 +13,7 @@ const LawyerCard = ({
 }) => {
   return (
     <>
-      <div className="grid-cols-2 border border-blueGray-200 mt-10 rounded-xl w-full">
+      <div className="grid-cols-2  flex-wrap border border-blueGray-200 mt-10 rounded-xl w-full">
         <div class="bg-white p-2 w-80 max-w-auto sm:w-full sm:p-4 h-auto sm:h-auto rounded-2xl flex flex-col sm:flex-row gap-5 select-none">
           <div className="p-5">
             <img src={image} alt="frame" />
