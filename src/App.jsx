@@ -4,12 +4,6 @@ import Login from "./pages/Login";
 import Forgetpassword from "./pages/Forgetpassword";
 import Newpassword from "./pages/Newpassword";
 import LandingPageNew from "./pages/LandingPageNew";
-
-// import Register from "./pages/Register";
-// import Login from "./pages/Login";
-// import NavBar from "./pages/NavBar";
-// import HeaderComponent from "./components/Header";
-
 import PayPremium from "./pages/PayPremium";
 import Verification from "./pages/Verification";
 import ProfessionalDetails from "./pages/ProfessionalDetails";
