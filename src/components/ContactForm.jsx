@@ -91,11 +91,15 @@ const ContactForm = () => {
               className="w-full p-2 border rounded-md"
             ></textarea>
           </div>
-          <div className="flex justify-between mt-4">
-            <ReCAPTCHA sitekey="Your client site key" onChange={""} />
-            <button className="bg-green-500 text-white px-4 py-2 rounded-md">
-              Button 2
-            </button>
+          <div className="flex justify-between items-center mt-4">
+            <div>
+              <ReCAPTCHA sitekey="Your client site key" onChange={""} />
+            </div>
+            <div>
+              <button className="bg-indigo-600 text-white px-10 p-2 rounded-md">
+                Submit
+              </button>
+            </div>
           </div>
         </div>
       </div>
