@@ -19,8 +19,8 @@ import Globe from "../assets/image131.png";
 import ServiceCard from "../components/ServiceCard";
 import BlockText from "../components/BlockText";
 import usersmile from "../assets/New_folder/usersmile.svg";
-// import RoadMapImg1 from "../assets/New_folder/image13.svg";
-// import RoadMapImg2 from "../assets/New_folder/image14.svg";
+import RoadMapImg2 from "../assets/New_folder/image13.svg";
+import RoadMapImg1 from "../assets/New_folder/image14.svg";
 import ContactForm from "../components/ContactForm";
 
 const LandingPageNew = () => {
@@ -262,7 +262,7 @@ const LandingPageNew = () => {
         </h1>
         <div class=" grid  grid-cols-1 gap-4 p-5 sm:p-10 md:p-14  sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2">
           <div className="relative">
-            <img src={usersmile} alt="" />
+            <img src={RoadMapImg1} alt="" />
             <figcaption class="absolute bottom-4 left-2/4  w-[calc(80%-4rem)] -translate-x-2/4   text-start border border-white bg-white rounded-full py-2  shadow-lg shadow-black/5 saturate-200 ">
               <div className="flex justify-between items-center px-6  ">
                 <div>
@@ -281,7 +281,7 @@ const LandingPageNew = () => {
             </figcaption>
           </div>
           <div className="relative">
-            <img src={usersmile} alt="" />
+            <img src={RoadMapImg2} alt="" />
             <figcaption class="absolute bottom-4 left-2/4  w-[calc(80%-4rem)] -translate-x-2/4   text-start border border-white bg-white rounded-full py-2  shadow-lg shadow-black/5 saturate-200 ">
               <div className="flex justify-between items-center px-6  ">
                 <div>
