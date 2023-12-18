@@ -5,6 +5,7 @@ import avatar3 from "../assets/Rectangle4.png";
 import "../App.css";
 import Input from "../components/Input";
 import PrimaryButton from "../components/PrimaryButton";
+import { Link } from "react-router-dom";
 
 const Register = () => {
   return (
@@ -79,7 +80,10 @@ const Register = () => {
                     placeholder="name@gmail.com"
                     autoComplete="email"
                   />
+                  <Link to="/enterOTP">
                   <PrimaryButton type="submit" buttonText="Send OTP" />
+                  </Link>
+                 
                 </form>
               </div>
             </div>

@@ -80,7 +80,10 @@ const LandingPageNew = () => {
                       href="#"
                       class="block py-2 px-3 text-white rounded hover:bg-transparent md:hover:bg-transparent md:border-0 md:hover:text-white md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
                     >
+                      <Link to="/login">
                       Buisness Signup
+                      </Link>
+                      
                     </a>
                   </li>
                   <li>
