@@ -286,11 +286,11 @@ const LandingPageNew = () => {
               <div className="flex justify-between items-center px-6  ">
                 <div>
                   <p class=" font-sans text-xl text-start font-bold  text-black">
-                    {"Explore the legal Labyrinth"}
+                    {"From Incarceration to Liberation"}
                   </p>
 
                   <h5 class=" font-sans text-normal antialiased font-semibold leading-snug tracking-normal text-gray-900">
-                    {"contentBold"}
+                    {"How Bail Bonds Make Freedom Possible"}
                   </h5>
                 </div>
                 <div>
