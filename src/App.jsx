@@ -19,11 +19,11 @@ function App() {
           <Route path="/forget" element={<Forgetpassword />} />
           <Route path="/newpass" element={<Newpassword />} />
           <Route
-            path="/personalinformation"
+            path="/personalInformation"
             element={<PersonalInformation />}
           />
           <Route
-            path="/businessinformation"
+            path="/businessInformation"
             element={<BusinessInformation />}
           />
           <Route path="/application" element={<Application />} />
