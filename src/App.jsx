@@ -16,6 +16,9 @@ import ServerImage from "./pages/ServerImage";
 import Image404 from "./pages/Image404";
 import EnterOtp from "./pages/EnterOtp";
 import CreatePassword from "./pages/CreatePassword";
+import PersonalInformation from "./pages/PersonalInformation";
+import BusinessInformation from "./pages/BusinessInformation";
+import Application from "./pages/Application";
 
 function App() {
   return (
@@ -41,6 +44,16 @@ function App() {
           <Route path="/error" element={<ErrorPage />} />
           <Route path="/server" element={<ServerImage />} />
           <Route path="/404" element={<Image404 />} />
+          <Route path="/newpass" element={<Newpassword />} />
+          <Route
+            path="/personalInformation"
+            element={<PersonalInformation />}
+          />
+          <Route
+            path="/businessInformation"
+            element={<BusinessInformation />}
+          />
+          <Route path="/application" element={<Application />} />
         </Routes>
       </BrowserRouter>
     </>
