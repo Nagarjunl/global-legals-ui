@@ -25,10 +25,10 @@ function App() {
           <Route path="/" element={<LandingPageNew />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/enterotp" element={<EnterOtp />} />
+          <Route path="/enterOTP" element={<EnterOtp />} />
           <Route path="/forget" element={<Forgetpassword />} />
           <Route path="/create" element={<CreatePassword />} />
-          <Route path="/newpass" element={<Newpassword />} />
+          <Route path="/newPassword" element={<Newpassword />} />
           <Route path="/payPremium" element={<PayPremium />} />
           <Route path="/verification" element={<Verification />} />
           <Route
