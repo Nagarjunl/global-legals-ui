@@ -22,6 +22,7 @@ import usersmile from "../assets/New_folder/usersmile.svg";
 import RoadMapImg2 from "../assets/New_folder/image13.svg";
 import RoadMapImg1 from "../assets/New_folder/image14.svg";
 import ContactForm from "../components/ContactForm";
+import { Link } from "react-router-dom";
 
 const LandingPageNew = () => {
   return (
@@ -118,7 +119,9 @@ const LandingPageNew = () => {
                       type="submit"
                       className="text-white inline-flex h-12 px-5 py-0 sm:py-3 items-center flex-shrink-0 bg-[#00C26B]"
                     >
+                      <Link to="/profile">
                       <IoSearchOutline className="h-6 w-6" />
+                      </Link>
                     </button>
                   </div>
                 </form>

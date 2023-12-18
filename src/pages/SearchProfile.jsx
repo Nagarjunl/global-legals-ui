@@ -8,6 +8,7 @@ import cupImage from "../assets/image 25.svg";
 import Select from "../components/Select";
 import Home from "../components/Home";
 import { IoIosCloseCircleOutline } from "react-icons/io";
+import { Link } from "react-router-dom";
 
 function SearchProfile() {
   return (
@@ -78,7 +79,7 @@ function SearchProfile() {
           </h2>
         </div>
         <div className="w-auto flex justify-center ">
-          <LawyerCard
+          <Link to="/professionalDetails">  <LawyerCard
             image={Frame}
             fName="Bill Thompson Moreira "
             Cups={cupImage}
@@ -86,7 +87,8 @@ function SearchProfile() {
             selfIntro="Myseld Bill thompson, served as a trusted adviser, valued legal representative and respected legal counsel..."
             pratcingAt="Densborn Blachly LLP"
             designation="Indiana USA Labor and Employment Attorney"
-          />
+          /></Link>
+        
         </div>
         <div className="w-[100%] flex justify-center ">
           <LawyerCard
