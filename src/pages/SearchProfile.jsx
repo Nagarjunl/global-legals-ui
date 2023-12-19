@@ -11,6 +11,8 @@ import { IoIosCloseCircleOutline } from "react-icons/io";
 import { Link } from "react-router-dom";
 
 function SearchProfile() {
+
+ 
   return (
     <div className="container-md mx-20 my-auto">
       <div>
@@ -20,66 +22,59 @@ function SearchProfile() {
 
         <div className="mt-10 flex flex-wrap gap-5">
           <div>
-            <Select />{" "}
+            <Select fName={"Areas of Practice"} />
           </div>
           <div>
-            <Select />{" "}
+            <Select  fName={"Locations"}/>
           </div>
           <div>
-            {" "}
-            <Select />{" "}
+            
+            <Select fName={"Features"} />
           </div>
           <div>
-            <Select />{" "}
+            <Select fName={"Peer/Client Reviews"} />
           </div>
           <div>
-            {" "}
-            <Select />{" "}
+            
+            <Select fName={"Law School"} />
           </div>
         </div>
 
         {/*  */}
-        <div className=" flex flex- wrap mt-10 gap-10 align-text-center">
-          <h2 className="mt-3 sm:text-lg"> Applied Filters</h2>
+        <div className=" flex flex-wrap mt-4 gap-4 align-text-center">
+          <h2 className=" sm:text-lg"> Applied Filters</h2>
 
-          <div class=" flex-wrap flex justify-between items-center m-1 font-medium py-1 px-5 bg-gray-100 rounded-full text-blue-500 bg-gray-100 border border-blue-200 ">
-            {/* <div class="sm:text-lg font-normal leading-none max-w-full ">
-              Labour and Employment{" "}
-            </div> */}
-             <span className="inline-flex items-center rounded-md  px-2 py-1 text-sm font-medium text-blue-600  ring-gray-500/10">
-             Labour and Employment{" "}
-
+          <span className="inline-flex items-center gap-x-3 rounded-full bg-gray-100 px-5 py-2 text-sm font-medium text-blue-600 ring-1 ring-inset ring-gray-500/10">
+          Labour and Employment
+        <button type="button" className=" gap-2 group relative -mr-1 h-5 w-5 rounded-full hover:bg-gray-500/20">
+          <span className="sr-only text-gray-500 ">Remove</span>
+          <svg viewBox="0 0 14 14" className="stroke-gray-600/50 group-hover:stroke-gray-600/75">
+            <IoIosCloseCircleOutline  className="text-gray-500" />
+          </svg>
+          <span className="absolute -inset-1" />
+        </button>
       </span>
-            <div class="flex flex-auto ">
-              <div>
-                <IoIosCloseCircleOutline  className="ml-4 w-5 h-5 text-gray-700"/>
-              </div>
-            </div>
-          </div>
-          <div class=" flex-wrap flex justify-between items-center m-1 text-[14px] font-medium py-1 px-2 bg-gray -100 rounded-full text-blue-500 bg-gray-100 border border-blue-200 ">
-            {/* <div class="sm:text-lg font-normal leading-none max-w-full ">
-              Indiana, USA
-            </div> */}
-             <span className="inline-flex items-center rounded-md  px-2 py-1 text-sm font-medium text-blue-600  ring-gray-500/10">
-             Indiana, USA
-
+         
+          <span className="inline-flex items-center gap-x-0.5 rounded-full bg-gray-100 px-5 py-2 text-sm font-medium text-blue-600 ring-1 ring-inset ring-gray-500/10">
+          Indiana, USA
+        <button type="button" className="group relative -mr-1 h-5 w-5 rounded-full hover:bg-gray-500/20">
+          <span className="sr-only text-gray-500">Remove</span>
+          <svg viewBox="0 0 14 14" className="stroke-gray-600/50 group-hover:stroke-gray-600/75">
+            <IoIosCloseCircleOutline  className="text-gray-500" />
+          </svg>
+          <span className="absolute -inset-1" />
+        </button>
       </span>
-            <div class="flex flex-auto ">
-              <div>
-                <IoIosCloseCircleOutline className="ml-4 h-5 w-5 text-gray-700"/>
-
-              </div>
-            </div>
-          </div>
         </div>
 
-        <div className="w-[100%]  mt-10">
+        <div className="w-full  mt-10">
           <h2 className=" text-[30px]">
             There are 13 Attorneys in Indiana, USA
           </h2>
         </div>
-        <div className="w-auto flex justify-center ">
-          <Link to="/professionalDetails">  <LawyerCard
+        <div className="w-full flex justify-center ">
+          <Link to="/professionalDetails"> 
+           <LawyerCard
             image={Frame}
             fName="Bill Thompson Moreira "
             Cups={cupImage}
@@ -87,10 +82,11 @@ function SearchProfile() {
             selfIntro="Myseld Bill thompson, served as a trusted adviser, valued legal representative and respected legal counsel..."
             pratcingAt="Densborn Blachly LLP"
             designation="Indiana USA Labor and Employment Attorney"
-          /></Link>
+          />
+          </Link>
         
         </div>
-        <div className="w-[100%] flex justify-center ">
+        <div className="w-full flex justify-center ">
           <LawyerCard
             image={profileImg}
             fName="Skyler Walter White"
@@ -99,7 +95,7 @@ function SearchProfile() {
             selfIntro="With a steadfast commitment to justice, Terry John Paul excels as a Personal Injury Attorney, tirelessly championing the rights of those who have suffered harm due to the negligence of others"
           />
         </div>
-        <div className="w-[100%] flex justify-center ">
+        <div className="w-full flex justify-center ">
           <LawyerCard
             image={profileImg2}
             fName="Terry John Paul"

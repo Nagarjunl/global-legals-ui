@@ -13,7 +13,7 @@ const LawyerCard = ({
 }) => {
   return (
     <>
-      <div className="grid-cols-2  flex-wrap border border-blueGray-200 mt-10 rounded-xl w-full">
+      <div className="grid-cols-2  flex-wrap border border-blue-Gray-200 mt-10 rounded-xl w-full">
         <div class="bg-white p-2 w-80 max-w-auto sm:w-full sm:p-4 h-auto sm:h-auto rounded-2xl flex flex-col sm:flex-row gap-5 select-none">
           <div className="p-5">
             <img src={image} alt="frame" />
@@ -23,20 +23,20 @@ const LawyerCard = ({
             <h1 class="text-lg sm:text-xl font-semibold  text-black">
               {fName}
             </h1>
-            <div className=" flex gap-4 ">
-              <span className="inline-flex  rounded-xl items-center  bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10">
+            <div className=" flex  flex wrap gap-4 ">
+              <span className="inline-flex  rounded-full items-center  bg-blue-50 px-3 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10">
                 {" Accepting Clients"}
               </span>
               {topRated && (
-                <span className="inline-flex items-center rounded-xl bg-yellow-50 px-2 py-1 text-xs font-medium text-yellow-800 ring-1 ring-inset ring-yellow-600/20">
+                <span className="inline-flex items-center rounded-full bg-yellow-50 px-2 py-1 text-xs font-medium text-yellow-800 ring-1 ring-inset ring-yellow-600/20">
                   <img src={Cups} alt="" />
                   {topRated}
                 </span>
               )}
             </div>
             <div class=" flex text-lg text-gray-600 ">
-              <span className="inline-flex  py-1 text-sm font-medium ">
-                <img src={Phone} alt="Phone" className="w-auto px-2" />
+              <span className="inline-flex  py-2  text-sm font-medium ">
+                <img src={Phone} alt="Phone" className="w-10 px-2" />
                 {" Practioning at "}
                 <span className="text-blue-700 px-2">{pratcingAt}</span>
               </span>
@@ -46,7 +46,7 @@ const LawyerCard = ({
                 <img
                   src={CircleImg}
                   alt="Phone"
-                  className=" px-2 w-10 h-6   sm:w-auto"
+                  className=" px-2 w-auto h-6   sm:w-auto"
                 />
                 {designation}
               </span>

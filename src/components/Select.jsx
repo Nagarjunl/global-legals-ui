@@ -4,23 +4,18 @@ import { Listbox, Transition } from '@headlessui/react'
 import { CheckIcon, ChevronDownIcon } from '@heroicons/react/20/solid'
 
 const people = [
-  { id: 1, name: 'Wade Cooper' },
-  { id: 2, name: 'Arlene Mccoy' },
-  { id: 3, name: 'Devon Webb' },
-  { id: 4, name: 'Tom Cook' },
-  { id: 5, name: 'Tanya Fox' },
-  { id: 6, name: 'Hellen Schmidt' },
-  { id: 7, name: 'Caroline Schultz' },
-  { id: 8, name: 'Mason Heaney' },
-  { id: 9, name: 'Claudie Smitham' },
-  { id: 10, name: 'Emil Schaefer' },
+  { id: 1, name: 'Areas of Practice' },
+  { id: 2, name: 'Locations' },
+  { id: 3, name: 'Features' },
+  { id: 4, name: 'Peer / Client Reviews' },
+  
 ]
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function Select() {
+export default function Select({}) {
   const [selected, setSelected] = useState(people[3])
 
   return (
@@ -49,7 +44,7 @@ export default function Select() {
                     key={person.id}
                     className={({ active }) =>
                       classNames(
-                        active ? ' text-white' : 'text-gray-900',
+                        active ? ' text-black' : 'text-gray-900',
                         'relative cursor-default select-none py-2 pl-3 pr-9'
                       )
                     }
@@ -64,7 +59,7 @@ export default function Select() {
                         {selected ? (
                           <span
                             className={classNames(
-                              active ? 'text-white' : 
+                              active ? 'text-black' : 
                               'absolute inset-y-0 right-0 flex items-center pr-4'
                             )}
                           >

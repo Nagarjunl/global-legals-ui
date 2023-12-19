@@ -18,21 +18,21 @@ function Appointments() {
       <div className="flex flex-wrap gap-3">
         <div className="w-full sm:w-72 bg-white rounded-lg overflow-hidden border border-gray-300">
           <div className="px-6 py-4">
-            <h2 className="text-sm">Client Name</h2>
-            <p className="text-gray-700 text-base mb-2">Martin Luther king</p>
-            <h2 className="text-sm">Legal Matter</h2>
-            <p className="text-gray-700 text-base mb-2">Corporate Law</p>{" "}
-            <h2 className="text-sm">Phone number</h2>
-            <p className="text-gray-700 text-base mb-2">
+            <h2 className="text-lg text-gray-400">Client Name</h2>
+            <p className="text-black-500 text-lg text-base mb-2">Martin Luther king</p>
+            <h2 className="text-lg text-gray-400">Legal Matter</h2>
+            <p className="text-black-500 text-lg text-base mb-2">Corporate Law</p>{" "}
+            <h2 className="text-lg text-gray-400">Phone number</h2>
+            <p className="text-black-500 text-lg text-base mb-2">
               +1 - 385-3499-594
             </p>{" "}
-            <h2 className="text-sm">Appointment Date & Time</h2>
-            <p className="text-gray-700 text-base">10’Apr 2023 / 12:00 PM </p>
+            <h2 className="text-lg text-gray-400">Appointment Date & Time</h2>
+            <p className="text-black-500 text-lg text-base">10’Apr 2023 / 12:00 PM </p>
             <div className="flex flex-col items-center">
-              <Link className="mt-4 text-blue-500 ">Reschedule Meeting</Link>
+              <Link className="mt-4 text-lg text-blue-600 ">Reschedule Meeting</Link>
               <button
                 type="button"
-                className="w-full rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 mt-3"
+                className="w-full rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 mt-3"
               >
                 Join via virtual meet
               </button>
@@ -41,21 +41,20 @@ function Appointments() {
         </div>
         <div className="w-full sm:w-72 bg-white rounded-lg overflow-hidden border border-gray-300">
           <div className="px-6 py-4">
-            <h2 className="text-sm">Client Name</h2>
-            <p className="text-gray-700 text-base mb-2">Martin Luther king</p>
-            <h2 className="text-sm">Legal Matter</h2>
-            <p className="text-gray-700 text-base mb-2">Corporate Law</p>{" "}
-            <h2 className="text-sm">Phone number</h2>
-            <p className="text-gray-700 text-base mb-2">
-              +1 - 385-3499-594
-            </p>{" "}
-            <h2 className="text-sm">Appointment Date & Time</h2>
-            <p className="text-gray-700 text-base">10’Apr 2023 / 12:00 PM </p>
+            <h2 className="text-lg text-gray-400">Client Name</h2>
+            <p className="text-black-500 text-base mb-2">Martin Luther king</p>
+            <h2 className="text-lg text-gray-400">Legal Matter</h2>
+            <p className="text-black-500 text-lg text-base mb-2">Corporate Law</p>{" "}
+            <h2 className="text-lg text-gray-400">Phone number</h2>
+            <p className="text-black-500 text-base mb-2">
+            +1 - 348-5829-590            </p>{" "}
+            <h2 className="text-lg text-gray-400">Appointment Date & Time</h2>
+            <p className="text-black-500  text-lg text-base">10’Apr 2023 / 12:00 PM </p>
             <div className="flex flex-col items-center">
-              <Link className="mt-4 text-blue-500 ">Reschedule Meeting</Link>
+              <Link className="mt-4  text-lg text-blue-600 ">Reschedule Meeting</Link>
               <button
                 type="button"
-                className="w-full rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 mt-3"
+                className="w-full rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 mt-3"
               >
                 Join via virtual meet
               </button>
