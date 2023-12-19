@@ -1,4 +1,4 @@
-import Dropdown from "../components/dropDown";
+import Dropdown from "../components/Dropdown";
 import ReCAPTCHA from "react-google-recaptcha";
 
 const ContactForm = () => {
