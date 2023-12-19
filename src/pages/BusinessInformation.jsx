@@ -21,7 +21,7 @@ function BusinessInformation() {
           <Stepper />
         </div>
       </div>
-      <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
+      <div className="mx-auto  px-4 max-w-7xl sm:px-6 lg:px-8">
         <div>
           <h3 className=" font-semibold leading-6 text-2xl mt-11 text-gray-900">
             Select your profession
@@ -61,7 +61,7 @@ function BusinessInformation() {
               </div>
             </div>
             <div className="sm:col-span-3">
-              <h5 className="mt-2">Date of Licensing</h5>
+              <h5 className="mt-2">Insurance Provider</h5>
               <div className="mt-2">
                 <input
                   type="text"
@@ -74,7 +74,7 @@ function BusinessInformation() {
               </div>
             </div>
             <div className="sm:col-span-3 ">
-              <h5 className="mt-2">Licensing Authority</h5>
+              <h5 className="mt-2">Coverage Amount</h5>
 
               <div className="mt-2">
                 <select
@@ -93,7 +93,7 @@ function BusinessInformation() {
               </div>
             </div>
             <div className="sm:col-span-3">
-              <h5 className="mt-2">Bonding Capacity</h5>
+              <h5 className="mt-2">Experience Date of Insurance</h5>
               <div className="mt-2">
                 <input
                   type="text"

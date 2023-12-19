@@ -22,7 +22,7 @@ function PersonalInformation() {
           <Stepper />
         </div>
       </div>
-      <div className="mx-auto max-w-7xl sm:px-6 lg:px-12">
+      <div className="mx-auto px-4 max-w-7xl sm:px-6 lg:px-12">
         {/*  */}
         <div>
           <h3 className=" font-semibold leading-6 text-2xl mt-11 text-gray-900">
