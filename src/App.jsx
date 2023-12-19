@@ -44,7 +44,6 @@ function App() {
           <Route path="/error" element={<ErrorPage />} />
           <Route path="/server" element={<ServerImage />} />
           <Route path="/404" element={<Image404 />} />
-          <Route path="/newpass" element={<Newpassword />} />
           <Route
             path="/personalInformation"
             element={<PersonalInformation />}
