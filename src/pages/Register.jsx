@@ -81,9 +81,8 @@ const Register = () => {
                     autoComplete="email"
                   />
                   <Link to="/enterOTP">
-                  <PrimaryButton type="submit" buttonText="Send OTP" />
+                    <PrimaryButton type="submit" buttonText="Send OTP" />
                   </Link>
-                 
                 </form>
               </div>
             </div>

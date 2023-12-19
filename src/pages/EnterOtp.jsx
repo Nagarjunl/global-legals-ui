@@ -93,9 +93,11 @@ const EnterOtp = () => {
                   <h2>Enter your received otp</h2>
                   <div className="pt-4">
                     <Link to="/create">
-                    <PrimaryButton type="submit" buttonText="Create Account" />
+                      <PrimaryButton
+                        type="submit"
+                        buttonText="Create Account"
+                      />
                     </Link>
-                   
                   </div>
                 </form>
               </div>
