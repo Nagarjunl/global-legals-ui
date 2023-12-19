@@ -10,7 +10,7 @@ import meeting from "../assets/meeting.png";
 import GoogleMeetIcon from "../assets/googlemeet.svg";
 import { BiLogoZoom } from "react-icons/bi";
 import { FaSkype } from "react-icons/fa6";
-import "../app.css";
+import "../App.css";
 import Input from "../components/Input";
 import PrimaryButton from "../components/PrimaryButton";
 
