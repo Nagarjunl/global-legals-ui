@@ -1,7 +1,7 @@
 import global from "../assets/Frame.png";
 import profile from "../assets/Rectangle 2.png";
-import Dropdown from "../components/dropdown";
-import Input from "../components/input";
+// import Dropdown from "../components/dropdown";
+// import Input from "../components/input";
 import Dropdown2 from "../components/dropdown2";
 
 import GoogleImage from "../assets/Google-image.png";

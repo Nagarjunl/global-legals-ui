@@ -5,14 +5,15 @@ import avatar1 from "../assets/Rectangle3.png";
 import avatar2 from "../assets/Rectangle2.png";
 import avatar3 from "../assets/Rectangle4.png";
 import "../App.css";
-import Input from "../components/Input";
+// import Input from "../components/Input";
 import PrimaryButton from "../components/PrimaryButton";
 import { Link } from "react-router-dom";
+import usa from "../assets/USA.png";
 
 const Login = () => {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 min-h-screen">
-      <div className="hidden lg:block bg-blue-600 py-3">
+      {/* <div className="hidden lg:block bg-blue-600 py-3">
         <div className="container pl-14 pt-10">
           <div className="mb-10 block">
             <h2 className="text-white pb-2 font-semibold text-3xl">
@@ -43,8 +44,41 @@ const Login = () => {
             />
           </div>
         </div>
-      </div>
-
+      </div> */}
+      {/* <div className=" max-lg:hidden xl:grid justify-center items-center lg:block bg-blue-600  ">
+        <div className="flex items-center justify-center ">
+          <div className="py-10  ">
+            <h2 className="text-white pb-2 font-semibold text-3xl">
+              Welcome to Globallegals
+            </h2>
+            <p className="text-white">
+              Connecting you with the professionals you need, right in
+              <br />
+              <span> your neighborhood!</span>
+            </p>
+            <div className="relative">
+              <img src={usa} />
+              <div className="static">
+                <img
+                  className="absolute top-10 right-52"
+                  src={avatar1}
+                  alt=""
+                />
+                <img
+                  className="absolute bottom-24 left-11"
+                  src={avatar2}
+                  alt=""
+                />
+                <img
+                  className="absolute bottom-2 right-11"
+                  src={avatar3}
+                  alt=""
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> */}
       <div className="flex flex-col justify-center px-4 gap-10 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
         <div className="mx-auto w-full max-w-sm lg:w-96 ">
           <div className="flex  items-center mt-5 ">
@@ -65,9 +99,7 @@ const Login = () => {
                 href="#"
                 className="font-semibold text-blue-600 hover:text-blue-500"
               >
-                <Link to="/register">
-                Create an account
-                </Link>
+                <Link to="/register">Create an account</Link>
               </a>
             </p>
           </div>
@@ -126,17 +158,13 @@ const Login = () => {
                       href="#"
                       className="font-semibold text-blue-600 hover:text-blue-500"
                     >
-                      <Link to="/forget">
-                      Forgot password
-                      </Link>
-                      
+                      <Link to="/forget">Forgot password</Link>
                     </a>
                   </div>
                 </div>
-                 <Link to="/appointments">
-                 <PrimaryButton type="submit" buttonText="Login" />
-                 </Link>
-                
+                <Link to="/appointments">
+                  <PrimaryButton type="submit" buttonText="Login" />
+                </Link>
               </form>
             </div>
 

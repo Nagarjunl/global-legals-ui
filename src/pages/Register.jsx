@@ -3,7 +3,7 @@ import avatar1 from "../assets/Rectangle3.png";
 import avatar2 from "../assets/Rectangle2.png";
 import avatar3 from "../assets/Rectangle4.png";
 import "../App.css";
-import Input from "../components/Input";
+// import Input from "../components/Input";
 import PrimaryButton from "../components/PrimaryButton";
 import { Link } from "react-router-dom";
 
@@ -81,9 +81,8 @@ const Register = () => {
                     autoComplete="email"
                   />
                   <Link to="/enterOTP">
-                  <PrimaryButton type="submit" buttonText="Send OTP" />
+                    <PrimaryButton type="submit" buttonText="Send OTP" />
                   </Link>
-                 
                 </form>
               </div>
             </div>
