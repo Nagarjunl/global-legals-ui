@@ -16,15 +16,17 @@ import ServerImage from "./pages/ServerImage";
 import Image404 from "./pages/Image404";
 import EnterOtp from "./pages/EnterOtp";
 import CreatePassword from "./pages/CreatePassword";
+import Homepage from "./pages/Homepage";
+// import Home from "./components/Home";
 
 function App() {
   return (
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<LandingPageNew />} />
-          <Route path="/register" element={<Register />} />
+          <Route path="/" element={<Homepage />} />
           <Route path="/login" element={<Login />} />
+          {/* <Route path="/register" element={<Register />} />
           <Route path="/enterOTP" element={<EnterOtp />} />
           <Route path="/forget" element={<Forgetpassword />} />
           <Route path="/create" element={<CreatePassword />} />
@@ -40,7 +42,7 @@ function App() {
           <Route path="/client" element={<ClientImage />} />
           <Route path="/error" element={<ErrorPage />} />
           <Route path="/server" element={<ServerImage />} />
-          <Route path="/404" element={<Image404 />} />
+          <Route path="/404" element={<Image404 />} /> */}
         </Routes>
       </BrowserRouter>
     </>
