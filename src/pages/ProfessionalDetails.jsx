@@ -29,7 +29,9 @@ const data = [
 
 const ProfessionalDetails = () => {
   return (
-    <>  <div className="w-auto flex justify-center ">
+    < >
+    <div className="container mx-auto">
+      <div className="mx-auto flex justify-center ">
     <LawyerCard
       image={Frame}
       fName="Bill Thompson Moreira "
@@ -295,6 +297,7 @@ const ProfessionalDetails = () => {
             </div>
           </div>
         </div>
+      </div>
       </div>
     </>
   );
