@@ -4,23 +4,24 @@ const ServiceCard = ({ image, content, contentBold }) => {
   return (
     <div>
       <button>
-        <figure className="relative w-full h-90">
-          <img
-            className="object-cover object-center w-full h-full rounded-xl"
-            src={image}
-            alt=" image"
-          />
-          <figcaption className="absolute bottom-4 left-2/4  w-[calc(120%-4rem)] -translate-x-2/4   text-center border border-white bg-white rounded-full py-2  shadow-lg shadow-black/5 saturate-200 ">
+        <figure className="relative">
+          <div>
+            <img
+              className="object-cover object-center w-full h-full"
+              src={image}
+              alt=" image"
+            />
             <div>
-              <p className=" mt-2 font-sans text-base antialiased font-normal  text-gray-700">
-                {content}
-              </p>
+              <figcaption className="absolute left-5 bottom-7 p-7 max-lg:p-5   text-center  bg-white rounded-full py-2  shadow-lg shadow-black/5 saturate-200 max-sm:p-3  ">
+                <p className="font-sans text-base antialiased font-normal  text-gray-700">
+                  {content}
+                </p>
+                <h5 className="font-sans  antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                  {contentBold}
+                </h5>
+              </figcaption>
             </div>
-
-            <h5 className="block font-sans text-xl antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
-              {contentBold}
-            </h5>
-          </figcaption>
+          </div>
         </figure>
       </button>
     </div>

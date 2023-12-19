@@ -1,4 +1,4 @@
-export default function Dropdown2() {
+export default function Dropdown() {
   return (
     <div className="mt-3 grid grid-cols-1 gap-x-6  sm:grid-cols-6">
       <h3 className=" font-semibold leading-6 text-2xl mt-8  text-gray-900 sm:col-span-6">

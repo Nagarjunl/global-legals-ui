@@ -1,6 +1,6 @@
 import logo from "../assets/logo.png";
 import "../App.css";
-import Input from "../components/Input";
+// import Input from "../components/Input";
 import PrimaryButton from "../components/PrimaryButton";
 import Otpinput from "../components/OtpInput";
 import { Link } from "react-router-dom";
