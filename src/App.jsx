@@ -20,16 +20,15 @@ import CreatePassword from "./pages/CreatePassword";
 import PersonalInformation from "./pages/PersonalInformation";
 import BusinessInformation from "./pages/BusinessInformation";
 import Application from "./pages/Application";
-import Homepage from "./pages/Homepage";
 
 function App() {
   return (
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Homepage />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/" element={<LandingPageNew />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/enterOTP" element={<EnterOtp />} />
           <Route path="/profiledetails" element={<ProfileDetails />} />
           <Route path="/forget" element={<Forgetpassword />} />
@@ -56,7 +55,6 @@ function App() {
             element={<BusinessInformation />}
           />
           <Route path="/application" element={<Application />} />
-          <Route path="/404" element={<Image404 />} />
         </Routes>
       </BrowserRouter>
     </>
