@@ -1,9 +1,8 @@
 import global from "../assets/Frame.png";
 import profile from "../assets/Rectangle 2.png";
-// import Dropdown from "../components/dropdown";
-// import Input from "../components/input";
-import Dropdown2 from "../components/dropdown2";
-
+import Input from "../components/Input";
+import Dropdown from "../components/Dropdown";
+import BusinessDrop from "../components/businessdrop";
 import GoogleImage from "../assets/Google-image.png";
 import Stepper from "../components/stepper";
 import ReCAPTCHA from "react-google-recaptcha";
@@ -23,7 +22,7 @@ function PersonalInformation() {
           <Stepper />
         </div>
       </div>
-      <div className="mx-auto max-w-7xl sm:px-6 lg:px-12">
+      <div className="mx-auto px-4 max-w-7xl sm:px-6 lg:px-12">
         {/*  */}
         <div>
           <h3 className=" font-semibold leading-6 text-2xl mt-11 text-gray-900">
@@ -36,21 +35,21 @@ function PersonalInformation() {
               to your specific needs. Let&apos;s ensure we <br />
               provide you with the best experience on Globallegals
             </p>
-            <Dropdown />
+            <BusinessDrop />
           </div>
         </div>
         <div className="mt-11">
           <Input />
         </div>
         <div>
-          <Dropdown2 />
+          <Dropdown />
         </div>
         <div>
           <h3 className=" font-semibold leading-6 text-2xl mt-11 text-gray-900">
             Professional Enhancement
           </h3>
 
-          <div className="flex justify-between flex-row w-full mt-2">
+          <div className="flex justify-between flex-wrap flex-row w-full mt-2">
             <p className="mt-3">
               Boost Your Profile! Connect Google Reviews and Testimonials to
               showcase your expertise. Click below to
@@ -58,7 +57,7 @@ function PersonalInformation() {
             </p>
             <button
               type="button"
-              className="rounded-md bg-white px-20 py-2 text-sm font-semibold text-black shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 border border-solid border-black"
+              className="rounded-md mt-2 bg-white px-20 py-2 text-sm font-semibold text-black shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 border border-solid border-black"
             >
               <div className="flex">
                 <img src={GoogleImage} alt="Not found" />
@@ -115,15 +114,12 @@ function PersonalInformation() {
           </label>
         </div>
         <div className="flex-1 border-t border-gray-300 mt-7"></div>
-        <div className="flex justify-between mt-3">
+        <div className="flex justify-between flex-wrap mt-3">
           <div>
-            {/* <button className="rounded-md text-white bg-blue-800 border-blue-800 px-20 py-2 text-sm font-semibol shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 border border-solid">
-              iam not a robot
-            </button> */}
             <ReCAPTCHA sitekey="Your client site key" onChange={handleChange} />
           </div>
           <div>
-            <button className="rounded-md text-white bg-blue-800 border-blue-800 px-20 py-2 text-sm font-semibol shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 border border-solid ">
+            <button className="rounded-md mt-2 text-white bg-blue-800 border-blue-800 px-20 py-2 text-sm font-semibol shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 border border-solid ">
               Save & Submit
             </button>
           </div>
