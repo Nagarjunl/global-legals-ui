@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import "./App.css";
+import "./app.css";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Forgetpassword from "./pages/Forgetpassword";
@@ -26,7 +26,7 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-          {/* <Route path="/" element={<LandingPageNew />} /> */}
+          <Route path="/" element={<LandingPageNew />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/enterOTP" element={<EnterOtp />} />
