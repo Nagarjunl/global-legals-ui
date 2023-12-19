@@ -1,6 +1,5 @@
 import * as React from "react";
 import RemovalImg from "../assets/New_folder/removal.svg";
-
 import { IoSearchOutline } from "react-icons/io5";
 // import TextArea from "../components/textArea";
 import BanerPerson from "../assets/New_folder/banner_person_img.svg";
@@ -83,10 +82,7 @@ const LandingPageNew = () => {
                       href="#"
                       className="block py-2 px-3 text-white rounded hover:bg-transparent md:hover:bg-transparent md:border-0 md:hover:text-white md:p-0"
                     >
-                      <Link to="/login">
-                      Buisness Signup
-                      </Link>
-                      
+                      <Link to="/login">Buisness Signup</Link>
                     </a>
                   </li>
                   <li>
@@ -126,7 +122,7 @@ const LandingPageNew = () => {
                       className="text-white inline-flex h-12 px-5 py-0 sm:py-3 items-center flex-shrink-0 bg-[#00C26B]"
                     >
                       <Link to="/profile">
-                      <IoSearchOutline className="h-6 w-6" />
+                        <IoSearchOutline className="h-6 w-6" />
                       </Link>
                     </button>
                   </div>
@@ -236,7 +232,7 @@ const LandingPageNew = () => {
           <div className=" grid  grid-cols-1 gap-4   p-5 sm:p-10 md:p-14 text-center sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
             <div className="relative hidden sm:grid">
               <img src={usersmile} alt="" />
-              {/*  */}
+
               <div className="absolute m-5 px-10 right-10 bottom-0 rounded-full bg-white bg-opacity-20 p-1  backdrop-blur-md backdrop-filter text-center">
                 <span className="p-1 text-lg font-normal text-white">
                   Global Legals <br />
@@ -342,6 +338,33 @@ const LandingPageNew = () => {
             </button>
           </div>
           <div className="absolute right-0 md:right-10 md:top-8 md:mr-5  top-0 md:bottom-0 bottom-0 hidden  md:block">
+            <img
+              src={BanerPerson}
+              alt="image"
+              className="w-40 md:w-60 lg:w-64 z-10"
+            />
+          </div>
+        </div>
+      </div>
+      <div className="container bg-slate-400">
+        <div className="grid grid-cols-2 max-md:grid-cols-1">
+          <div>
+            <p className="text-black font-CircularStd text-3 md:text-5 italic font-bold leading-normal">
+              Global Legals
+            </p>
+            <div>
+              <p className="text-white font-CircularStd text-4 md:text-4xl font-bold leading-normal">
+                Discover the Perfect Professionals
+              </p>
+              <p className="text-white font-CircularStd text-3 md:text-4 font-medium leading-normal">
+                Your Expertise, Our Network, Perfect Match
+              </p>
+            </div>
+            <button className="p-5 h-[60px] w-[159px] bg-black text-white relative">
+              Explore Services
+            </button>
+          </div>
+          <div>
             <img
               src={BanerPerson}
               alt="image"

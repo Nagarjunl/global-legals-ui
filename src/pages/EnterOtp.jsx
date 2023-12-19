@@ -3,7 +3,7 @@ import avatar1 from "../assets/Rectangle3.png";
 import avatar2 from "../assets/Rectangle2.png";
 import avatar3 from "../assets/Rectangle4.png";
 import "../App.css";
-import Input from "../components/Input";
+// import Input from "../components/Input";
 import PrimaryButton from "../components/PrimaryButton";
 import Otpinput from "../components/OtpInput";
 import { Link } from "react-router-dom";
@@ -93,9 +93,11 @@ const EnterOtp = () => {
                   <h2>Enter your received otp</h2>
                   <div className="pt-4">
                     <Link to="/create">
-                    <PrimaryButton type="submit" buttonText="Create Account" />
+                      <PrimaryButton
+                        type="submit"
+                        buttonText="Create Account"
+                      />
                     </Link>
-                   
                   </div>
                 </form>
               </div>
