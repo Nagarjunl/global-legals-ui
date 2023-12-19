@@ -1,7 +1,7 @@
 import global from "../assets/Frame.png";
 import profile from "../assets/Rectangle 2.png";
-import Input2 from "../components/input2";
-import Options from "../components/options";
+import FirstForm from "../components/FirstForm";
+import Options from "../components/Options";
 import GoogleImage from "../assets/Google-image.png";
 import Stepper from "../components/stepper";
 
@@ -13,13 +13,13 @@ export default function Application() {
         <img src={profile} alt="Not found" />
       </div>
       <div className="flex-1 border-t border-gray-300 mt-3"></div>
-      <div className="mx-auto max-w-sm lg:max-w-7xl lg:px-12 flex justify-center mt-11 xs:p-3">
-        <div className="  w-auto bg-blue-50 rounded-3xl">
+      <div className="mx-auto max-w-sm  lg:max-w-7xl lg:px-12 flex justify-center mt-11 xs:p-3">
+        <div className="  w-auto  bg-blue-50 rounded-3xl">
           <Stepper />
         </div>
       </div>
 
-      <div className="mx-auto max-w-7xl sm:px-6 lg:px-12 xs:px-10">
+      <div className="mx-auto px-4 max-w-7xl sm:px-6 lg:px-12 xs:px-10">
         <div>
           <h3 className=" font-semibold leading-6 text-2xl mt-11 text-gray-900">
             Select your profession
@@ -35,40 +35,57 @@ export default function Application() {
           </div>
         </div>
         <div className="mt-11">
-          <Input2 />
+          <FirstForm />
         </div>
-        <div>
-          <h3 className=" font-semibold leading-6 text-2xl mt-11 text-gray-900">
+        <div className=" grid grid-cols-1 gap-x-6  sm:grid-cols-6">
+          <h3 className=" font-semibold leading-6 text-2xl mt-12 text-gray-900 sm:col-span-6">
             Professional Credentials
           </h3>
-        </div>
-        <div className="flex flex-wrap justify-between mt-3">
-          <div>
+          <div className="sm:col-span-3">
             <h5 className="mt-2">Security License Number</h5>
             <div className="mt-2">
               <input
-                className="block w-[580px]  p-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                placeholder="Enter the number"
+                type="text"
+                name="first-name"
+                id="first-name"
+                autoComplete="given-name"
+                placeholder="Security License Number"
+                className="block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
             </div>
           </div>
-
-          <div>
+          <div className="sm:col-span-3">
             <h5 className="mt-2">License Expiry Date</h5>
             <div className="mt-2">
               <input
-                className="block w-[580px]  p-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                placeholder="Enter Expiry Date"
+                type="text"
+                name="first-name"
+                id="first-name"
+                autoComplete="given-name"
+                placeholder="Expiry Date"
+                className="block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
             </div>
           </div>
-        </div>
-        <h5 className="mt-2">Years of Experience in Security</h5>
-        <div className="mt-2">
-          <input
-            className="block w-[580px]  p-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-            placeholder="Years of Experience in Security"
-          />
+          <div className="sm:col-span-3 ">
+            <h5 className="mt-2">Years of Experience in Security</h5>
+
+            <div className="mt-2">
+              <select
+                id="country"
+                name="country"
+                autoComplete="country-name"
+                className="block w-full rounded-md border-0 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600  sm:text-sm sm:leading-6"
+              >
+                <option value="" disabled selected hidden>
+                  Select from dropdown
+                </option>
+                <option>United States</option>
+                <option>Canada</option>
+                <option>Mexico</option>
+              </select>
+            </div>
+          </div>
         </div>
         <div>
           <div className="mt-10 grid grid-cols-1 gap-x-6  sm:grid-cols-6">
@@ -101,17 +118,23 @@ export default function Application() {
                 />
               </div>
             </div>
-            <div className="sm:col-span-3">
+            <div className="sm:col-span-3 ">
               <h5 className="mt-2">Military Occupational Speciality ( MOS):</h5>
+
               <div className="mt-2">
-                <input
-                  type="text"
-                  name="first-name"
-                  id="first-name"
-                  autoComplete="given-name"
-                  placeholder="Mos"
-                  className="block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                />
+                <select
+                  id="country"
+                  name="country"
+                  autoComplete="country-name"
+                  className="block w-full rounded-md border-0 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600  sm:text-sm sm:leading-6"
+                >
+                  <option value="" disabled selected hidden>
+                    Select from dropdown
+                  </option>
+                  <option>United States</option>
+                  <option>Canada</option>
+                  <option>Mexico</option>
+                </select>
               </div>
             </div>
 
@@ -161,22 +184,28 @@ export default function Application() {
                 />
               </div>
             </div>
-            <div className="sm:col-span-3">
+            <div className="sm:col-span-3 ">
               <h5 className="mt-2">Business Email</h5>
+
               <div className="mt-2">
-                <input
-                  type="text"
-                  name="first-name"
-                  id="first-name"
-                  autoComplete="given-name"
-                  placeholder="Business Emai"
-                  className="block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                />
+                <select
+                  id="country"
+                  name="country"
+                  autoComplete="country-name"
+                  className="block w-full rounded-md border-0 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600  sm:text-sm sm:leading-6"
+                >
+                  <option value="" disabled selected hidden>
+                    Select from dropdown
+                  </option>
+                  <option>United States</option>
+                  <option>Canada</option>
+                  <option>Mexico</option>
+                </select>
               </div>
             </div>
 
             <div className="sm:col-span-3">
-              <h5 className="mt-2">Business Phone numbe</h5>
+              <h5 className="mt-2">Business Phone number</h5>
               <div className="mt-2">
                 <input
                   type="text"
@@ -395,7 +424,7 @@ export default function Application() {
             Professional Enhancement
           </h3>
 
-          <div className="flex justify-between flex-row w-full mt-2">
+          <div className="flex justify-between flex-wrap flex-row w-full mt-2">
             <p className="mt-3">
               Boost Your Profile! Connect Google Reviews and Testimonials to
               showcase your expertise. Click below to
@@ -403,7 +432,7 @@ export default function Application() {
             </p>
             <button
               type="button"
-              className="rounded-md bg-white px-20 py-0 text-sm font-semibold text-black shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 border border-solid border-black"
+              className="rounded-md mt-2 bg-white px-20 py-0 text-sm font-semibold text-black shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 border border-solid border-black"
             >
               <div className="flex">
                 <img src={GoogleImage} alt="Not found" />
@@ -459,14 +488,14 @@ export default function Application() {
           </label>
         </div>
 
-        <div className="flex justify-between mt-7">
+        <div className="flex justify-between flex-wrap mt-7">
           <div>
             <button className="rounded-md text-white bg-blue-800 border-blue-800 px-20 py-2 text-sm font-semibol shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 border border-solid">
               iam not a robot
             </button>
           </div>
           <div>
-            <button className="rounded-md text-white bg-blue-800 border-blue-800 px-20 py-2 text-sm font-semibol shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 border border-solid ">
+            <button className="rounded-md mt-2 text-white bg-blue-800 border-blue-800 px-20 py-2 text-sm font-semibol shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 border border-solid ">
               Save & Submit
             </button>
           </div>

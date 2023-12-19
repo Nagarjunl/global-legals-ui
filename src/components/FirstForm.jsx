@@ -1,4 +1,4 @@
-function input2() {
+function FirstForm() {
   return (
     <>
       <div className=" grid xs:grid-cols-1  lg:grid-cols-3 gap-4">
@@ -85,4 +85,4 @@ function input2() {
   );
 }
 
-export default input2;
+export default FirstForm;
