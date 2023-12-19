@@ -1,7 +1,7 @@
 import global from "../assets/Frame.png";
 import profile from "../assets/Rectangle 2.png";
-import Input2 from "../components/input2";
-import Options from "../components/options";
+import FirstForm from "../components/FirstForm";
+import Options from "../components/Options";
 import GoogleImage from "../assets/Google-image.png";
 import Stepper from "../components/stepper";
 
@@ -35,7 +35,7 @@ export default function Application() {
           </div>
         </div>
         <div className="mt-11">
-          <Input2 />
+          <FirstForm />
         </div>
         <div>
           <h3 className=" font-semibold leading-6 text-2xl mt-11 text-gray-900">

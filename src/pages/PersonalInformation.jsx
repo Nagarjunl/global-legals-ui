@@ -1,9 +1,8 @@
 import global from "../assets/Frame.png";
 import profile from "../assets/Rectangle 2.png";
-import Dropdown from "../components/dropdown";
-import Input from "../components/input";
-import Dropdown2 from "../components/dropdown2";
-
+import Input from "../components/Input";
+import Dropdown from "../components/Dropdown";
+import BusinessDrop from "../components/businessdrop";
 import GoogleImage from "../assets/Google-image.png";
 import Stepper from "../components/stepper";
 import ReCAPTCHA from "react-google-recaptcha";
@@ -36,14 +35,14 @@ function PersonalInformation() {
               to your specific needs. Let&apos;s ensure we <br />
               provide you with the best experience on Globallegals
             </p>
-            <Dropdown />
+            <BusinessDrop />
           </div>
         </div>
         <div className="mt-11">
           <Input />
         </div>
         <div>
-          <Dropdown2 />
+          <Dropdown />
         </div>
         <div>
           <h3 className=" font-semibold leading-6 text-2xl mt-11 text-gray-900">
