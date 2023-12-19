@@ -172,7 +172,7 @@ function BusinessInformation() {
             Professional Enhancement
           </h3>
 
-          <div className="flex justify-between flex-row w-full mt-2">
+          <div className="flex justify-between  flex-wrap flex-row w-full mt-2">
             <p className="mt-3">
               Boost Your Profile! Connect Google Reviews and Testimonials to
               showcase your expertise. Click below to
@@ -180,9 +180,9 @@ function BusinessInformation() {
             </p>
             <button
               type="button"
-              className="rounded-md bg-white px-20 py-2 text-sm font-semibold text-black shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 border border-solid border-black"
+              className="rounded-md mt-2 bg-white px-20 py-2 text-sm font-semibold text-black shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 border border-solid border-black"
             >
-              <div className="flex">
+              <div className="flex  ">
                 <img src={GoogleImage} alt="Not found" />
                 <p className=" ml-3">Connect with Google</p>
               </div>
@@ -302,14 +302,14 @@ function BusinessInformation() {
           </label>
         </div>
         <div className="flex-1 border-t border-gray-300 mt-7"></div>
-        <div className="flex justify-between mt-14">
+        <div className="flex justify-between  flex-wrap mt-14">
           <div>
             <button className="rounded-md text-white bg-blue-800 border-blue-800 px-20 py-2 text-sm font-semibol shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 border border-solid">
               iam not a robot
             </button>
           </div>
           <div>
-            <button className="rounded-md text-white bg-blue-800 border-blue-800 px-20 py-2 text-sm font-semibol shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 border border-solid ">
+            <button className="rounded-md mt-2 text-white bg-blue-800 border-blue-800 px-20 py-2 text-sm font-semibol shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 border border-solid ">
               Save & Submit
             </button>
           </div>
