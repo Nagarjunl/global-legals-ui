@@ -46,7 +46,11 @@ const CreatePassword = () => {
       <div className="flex flex-col justify-center px-4 py-12 gap-10 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
         <div className="mx-auto w-full max-w-sm lg:w-96">
           <div className="flex items-center">
-            <img className="h-10 w-auto" src={logo} alt="Company logo" />
+            <img className="h-10 w-auto" src={logo} alt="Your Company" />
+            <h2 className="ml-2 text-2xl font-bold leading-9 tracking-tight text-blue-600">
+              Global <br />
+              Legals
+            </h2>
           </div>
 
           <div>

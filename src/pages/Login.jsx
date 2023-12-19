@@ -7,6 +7,7 @@ import avatar3 from "../assets/Rectangle4.png";
 import "../App.css";
 import Input from "../components/Input";
 import PrimaryButton from "../components/PrimaryButton";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   return (
@@ -16,6 +17,41 @@ const Login = () => {
           <div className="mb-10 block">
             <h2 className="text-white pb-2 font-semibold text-3xl">
               Welcome to Globallegals
+            </h2>
+            <p className="text-white">
+              Connecting you with the professionals you need, right in
+              <br />
+              <span> your neighborhood!</span>
+            </p>
+          </div>
+
+          <div className="background_image fixed w-[420px] h-[400px]">
+            <img
+              className="inline-block h-16 w-16 rounded-full absolute right-[50%] top-16"
+              src={avatar1}
+              alt=""
+            />
+            <img
+              className="inline-block h-12 w-12 rounded-full absolute bottom-[8rem] left-6"
+              src={avatar2}
+              alt=""
+            />
+            <img
+              className="inline-block h-14 w-14 rounded-full absolute bottom-16 right-[10%]"
+              src={avatar3}
+              alt=""
+            />
+          </div>
+        </div>
+      </div>
+
+      <div className="flex flex-col justify-center px-4 gap-10 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
+        <div className="mx-auto w-full max-w-sm lg:w-96 ">
+          <div className="flex  items-center mt-5 ">
+            <img className="h-10 w-auto" src={logo} alt="Your Company" />
+            <h2 className="pl-2 text-2xl font-bold leading-9 tracking-tight text-blue-600">
+              Global <br />
+              <span>Legals</span>
             </h2>
             <p className="text-white">
               Connecting you with the professionals you need, right in
@@ -60,7 +96,9 @@ const Login = () => {
                 href="#"
                 className="font-semibold text-blue-600 hover:text-blue-500"
               >
+                <Link to="/register">
                 Create an account
+                </Link>
               </a>
             </p>
           </div>
@@ -119,12 +157,17 @@ const Login = () => {
                       href="#"
                       className="font-semibold text-blue-600 hover:text-blue-500"
                     >
+                      <Link to="/forget">
                       Forgot password
+                      </Link>
+                      
                     </a>
                   </div>
                 </div>
-
-                <PrimaryButton type="submit" buttonText="Login" />
+                 <Link to="/appointments">
+                 <PrimaryButton type="submit" buttonText="Login" />
+                 </Link>
+                
               </form>
             </div>
 
