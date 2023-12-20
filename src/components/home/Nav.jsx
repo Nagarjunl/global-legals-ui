@@ -1,4 +1,3 @@
-import * as React from "react";
 import Globe from "../../assets/image131.png";
 import { Link } from "react-router-dom";
 
@@ -33,9 +32,9 @@ const Nav = () => {
             >
               <path
                 stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
                 d="M1 1h15M1 7h15M1 13h15"
               />
             </svg>
@@ -56,7 +55,7 @@ const Nav = () => {
                   href="#"
                   className="block py-2 px-3 text-white rounded hover:bg-transparent md:hover:bg-transparent md:border-0 md:hover:text-white md:p-0"
                 >
-                  <Link to="/login">Buisness Signup</Link>
+                  <Link to="/login">Business Signup</Link>
                 </a>
               </li>
               <li>

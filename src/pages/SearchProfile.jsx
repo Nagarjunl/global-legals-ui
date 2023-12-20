@@ -1,6 +1,4 @@
 import Frame from "../assets/Frame 20.png";
-import Remove from "../assets/remove.png";
-import React from "react";
 import LawyerCard from "../components/LawyerCard";
 import profileImg from "../assets/frame22.png";
 import profileImg2 from "../assets/profilefarame.png";
@@ -11,8 +9,6 @@ import { IoIosCloseCircleOutline } from "react-icons/io";
 import { Link } from "react-router-dom";
 
 function SearchProfile() {
-
- 
   return (
     <div className="container-md mx-20 my-auto">
       <div>
@@ -25,17 +21,15 @@ function SearchProfile() {
             <Select fName={"Areas of Practice"} />
           </div>
           <div>
-            <Select  fName={"Locations"}/>
+            <Select fName={"Locations"} />
           </div>
           <div>
-            
             <Select fName={"Features"} />
           </div>
           <div>
             <Select fName={"Peer/Client Reviews"} />
           </div>
           <div>
-            
             <Select fName={"Law School"} />
           </div>
         </div>
@@ -45,26 +39,38 @@ function SearchProfile() {
           <h2 className=" sm:text-lg"> Applied Filters</h2>
 
           <span className="inline-flex items-center gap-x-3 rounded-full bg-gray-100 px-5 py-2 text-sm font-medium text-blue-600 ring-1 ring-inset ring-gray-500/10">
-          Labour and Employment
-        <button type="button" className=" gap-2 group relative -mr-1 h-5 w-5 rounded-full hover:bg-gray-500/20">
-          <span className="sr-only text-gray-500 ">Remove</span>
-          <svg viewBox="0 0 14 14" className="stroke-gray-600/50 group-hover:stroke-gray-600/75">
-            <IoIosCloseCircleOutline  className="text-gray-500" />
-          </svg>
-          <span className="absolute -inset-1" />
-        </button>
-      </span>
-         
+            Labour and Employment
+            <button
+              type="button"
+              className=" gap-2 group relative -mr-1 h-5 w-5 rounded-full hover:bg-gray-500/20"
+            >
+              <span className="sr-only text-gray-500 ">Remove</span>
+              <svg
+                viewBox="0 0 14 14"
+                className="stroke-gray-600/50 group-hover:stroke-gray-600/75"
+              >
+                <IoIosCloseCircleOutline className="text-gray-500" />
+              </svg>
+              <span className="absolute -inset-1" />
+            </button>
+          </span>
+
           <span className="inline-flex items-center gap-x-0.5 rounded-full bg-gray-100 px-5 py-2 text-sm font-medium text-blue-600 ring-1 ring-inset ring-gray-500/10">
-          Indiana, USA
-        <button type="button" className="group relative -mr-1 h-5 w-5 rounded-full hover:bg-gray-500/20">
-          <span className="sr-only text-gray-500">Remove</span>
-          <svg viewBox="0 0 14 14" className="stroke-gray-600/50 group-hover:stroke-gray-600/75">
-            <IoIosCloseCircleOutline  className="text-gray-500" />
-          </svg>
-          <span className="absolute -inset-1" />
-        </button>
-      </span>
+            Indiana, USA
+            <button
+              type="button"
+              className="group relative -mr-1 h-5 w-5 rounded-full hover:bg-gray-500/20"
+            >
+              <span className="sr-only text-gray-500">Remove</span>
+              <svg
+                viewBox="0 0 14 14"
+                className="stroke-gray-600/50 group-hover:stroke-gray-600/75"
+              >
+                <IoIosCloseCircleOutline className="text-gray-500" />
+              </svg>
+              <span className="absolute -inset-1" />
+            </button>
+          </span>
         </div>
 
         <div className="w-full  mt-10">
@@ -73,18 +79,17 @@ function SearchProfile() {
           </h2>
         </div>
         <div className="w-full flex justify-center ">
-          <Link to="/professionalDetails"> 
-           <LawyerCard
-            image={Frame}
-            fName="Bill Thompson Moreira "
-            Cups={cupImage}
-            topRated="Top Rated  Attorney"
-            selfIntro="Myseld Bill thompson, served as a trusted adviser, valued legal representative and respected legal counsel..."
-            pratcingAt="Densborn Blachly LLP"
-            designation="Indiana USA Labor and Employment Attorney"
-          />
+          <Link to="/profiledetails">
+            <LawyerCard
+              image={Frame}
+              fName="Bill Thompson Moreira "
+              Cups={cupImage}
+              topRated="Top Rated  Attorney"
+              selfIntro="Myseld Bill thompson, served as a trusted adviser, valued legal representative and respected legal counsel..."
+              pratcingAt="Densborn Blachly LLP"
+              designation="Indiana USA Labor and Employment Attorney"
+            />
           </Link>
-        
         </div>
         <div className="w-full flex justify-center ">
           <LawyerCard
