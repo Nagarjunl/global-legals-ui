@@ -22,13 +22,13 @@ const Homepage = () => {
     <>
       <div className="bg-green-800">
         <Nav />
-        <div className="grid grid-cols-2  max-md:grid-cols-1">
-          <div className=" grid items-center justify-center">
+        <div className="grid grid-cols-2 max-md:grid-cols-1 min-h-[500px] px-[15px]">
+          <div className="grid items-center justify-center my-7">
             <div>
-              <h1 className="text-white font-circular-std  text-4xl flex font-bold ">
+              <h1 className="text-white font-circular-std flex text-[44px] leading-[55.66px] font-bold">
                 Effortlessly Locate the Ideal
               </h1>
-              <p className="text-white font-thin italic text-4xl">
+              <p className="text-white italic text-[44px] mb-10 leading-[52.8px] font-light mb-5">
                 Professional Services
               </p>
               <form>
@@ -50,7 +50,7 @@ const Homepage = () => {
                   </button>
                 </div>
               </form>
-              <div className="inline-flex flex-wrap mt-4 gap-3 mb-0 sm:mb-0">
+              <div className="inline-flex flex-wrap mt-5 gap-3 mb-0 sm:mb-0">
                 <span className=" text-white  font-circular-std text-sm font-medium  justify-center  py-1 px-2 items-center   rounded-full border border-white ">
                   Lawyers
                 </span>
@@ -66,17 +66,17 @@ const Homepage = () => {
               </div>
             </div>
           </div>
-          <div>
+          <div className="grid items-end justify-center">
             <img src={RemovalImg} />
           </div>
         </div>
       </div>
-      <div className="mx-auto container sm:px-6 lg:px-8">
+      <div className="mx-auto container max-sm:px-6 p-[120px]">
         <div className="grid grid-flow-row gap-5">
           <div className="max-sm:grid justify-center">
-            <h2>Services we Offer</h2>
-            <div className="grid grid-cols-4 gap-5 max-lg:grid-cols-2 max-sm:grid-cols-1   ">
-              <div className="">
+            <h2 className="text-[44px] mb-10 leading-[55.66px] font-bold">Services we Offer</h2>
+            <div className="grid grid-cols-4 gap-5 max-lg:grid-cols-2 max-sm:grid-cols-1 max-sm:justify-items-center">
+              <div>
                 <ServiceCard
                   image={CardOne}
                   content={"Your Advocate Professionals"}
@@ -108,16 +108,16 @@ const Homepage = () => {
           </div>
         </div>
       </div>
-      <div className="bg-yellow-50 mt-10">
-        <div className="mx-auto container sm:px-6 lg:px-8">
-          <div className="grid grid-flow-row gap-5">
-            <div className="mt-16 b-yellow-50 ">
-              <p className="self-stretch text-5xl font-bold max-md:text-start">
-                The best part? <br /> Everything.
-              </p>
+      <div className="bg-yellow-50 max-sm:px-6 p-[120px]">
+        <div className="mx-auto container">
+          {/* <div className="grid grid-flow-row gap-5"> */}
+            <div className="b-yellow-50 ">
               <div className=" grid grid-cols-2 gap-x-5 max-md:grid-cols-1  max-lg:grid-cols-1 max-xl:grid-cols-2">
-                <div className="grid items-center max-lg:justify-center">
-                  <div>
+                <div className="grid items-center max-lg:justify-center max-sm:px-[15px]">
+                  <div className="max-w-[481px]">
+                    <p className="self-stretch text-[44px] mb-10 leading-[55.66px] font-bold max-md:text-start">
+                      The best part? Everything.
+                    </p>
                     <BlockText
                       heading={"Connect with Skilled Professionals"}
                       content={
@@ -144,22 +144,22 @@ const Homepage = () => {
                     />
                   </div>
                 </div>
-                <div className="grid justify-center items-start  relative">
-                  <div className="max-md: justify-center items-center p-5">
+                <div className="grid justify-center items-end  relative mt-10">
+                  <div className="justify-center px-5">
                     <img src={containerThree} alt="user_image" />
                   </div>
                 </div>
               </div>
             </div>
-          </div>
+          {/* </div> */}
         </div>
       </div>
       {/*  */}
-      <div className="bg-white mt-10">
-        <div className="mx-auto container sm:px-6 lg:px-8">
+      <div className="bg-white max-sm:px-6 p-[120px]">
+        <div className="mx-auto container">
           <div className="grid grid-flow-row gap-5">
-            <div className="grid grid-cols-2 gap-5 max-md:grid-cols-1 max-lg:grid-cols-1  ">
-              <div>
+            <div className="grid grid-cols-2 gap-10 max-md:grid-cols-1 max-lg:grid-cols-1  ">
+              <div className="sm:grid justify-items-end">
                 <div className="relative max-lg:grid justify-center p-5 ">
                   <img src={usersmile} alt="user_image_two" />
                   <div className="absolute  right-28 bottom-5  rounded-full bg-white bg-opacity-20 p-3  backdrop-blur-md backdrop-filter text-center">
@@ -173,9 +173,9 @@ const Homepage = () => {
                   {/*  */}
                 </div>
               </div>
-              <div className="grid justify-center items-center ">
+              <div className="grid justify-center items-center sm:justify-items-start">
                 <div className="m-5">
-                  <blockquote className=" text-4xl font-serif italic">
+                  <blockquote className=" text-4xl font-serif italic mb-8">
                     “When you want to create a business bigger than yourself,
                     you need a lot of help. thats what Global legals does”
                   </blockquote>
@@ -188,9 +188,9 @@ const Homepage = () => {
           </div>
         </div>
       </div>
-      <div className="bg-blue-50 mt-10">
-        <div className="mx-auto container sm:px-6 lg:px-8">
-          <h1 className="text-black font-bold ml-5 text-start font-circular-std md:text-4xl lg:text-4xl max-lg:text-4xl">
+      <div className="bg-blue-50 max-sm:px-6 p-[120px]">
+        <div className="mx-auto container">
+          <h1 className="text-black font-bold text-[44px] mb-10 leading-[55.66px] ml-5 text-start font-circular-std">
             Your Roadmap to Achieving Growth
           </h1>
           <div className="grid grid-flow-row gap-5">
@@ -206,14 +206,14 @@ const Homepage = () => {
         </div>
       </div>
       {/*  */}
-      <div className="bg-white mt-10">
-        <div className="mx-auto container sm:px-6 lg:px-8">
+      <div className="bg-white max-sm:px-6 p-[120px]">
+        <div className="mx-auto container">
           <div className="grid grid-cols-5 max-md:grid-cols-1 max-lg:grid-cols-1">
             <div className=" m-5 col-span-2 grid justify-center items-center ">
               <div className="p-6 ">
-                <div className="text-5xl">
-                  Get in Touch <br />
-                  with Global <br /> Legals
+                <div className="text-[44px] mb-1 max-w-[300px] leading-[62.92px] font-semibold">
+                  Get in Touch 
+                  with Global Legals
                 </div>
                 <div className="text-xs pt-2">
                   Have questions, need assistance, or looking for legal <br />
@@ -229,7 +229,7 @@ const Homepage = () => {
                   <div>
                     <label
                       htmlFor="input1"
-                      className="block text-sm font-medium text-gray-700"
+                      className="block font-normal text-gray text-xs mb-2"
                     >
                       Full Name
                     </label>
@@ -237,13 +237,13 @@ const Homepage = () => {
                       type="text"
                       id="input1"
                       name="input1"
-                      className="mt-1 p-2 border rounded-md w-full"
+                      className="mt-1 p-3 border rounded-md w-full"
                     />
                   </div>
                   <div>
                     <label
                       htmlFor="input2"
-                      className="block text-sm font-medium text-gray-700"
+                      className="block font-normal text-gray text-xs mb-2"
                     >
                       Email Address
                     </label>
@@ -259,7 +259,7 @@ const Homepage = () => {
                   <div>
                     <label
                       htmlFor="input1"
-                      className="block text-sm font-medium text-gray-700"
+                      className="block font-normal text-gray text-xs mb-2"
                     >
                       Phone Number
                     </label>
@@ -273,7 +273,7 @@ const Homepage = () => {
                   <div>
                     <label
                       htmlFor="input2"
-                      className="block text-sm font-medium text-gray-700"
+                      className="block font-normal text-gray text-xs mb-2"
                     >
                       Preferred Contact method
                     </label>
@@ -288,7 +288,7 @@ const Homepage = () => {
                 <div className="grid mt-3 w-full">
                   <label
                     htmlFor="textarea"
-                    className="block text-sm font-medium text-gray-700 mb-2"
+                    className="block font-normal text-gray text-xs mb-2"
                   >
                     Inquiry details
                   </label>
@@ -299,11 +299,11 @@ const Homepage = () => {
                     className="w-full p-2 border rounded-md"
                   ></textarea>
                 </div>
-                <div className=" grid grid-cols-2 justify-center items-center mt-5 max-md:grid-cols-1  gap-3">
-                  <div className="grid justify-center items-center  ">
+                <div className=" grid grid-cols-2 justify-between  mt-5 max-md:grid-cols-1  gap-3">
+                  <div className="grid justify-start items-center  ">
                     <ReCAPTCHA sitekey="Your client site key" onChange={""} />
                   </div>
-                  <div className="grid justify-center items-center">
+                  <div className="grid sm:justify-end items-center">
                     <button className="bg-indigo-600 text-white px-10 p-2 rounded-md">
                       Submit
                     </button>
@@ -315,40 +315,33 @@ const Homepage = () => {
         </div>
       </div>
       {/*  */}
-      <div className="bg-white mt-32">
-        <div className="mx-auto container sm:px-6 lg:px-8">
-          <div className=" bg-gradient-to-r from-[#d38b5d] to-[#fea66d] m-5 grid grid-cols-5">
-            <div className="col-span-3 py-4">
-              {/*  */}
-              <p className="text-black font-CircularStd text-3 md:text-5 italic font-bold leading-normal">
+      <div className="bg-white max-sm:px-6 px-[120px] py-[80px]">
+        <div className="mx-auto container">
+          <div className="relative bg-gradient-to-r from-[#d38b5d] to-[#fea66d] m-5 grid grid-cols-2">
+            <div className="col-span-3 p-10">
+              <p className="text-black font-CircularStd  italic font-bold text-[20px] mb-2 leading-[25.3px]">
                 Global Legals
               </p>
-              <div>
-                <p className="text-white font-CircularStd text-4 md:text-4xl font-bold leading-normal">
+              <div className="mb-3">
+                <p className="text-white font-CircularStd font-bold text-[44px] mb-2 leading-[55.66px] ">
                   Discover the Perfect Professionals
                 </p>
-                <p className="text-white font-CircularStd text-3 md:text-4 font-medium leading-normal">
+                <p className="text-white font-CircularStd text-[16px] leading-[20.24px]">
                   Your Expertise, Our Network, Perfect Match
                 </p>
               </div>
               <button className="p-5 bg-black text-white">
                 Explore Services
               </button>
-              {/*  */}
             </div>
-            <div className="relative col-span-2 grid justify-end items-end ">
-              <div className=" absolute  w-44 right-0 bottom-0">
-                <img src={BanerPerson} alt="image" className=" " />
+              <div className="lg:absolute sm:right-10 sm:bottom-0">
+                <img src={BanerPerson} alt="image" className="w-[277px] h-[341px]" />
               </div>
-            </div>
           </div>
         </div>
       </div>
-      {/*  */}
-      <div className=" mt-32">
-        <div className="mx-auto container sm:px-6 lg:px-8">
-          <Footer />
-        </div>
+      <div className="mx-auto container sm:px-6 lg:px-8">
+        <Footer />
       </div>
     </>
   );
