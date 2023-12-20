@@ -4,7 +4,6 @@ import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Forgetpassword from "./pages/Forgetpassword";
 import Newpassword from "./pages/Newpassword";
-import LandingPageNew from "./pages/LandingPageNew";
 import PayPremium from "./pages/PayPremium";
 import Verification from "./pages/Verification";
 import ProfessionalDetails from "./pages/ProfessionalDetails";
@@ -20,7 +19,7 @@ import PersonalInformation from "./pages/PersonalInformation";
 import BusinessInformation from "./pages/BusinessInformation";
 import Application from "./pages/Application";
 import Homepage from "./pages/Homepage";
-
+import Nav from "./components/home/Nav";
 function App() {
   return (
     <>
