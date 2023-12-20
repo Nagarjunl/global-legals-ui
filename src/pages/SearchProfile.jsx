@@ -1,8 +1,6 @@
-import Frame from "../assets/Frame 20.png";
 import LawyerCard from "../components/LawyerCard";
 import profileImg from "../assets/frame22.png";
-import profileImg2 from "../assets/profilefarame.png";
-import cupImage from "../assets/image 25.svg";
+import cupImage from "../assets/image25.svg";
 import Select from "../components/Select";
 import Home from "../components/Home";
 import { IoIosCloseCircleOutline } from "react-icons/io";
@@ -78,36 +76,30 @@ function SearchProfile() {
             There are 13 Attorneys in Indiana, USA
           </h2>
         </div>
-        <div className="w-full flex justify-center ">
+        <div>
           <Link to="/profiledetails">
             <LawyerCard
-              image={Frame}
+              image={profileImg}
               fName="Bill Thompson Moreira "
-              Cups={cupImage}
+              cups={cupImage}
               topRated="Top Rated  Attorney"
-              selfIntro="Myseld Bill thompson, served as a trusted adviser, valued legal representative and respected legal counsel..."
+              selfIntro="Myseld Bill thompson, served as a trusted adviser, valued legal representative and respected legal counsel... "
               pratcingAt="Densborn Blachly LLP"
               designation="Indiana USA Labor and Employment Attorney"
             />
           </Link>
         </div>
-        <div className="w-full flex justify-center ">
-          <LawyerCard
-            image={profileImg}
-            fName="Skyler Walter White"
-            pratcingAt="Harmony Legal Associates"
-            designation="Personal Injury Attorney and Estate agency Attorney"
-            selfIntro="With a steadfast commitment to justice, Terry John Paul excels as a Personal Injury Attorney, tirelessly championing the rights of those who have suffered harm due to the negligence of others"
-          />
-        </div>
-        <div className="w-full flex justify-center ">
-          <LawyerCard
-            image={profileImg2}
-            fName="Terry John Paul"
-            pratcingAt="Apex Legal Solutions"
-            designation="Criminal Defense Attorney"
-            selfIntro="With a strong background in Criminal Attorney, Terry John Paul brings a wealth of expertise to each case, providing strategic counsel and tireless representation."
-          />
+        <div>
+          <Link to="/profiledetails">
+            <LawyerCard
+              image={profileImg}
+              cups={cupImage}
+              fName="Skyler Walter White"
+              pratcingAt="Harmony Legal Associates"
+              designation="Personal Injury Attorney and Estate agency Attorney"
+              selfIntro="With Attorney, tirelessly championing the rights of those who have suffered harm due to the negligence of others"
+            />
+          </Link>
         </div>
       </div>
     </div>
