@@ -5,7 +5,6 @@ import Login from "./pages/Login";
 import Forgetpassword from "./pages/Forgetpassword";
 import Newpassword from "./pages/Newpassword";
 import ProfileDetails from "./pages/ProfileDetails";
-import LandingPageNew from "./pages/LandingPageNew";
 import PayPremium from "./pages/PayPremium";
 import Verification from "./pages/Verification";
 import ProfessionalDetails from "./pages/ProfessionalDetails";
@@ -20,13 +19,13 @@ import CreatePassword from "./pages/CreatePassword";
 import PersonalInformation from "./pages/PersonalInformation";
 import BusinessInformation from "./pages/BusinessInformation";
 import Application from "./pages/Application";
-
+import Homepage from "./pages/Homepage";
 function App() {
   return (
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<LandingPageNew />} />
+          <Route path="/" element={<Homepage />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/enterOTP" element={<EnterOtp />} />

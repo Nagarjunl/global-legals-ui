@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Nav from "../components/home/Nav";
+
 import { IoSearchOutline } from "react-icons/io5";
 import RemovalImg from "../assets/New_folder/removal.svg";
 import ServiceCard from "../components/ServiceCard";
@@ -14,6 +15,7 @@ import usersmile from "../assets/New_folder/usersmile.svg";
 import RoadMapImg1 from "../assets/New_folder/image14.svg";
 import ReCAPTCHA from "react-google-recaptcha";
 import BanerPerson from "../assets/New_folder/banner_person_img.svg";
+import Footer from "../components/footer/Footer";
 
 const Homepage = () => {
   return (
@@ -340,6 +342,12 @@ const Homepage = () => {
               </div>
             </div>
           </div>
+        </div>
+      </div>
+      {/*  */}
+      <div className=" mt-32">
+        <div className="mx-auto container sm:px-6 lg:px-8">
+          <Footer />
         </div>
       </div>
     </>
