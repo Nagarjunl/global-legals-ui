@@ -186,8 +186,8 @@ const ProfileDetails = () => {
                 <div className=" grid grid-rows-2 ">
                   <div className=" flex gap-2 mt-2">
                     <PrimeryBadge badgeText="Probate and estate administration" />
-                    <PrimeryBadge badgeText="Probate and estate administration" />
-                    <PrimeryBadge badgeText="Probate and estate administration" />
+                    <PrimeryBadge badgeText="Business and commercial law" />
+                    <PrimeryBadge badgeText="Criminal defense " />
                   </div>
                   <div className="flex gap-2 mt-2">
                     <PrimeryBadge badgeText="Drug Violations" />
@@ -264,7 +264,7 @@ const ProfileDetails = () => {
                     with one of our experienced lawyers
                   </p>
                   <div className="flex justify-center items-center  py-3">
-                    <div className="flex-wrap max-md:flex justify-center items-center ">
+                    <div className="flex-wrap max-lg:flex justify-center items-center gap-1 ">
                       <button
                         type="button"
                         className="inline-flex items-center  gap-x-1.5 rounded-md bg-white mr-2 px-4 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
