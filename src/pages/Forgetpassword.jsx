@@ -2,7 +2,7 @@ import logo from "../assets/logo.png";
 import Paperplane from "../assets/paper-plane.png";
 import "../App.css";
 import PrimaryButton from "../components/PrimaryButton";
-// import Input from "../components/Input";
+import Input from "../components/Input";
 import { Link } from "react-router-dom";
 import LeftsideBar from "../components/Leftside-Bar";
 
