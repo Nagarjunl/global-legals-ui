@@ -1,6 +1,6 @@
 // import { CheckCircleIcon } from "@heroicons/react/20/solid";
 import LawyerCard from "../components/LawyerCard";
-import Frame from "../assets/Frame 20.png";
+import Frame from "../assets/Frame20.svg";
 import cupImage from "../assets/image25.svg";
 
 import Layer from "../assets/Layer.svg";
