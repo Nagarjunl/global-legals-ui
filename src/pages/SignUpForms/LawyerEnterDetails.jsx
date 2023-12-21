@@ -7,7 +7,7 @@ const LawyerEnterDetails = () => {
   };
   return (
     <>
-      <div className="mx-auto px-4 max-w-7xl sm:px-6 lg:px-12">
+      <div className="mx-auto px-4 max-w-full  sm:px-6 lg:px-12">
         <div>
           <h3 className="font-medium leading-[34.32px] text-[24px] mt-10">
             Select your profession
@@ -43,7 +43,9 @@ const LawyerEnterDetails = () => {
             </h3>
             <div>
               <div className="">
-                <h5 className="font-normal leading-[17.16px] text-[12px]">Enter your full name</h5>
+                <h5 className="font-normal leading-[17.16px] text-[12px]">
+                  Enter your full name
+                </h5>
                 <div className="mt-2">
                   <input
                     className="block w-full p-3  rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -52,7 +54,9 @@ const LawyerEnterDetails = () => {
                 </div>
               </div>
               <div className="mt-2">
-                <h5 className="font-normal leading-[17.16px] text-[12px]">Contact number</h5>
+                <h5 className="font-normal leading-[17.16px] text-[12px]">
+                  Contact number
+                </h5>
                 <div className="mt-2">
                   <input
                     className="block w-full p-3  rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -64,7 +68,9 @@ const LawyerEnterDetails = () => {
 
             <div>
               <div className="">
-                <h5 className="font-normal leading-[17.16px] text-[12px]">Enter Email Address</h5>
+                <h5 className="font-normal leading-[17.16px] text-[12px]">
+                  Enter Email Address
+                </h5>
                 <div className="mt-2">
                   <input
                     className="block w-full p-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -73,7 +79,9 @@ const LawyerEnterDetails = () => {
                 </div>
               </div>
               <div className="mt-2">
-                <h5 className="font-normal leading-[17.16px] text-[12px]">Location / Address</h5>
+                <h5 className="font-normal leading-[17.16px] text-[12px]">
+                  Location / Address
+                </h5>
                 <div className="mt-2">
                   <input
                     className="block w-full p-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -103,7 +111,9 @@ const LawyerEnterDetails = () => {
           </div>
 
           <div>
-            <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">Write a professional Bio</h5>
+            <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">
+              Write a professional Bio
+            </h5>
             <div className="mt-2">
               <textarea
                 rows={4}
@@ -123,7 +133,9 @@ const LawyerEnterDetails = () => {
               Professional details
             </h3>
             <div className="sm:col-span-3">
-              <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">Name of practicing law firm</h5>
+              <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">
+                Name of practicing law firm
+              </h5>
               <div className="mt-2">
                 <input
                   type="text"
@@ -136,7 +148,9 @@ const LawyerEnterDetails = () => {
               </div>
             </div>
             <div className="sm:col-span-3">
-              <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">Legal Specialization</h5>
+              <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">
+                Legal Specialization
+              </h5>
 
               <div className="mt-2">
                 <select
@@ -155,7 +169,9 @@ const LawyerEnterDetails = () => {
               </div>
             </div>
             <div className="sm:col-span-3 ">
-              <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">Years of Experience</h5>
+              <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">
+                Years of Experience
+              </h5>
 
               <div className="mt-2">
                 <select
@@ -175,7 +191,9 @@ const LawyerEnterDetails = () => {
             </div>
 
             <div className="sm:col-span-3">
-              <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">Bar Association License Number</h5>
+              <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">
+                Bar Association License Number
+              </h5>
               <div className="mt-2">
                 <input
                   type="text"
@@ -188,7 +206,9 @@ const LawyerEnterDetails = () => {
               </div>
             </div>
             <div className="sm:col-span-3">
-              <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">Areas Served till now</h5>
+              <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">
+                Areas Served till now
+              </h5>
 
               <div className="mt-2">
                 <select
@@ -207,7 +227,9 @@ const LawyerEnterDetails = () => {
               </div>
             </div>
             <div className="sm:col-span-3">
-              <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">Law Field Specialized in</h5>
+              <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">
+                Law Field Specialized in
+              </h5>
 
               <div className="mt-2">
                 <select
@@ -226,7 +248,9 @@ const LawyerEnterDetails = () => {
               </div>
             </div>
             <div className="sm:col-span-3">
-              <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">Languages Spoken</h5>
+              <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">
+                Languages Spoken
+              </h5>
 
               <div className="mt-2">
                 <select
@@ -268,12 +292,13 @@ const LawyerEnterDetails = () => {
               </div>
             </button>
           </div>
-
         </div>
         <div className="flex-1 border-t border-gray-300 mt-3"></div>
         <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
           <div className="sm:col-span-3">
-            <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">Linkedin profile</h5>
+            <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">
+              Linkedin profile
+            </h5>
             <div className="mt-2">
               <input
                 type="text"
@@ -287,7 +312,9 @@ const LawyerEnterDetails = () => {
           </div>
 
           <div className="sm:col-span-3">
-            <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">Twitter Profile</h5>
+            <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">
+              Twitter Profile
+            </h5>
             <div className="mt-2">
               <input
                 type="text"
