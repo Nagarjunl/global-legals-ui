@@ -1,45 +1,45 @@
-import global from "../assets/Frame.png";
-import profile from "../assets/Rectangle 2.png";
-import Input from "../components/Input";
-import Dropdown from "../components/Dropdown";
-import BusinessDrop from "../components/businessdrop";
-import GoogleImage from "../assets/Google-image.png";
-import Stepper from "../components/stepper";
+import FirstForm from "../../components/FirstForm";
+import Dropdown from "../../components/Dropdown";
+import GoogleImage from "../../assets/Google-image.png";
 import ReCAPTCHA from "react-google-recaptcha";
-function PersonalInformation() {
+
+const PersonalInformation = () => {
   const handleChange = () => {
     console.log("ReCaptcha");
   };
   return (
     <>
-      <div className="flex justify-between flex-row .w-full mt-3 px-10">
-        <img src={global} alt="Not found" />
-        <img src={profile} alt="Not found" />
-      </div>
-      <div className="flex-1 border-t border-gray-300 mt-3"></div>
-      <div className="mx-auto max-w-7xl sm:px-6 lg:px-12 flex justify-center mt-11">
-        <div className="  w-auto bg-blue-50 rounded-3xl">
-          <Stepper />
-        </div>
-      </div>
       <div className="mx-auto px-4 max-w-7xl sm:px-6 lg:px-12">
-        {/*  */}
         <div>
-          <h3 className=" font-semibold leading-6 text-2xl mt-11 text-gray-900">
+          <h3 className="font-semibold leading-6 text-2xl mt-11 text-gray-900">
             Select your profession
           </h3>
-
-          <div className="flex justify-between flex-row flex-wrap w-full sm: mt-2">
+          <div className="flex justify-between flex-row flex-wrap w-full sm:mt-2">
             <p className="mt-3">
               Choose your profession from the options below to tailor the form
               to your specific needs. Let&apos;s ensure we <br />
               provide you with the best experience on Globallegals
             </p>
-            <BusinessDrop />
+            <div>
+              <select
+                id="location"
+                name="location"
+                className="block w-full mt-4 rounded-md border-0 py-3 pl-4 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                defaultValue=""
+              >
+                <option value="" disabled hidden>
+                  Select from dropdown
+                </option>
+
+                <option>United States</option>
+                <option>Canada</option>
+                <option>Mexico</option>
+              </select>
+            </div>{" "}
           </div>
         </div>
         <div className="mt-11">
-          <Input />
+          <FirstForm />
         </div>
         <div>
           <Dropdown />
@@ -125,14 +125,8 @@ function PersonalInformation() {
           </div>
         </div>
       </div>
-      <div className="flex-1 border-t border-gray-300 mt-7"></div>
-      <div className="mt-7 ml-40">
-        <span className="text-black">Need Assistance?</span> If you have any
-        questions or need further assistance, feel free to contact our support
-        team a <span className="text-blue-800">support@globallegals.com</span>
-      </div>
     </>
   );
-}
+};
 
 export default PersonalInformation;

@@ -1,26 +1,11 @@
-import BusinessList from "../components/bussinesslist";
-
-import LawField from "../components/lawField";
-
-import global from "../assets/Frame.png";
-import profile from "../assets/Rectangle 2.png";
-import GoogleImage from "../assets/Google-image.png";
-import Stepper from "../components/stepper";
-import Experence from "../components/Experence";
+import BusinessList from "../../components/bussinesslist";
+import LawField from "../../components/lawField";
+import GoogleImage from "../../assets/Google-image.png";
+import Experence from "../../components/Experence";
 
 function BusinessInformation() {
   return (
     <>
-      <div className="flex justify-between flex-row .w-full mt-3 px-10">
-        <img src={global} alt="Not found" />
-        <img src={profile} alt="Not found" />
-      </div>
-      <div className="flex-1 border-t border-gray-300 mt-3"></div>
-      <div className="mx-auto max-w-7xl sm:px-6 lg:px-12 flex justify-center mt-11">
-        <div className="  w-auto bg-blue-50 rounded-3xl">
-          <Stepper />
-        </div>
-      </div>
       <div className="mx-auto  px-4 max-w-7xl sm:px-6 lg:px-8">
         <div>
           <h3 className=" font-semibold leading-6 text-2xl mt-11 text-gray-900">
@@ -314,12 +299,6 @@ function BusinessInformation() {
             </button>
           </div>
         </div>
-      </div>
-      <div className="flex-1 border-t border-gray-300 mt-11"></div>
-      <div className="mt-11 ml-40">
-        <span className="text-black">Need Assistance?</span> If you have any
-        questions or need further assistance, feel free to contact our support
-        team a <span className="text-blue-800">support@globallegals.com</span>
       </div>
     </>
   );

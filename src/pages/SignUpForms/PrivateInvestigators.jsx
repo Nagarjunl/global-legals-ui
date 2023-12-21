@@ -1,24 +1,15 @@
-import global from "../assets/Frame.png";
-import profile from "../assets/Rectangle 2.png";
-import FirstForm from "../components/FirstForm";
-import Options from "../components/Options";
-import GoogleImage from "../assets/Google-image.png";
-import Stepper from "../components/stepper";
+import FirstForm from "../../components/FirstForm";
+import Options from "../../components/Options";
+import GoogleImage from "../../assets/Google-image.png";
+import ReCAPTCHA from "react-google-recaptcha";
 
-export default function Application() {
+const PrivateInvestigators = () => {
+  const handleChange = () => {
+    console.log("ReCaptcha");
+  };
+
   return (
     <>
-      <div className="flex justify-between flex-row .w-full mt-3 px-10">
-        <img src={global} alt="Not found" />
-        <img src={profile} alt="Not found" />
-      </div>
-      <div className="flex-1 border-t border-gray-300 mt-3"></div>
-      <div className="mx-auto max-w-sm  lg:max-w-7xl lg:px-12 flex justify-center mt-11 xs:p-3">
-        <div className="  w-auto  bg-blue-50 rounded-3xl">
-          <Stepper />
-        </div>
-      </div>
-
       <div className="mx-auto px-4 max-w-7xl sm:px-6 lg:px-12 xs:px-10">
         <div>
           <h3 className=" font-semibold leading-6 text-2xl mt-11 text-gray-900">
@@ -37,12 +28,15 @@ export default function Application() {
         <div className="mt-11">
           <FirstForm />
         </div>
-        <div className=" grid grid-cols-1 gap-x-6  sm:grid-cols-6">
+        <div className=" grid  gap-x-6  sm:grid-cols-6">
           <h3 className=" font-semibold leading-6 text-2xl mt-12 text-gray-900 sm:col-span-6">
             Professional Credentials
           </h3>
           <div className="sm:col-span-3">
-            <h5 className="mt-2">Security License Number</h5>
+            <h5 className="mt-2">
+              {" "}
+              Private Investigator License Number (if applicable)
+            </h5>
             <div className="mt-2">
               <input
                 type="text"
@@ -68,7 +62,9 @@ export default function Application() {
             </div>
           </div>
           <div className="sm:col-span-3 ">
-            <h5 className="mt-2">Years of Experience in Security</h5>
+            <h5 className="mt-2">
+              Years of Experience as a Private Investigator:
+            </h5>
 
             <div className="mt-2">
               <select
@@ -90,10 +86,10 @@ export default function Application() {
         <div>
           <div className="mt-10 grid grid-cols-1 gap-x-6  sm:grid-cols-6">
             <h3 className=" font-semibold leading-6 text-2xl mt-12 text-gray-900 sm:col-span-6">
-              Military Background - if applicable
+              Military Background ( for Army Veterans)
             </h3>
             <div className="sm:col-span-3">
-              <h5 className="mt-2">Branch of Service</h5>
+              <h5 className="mt-2">Branch of Service (if applicable)</h5>
               <div className="mt-2">
                 <input
                   type="text"
@@ -106,7 +102,7 @@ export default function Application() {
               </div>
             </div>
             <div className="sm:col-span-3">
-              <h5 className="mt-2">Rank at Discharge</h5>
+              <h5 className="mt-2">Rank at Discharge (if applicable)</h5>
               <div className="mt-2">
                 <input
                   type="text"
@@ -119,7 +115,9 @@ export default function Application() {
               </div>
             </div>
             <div className="sm:col-span-3 ">
-              <h5 className="mt-2">Military Occupational Speciality ( MOS):</h5>
+              <h5 className="mt-2">
+                Military Occupational Specialty (MOS) (if applicable)
+              </h5>
 
               <div className="mt-2">
                 <select
@@ -139,7 +137,9 @@ export default function Application() {
             </div>
 
             <div className="sm:col-span-3">
-              <h5 className="mt-2">Years of military Service</h5>
+              <h5 className="mt-2">
+                Years of Military Service (if applicable)
+              </h5>
               <div className="mt-2">
                 <input
                   type="text"
@@ -329,7 +329,9 @@ export default function Application() {
             Certification and Specialization
           </h3>
           <div className="sm:col-span-3">
-            <h5 className="mt-2">Relevant Certifications</h5>
+            <h5 className="mt-2">
+              Relevant certifications for private investigations
+            </h5>
             <div className="mt-2">
               <input
                 type="text"
@@ -342,7 +344,7 @@ export default function Application() {
             </div>
           </div>
           <div className="sm:col-span-3">
-            <h5 className="mt-2">Area of Expertise</h5>
+            <h5 className="mt-2">Specializations or areas of expertise</h5>
             <div className="mt-2">
               <input
                 type="text"
@@ -355,70 +357,6 @@ export default function Application() {
             </div>
           </div>
         </div>
-        <div className=" grid grid-cols-1 gap-x-6  sm:grid-cols-6">
-          <h3 className=" font-semibold leading-6 text-2xl mt-12 text-gray-900 sm:col-span-6">
-            References and Permissions
-          </h3>
-          <div className="sm:col-span-3">
-            <h5 className="mt-2">Cleint References</h5>
-            <div className="mt-2">
-              <input
-                type="text"
-                name="first-name"
-                id="first-name"
-                autoComplete="given-name"
-                placeholder="Relevant Certifications"
-                className="block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-              />
-            </div>
-          </div>
-          <div className="sm:col-span-3">
-            <h5 className="mt-2">Contact number</h5>
-            <div className="mt-2">
-              <input
-                type="text"
-                name="first-name"
-                id="first-name"
-                autoComplete="given-name"
-                placeholder="Area of Expertise"
-                className="block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-              />
-            </div>
-          </div>
-        </div>
-
-        <div className="flex items-center">
-          <input
-            type="checkbox"
-            id="myCheckbox"
-            className="form-checkbox h-5 w-5 text-indigo-600"
-          />
-          <label className="ml-2 mt-4">
-            I hereby grant consent to Globallegals for a background check,
-            including professional and educational details. I authorize the
-            collection of necessary information for verification purposes. The
-            results will be handled confidentially, in accordance with
-            Globallegals&apos; privacy policy. I release Globallegals and its
-            representatives from any liability related to this process.&quot;
-          </label>
-        </div>
-        <div className="flex items-center">
-          <input
-            type="checkbox"
-            id="myCheckbox"
-            className="form-checkbox h-5 w-5 text-indigo-600"
-          />
-          <label className="ml-2 mt-4">
-            By proceeding, you confirm that you&apos;ve read, comprehended, and
-            consent to abide by our{" "}
-            <span className="text-blue-700 underline">
-              Terms and Conditions.
-            </span>{" "}
-            Your commitment to reviewing our terms ensures a comprehensive
-            understanding of the guidelines governing your use of Global Legals
-          </label>
-        </div>
-        <div className="flex-1 border-t border-gray-300 mt-7"></div>
         <div>
           <h3 className=" font-semibold leading-6 text-2xl mt-11 text-gray-900">
             Professional Enhancement
@@ -487,12 +425,74 @@ export default function Application() {
             understanding of the guidelines governing your use of Global Legals
           </label>
         </div>
+        <div className=" grid grid-cols-1 gap-x-6  sm:grid-cols-6">
+          <h3 className=" font-semibold leading-6 text-2xl mt-12 text-gray-900 sm:col-span-6">
+            References and Permissions
+          </h3>
+          <div className="sm:col-span-3">
+            <h5 className="mt-2">Cleint References</h5>
+            <div className="mt-2">
+              <input
+                type="text"
+                name="first-name"
+                id="first-name"
+                autoComplete="given-name"
+                placeholder="Relevant Certifications"
+                className="block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              />
+            </div>
+          </div>
+          <div className="sm:col-span-3">
+            <h5 className="mt-2">Contact number</h5>
+            <div className="mt-2">
+              <input
+                type="text"
+                name="first-name"
+                id="first-name"
+                autoComplete="given-name"
+                placeholder="Area of Expertise"
+                className="block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div className="flex items-center">
+          <input
+            type="checkbox"
+            id="myCheckbox"
+            className="form-checkbox h-5 w-5 text-indigo-600"
+          />
+          <label className="ml-2 mt-4">
+            I hereby grant consent to Globallegals for a background check,
+            including professional and educational details. I authorize the
+            collection of necessary information for verification purposes. The
+            results will be handled confidentially, in accordance with
+            Globallegals&apos; privacy policy. I release Globallegals and its
+            representatives from any liability related to this process.&quot;
+          </label>
+        </div>
+        <div className="flex items-center">
+          <input
+            type="checkbox"
+            id="myCheckbox"
+            className="form-checkbox h-5 w-5 text-indigo-600"
+          />
+          <label className="ml-2 mt-4">
+            By proceeding, you confirm that you&apos;ve read, comprehended, and
+            consent to abide by our{" "}
+            <span className="text-blue-700 underline">
+              Terms and Conditions.
+            </span>{" "}
+            Your commitment to reviewing our terms ensures a comprehensive
+            understanding of the guidelines governing your use of Global Legals
+          </label>
+        </div>
+        <div className="flex-1 border-t border-gray-300 mt-7"></div>
 
         <div className="flex justify-between flex-wrap mt-7">
           <div>
-            <button className="rounded-md text-white bg-blue-800 border-blue-800 px-20 py-2 text-sm font-semibol shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 border border-solid">
-              iam not a robot
-            </button>
+            <ReCAPTCHA sitekey="Your client site key" onChange={handleChange} />
           </div>
           <div>
             <button className="rounded-md mt-2 text-white bg-blue-800 border-blue-800 px-20 py-2 text-sm font-semibol shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 border border-solid ">
@@ -501,12 +501,8 @@ export default function Application() {
           </div>
         </div>
       </div>
-      <div className="flex-1 border-t border-gray-300 mt-11"></div>
-      <div className="mt-7 ml-40">
-        <span className="text-black">Need Assistance?</span> If you have any
-        questions or need further assistance, feel free to contact our support
-        team a <span className="text-blue-800">support@globallegals.com</span>
-      </div>
     </>
   );
-}
+};
+
+export default PrivateInvestigators;
