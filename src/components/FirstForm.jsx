@@ -1,7 +1,7 @@
 function FirstForm() {
   return (
     <>
-      <div className=" grid xs:grid-cols-1  lg:grid-cols-3 gap-4">
+      <div className="grid xs:grid-cols-1  lg:grid-cols-3 gap-4">
         <h3
           className="lg:col-span-3
         	 font-semibold w-full h   leading-6 text-2xl  text-gray-900"
@@ -14,7 +14,7 @@ function FirstForm() {
             <h5>Enter your full name</h5>
             <div className="mt-2">
               <input
-                className="block w-full  p-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                className="block w-full  p-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm  text-xs ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-xs sm:leading-6"
                 placeholder="Enter your full name"
               />
             </div>
