@@ -17,7 +17,7 @@ function ClientImage() {
           </div>
         </div>
         <div className="rounded-lg border flex flex-col items-center">
-          <div className=" r bg-white   flex flex-col items-center py-10   gap-5">
+          <div className="bg-white   flex flex-col items-center py-10   gap-5">
             <img src={image1} className="h-72 w-96" alt="image" />
           </div>
           <h1 className="text-3xl">Your clients are viewing your profile</h1>

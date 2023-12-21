@@ -1,179 +1,145 @@
-// // import ImageCard from "./imageCards";
-// // import GlobeIcon from "../media/image131.png";
-// // import Removal from "../media/removal1.png";
-// // import IconSearch from "../media/search 1.svg";
-// // import "./Headers.css";
-// // import BestPartCard from "./bestPartCard";
-// // const Header = () => {
-// //   return (
-//     // <div className="h-full bg-green-900">
-//     //   <div className=" mx-8  py-[70px] md:flex md:items-center  md:justify-between h-[50px] text-white">
-//     //     <div className="min-w-0 flex  justify-around">
-//     //       <div>
-//     //         <img src={GlobeIcon} width={"40px"} height={"41px"} />
-//     //       </div>
-//     //       <div className="headertypo">
-//     //         Global
-//     //         <br />
-//     //         Legals
-//     //       </div>
-//     //     </div>
-//     //     <div className="mt-4 flex md:ml-4 md:mt-0">
-//     //       <button
-//     //         type="button"
-//     //         className=" text-[16px] ml-3 inline-flex items-center rounded-md px-3 py-2 text-sm font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-//     //       >
-//     //         Home
-//     //       </button>
-//     //       <button
-//     //         type="button"
-//     //         className="text-[16px] ml-3 inline-flex items-center rounded-md px-3 py-2 text-sm font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-//     //       >
-//     //         Business Signup
-//     //       </button>
-//     //       <button
-//     //         type="button"
-//     //         className="text-[16px] ml-3 inline-flex items-center rounded-md px-3 py-2 text-sm font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-//     //       >
-//     //         FAQ
-//     //       </button>
-//     //     </div>
-//     //   </div>
+import { Fragment } from "react";
+import { Disclosure, Menu, Transition } from "@headlessui/react";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import GlobalLegals from "../assets/GlobalLegals.svg";
+import UserIcon from "../assets/UserIcon.svg";
 
-//     //   <div>
-//     //     <div className=" flex flex-col mx-8 ">
-//     //       <h2 className="typo">Effortlessly Locate the Ideal</h2>
-//     //       <h3 className="typo2 ">Professional Services</h3>
-//     //     </div>
-//     //     <div>
-//     //       <div className=" focus-within:z-10">
-//     //         <div className="ml-7 flex">
-//     //           <input
-//     //             type="email"
-//     //             name="email"
-//     //             id="email"
-//     //             className="block w-[500px]   rounded-none  border-0 py-1.5 pl-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-//     //             placeholder="John Smith"
-//     //           />
-//     //           <button
-//     //             type="button"
-//     //             style={{ background: "#00C26B" }}
-//     //             className="relative mx-0  inline-flex items-center gap-x-1.5  px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
-//     //           >
-//     //             <img src={IconSearch} alt="image" />
-//     //           </button>
-//     //         </div>
-//     //         <div className="  mt-5 ml-0.1 ">
-//     //           <div className="flex ml-8  items-center gap-2  ">
-//     //             <span className="btn inline-flex items-center rounded-full bg-green-900 px-2 py-1 text-xs font-medium text-white ring-1 ">
-//     //               Lawyers
-//     //             </span>
-//     //             <span className="btn inline-flex items-center rounded-full bg-green-900 px-2 py-1 text-xs font-medium text-white ring-1 ">
-//     //               Private Investigators
-//     //             </span>
-//     //             <span className="btn inline-flex items-center rounded-full bg-green-900 px-2 py-1 text-xs font-mediu text-white ring-1 ">
-//     //               Bail Bondsman
-//     //             </span>
-//     //             <span className="btn inline-flex items-center rounded-full bg-green-900 px-2 py-1 text-xs font-medium text-white ring-1">
-//     //               Security
-//     //             </span>
-//     //           </div>
-//     //         </div>
-//     //       </div>
-//     //     </div>
-//     //   </div>
-//     //   <img src={Removal} />
-//     // </div>
-//     <>
-//       {/* header_nav */}
-//       {/* <div className=" parent bg-green-800">
-//         <div className="header_nav text-white flex align-middle justify-between w-[100vw] p-3">
-//           <div className="w-[150px] flex justify-evenly ">
-//             <img src={GlobeIcon} width={"50px"} height={"50px"} />
-//             <div className="headertypo pt-2">
-//               <p>Global</p>
-//               <p> Legals</p>
-//             </div>
-//           </div>
-//           <div className="">
-//             <ul className="flex gap-20 mr-4 pr-10 pt-3">
-//               <a href="">
-//                 <li>Home</li>
-//               </a>
-//               <a href="">
-//                 <li>Buisness Signup</li>
-//               </a>
-//               <a href="">
-//                 <li>FAQ</li>
-//               </a>
-//             </ul>
-//           </div>
-//         </div>
-//         {/* Header_Ended */}
+function classNames(...classes) {
+  return classes.filter(Boolean).join(" ");
+}
 
-//         {/*  */}
+export default function Example() {
+  return (
+    <Disclosure as="nav" className="bg-white shadow">
+      {({ open }) => (
+        <>
+          <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+            <div className="relative flex h-16 justify-between">
+              <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
+                {/* Mobile menu button */}
+                <Disclosure.Button className="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+                  <span className="absolute -inset-0.5" />
+                  <span className="sr-only">Open main menu</span>
+                  {open ? (
+                    <XMarkIcon className="block h-6 w-6" aria-hidden="true" />
+                  ) : (
+                    <Bars3Icon className="block h-6 w-6" aria-hidden="true" />
+                  )}
+                </Disclosure.Button>
+              </div>
+              <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+                <div className="flex flex-shrink-0 items-center">
+                  <img
+                    className="h-8 w-auto"
+                    src={GlobalLegals}
+                    alt="Your Company"
+                  />
+                </div>
+              </div>
+              <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+                <Menu as="div" className="relative ml-3">
+                  <div>
+                    <Menu.Button className="relative flex rounded-full bg-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                      <span className="absolute -inset-1.5" />
+                      <span className="sr-only">Open user menu</span>
+                      <img
+                        className="h-8 w-8 rounded-full"
+                        src={UserIcon}
+                        alt=""
+                      />
+                    </Menu.Button>
+                  </div>
+                  <Transition
+                    as={Fragment}
+                    enter="transition ease-out duration-200"
+                    enterFrom="transform opacity-0 scale-95"
+                    enterTo="transform opacity-100 scale-100"
+                    leave="transition ease-in duration-75"
+                    leaveFrom="transform opacity-100 scale-100"
+                    leaveTo="transform opacity-0 scale-95"
+                  >
+                    <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                      <Menu.Item>
+                        {({ active }) => (
+                          <a
+                            href="#"
+                            className={classNames(
+                              active ? "bg-gray-100" : "",
+                              "block px-4 py-2 text-sm text-gray-700"
+                            )}
+                          >
+                            Your Profile
+                          </a>
+                        )}
+                      </Menu.Item>
+                      <Menu.Item>
+                        {({ active }) => (
+                          <a
+                            href="#"
+                            className={classNames(
+                              active ? "bg-gray-100" : "",
+                              "block px-4 py-2 text-sm text-gray-700"
+                            )}
+                          >
+                            Settings
+                          </a>
+                        )}
+                      </Menu.Item>
+                      <Menu.Item>
+                        {({ active }) => (
+                          <a
+                            href="#"
+                            className={classNames(
+                              active ? "bg-gray-100" : "",
+                              "block px-4 py-2 text-sm text-gray-700"
+                            )}
+                          >
+                            Sign out
+                          </a>
+                        )}
+                      </Menu.Item>
+                    </Menu.Items>
+                  </Transition>
+                </Menu>
+              </div>
+            </div>
+          </div>
 
-//         {/* Home grid_1 */}
-// {/*
-//         <div className="home_main_1 w-[100%] grid grid-cols-2 ">
-//           <div className=" bg-green-800 mt-[100px] pb-5">
-//             <div className=" flex flex-col mx-8 ">
-//               <h2 className="typo">Effortlessly Locate the Ideal</h2>
-//               <h3 className="typo2 ">Professional Services</h3>
-//               <br />
-//               <div className=" input_area flex pt-5 pb-5">
-//                 <input
-//                   type="email"
-//                   name="email"
-//                   id="email"
-//                   className="block w-[450px] pl-5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-//                   placeholder="John Smith"
-//                 />
-//                 <button
-//                   type="button"
-//                   style={{ background: "#00C26B" }}
-//                   className="p-2"
-//                 >
-//                   <img src={IconSearch} alt="image" />
-//                 </button>
-//               </div>
-//               <div className="badge_area_grid_1">
-//                 <ul className=" grid_2_badges flex gap-5 ">
-//                   <li className=" pl-2 pr-2 text-white ">Lawyers</li>
-
-//                   <li className=" pl-2 pr-2 text-white ">
-//                     Private Investigators
-//                   </li>
-
-//                   <li className=" pl-2 pr-2 text-white ">Bail Bondsman</li>
-
-//                   <li className=" pl-2 pr-2 text-white ">Security</li>
-//                 </ul>
-//               </div>
-//             </div>
-//           </div>
-//           <div className="mt-[130px]">
-//             <img src={Removal} alt="" />
-//           </div>
-//         </div>
-//       </div>
-//       <br />
-//       <br /> <br /> */}
-//       {/* home_gird_completed */}
-// {/* //       <div className="m-[50px]">
-// //         <h1 class="block font-Circular text-3xl font-semibold leading-tight tracking-normal text-inherit antialiased">
-// //           Services we Offer
-// //         </h1>
-// //         <ImageCard />
-// //       </div>
-// //       <br />
-// //       <br /> <br />
-// //       <br />
-// //       <div className="m-[50px]">
-// //         <BestPartCard />
-// //       </div>
-// //     </> */}
-// {/* //   );
-// // }; */}
-// {/*
-// // export default Header; */} */}
+          <Disclosure.Panel className="sm:hidden">
+            <div className="space-y-1 pb-4 pt-2">
+              {/* Current: "bg-indigo-50 border-indigo-500 text-indigo-700", Default: "border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700" */}
+              <Disclosure.Button
+                as="a"
+                href="#"
+                className="block border-l-4 border-indigo-500 bg-indigo-50 py-2 pl-3 pr-4 text-base font-medium text-indigo-700"
+              >
+                Dashboard
+              </Disclosure.Button>
+              <Disclosure.Button
+                as="a"
+                href="#"
+                className="block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700"
+              >
+                Team
+              </Disclosure.Button>
+              <Disclosure.Button
+                as="a"
+                href="#"
+                className="block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700"
+              >
+                Projects
+              </Disclosure.Button>
+              <Disclosure.Button
+                as="a"
+                href="#"
+                className="block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700"
+              >
+                Calendar
+              </Disclosure.Button>
+            </div>
+          </Disclosure.Panel>
+        </>
+      )}
+    </Disclosure>
+  );
+}

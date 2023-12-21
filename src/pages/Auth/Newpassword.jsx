@@ -1,11 +1,11 @@
-import logo from "../assets/logo.png";
-import Paperplane from "../assets/paper-plane.png";
-import "../App.css";
-import PrimaryButton from "../components/PrimaryButton";
-import Input from "../components/Input";
-import LeftsideBar from "../components/Leftside-Bar";
+import logo from "../../assets/logo.png";
+import Paperplane from "../../assets/paper-plane.png";
+import "../../App.css";
+import PrimaryButton from "../../components/PrimaryButton";
+import Input from "../../components/Input";
+import LeftsideBar from "../../components/Leftside-Bar";
 
-const Newpassword = () => {
+const NewPassword = () => {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 min-h-screen">
       <div className=" max-lg:hidden lg:flex bg-blue-600 xl:flex items-center justify-center ">
@@ -84,4 +84,4 @@ const Newpassword = () => {
   );
 };
 
-export default Newpassword;
+export default NewPassword;

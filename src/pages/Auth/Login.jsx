@@ -1,10 +1,10 @@
-import logo from "../assets/logo.png";
+import logo from "../../assets/logo.png";
 import { SiApple } from "react-icons/si";
 import { FcGoogle } from "react-icons/fc";
-import Input from "../components/Input";
-import PrimaryButton from "../components/PrimaryButton";
+import Input from "../../components/Input";
+import PrimaryButton from "../../components/PrimaryButton";
 import { Link } from "react-router-dom";
-import LeftsideBar from "../components/Leftside-Bar";
+import LeftsideBar from "../../components/Leftside-Bar";
 
 const Login = () => {
   return (
@@ -88,11 +88,11 @@ const Login = () => {
                       href="#"
                       className="font-semibold text-blue-600 hover:text-blue-500"
                     >
-                      <Link to="/forget">Forgot password</Link>
+                      <Link to="/forgetPassword">Forgot password</Link>
                     </a>
                   </div>
                 </div>
-                <Link to="/appointments">
+                <Link to="/dashboard/appointments">
                   <PrimaryButton type="submit" buttonText="Login" />
                 </Link>
               </form>

@@ -1,19 +1,20 @@
-import React from "react";
 import Asset from "../assets/Asset 404.jpg";
 
 function Image404() {
   return (
-    <div className="container mx-auto">
-      <div className="flex justify-center items-start pt-4">
-        <img src={Asset} alt="Your Image" className="block mx-auto" />
+    <main className="flex-grow">
+      <div className="container mx-auto grid place-items-center h-screen">
+        <div className="text-center">
+          <img src={Asset} alt="Your Image" className="block mx-auto" />
+          <h2 className="pt-3 text-3xl">Looks like you took a wrong turn</h2>
+          <p className="pt-3 text-sm">
+            The page you`&apos;`re looking for might be under construction or
+            has moved elsewhere. Please check the URL or return to the homepage.
+          </p>
+        </div>
       </div>
-      <h2 className="text-center pt-3 text-3xl">
-      Looks like you took a wrong turn
-      </h2>
-      <p className="text-center pt-3 text-sm">
-      The page you're looking for might be under construction or has moved elsewhere. Please check the URL or return to the homepage.
-      </p>
-      </div>  );
+    </main>
+  );
 }
 
 export default Image404;

@@ -3,7 +3,6 @@ import profileImg2 from "../assets/Frame22.svg";
 import profileImg from "../assets/Frame20.svg";
 import cupImage from "../assets/image25.svg";
 import Select from "../components/Select";
-import Home from "../components/Home";
 import { IoIosCloseCircleOutline } from "react-icons/io";
 import { Link } from "react-router-dom";
 
@@ -20,9 +19,6 @@ function SearchProfile() {
   return (
     <div className="container-md mx-20 my-auto">
       <div>
-        <div>
-          <Home />
-        </div>
         <div className="mt-10 flex flex-wrap gap-5">
           <div>
             <Select fName={"Areas of Practice"} />
@@ -70,7 +66,7 @@ function SearchProfile() {
           </h2>
         </div>
         <div>
-          <Link to="/profiledetails">
+          <Link to="/dashboard/profileDetails">
             <LawyerCard
               image={profileImg}
               fName="Bill Thompson Moreira "
@@ -83,7 +79,7 @@ function SearchProfile() {
           </Link>
         </div>
         <div>
-          <Link to="/profiledetails">
+          <Link to="/dashboard/profileDetails">
             <LawyerCard
               image={profileImg2}
               cups={cupImage}

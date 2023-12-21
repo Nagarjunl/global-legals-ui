@@ -1,53 +1,63 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
-import Register from "./pages/Register";
-import Login from "./pages/Login";
-import Forgetpassword from "./pages/Forgetpassword";
-import Newpassword from "./pages/Newpassword";
+import AuthLayout from "./Layout/AuthLayout";
+import DashboardLayout from "./Layout/DashBoardLayout";
+import Register from "./pages/Auth/Register";
+import Login from "./pages/Auth/Login";
+import ForgetPassword from "./pages/Auth/Forgetpassword";
+import NewPassword from "./pages/Auth/Newpassword";
 import ProfileDetails from "./pages/ProfileDetails";
-import PayPremium from "./pages/PayPremium";
-import Verification from "./pages/SignUpForms/Verification";
-import Appointments from "./pages/SignUpForms/Appointments";
 import SearchProfile from "./pages/SearchProfile";
-import ClientImage from "./pages/ClientImage";
+import ClientView from "./pages/ClientView";
 import ErrorPage from "./pages/ErrorPage";
 import ServerImage from "./pages/ServerImage";
 import Image404 from "./pages/Image404";
-import EnterOtp from "./pages/EnterOtp";
-import CreatePassword from "./pages/CreatePassword";
-import LawyerEnterDetails from "./pages/SignUpForms/LawyerEnterDetails";
-import BondBailsman from "./pages/SignUpForms/BondBailsman";
-import Application from "./pages/SignUpForms/Application";
+import EnterOtp from "./pages/Auth/EnterOtp";
+import CreatePassword from "./pages/Auth/CreatePassword";
 import Homepage from "./pages/Homepage";
 import MultiStepper from "./components/MultiStepper";
+import Appointments from "./pages/Appointments";
 
 function App() {
   return (
     <>
-      <BrowserRouter>
+      <Router>
         <Routes>
-          <Route path="/" element={<Homepage />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/enterOTP" element={<EnterOtp />} />
-          <Route path="/profiledetails" element={<ProfileDetails />} />
-          <Route path="/forget" element={<Forgetpassword />} />
-          <Route path="/create" element={<CreatePassword />} />
-          <Route path="/newPassword" element={<Newpassword />} />
-          <Route path="/payPremium" element={<PayPremium />} />
-          <Route path="/verification" element={<Verification />} />
-          <Route path="/appointments" element={<Appointments />} />
-          <Route path="/profile" element={<SearchProfile />} />
-          <Route path="/client" element={<ClientImage />} />
-          <Route path="/error" element={<ErrorPage />} />
-          <Route path="/server" element={<ServerImage />} />
-          <Route path="/404" element={<Image404 />} />
-          <Route path="/lawyerDetails" element={<LawyerEnterDetails />} />
-          <Route path="/bondbailsman" element={<BondBailsman />} />
-          <Route path="/application" element={<Application />} />
-          <Route path="/multiStepper" element={<MultiStepper />} />
+          <Route
+            path="*"
+            element={
+              <AuthLayout>
+                <Routes>
+                  <Route index element={<Login />} />
+                  <Route path="register" element={<Register />} />
+                  <Route path="newPassword" element={<NewPassword />} />
+                  <Route path="forgetPassword" element={<ForgetPassword />} />
+                  <Route path="createPassword" element={<CreatePassword />} />
+                  <Route path="enterOTP" element={<EnterOtp />} />
+                </Routes>
+              </AuthLayout>
+            }
+          />
+          <Route path="/home" element={<Homepage />} />
+          <Route
+            path="dashboard/*"
+            element={
+              <DashboardLayout>
+                <Routes>
+                  <Route index element={<MultiStepper />} />
+                  <Route path="profileDetails" element={<ProfileDetails />} />
+                  <Route path="searchProfile" element={<SearchProfile />} />
+                  <Route path="appointments" element={<Appointments />} />
+                  <Route path="clientView" element={<ClientView />} />
+                  <Route path="error" element={<ErrorPage />} />
+                  <Route path="404" element={<Image404 />} />
+                  <Route path="500" element={<ServerImage />} />
+                </Routes>
+              </DashboardLayout>
+            }
+          />
         </Routes>
-      </BrowserRouter>
+      </Router>
     </>
   );
 }

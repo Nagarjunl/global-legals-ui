@@ -1,8 +1,8 @@
-import logo from "../assets/logo.png";
-import Input from "../components/Input";
-import PrimaryButton from "../components/PrimaryButton";
+import logo from "../../assets/logo.png";
+import Input from "../../components/Input";
+import PrimaryButton from "../../components/PrimaryButton";
 import { Link } from "react-router-dom";
-import LeftsideBar from "../components/Leftside-Bar";
+import LeftsideBar from "../../components/Leftside-Bar";
 
 const Register = () => {
   return (

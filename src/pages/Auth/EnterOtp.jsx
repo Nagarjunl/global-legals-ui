@@ -1,10 +1,10 @@
-import logo from "../assets/logo.png";
-import "../App.css";
-import Input from "../components/Input";
-import PrimaryButton from "../components/PrimaryButton";
-import Otpinput from "../components/OtpInput";
+import logo from "../../assets/logo.png";
+import "../../App.css";
+import Input from "../../components/Input";
+import PrimaryButton from "../../components/PrimaryButton";
+import Otpinput from "../../components/OtpInput";
 import { Link } from "react-router-dom";
-import LeftsideBar from "../components/Leftside-Bar";
+import LeftsideBar from "../../components/Leftside-Bar";
 
 const EnterOtp = () => {
   return (
@@ -57,7 +57,7 @@ const EnterOtp = () => {
 
                   <h2>Enter your received otp</h2>
                   <div className="pt-4">
-                    <Link to="/create">
+                    <Link to="/register">
                       <PrimaryButton
                         type="submit"
                         buttonText="Create Account"
