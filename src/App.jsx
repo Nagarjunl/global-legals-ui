@@ -7,7 +7,6 @@ import Newpassword from "./pages/Newpassword";
 import ProfileDetails from "./pages/ProfileDetails";
 import PayPremium from "./pages/PayPremium";
 import Verification from "./pages/Verification";
-import ProfessionalDetails from "./pages/ProfessionalDetails";
 import Appointments from "./pages/Appointments";
 import SearchProfile from "./pages/SearchProfile";
 import ClientImage from "./pages/ClientImage";
@@ -35,10 +34,6 @@ function App() {
           <Route path="/newPassword" element={<Newpassword />} />
           <Route path="/payPremium" element={<PayPremium />} />
           <Route path="/verification" element={<Verification />} />
-          <Route
-            path="/professionalDetails"
-            element={<ProfessionalDetails />}
-          />
           <Route path="/appointments" element={<Appointments />} />
           <Route path="/profile" element={<SearchProfile />} />
           <Route path="/client" element={<ClientImage />} />
