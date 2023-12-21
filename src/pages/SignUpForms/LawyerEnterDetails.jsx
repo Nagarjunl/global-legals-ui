@@ -328,13 +328,13 @@ const LawyerEnterDetails = () => {
           </div>
         </div>
 
-        <div className="flex items-center">
+        <div className="flex mt-2">
           <input
             type="checkbox"
             id="myCheckbox"
             className="form-checkbox h-5 w-5 text-indigo-600"
           />
-          <label className="ml-2 mt-2 text-[12px]">
+          <label className="ml-2 text-[12px]">
             By proceeding, you confirm that you&apos;ve read, comprehended, and
             consent to abide by our
             <span className="text-blue-700 underline text-[12px]">

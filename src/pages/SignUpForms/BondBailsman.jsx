@@ -128,7 +128,7 @@ function BondBailsman() {
                   id="first-name"
                   autoComplete="given-name"
                   placeholder="Agent Information"
-                  className="block w-full px-2 rounded-md border-0 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  className="block w-full px-2 rounded-md border-0 py-1.5text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
               </div>
             </div>
@@ -401,13 +401,13 @@ function BondBailsman() {
             </div>
           </div>
         </div>
-        <div className="flex items-center">
+        <div className="flex mt-5">
           <input
             type="checkbox"
             id="myCheckbox"
             className="form-checkbox h-5 w-5 text-indigo-600"
           />
-          <label className="ml-2 mt-2 text-[12px]">
+          <label className="ml-2 text-[12px]">
             By proceeding, you confirm that you&apos;ve read, comprehended, and
             consent to abide by our{" "}
             <span className="text-blue-700 underline text-[12px]">
@@ -453,13 +453,13 @@ function BondBailsman() {
             </div>
           </div>
         </div>
-        <div className="flex items-center">
+        <div className="flex mt-5">
           <input
             type="checkbox"
             id="myCheckbox"
-            className="form-checkbox h-5 w-5 text-indigo-600"
+            className="form-checkbox h-5 w-[46px] text-indigo-600"
           />
-          <label className="ml-2 mt-2 text-[12px]">
+          <label className="ml-2 text-[12px]">
             I hereby authorize Globallegals to conduct a background check for
             the purpose of verifying the information provided in my profile.
             This background check may include, but is not limited to, a review
@@ -472,13 +472,13 @@ function BondBailsman() {
             integrity and trustworthiness
           </label>
         </div>
-        <div className="flex items-center">
+        <div className="flex mt-5">
           <input
             type="checkbox"
             id="myCheckbox"
             className="form-checkbox h-5 w-5 text-indigo-600"
           />
-          <label className="ml-2 mt-2 text-[12px]">
+          <label className="ml-2 text-[12px]">
             By proceeding, you confirm that you&apos;ve read, comprehended, and
             consent to abide by our{" "}
             <span className="text-blue-700 underline">
