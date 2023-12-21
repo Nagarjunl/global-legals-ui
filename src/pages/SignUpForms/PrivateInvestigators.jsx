@@ -23,12 +23,11 @@ const PrivateInvestigators = () => {
           </h3>
 
           <div className="flex justify-between flex-row flex-wrap w-full sm: mt-2">
-            <p className="text-[14px] mt-2">
+            <p className="text-[14px]">
               Choose your profession from the options below to tailor the form
               to your specific needs. Let&apos;s ensure we <br />
               provide you with the best experience on Globallegals
             </p>
-
 
             <Menu as="div" className="relative inline-block text-left w-[295px]">
               <div>
