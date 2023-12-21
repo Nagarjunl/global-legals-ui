@@ -15,6 +15,7 @@ export default function Application() {
         <div>
           <h3 className="font-medium leading-[34.32px] text-[24px] mt-10">
             Select your profession
+
           </h3>
 
           <div className="flex justify-between flex-row flex-wrap w-full sm:mt-2">
