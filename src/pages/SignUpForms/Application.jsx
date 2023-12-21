@@ -536,13 +536,13 @@ export default function Application() {
           </div>
         </div>
 
-        <div className="flex items-center">
+        <div className="flex mt-5">
           <input
             type="checkbox"
             id="myCheckbox"
-            className="form-checkbox h-5 w-5 text-indigo-600"
+            className="form-checkbox h-5 w-[29px] text-indigo-600"
           />
-          <label className="ml-2 font-normal leading-[17.16px] text-[12px] mt-5">
+          <label className="ml-2 font-normal leading-[17.16px] text-[12px]">
             I hereby grant consent to Globallegals for a background check,
             including professional and educational details. I authorize the
             collection of necessary information for verification purposes. The
@@ -552,13 +552,13 @@ export default function Application() {
           </label>
         </div>
 
-        <div className="flex items-center">
+        <div className="flex mt-5">
           <input
             type="checkbox"
             id="myCheckbox"
             className="form-checkbox h-5 w-5 text-indigo-600"
           />
-          <label className="ml-2 font-normal leading-[17.16px] text-[12px] mt-5">
+          <label className="ml-2 font-normal leading-[17.16px] text-[12px]">
             By proceeding, you confirm that you&apos;ve read, comprehended, and
             consent to abide by our{" "}
             <span className="text-blue-700 underline">
@@ -574,18 +574,19 @@ export default function Application() {
             Professional Enhancement
           </h3>
 
-          <div className="flex justify-between flex-wrap flex-row w-full mt-2">
-            <p className="font-normal leading-[17.16px] text-[14px]">
+          <div className="flex justify-between  flex-wrap flex-row w-full mt-2">
+            <p className="mt-2 text-[14px]">
               Boost Your Profile! Connect Google Reviews and Testimonials to
               showcase your expertise. Click below to
               <br /> elevate your professional reputation on Global legals
             </p>
-            <button
-              type="button"
-              className="rounded-md mt-2 bg-white px-[48px] py-[12px] text-sm font-semibold text-black shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 border border-solid border-black"
-            >
+            <button className="mt-2 flex items-center justify-center px-4 py-2 border border-gray-300 rounded-md bg-white text-gray-700 hover:bg-gray-100 focus:outline-none focus:border-blue-300 focus:ring focus:ring-blue-200 w-72">
               <div className="flex justify-center">
-                <img src={GoogleImage} alt="Not found" className="w-[20px] h-[20px]" />
+                <img
+                  src={GoogleImage}
+                  alt="Google Logo"
+                  className="w-[20px] h-[20px]"
+                />
                 <p className="ml-3">Connect with Google</p>
               </div>
             </button>
@@ -621,13 +622,13 @@ export default function Application() {
             </div>
           </div>
         </div>
-        <div className="flex items-center">
+        <div className="flex mt-5">
           <input
             type="checkbox"
             id="myCheckbox"
             className="form-checkbox h-5 w-5 text-indigo-600"
           />
-          <label className="ml-2 font-normal leading-[17.16px] text-[12px] mt-5">
+          <label className="ml-2 font-normal leading-[17.16px] text-[12px]">
             By proceeding, you confirm that you&apos;ve read, comprehended, and
             consent to abide by our{" "}
             <span className="text-blue-700 underline">
