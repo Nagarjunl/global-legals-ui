@@ -66,7 +66,7 @@ export default function Example() {
       </div>
 
       {/* Render the content of the current step */}
-      <div className="max-w-screen-xl mx-auto p-4">
+      <div className="max-w-full mx-auto p-4">
         {currentStep === 0 && (
           <div>
             <LawyerEnterDetails />
