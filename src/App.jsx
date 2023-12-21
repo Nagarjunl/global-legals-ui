@@ -15,8 +15,8 @@ import ServerImage from "./pages/ServerImage";
 import Image404 from "./pages/Image404";
 import EnterOtp from "./pages/EnterOtp";
 import CreatePassword from "./pages/CreatePassword";
-import PersonalInformation from "./pages/SignUpForms/PersonalInformation";
-import BusinessInformation from "./pages/SignUpForms/BusinessInformation";
+import LawyerEnterDetails from "./pages/SignUpForms/LawyerEnterDetails";
+import BondBailsman from "./pages/SignUpForms/BondBailsman";
 import Application from "./pages/SignUpForms/Application";
 import Homepage from "./pages/Homepage";
 import MultiStepper from "./components/MultiStepper";
@@ -42,14 +42,8 @@ function App() {
           <Route path="/error" element={<ErrorPage />} />
           <Route path="/server" element={<ServerImage />} />
           <Route path="/404" element={<Image404 />} />
-          <Route
-            path="/personalInformation"
-            element={<PersonalInformation />}
-          />
-          <Route
-            path="/businessInformation"
-            element={<BusinessInformation />}
-          />
+          <Route path="/lawyerDetails" element={<LawyerEnterDetails />} />
+          <Route path="/bondbailsman" element={<BondBailsman />} />
           <Route path="/application" element={<Application />} />
           <Route path="/multiStepper" element={<MultiStepper />} />
         </Routes>
