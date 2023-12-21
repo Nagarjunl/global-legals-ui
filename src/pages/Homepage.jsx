@@ -114,6 +114,7 @@ const Homepage = () => {
             <div className="b-yellow-50 ">
               <div className=" grid grid-cols-2 gap-x-5 max-md:grid-cols-1  max-lg:grid-cols-1 max-xl:grid-cols-2">
                 <div className="grid items-center max-lg:justify-center">
+
                   <div className="max-w-[481px]">
                     <p className="self-stretch text-[44px] mb-10 leading-[55.66px] font-bold max-md:text-start">
                       The best part? Everything.
@@ -145,7 +146,9 @@ const Homepage = () => {
                   </div>
                 </div>
                 <div className="grid justify-center items-end  relative mt-10">
+
                   <div className="relative justify-center">
+
                     <img src={containerThree} alt="user_image" />
                     <div className="absolute top-[50px] left-[57px] rounded-full bg-white bg-opacity-20 px-5 py-2  backdrop-blur-md backdrop-filter">
                       <p className=" text-[20px] font-medium text-white">
@@ -176,7 +179,9 @@ const Homepage = () => {
           <div className="grid grid-flow-row gap-5">
             <div className="grid grid-cols-2 gap-10 max-md:grid-cols-1 max-lg:grid-cols-1  ">
               <div className="sm:grid justify-items-end">
+
                 <div className="relative max-lg:grid justify-center">
+
                   <img src={usersmile} alt="user_image_two" />
                   <div className="absolute  right-5 bottom-5  rounded-full bg-white bg-opacity-20 px-5 py-2  backdrop-blur-md backdrop-filter">
                     <p className=" text-[16px] font-normal text-white">
@@ -190,7 +195,9 @@ const Homepage = () => {
                 </div>
               </div>
               <div className="grid justify-center items-center sm:justify-items-start">
+
                 <div>
+
                   <blockquote className=" text-4xl font-serif italic mb-8">
                     “When you want to create a business bigger than yourself,
                     you need a lot of help. thats what Global legals does”
@@ -206,7 +213,9 @@ const Homepage = () => {
       </div>
       <div className="bg-blue-50 max-sm:px-6 p-[120px]">
         <div className="mx-auto container">
+
           <h1 className="text-black font-bold text-[44px] mb-10 leading-[55.66px] text-start font-circular-std">
+
             Your Roadmap to Achieving Growth
           </h1>
           <div className="grid grid-flow-row gap-5">
@@ -225,8 +234,10 @@ const Homepage = () => {
       <div className="bg-white max-sm:px-6 p-[120px]">
         <div className="mx-auto container">
           <div className="grid grid-cols-5 max-md:grid-cols-1 max-lg:grid-cols-1">
+
             <div className=" col-span-2 grid justify-center items-center ">
               <div className="p-6">
+
                 <div className="text-[44px] mb-1 max-w-[300px] leading-[62.92px] font-semibold">
                   Get in Touch 
                   with Global Legals
@@ -333,7 +344,9 @@ const Homepage = () => {
       {/*  */}
       <div className="bg-white max-sm:px-6 px-[120px] py-[80px]">
         <div className="mx-auto container">
+
           <div className="relative bg-gradient-to-r from-[#d38b5d] to-[#fea66d] grid grid-cols-2">
+
             <div className="col-span-3 p-10">
               <p className="text-black font-CircularStd  italic font-bold text-[20px] mb-2 leading-[25.3px]">
                 Global Legals
@@ -356,7 +369,9 @@ const Homepage = () => {
           </div>
         </div>
       </div>
+
       <div className="mx-auto container sm:px-6 lg:px-8 mt-[80px]">
+
         <Footer />
       </div>
     </>

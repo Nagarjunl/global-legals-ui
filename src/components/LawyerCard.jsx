@@ -1,11 +1,12 @@
-import React from "react";
+/* eslint-disable react/prop-types */
 import Phone from "../assets/image 24.png";
 import CircleImg from "../assets/circle.png";
+import PrimaryButton from "./PrimaryButton";
 
 const LawyerCard = ({
   image,
   fName,
-  Cups,
+  cups,
   topRated,
   pratcingAt,
   designation,
@@ -14,13 +15,13 @@ const LawyerCard = ({
   return (
     <>
       <div className="grid-cols-3  flex-wrap border border-blue-Gray-200 mt-10 rounded-xl w-full">
-        <div class="bg-white p-2 w-80 max-w-auto sm:w-full sm:p-4 sm:h-auto rounded-2xl flex flex-col sm:flex-row gap-5 select-none">
+        <div className="bg-white p-2 w-80 max-w-auto sm:w-full sm:p-4 sm:h-auto rounded-2xl flex flex-col sm:flex-row gap-5 select-none">
           <div className="p-5">
             <img src={image} alt="frame" />
           </div>
           {/*  */}
-          <div class="flex sm:flex-1 flex-col justify-end gap-2 p-1">
-            <h1 class="text-lg sm:text-xl font-semibold  text-black">
+          <div className="flex sm:flex-1 flex-col justify-end gap-2 p-1">
+            <h1 className="text-lg sm:text-xl font-semibold  text-black">
               {fName}
             </h1>
             <div className=" flex  flex wrap gap-4 ">
@@ -29,19 +30,19 @@ const LawyerCard = ({
               </span>
               {topRated && (
                 <span className="inline-flex items-center rounded-full bg-yellow-50 px-2 py-1 text-xs font-medium text-yellow-800 ring-1 ring-inset ring-yellow-600/20">
-                  <img src={Cups} alt="" />
+                  <img src={cups} alt="no image found" />
                   {topRated}
                 </span>
               )}
             </div>
-            <div class=" flex text-lg text-gray-600 ">
+            <div className=" flex text-lg text-gray-600 ">
               <span className="inline-flex  py-2  text-sm font-medium ">
                 <img src={Phone} alt="Phone" className="w-10 px-2" />
                 {" Practioning at "}
                 <span className="text-blue-700 px-2">{pratcingAt}</span>
               </span>
             </div>
-            <div class=" flex text-lg text-gray-600 ">
+            <div className=" flex text-lg text-gray-600 ">
               <span className="inline-flex  py-1 text-sm font-medium ">
                 <img
                   src={CircleImg}
@@ -51,35 +52,28 @@ const LawyerCard = ({
                 {designation}
               </span>
             </div>
-            <div class=" flex text-lg text-gray-600 ">
+            <div className=" flex text-lg text-gray-600 ">
               <span className="inline-flex  px-2 py-1 text-sm font-medium ">
                 {selfIntro}
               </span>
             </div>
-            <div class=" flex text-lg text-gray-500 ">
+            <div className=" flex text-lg text-gray-500 ">
               <span className="inline-flex  px-2 py-1 text-sm font-small ">
                 {"Client / Peer Review"}
               </span>
             </div>
             <div className="text-lg px-2">{"4.2 / 5.0"}</div>
-            {/*  */}
           </div>
-          <div className="item-center mt-20 ml-10">
-            <div className="item-center">
-              <button
-                class="middle none center mr-3 rounded-lg border border-blue-500 py-3 px-6 font-sans text-xs font-bold uppercase text-blue-500 transition-all hover:opacity-75 focus:ring focus:ring-blue-200 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-                data-ripple-dark="true"
-              >
-                Call via Phone
-              </button>
-              <br />
-              <button
-                class="middle  mt-3 none center  mr-3 rounded-lg bg-blue-500 py-3 px-8 font-sans text-xs font-bold uppercase text-white shadow-md shadow-blue-500/20 transition-all hover:shadow-lg hover:shadow-blue-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-                data-ripple-light="true"
-              >
-                Call via mail
-              </button>
-            </div>
+          <div className="mt-auto pb-5 ">
+            <button
+              type="button"
+              className="rounded-md  w-full bg-white px-3 py-2 text-sm font-semibold text-blue-600 shadow-sm ring-1 ring-inset ring-blue-600 hover:bg-gray-50"
+            >
+              Call via Phone
+            </button>
+            <br />
+
+            <PrimaryButton buttonText="Call via mail" />
           </div>
         </div>
       </div>
