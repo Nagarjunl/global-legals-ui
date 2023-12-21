@@ -7,11 +7,10 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-
 export default function Application() {
   return (
     <>
-      <div className="mx-auto px-4 max-w-7xl sm:px-6 lg:px-12 xs:px-10">
+      <div className="mx-auto px-4 max-w-full  sm:px-6 lg:px-12 xs:px-10">
         <div>
           <h3 className="font-medium leading-[34.32px] text-[24px] mt-10">
             Select your profession
@@ -23,7 +22,10 @@ export default function Application() {
               to your specific needs. Let&apos;s ensure we <br />
               provide you with the best experience on Globallegals
             </p>
-            <Menu as="div" className="relative inline-block text-left w-[295px]">
+            <Menu
+              as="div"
+              className="relative inline-block text-left w-[295px]"
+            >
               <div>
                 <Menu.Button className="inline-flex w-72 mt-2 justify-between gap-x-1.5 rounded-md bg-white px-4 py-4 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
                   Bond Bailsmen
@@ -50,7 +52,9 @@ export default function Application() {
                         <a
                           href="#"
                           className={classNames(
-                            active ? "bg-gray-100 text-gray-900" : "text-gray-700",
+                            active
+                              ? "bg-gray-100 text-gray-900"
+                              : "text-gray-700",
                             "block px-4 py-2 text-sm"
                           )}
                         >
@@ -63,7 +67,9 @@ export default function Application() {
                         <a
                           href="#"
                           className={classNames(
-                            active ? "bg-gray-100 text-gray-900" : "text-gray-700",
+                            active
+                              ? "bg-gray-100 text-gray-900"
+                              : "text-gray-700",
                             "block px-4 py-2 text-sm"
                           )}
                         >
@@ -76,7 +82,9 @@ export default function Application() {
                         <a
                           href="#"
                           className={classNames(
-                            active ? "bg-gray-100 text-gray-900" : "text-gray-700",
+                            active
+                              ? "bg-gray-100 text-gray-900"
+                              : "text-gray-700",
                             "block px-4 py-2 text-sm"
                           )}
                         >
@@ -90,7 +98,9 @@ export default function Application() {
                           <button
                             type="submit"
                             className={classNames(
-                              active ? "bg-gray-100 text-gray-900" : "text-gray-700",
+                              active
+                                ? "bg-gray-100 text-gray-900"
+                                : "text-gray-700",
                               "block w-full px-4 py-2 text-left text-sm"
                             )}
                           >
@@ -114,7 +124,9 @@ export default function Application() {
 
             <div>
               <div>
-                <h5 className="font-normal leading-[17.16px] text-[12px]">Enter your full name</h5>
+                <h5 className="font-normal leading-[17.16px] text-[12px]">
+                  Enter your full name
+                </h5>
                 <div className="mt-2">
                   <input
                     className="block w-full p-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm  text-xs ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-xs sm:leading-6"
@@ -123,7 +135,9 @@ export default function Application() {
                 </div>
               </div>
               <div className="mt-2">
-                <h5 className="font-normal leading-[17.16px] text-[12px]">Contact number</h5>
+                <h5 className="font-normal leading-[17.16px] text-[12px]">
+                  Contact number
+                </h5>
                 <div className="mt-2">
                   <input
                     className="block w-full p-3  rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -135,7 +149,9 @@ export default function Application() {
 
             <div>
               <div>
-                <h5 className="font-normal leading-[17.16px] text-[12px]">Enter Email Address</h5>
+                <h5 className="font-normal leading-[17.16px] text-[12px]">
+                  Enter Email Address
+                </h5>
                 <div className="mt-2">
                   <input
                     className="block w-full p-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -144,7 +160,9 @@ export default function Application() {
                 </div>
               </div>
               <div className="mt-2">
-                <h5 className="font-normal leading-[17.16px] text-[12px]">Location / Address</h5>
+                <h5 className="font-normal leading-[17.16px] text-[12px]">
+                  Location / Address
+                </h5>
                 <div className="mt-2">
                   <input
                     className="block w-full p-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -173,7 +191,9 @@ export default function Application() {
             </div>
           </div>
           <div className="mt-2">
-            <h5 className="font-normal leading-[17.16px] text-[12px]">Write a professional Bio</h5>
+            <h5 className="font-normal leading-[17.16px] text-[12px]">
+              Write a professional Bio
+            </h5>
             <div className="mt-2">
               <textarea
                 rows={4}
@@ -191,7 +211,9 @@ export default function Application() {
             Professional Credentials
           </h3>
           <div className="sm:col-span-3">
-            <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">Security License Number</h5>
+            <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">
+              Security License Number
+            </h5>
             <div className="mt-2">
               <input
                 type="text"
@@ -204,7 +226,9 @@ export default function Application() {
             </div>
           </div>
           <div className="sm:col-span-3">
-            <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">License Expiry Date</h5>
+            <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">
+              License Expiry Date
+            </h5>
             <div className="mt-2">
               <input
                 type="text"
@@ -217,7 +241,9 @@ export default function Application() {
             </div>
           </div>
           <div className="sm:col-span-3 ">
-            <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">Years of Experience in Security</h5>
+            <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">
+              Years of Experience in Security
+            </h5>
 
             <div className="mt-2">
               <select
@@ -242,7 +268,9 @@ export default function Application() {
               Military Background - if applicable
             </h3>
             <div className="sm:col-span-3">
-              <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">Branch of Service</h5>
+              <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">
+                Branch of Service
+              </h5>
               <div className="mt-2">
                 <input
                   type="text"
@@ -255,7 +283,9 @@ export default function Application() {
               </div>
             </div>
             <div className="sm:col-span-3">
-              <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">Rank at Discharge</h5>
+              <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">
+                Rank at Discharge
+              </h5>
               <div className="mt-2">
                 <input
                   type="text"
@@ -268,7 +298,9 @@ export default function Application() {
               </div>
             </div>
             <div className="sm:col-span-3 ">
-              <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">Military Occupational Speciality ( MOS):</h5>
+              <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">
+                Military Occupational Speciality ( MOS):
+              </h5>
 
               <div className="mt-2">
                 <select
@@ -288,7 +320,9 @@ export default function Application() {
             </div>
 
             <div className="sm:col-span-3">
-              <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">Years of military Service</h5>
+              <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">
+                Years of military Service
+              </h5>
               <div className="mt-2">
                 <input
                   type="text"
@@ -308,7 +342,9 @@ export default function Application() {
               Business Information ( if - applicable)
             </h3>
             <div className="sm:col-span-3">
-              <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">Business Name</h5>
+              <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">
+                Business Name
+              </h5>
               <div className="mt-2">
                 <input
                   type="text"
@@ -321,7 +357,9 @@ export default function Application() {
               </div>
             </div>
             <div className="sm:col-span-3">
-              <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">Business Address</h5>
+              <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">
+                Business Address
+              </h5>
               <div className="mt-2">
                 <input
                   type="text"
@@ -334,7 +372,9 @@ export default function Application() {
               </div>
             </div>
             <div className="sm:col-span-3 ">
-              <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">Business Email</h5>
+              <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">
+                Business Email
+              </h5>
 
               <div className="mt-2">
                 <select
@@ -354,7 +394,9 @@ export default function Application() {
             </div>
 
             <div className="sm:col-span-3">
-              <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">Business Phone number</h5>
+              <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">
+                Business Phone number
+              </h5>
               <div className="mt-2">
                 <input
                   type="text"
@@ -374,7 +416,9 @@ export default function Application() {
             Service Details
           </h3>
           <div className="sm:col-span-3">
-            <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">Type of Security Services Offered</h5>
+            <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">
+              Type of Security Services Offered
+            </h5>
             <div className="mt-2">
               <input
                 type="text"
@@ -387,7 +431,9 @@ export default function Application() {
             </div>
           </div>
           <div className="sm:col-span-3">
-            <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">Coverage Areas</h5>
+            <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">
+              Coverage Areas
+            </h5>
             <div className="mt-2">
               <input
                 type="text"
@@ -400,7 +446,9 @@ export default function Application() {
             </div>
           </div>
           <div className="sm:col-span-3">
-            <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">Fee Structure</h5>
+            <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">
+              Fee Structure
+            </h5>
             <div className="mt-2">
               <input
                 type="text"
@@ -418,7 +466,9 @@ export default function Application() {
             Insurance Information
           </h3>
           <div className="sm:col-span-3">
-            <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">Insurance Pilicy Number</h5>
+            <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">
+              Insurance Pilicy Number
+            </h5>
             <div className="mt-2">
               <input
                 type="text"
@@ -431,7 +481,9 @@ export default function Application() {
             </div>
           </div>
           <div className="sm:col-span-3">
-            <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">Insurance Provider</h5>
+            <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">
+              Insurance Provider
+            </h5>
             <div className="mt-2">
               <input
                 type="text"
@@ -444,7 +496,9 @@ export default function Application() {
             </div>
           </div>
           <div className="sm:col-span-3">
-            <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">Coverage Amount</h5>
+            <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">
+              Coverage Amount
+            </h5>
             <div className="mt-2">
               <input
                 type="text"
@@ -478,7 +532,9 @@ export default function Application() {
             Certification and Specialization
           </h3>
           <div className="sm:col-span-3">
-            <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">Relevant Certifications</h5>
+            <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">
+              Relevant Certifications
+            </h5>
             <div className="mt-2">
               <input
                 type="text"
@@ -491,7 +547,9 @@ export default function Application() {
             </div>
           </div>
           <div className="sm:col-span-3">
-            <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">Area of Expertise</h5>
+            <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">
+              Area of Expertise
+            </h5>
             <div className="mt-2">
               <input
                 type="text"
@@ -509,7 +567,9 @@ export default function Application() {
             References and Permissions
           </h3>
           <div className="sm:col-span-3">
-            <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">Cleint References</h5>
+            <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">
+              Cleint References
+            </h5>
             <div className="mt-2">
               <input
                 type="text"
@@ -522,7 +582,9 @@ export default function Application() {
             </div>
           </div>
           <div className="sm:col-span-3">
-            <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">Contact number</h5>
+            <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">
+              Contact number
+            </h5>
             <div className="mt-2">
               <input
                 type="text"
@@ -585,7 +647,11 @@ export default function Application() {
               className="rounded-md mt-2 bg-white px-[48px] py-[12px] text-sm font-semibold text-black shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 border border-solid border-black"
             >
               <div className="flex justify-center">
-                <img src={GoogleImage} alt="Not found" className="w-[20px] h-[20px]" />
+                <img
+                  src={GoogleImage}
+                  alt="Not found"
+                  className="w-[20px] h-[20px]"
+                />
                 <p className="ml-3">Connect with Google</p>
               </div>
             </button>
@@ -594,7 +660,9 @@ export default function Application() {
         <div className="flex-1 border-t border-gray-300 mt-3"></div>
         <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
           <div className="sm:col-span-3">
-            <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">Linkedin profile</h5>
+            <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">
+              Linkedin profile
+            </h5>
             <div className="mt-2">
               <input
                 type="text"
@@ -608,7 +676,9 @@ export default function Application() {
           </div>
 
           <div className="sm:col-span-3">
-            <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">Twitter Profile</h5>
+            <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">
+              Twitter Profile
+            </h5>
             <div className="mt-2">
               <input
                 type="text"

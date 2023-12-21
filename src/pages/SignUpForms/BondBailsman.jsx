@@ -7,7 +7,7 @@ function BondBailsman() {
   };
   return (
     <>
-      <div className="mx-auto px-4 max-w-7xl sm:px-6 lg:px-12">
+      <div className="mx-auto px-4 max-w-full  sm:px-6 lg:px-12">
         <div>
           <h3 className="font-medium leading-[34.32px] text-[24px] mt-10">
             Select your profession
@@ -43,7 +43,9 @@ function BondBailsman() {
               Business Information
             </h3>
             <div className="sm:col-span-3">
-              <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">Full Legal Business Name</h5>
+              <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">
+                Full Legal Business Name
+              </h5>
               <div className="mt-2">
                 <input
                   type="text"
@@ -56,7 +58,9 @@ function BondBailsman() {
               </div>
             </div>
             <div className="sm:col-span-3">
-              <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">Business Address</h5>
+              <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">
+                Business Address
+              </h5>
               <div className="mt-2">
                 <input
                   type="text"
@@ -69,7 +73,9 @@ function BondBailsman() {
               </div>
             </div>
             <div className="sm:col-span-3">
-              <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">Business Email Address</h5>
+              <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">
+                Business Email Address
+              </h5>
               <div className="mt-2">
                 <input
                   type="text"
@@ -82,7 +88,9 @@ function BondBailsman() {
               </div>
             </div>
             <div className="sm:col-span-3">
-              <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">Business Phone number</h5>
+              <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">
+                Business Phone number
+              </h5>
               <div className="mt-2">
                 <input
                   type="text"
@@ -95,7 +103,9 @@ function BondBailsman() {
               </div>
             </div>
             <div className="sm:col-span-3">
-              <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">Company website</h5>
+              <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">
+                Company website
+              </h5>
               <div className="mt-2">
                 <input
                   type="text"
@@ -108,7 +118,9 @@ function BondBailsman() {
               </div>
             </div>
             <div className="sm:col-span-3">
-              <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">Owner Agent Information</h5>
+              <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">
+                Owner Agent Information
+              </h5>
               <div className="mt-2">
                 <input
                   type="text"
@@ -128,7 +140,9 @@ function BondBailsman() {
               Licensing Credentials
             </h3>
             <div className="sm:col-span-3">
-              <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">License Number</h5>
+              <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">
+                License Number
+              </h5>
               <div className="mt-2">
                 <input
                   type="text"
@@ -141,7 +155,9 @@ function BondBailsman() {
               </div>
             </div>
             <div className="sm:col-span-3">
-              <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">Date of Licensing</h5>
+              <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">
+                Date of Licensing
+              </h5>
               <div className="mt-2">
                 <input
                   type="text"
@@ -154,7 +170,9 @@ function BondBailsman() {
               </div>
             </div>
             <div className="sm:col-span-3">
-              <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">Licensing Authority</h5>
+              <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">
+                Licensing Authority
+              </h5>
               <div className="mt-2">
                 <input
                   type="text"
@@ -167,7 +185,9 @@ function BondBailsman() {
               </div>
             </div>
             <div className="sm:col-span-3">
-              <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">Bonding Capacity</h5>
+              <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">
+                Bonding Capacity
+              </h5>
               <div className="mt-2">
                 <input
                   type="text"
@@ -187,7 +207,9 @@ function BondBailsman() {
             Insurance Information
           </h3>
           <div className="sm:col-span-3">
-            <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">Insurance Policy Number</h5>
+            <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">
+              Insurance Policy Number
+            </h5>
             <div className="mt-2">
               <input
                 type="text"
@@ -200,7 +222,9 @@ function BondBailsman() {
             </div>
           </div>
           <div className="sm:col-span-3">
-            <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">Insurance Provider</h5>
+            <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">
+              Insurance Provider
+            </h5>
             <div className="mt-2">
               <input
                 type="text"
@@ -213,7 +237,9 @@ function BondBailsman() {
             </div>
           </div>
           <div className="sm:col-span-3 ">
-            <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">Coverage Amount</h5>
+            <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">
+              Coverage Amount
+            </h5>
 
             <div className="mt-2">
               <select
@@ -232,7 +258,9 @@ function BondBailsman() {
             </div>
           </div>
           <div className="sm:col-span-3">
-            <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">Experience Date of Insurance</h5>
+            <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">
+              Experience Date of Insurance
+            </h5>
             <div className="mt-2">
               <input
                 type="text"
@@ -252,7 +280,9 @@ function BondBailsman() {
               Service Details
             </h3>
             <div className="sm:col-span-3">
-              <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">Areas Covered</h5>
+              <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">
+                Areas Covered
+              </h5>
               <div className="mt-2">
                 <input
                   type="text"
@@ -265,7 +295,9 @@ function BondBailsman() {
               </div>
             </div>
             <div className="sm:col-span-3">
-              <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">Fee Structure</h5>
+              <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">
+                Fee Structure
+              </h5>
               <div className="mt-2">
                 <input
                   type="text"
@@ -278,7 +310,9 @@ function BondBailsman() {
               </div>
             </div>
             <div className="sm:col-span-3">
-              <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">Types of bonds served</h5>
+              <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">
+                Types of bonds served
+              </h5>
               <div className="mt-2">
                 <input
                   type="text"
@@ -292,7 +326,9 @@ function BondBailsman() {
             </div>
 
             <div className="sm:col-span-3">
-              <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">Years of Experience as a Bail Bondsman</h5>
+              <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">
+                Years of Experience as a Bail Bondsman
+              </h5>
               <div className="mt-2">
                 <input
                   type="text"
@@ -329,13 +365,14 @@ function BondBailsman() {
               </div>
             </button>
           </div>
-
         </div>
 
         <div className="flex-1 border-t border-gray-300 mt-3"></div>
         <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
           <div className="sm:col-span-3">
-            <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">Linkedin profile</h5>
+            <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">
+              Linkedin profile
+            </h5>
             <div className="mt-2">
               <input
                 type="text"
@@ -349,7 +386,9 @@ function BondBailsman() {
           </div>
 
           <div className="sm:col-span-3">
-            <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">Twitter Profile</h5>
+            <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">
+              Twitter Profile
+            </h5>
             <div className="mt-2">
               <input
                 type="text"
@@ -384,7 +423,9 @@ function BondBailsman() {
             References and Permissions
           </h3>
           <div className="sm:col-span-3">
-            <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">Cleint References</h5>
+            <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">
+              Cleint References
+            </h5>
             <div className="mt-2">
               <input
                 type="text"
@@ -397,7 +438,9 @@ function BondBailsman() {
             </div>
           </div>
           <div className="sm:col-span-3">
-            <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">Contact number</h5>
+            <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">
+              Contact number
+            </h5>
             <div className="mt-2">
               <input
                 type="text"
