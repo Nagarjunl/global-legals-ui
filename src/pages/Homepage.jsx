@@ -113,7 +113,8 @@ const Homepage = () => {
           {/* <div className="grid grid-flow-row gap-5"> */}
             <div className="b-yellow-50 ">
               <div className=" grid grid-cols-2 gap-x-5 max-md:grid-cols-1  max-lg:grid-cols-1 max-xl:grid-cols-2">
-                <div className="grid items-center max-lg:justify-center max-sm:px-[15px]">
+                <div className="grid items-center max-lg:justify-center">
+
                   <div className="max-w-[481px]">
                     <p className="self-stretch text-[44px] mb-10 leading-[55.66px] font-bold max-md:text-start">
                       The best part? Everything.
@@ -145,9 +146,27 @@ const Homepage = () => {
                   </div>
                 </div>
                 <div className="grid justify-center items-end  relative mt-10">
-                  <div className="justify-center px-5">
+
+                  <div className="relative justify-center">
+
                     <img src={containerThree} alt="user_image" />
+                    <div className="absolute top-[50px] left-[57px] rounded-full bg-white bg-opacity-20 px-5 py-2  backdrop-blur-md backdrop-filter">
+                      <p className=" text-[20px] font-medium text-white">
+                        Services we bring to table
+                      </p>
+                    </div>
+                    <div className="absolute top-[107px] left-[175px] rounded-full bg-white bg-opacity-20 px-5 py-2  backdrop-blur-md backdrop-filter">
+                      <p className=" text-[20px] font-medium text-white">
+                        At Affordable prices
+                      </p>
                   </div>
+                  <div className="absolute top-[164px] left-[57px] rounded-full bg-white bg-opacity-20 px-5 py-2  backdrop-blur-md backdrop-filter">
+                    <p className=" text-[20px] font-medium text-white">
+                      We Offer much more
+                    </p>
+                  </div>
+                </div>
+                
                 </div>
               </div>
             </div>
@@ -160,21 +179,25 @@ const Homepage = () => {
           <div className="grid grid-flow-row gap-5">
             <div className="grid grid-cols-2 gap-10 max-md:grid-cols-1 max-lg:grid-cols-1  ">
               <div className="sm:grid justify-items-end">
-                <div className="relative max-lg:grid justify-center p-5 ">
+
+                <div className="relative max-lg:grid justify-center">
+
                   <img src={usersmile} alt="user_image_two" />
-                  <div className="absolute  right-28 bottom-5  rounded-full bg-white bg-opacity-20 p-3  backdrop-blur-md backdrop-filter text-center">
-                    <span className="p-1 text-xl font-normal text-white">
-                      Global Legals <br />
-                    </span>
-                    <span className="p-1 text-sm font-normal text-center text-white">
+                  <div className="absolute  right-5 bottom-5  rounded-full bg-white bg-opacity-20 px-5 py-2  backdrop-blur-md backdrop-filter">
+                    <p className=" text-[16px] font-normal text-white">
+                      Global Legals
+                    </p>
+                    <p className="text-[12px] font-normal text-white">
                       Founder, CTO
-                    </span>
+                    </p>
                   </div>
                   {/*  */}
                 </div>
               </div>
               <div className="grid justify-center items-center sm:justify-items-start">
-                <div className="m-5">
+
+                <div>
+
                   <blockquote className=" text-4xl font-serif italic mb-8">
                     “When you want to create a business bigger than yourself,
                     you need a lot of help. thats what Global legals does”
@@ -190,11 +213,13 @@ const Homepage = () => {
       </div>
       <div className="bg-blue-50 max-sm:px-6 p-[120px]">
         <div className="mx-auto container">
-          <h1 className="text-black font-bold text-[44px] mb-10 leading-[55.66px] ml-5 text-start font-circular-std">
+
+          <h1 className="text-black font-bold text-[44px] mb-10 leading-[55.66px] text-start font-circular-std">
+
             Your Roadmap to Achieving Growth
           </h1>
           <div className="grid grid-flow-row gap-5">
-            <div className="grid grid-cols-2 gap-8 max-md:grid-cols-1 max-lg:grid-cols-1 p-5">
+            <div className="grid grid-cols-2 gap-8 max-md:grid-cols-1 max-lg:grid-cols-1">
               <div className="p-1 max-md:grid justify-center">
                 <img src={RoadMapImg1} alt="business" />
               </div>
@@ -209,21 +234,23 @@ const Homepage = () => {
       <div className="bg-white max-sm:px-6 p-[120px]">
         <div className="mx-auto container">
           <div className="grid grid-cols-5 max-md:grid-cols-1 max-lg:grid-cols-1">
-            <div className=" m-5 col-span-2 grid justify-center items-center ">
-              <div className="p-6 ">
+
+            <div className=" col-span-2 grid justify-center items-center ">
+              <div className="p-6">
+
                 <div className="text-[44px] mb-1 max-w-[300px] leading-[62.92px] font-semibold">
                   Get in Touch 
                   with Global Legals
                 </div>
                 <div className="text-xs pt-2">
                   Have questions, need assistance, or looking for legal <br />
-                  guidance? Fill out the form below, and our team will get{" "}
+                  guidance? Fill out the form below, and our team will get
                   <br />
                   back to you promptly. Your inquiries matter to us!
                 </div>
               </div>
             </div>
-            <div className="m-5 col-span-3 ">
+            <div className="col-span-3 ">
               <div className="p-6 bg-[#eff6ff] rounded-lg">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 ">
                   <div>
@@ -317,7 +344,9 @@ const Homepage = () => {
       {/*  */}
       <div className="bg-white max-sm:px-6 px-[120px] py-[80px]">
         <div className="mx-auto container">
-          <div className="relative bg-gradient-to-r from-[#d38b5d] to-[#fea66d] m-5 grid grid-cols-2">
+
+          <div className="relative bg-gradient-to-r from-[#d38b5d] to-[#fea66d] grid grid-cols-2">
+
             <div className="col-span-3 p-10">
               <p className="text-black font-CircularStd  italic font-bold text-[20px] mb-2 leading-[25.3px]">
                 Global Legals
@@ -340,7 +369,9 @@ const Homepage = () => {
           </div>
         </div>
       </div>
-      <div className="mx-auto container sm:px-6 lg:px-8">
+
+      <div className="mx-auto container sm:px-6 lg:px-8 mt-[80px]">
+
         <Footer />
       </div>
     </>
