@@ -12,7 +12,7 @@ const ProfileDetails = () => {
   return (
     <>
       <main>
-        <div className="mx-auto container max-sm:px-6 px-[120px] pb-3">
+        <div className="mx-auto container max-sm:px-6 lg:px-[120px] pb-3">
           {/* Profilecard */}
           <div className="mt-5">
             <ProfileCard />
