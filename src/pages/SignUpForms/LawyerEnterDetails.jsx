@@ -7,35 +7,7 @@ const LawyerEnterDetails = () => {
   };
   return (
     <>
-      <div className="mx-auto px-4 max-w-full  sm:px-6 lg:px-12">
-        <div>
-          <h3 className="font-medium leading-[34.32px] text-[24px] mt-10">
-            Select your profession
-          </h3>
-          <div className="flex justify-between flex-row flex-wrap w-full">
-            <p className="mt-2 text-[14px]">
-              Choose your profession from the options below to tailor the form
-              to your specific needs. Let&apos;s ensure we <br />
-              provide you with the best experience on Globallegals
-            </p>
-            <div>
-              <select
-                id="location"
-                name="location"
-                className="block w-full mt-4 rounded-md border-0 py-3 pl-4 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                defaultValue=""
-              >
-                <option value="" disabled hidden>
-                  Select from dropdown
-                </option>
-
-                <option>United States</option>
-                <option>Canada</option>
-                <option>Mexico</option>
-              </select>
-            </div>
-          </div>
-        </div>
+      <div className="container mx-auto sm:px-6 lg:px-12">
         <div className="mt-10">
           <div className="grid xs:grid-cols-1 lg:grid-cols-3 gap-4">
             <h3 className="lg:col-span-3 font-medium leading-[34.32px] text-[24px]">

@@ -1,17 +1,11 @@
 import { useState } from "react";
 import { ChevronRightIcon, CheckIcon } from "@heroicons/react/20/solid";
-// import Application from "../pages/SignUpForms/SecurityDetails";
-// import PrivateInvestigators from "../pages/SignUpForms/PrivateInvestigators";
 import PayPremium from "../pages/SignUpForms/PayPremium";
 import Verification from "../pages/SignUpForms/Verification";
-import LawyerEnterDetails from "../pages/SignUpForms/LawyerEnterDetails";
-// import BondBailsman from "../pages/SignUpForms/BondBailsman";
+import SelectForm from "../pages/SignUpForms/Forms";
 
 const steps = [
-  { id: "1", name: "Personal Details", href: "#", status: "current" },
-  // { id: "2", name: "BondBailsman Details", href: "#", status: "upcoming" },
-  // { id: "3", name: "Security Details", href: "#", status: "upcoming" },
-  // { id: "4", name: "Private Investigators", href: "#", status: "upcoming" },
+  { id: "1", name: "Selection Option", href: "#", status: "current" },
   { id: "2", name: "Pay Premium", href: "#", status: "upcoming" },
   { id: "3", name: "Verification", href: "#", status: "upcoming" },
 ];
@@ -71,24 +65,9 @@ export default function Example() {
       <div className="max-w-full mx-auto p-4">
         {currentStep === 0 && (
           <div>
-            <LawyerEnterDetails />
+            <SelectForm />
           </div>
         )}
-        {/* {currentStep === 1 && (
-          <div>
-            <BondBailsman />
-          </div>
-        )}
-        {currentStep === 2 && (
-          <div>
-            <Application />
-          </div>
-        )}
-        {currentStep === 3 && (
-          <div>
-            <PrivateInvestigators />
-          </div>
-        )} */}
         {currentStep === 1 && (
           <div>
             <PayPremium />

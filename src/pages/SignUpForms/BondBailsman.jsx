@@ -7,197 +7,164 @@ function BondBailsman() {
   };
   return (
     <>
-      <div className="mx-auto px-4 max-w-full  sm:px-6 lg:px-12">
-        <div>
-          <h3 className="font-medium leading-[34.32px] text-[24px] mt-10">
-            Select your profession
+      <div className="container mx-auto sm:px-6 lg:px-12">
+        <div className="mt-10 grid grid-cols-1 gap-x-6  sm:grid-cols-6">
+          <h3 className="font-medium leading-[34.32px] text-[24px] sm:col-span-6">
+            Business Information
           </h3>
-
-          <div className="flex justify-between  flex-wrap flex-row w-full mt-2">
-            <p className="text-[14px]">
-              Choose your profession from the options below to tailor the form
-              to your specific needs. Let&apos;s ensure we <br /> provide you
-              with the best experience on Globallegals
-            </p>
-            <div>
-              <select
-                id="location"
-                name="location"
-                className="block w-full mt-2 rounded-md border-0 py-3 pl-4 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                defaultValue=""
-              >
-                <option value="" disabled hidden>
-                  Select from dropdown
-                </option>
-
-                <option>United States</option>
-                <option>Canada</option>
-                <option>Mexico</option>
-              </select>
+          <div className="sm:col-span-3">
+            <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">
+              Full Legal Business Name
+            </h5>
+            <div className="mt-2">
+              <input
+                type="text"
+                name="first-name"
+                id="first-name"
+                autoComplete="given-name"
+                placeholder="Enter Name"
+                className="block px-2 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              />
+            </div>
+          </div>
+          <div className="sm:col-span-3">
+            <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">
+              Business Address
+            </h5>
+            <div className="mt-2">
+              <input
+                type="text"
+                name="first-name"
+                id="first-name"
+                autoComplete="given-name"
+                placeholder="Business Address"
+                className="block px-2 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              />
+            </div>
+          </div>
+          <div className="sm:col-span-3">
+            <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">
+              Business Email Address
+            </h5>
+            <div className="mt-2">
+              <input
+                type="text"
+                name="first-name"
+                id="first-name"
+                autoComplete="given-name"
+                placeholder="Enter Email"
+                className="block px-2 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              />
+            </div>
+          </div>
+          <div className="sm:col-span-3">
+            <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">
+              Business Phone number
+            </h5>
+            <div className="mt-2">
+              <input
+                type="text"
+                name="first-name"
+                id="first-name"
+                autoComplete="given-name"
+                placeholder="Enter number"
+                className="block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              />
+            </div>
+          </div>
+          <div className="sm:col-span-3">
+            <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">
+              Company website
+            </h5>
+            <div className="mt-2">
+              <input
+                type="text"
+                name="first-name"
+                id="first-name"
+                autoComplete="given-name"
+                placeholder="company website"
+                className="block px-2 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              />
+            </div>
+          </div>
+          <div className="sm:col-span-3">
+            <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">
+              Owner Agent Information
+            </h5>
+            <div className="mt-2">
+              <input
+                type="text"
+                name="first-name"
+                id="first-name"
+                autoComplete="given-name"
+                placeholder="Agent Information"
+                className="block w-full px-2 rounded-md border-0 py-1.5text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              />
             </div>
           </div>
         </div>
-        <div>
-          <div className="mt-10 grid grid-cols-1 gap-x-6  sm:grid-cols-6">
-            <h3 className="font-medium leading-[34.32px] text-[24px] sm:col-span-6">
-              Business Information
-            </h3>
-            <div className="sm:col-span-3">
-              <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">
-                Full Legal Business Name
-              </h5>
-              <div className="mt-2">
-                <input
-                  type="text"
-                  name="first-name"
-                  id="first-name"
-                  autoComplete="given-name"
-                  placeholder="Enter Name"
-                  className="block px-2 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                />
-              </div>
-            </div>
-            <div className="sm:col-span-3">
-              <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">
-                Business Address
-              </h5>
-              <div className="mt-2">
-                <input
-                  type="text"
-                  name="first-name"
-                  id="first-name"
-                  autoComplete="given-name"
-                  placeholder="Business Address"
-                  className="block px-2 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                />
-              </div>
-            </div>
-            <div className="sm:col-span-3">
-              <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">
-                Business Email Address
-              </h5>
-              <div className="mt-2">
-                <input
-                  type="text"
-                  name="first-name"
-                  id="first-name"
-                  autoComplete="given-name"
-                  placeholder="Enter Email"
-                  className="block px-2 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                />
-              </div>
-            </div>
-            <div className="sm:col-span-3">
-              <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">
-                Business Phone number
-              </h5>
-              <div className="mt-2">
-                <input
-                  type="text"
-                  name="first-name"
-                  id="first-name"
-                  autoComplete="given-name"
-                  placeholder="Enter number"
-                  className="block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                />
-              </div>
-            </div>
-            <div className="sm:col-span-3">
-              <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">
-                Company website
-              </h5>
-              <div className="mt-2">
-                <input
-                  type="text"
-                  name="first-name"
-                  id="first-name"
-                  autoComplete="given-name"
-                  placeholder="company website"
-                  className="block px-2 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                />
-              </div>
-            </div>
-            <div className="sm:col-span-3">
-              <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">
-                Owner Agent Information
-              </h5>
-              <div className="mt-2">
-                <input
-                  type="text"
-                  name="first-name"
-                  id="first-name"
-                  autoComplete="given-name"
-                  placeholder="Agent Information"
-                  className="block w-full px-2 rounded-md border-0 py-1.5text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                />
-              </div>
+        <div className="mt-10 grid grid-cols-1 gap-x-6  sm:grid-cols-6">
+          <h3 className="font-medium leading-[34.32px] text-[24px] sm:col-span-6">
+            Licensing Credentials
+          </h3>
+          <div className="sm:col-span-3">
+            <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">
+              License Number
+            </h5>
+            <div className="mt-2">
+              <input
+                type="text"
+                name="first-name"
+                id="first-name"
+                placeholder="Enter number"
+                autoComplete="given-name"
+                className="block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              />
             </div>
           </div>
-        </div>
-        <div>
-          <div className="mt-10 grid grid-cols-1 gap-x-6  sm:grid-cols-6">
-            <h3 className="font-medium leading-[34.32px] text-[24px] sm:col-span-6">
-              Licensing Credentials
-            </h3>
-            <div className="sm:col-span-3">
-              <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">
-                License Number
-              </h5>
-              <div className="mt-2">
-                <input
-                  type="text"
-                  name="first-name"
-                  id="first-name"
-                  placeholder="Enter number"
-                  autoComplete="given-name"
-                  className="block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                />
-              </div>
+          <div className="sm:col-span-3">
+            <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">
+              Date of Licensing
+            </h5>
+            <div className="mt-2">
+              <input
+                type="text"
+                name="first-name"
+                id="first-name"
+                autoComplete="given-name"
+                placeholder="Enter date"
+                className="block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              />
             </div>
-            <div className="sm:col-span-3">
-              <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">
-                Date of Licensing
-              </h5>
-              <div className="mt-2">
-                <input
-                  type="text"
-                  name="first-name"
-                  id="first-name"
-                  autoComplete="given-name"
-                  placeholder="Enter date"
-                  className="block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                />
-              </div>
+          </div>
+          <div className="sm:col-span-3">
+            <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">
+              Licensing Authority
+            </h5>
+            <div className="mt-2">
+              <input
+                type="text"
+                name="first-name"
+                id="first-name"
+                autoComplete="given-name"
+                placeholder="Licensing Authority"
+                className="block px-2 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              />
             </div>
-            <div className="sm:col-span-3">
-              <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">
-                Licensing Authority
-              </h5>
-              <div className="mt-2">
-                <input
-                  type="text"
-                  name="first-name"
-                  id="first-name"
-                  autoComplete="given-name"
-                  placeholder="Licensing Authority"
-                  className="block px-2 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                />
-              </div>
-            </div>
-            <div className="sm:col-span-3">
-              <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">
-                Bonding Capacity
-              </h5>
-              <div className="mt-2">
-                <input
-                  type="text"
-                  name="first-name"
-                  id="first-name"
-                  placeholder="Bonding capacity"
-                  autoComplete="given-name"
-                  className="block px-2 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                />
-              </div>
+          </div>
+          <div className="sm:col-span-3">
+            <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">
+              Bonding Capacity
+            </h5>
+            <div className="mt-2">
+              <input
+                type="text"
+                name="first-name"
+                id="first-name"
+                placeholder="Bonding capacity"
+                autoComplete="given-name"
+                className="block px-2 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              />
             </div>
           </div>
         </div>
