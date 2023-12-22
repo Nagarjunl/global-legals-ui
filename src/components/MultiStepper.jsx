@@ -1,19 +1,19 @@
 import { useState } from "react";
 import { ChevronRightIcon, CheckIcon } from "@heroicons/react/20/solid";
-import Application from "../pages/SignUpForms/SecurityDetails";
-import PrivateInvestigators from "../pages/SignUpForms/PrivateInvestigators";
+// import Application from "../pages/SignUpForms/SecurityDetails";
+// import PrivateInvestigators from "../pages/SignUpForms/PrivateInvestigators";
 import PayPremium from "../pages/SignUpForms/PayPremium";
 import Verification from "../pages/SignUpForms/Verification";
 import LawyerEnterDetails from "../pages/SignUpForms/LawyerEnterDetails";
-import BondBailsman from "../pages/SignUpForms/BondBailsman";
+// import BondBailsman from "../pages/SignUpForms/BondBailsman";
 
 const steps = [
   { id: "1", name: "Personal Details", href: "#", status: "current" },
-  { id: "2", name: "BondBailsman Details", href: "#", status: "upcoming" },
-  { id: "3", name: "Security Details", href: "#", status: "upcoming" },
-  { id: "4", name: "Private Investigators", href: "#", status: "upcoming" },
-  { id: "5", name: "Pay Premium", href: "#", status: "upcoming" },
-  { id: "6", name: "Verification", href: "#", status: "upcoming" },
+  // { id: "2", name: "BondBailsman Details", href: "#", status: "upcoming" },
+  // { id: "3", name: "Security Details", href: "#", status: "upcoming" },
+  // { id: "4", name: "Private Investigators", href: "#", status: "upcoming" },
+  { id: "2", name: "Pay Premium", href: "#", status: "upcoming" },
+  { id: "3", name: "Verification", href: "#", status: "upcoming" },
 ];
 
 export default function Example() {
@@ -44,7 +44,7 @@ export default function Example() {
                   index === currentStep
                     ? "border-blue-600 dark:border-blue-500"
                     : index < currentStep
-                    ? "border-green-500 bg-green-500" // Set the background color for the tick icon
+                    ? "border-green-500 bg-green-500"
                     : "border-gray-500 dark:border-gray-400"
                 }`}
               >
@@ -54,7 +54,10 @@ export default function Example() {
                   index + 1
                 )}
               </span>
-              <span className="whitespace-nowrap">{step.name}</span>
+              {/* Render the step name only on larger screens */}
+              <span className="whitespace-nowrap hidden sm:inline">
+                {step.name}
+              </span>
               {index !== steps.length - 1 && (
                 <span>
                   <ChevronRightIcon className="w-6 h-6 mx-2 text-gray-500" />
@@ -64,7 +67,6 @@ export default function Example() {
           ))}
         </ol>
       </div>
-
       {/* Render the content of the current step */}
       <div className="max-w-full mx-auto p-4">
         {currentStep === 0 && (
@@ -72,7 +74,7 @@ export default function Example() {
             <LawyerEnterDetails />
           </div>
         )}
-        {currentStep === 1 && (
+        {/* {currentStep === 1 && (
           <div>
             <BondBailsman />
           </div>
@@ -86,13 +88,13 @@ export default function Example() {
           <div>
             <PrivateInvestigators />
           </div>
-        )}
-        {currentStep === 4 && (
+        )} */}
+        {currentStep === 1 && (
           <div>
             <PayPremium />
           </div>
         )}
-        {currentStep === 5 && (
+        {currentStep === 2 && (
           <div>
             <Verification />
           </div>

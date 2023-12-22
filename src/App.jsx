@@ -15,7 +15,7 @@ import Image404 from "./pages/Image404";
 import EnterOtp from "./pages/Auth/EnterOtp";
 import CreatePassword from "./pages/Auth/CreatePassword";
 import Homepage from "./pages/Homepage";
-// import MultiStepper from "./components/MultiStepper";
+import MultiStepper from "./components/MultiStepper";
 import Appointments from "./pages/Appointments";
 import LawyerEnterDetails from "./pages/SignUpForms/LawyerEnterDetails";
 import BondBailsman from "./pages/SignUpForms/BondBailsman";
@@ -50,7 +50,7 @@ function App() {
             element={
               <DashboardLayout>
                 <Routes>
-                  {/* <Route index element={<MultiStepper />} /> */}
+                  <Route index element={<MultiStepper />} />
                   <Route
                     path="lawyerDetails"
                     element={<LawyerEnterDetails />}
