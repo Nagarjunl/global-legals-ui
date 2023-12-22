@@ -345,7 +345,7 @@ const LawyerEnterDetails = () => {
           </label>
         </div>
         <div className="flex-1 border-t border-gray-300 mt-7"></div>
-        <div className="flex justify-between flex-wrap mt-10">
+        <div className="flex justify-between flex-wrap mt-10 my-3">
           <div>
             <ReCAPTCHA
               sitekey="6LfAUjgpAAAAABQcBX1BtSezxeoNoBDoZk9XPS7T"

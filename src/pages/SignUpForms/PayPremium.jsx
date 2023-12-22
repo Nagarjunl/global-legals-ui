@@ -1,4 +1,4 @@
-import Asset from "../assets/pay.jpg";
+import Asset from "../../assets/pay.jpg";
 
 const people = [
   {
@@ -59,7 +59,7 @@ const PayPremium = () => {
         Complete your payment now to embark on a premium experience tailored
         <br /> for legal professionals.
       </div>
-      <div className="flex justify-center items-center mt-4">
+      <div className="flex justify-center items-center mt-4 my-3">
         <button
           type="button"
           className="rounded bg-blue-600 w-96 h-10  px-2 py-1 text-xs font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"

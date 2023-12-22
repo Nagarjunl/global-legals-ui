@@ -593,7 +593,6 @@ const PrivateInvestigators = () => {
               </div>
             </button>
           </div>
-
         </div>
         <div className="flex-1 border-t border-gray-300 mt-3"></div>
         <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
@@ -716,7 +715,7 @@ const PrivateInvestigators = () => {
         </div>
         <div className="flex-1 border-t border-gray-300 mt-7"></div>
 
-        <div className="flex justify-between flex-wrap mt-7">
+        <div className="flex justify-between flex-wrap mt-7 my-3">
           <div>
             <ReCAPTCHA sitekey="Your client site key" onChange={handleChange} />
           </div>

@@ -709,7 +709,7 @@ const SecurityDetails = () => {
           </label>
         </div>
 
-        <div className="flex justify-between flex-wrap mt-7">
+        <div className="flex justify-between flex-wrap mt-7 my-3">
           <div>
             <ReCAPTCHA
               sitekey="6LfAUjgpAAAAABQcBX1BtSezxeoNoBDoZk9XPS7T"
