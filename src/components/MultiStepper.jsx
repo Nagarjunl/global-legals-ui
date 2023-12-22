@@ -5,7 +5,7 @@ import Verification from "../pages/SignUpForms/Verification";
 import SelectForm from "../pages/SignUpForms/Forms";
 
 const steps = [
-  { id: "1", name: "Selection Option", href: "#", status: "current" },
+  { id: "1", name: "Personal Details", href: "#", status: "current" },
   { id: "2", name: "Pay Premium", href: "#", status: "upcoming" },
   { id: "3", name: "Verification", href: "#", status: "upcoming" },
 ];
