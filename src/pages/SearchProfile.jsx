@@ -17,7 +17,7 @@ const badgeData = [
 console.log(badgeData);
 function SearchProfile() {
   return (
-    <div className="container-md mx-20 my-auto">
+    <div className="mx-auto container max-sm:px-6 px-[120px] pb-3">
       <div>
         <div className="mt-10 flex flex-wrap gap-5">
           <div>
