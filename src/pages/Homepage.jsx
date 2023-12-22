@@ -11,6 +11,8 @@ import BlockText from "../components/BlockText";
 import containerThree from "../assets/New_folder/usercomputer.svg";
 import usersmile from "../assets/New_folder/usersmile.svg";
 import RoadMapImg1 from "../assets/New_folder/image14.svg";
+import RoadMapImg2 from "../assets/New_folder/image12.svg";
+import ArrowCircleRight from "../assets/New_folder/arrow-circle-right.svg";
 import ReCAPTCHA from "react-google-recaptcha";
 import BanerPerson from "../assets/New_folder/banner_person_img.svg";
 import Footer from "../components/footer/Footer";
@@ -172,32 +174,29 @@ const Homepage = () => {
       {/*  */}
       <div className="bg-white max-sm:px-6 p-[120px]">
         <div className="mx-auto container">
-          <div className="grid grid-flow-row gap-5">
-            <div className="grid grid-cols-2 gap-10 max-md:grid-cols-1 max-lg:grid-cols-1  ">
-              <div className="sm:grid justify-items-end">
-                <div className="relative max-lg:grid justify-center">
-                  <img src={usersmile} alt="user_image_two" />
-                  <div className="absolute  right-5 bottom-5  rounded-full bg-white bg-opacity-20 px-5 py-2  backdrop-blur-md backdrop-filter">
-                    <p className=" text-[16px] font-normal text-white">
-                      Global Legals
-                    </p>
-                    <p className="text-[12px] font-normal text-white">
-                      Founder, CTO
-                    </p>
-                  </div>
-                  {/*  */}
+          <div className="grid grid-cols-2 gap-10 max-lg:grid-cols-1">
+            <div className="sm:grid max-lg:justify-items-center lg:justify-items-end">
+              <div className="relative max-lg:grid justify-center">
+                <img src={usersmile} alt="user_image_two" />
+                <div className="absolute  right-5 bottom-5  rounded-full bg-white bg-opacity-20 px-5 py-2  backdrop-blur-md backdrop-filter">
+                  <p className=" text-[16px] font-normal text-white">
+                    Global Legals
+                  </p>
+                  <p className="text-[12px] font-normal text-white">
+                    Founder, CTO
+                  </p>
                 </div>
               </div>
-              <div className="grid justify-center items-center sm:justify-items-start">
-                <div>
-                  <blockquote className=" text-4xl font-serif italic mb-8">
-                    “When you want to create a business bigger than yourself,
-                    you need a lot of help. thats what Global legals does”
-                  </blockquote>
-                  <span className=" text-lg text-gray-500 dark:text-gray-400 font-normal ">
-                    Terry John Paul, Founder{" "}
-                  </span>
-                </div>
+            </div>
+            <div className="grid justify-center items-center max-lg:justify-items-center  lg:justify-items-start">
+              <div>
+                <blockquote className=" text-4xl font-serif italic mb-8">
+                  “When you want to create a business bigger than yourself,
+                  you need a lot of help. thats what Global legals does”
+                </blockquote>
+                <span className=" text-lg text-gray-500 dark:text-gray-400 font-normal ">
+                  Terry John Paul, Founder{" "}
+                </span>
               </div>
             </div>
           </div>
@@ -208,19 +207,38 @@ const Homepage = () => {
           <h1 className="text-black font-bold text-[44px] mb-10 leading-[55.66px] text-start font-circular-std">
             Your Roadmap to Achieving Growth
           </h1>
-          <div className="grid grid-flow-row gap-5">
-            <div className="grid grid-cols-2 gap-8 max-md:grid-cols-1 max-lg:grid-cols-1">
-              <div className="p-1 max-md:grid justify-center">
+          <div className="grid grid-cols-2 gap-8 max-lg:grid-cols-1">
+            <div className="sm:grid max-lg:justify-items-center">
+              <div className="relative">
                 <img src={RoadMapImg1} alt="business" />
+                <div className="absolute bottom-[26px] w-full">
+                  <div className="flex align-center  mx-[20px] px-[32px] py-[20px] justify-between rounded-full bg-[#f5f5f5]">
+                    <div>
+                      <p className="font-bold text-[24px]">Explore the legal Labyrinth</p>
+                      <p className="font-normal text-[18px] text-[#5F5F5F]">Finding the Right Lawyer for your Needs</p>
+                    </div>
+                    <img src={ArrowCircleRight} alt="" />
+                  </div>
+                </div>
               </div>
-              <div className="p-1 max-md:grid justify-center">
-                <img src={RoadMapImg1} alt="business" />
+            </div>
+            <div className="sm:grid max-lg:justify-items-center">
+              <div className="relative ">
+                <img src={RoadMapImg2} alt="business" />
+                <div className="absolute bottom-[26px] w-full">
+                  <div className="flex align-center  mx-[20px] px-[32px] py-[20px] justify-between rounded-full bg-[#f5f5f5]">
+                    <div>
+                      <p className="font-bold text-[24px]">From Incarceration to Liberation</p>
+                      <p className="font-normal text-[18px] text-[#5F5F5F]">How Bail Bonds Make Freedom Possible</p>
+                    </div>
+                    <img src={ArrowCircleRight} alt="" />
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      {/*  */}
       <div className="bg-white max-sm:px-6 p-[120px]">
         <div className="mx-auto container">
           <div className="grid grid-cols-5 max-md:grid-cols-1 max-lg:grid-cols-1">
