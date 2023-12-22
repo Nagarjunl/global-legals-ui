@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { ChevronRightIcon, CheckIcon } from "@heroicons/react/20/solid";
-import Application from "../pages/SignUpForms/Application";
+import Application from "../pages/SignUpForms/SecurityDetails";
 import PrivateInvestigators from "../pages/SignUpForms/PrivateInvestigators";
-import PayPremium from "../pages/PayPremium";
+import PayPremium from "../pages/SignUpForms/PayPremium";
 import Verification from "../pages/SignUpForms/Verification";
 import LawyerEnterDetails from "../pages/SignUpForms/LawyerEnterDetails";
 import BondBailsman from "../pages/SignUpForms/BondBailsman";

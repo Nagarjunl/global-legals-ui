@@ -2,12 +2,16 @@ import GoogleImage from "../../assets/Google-image.png";
 import { Fragment } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
+import ReCAPTCHA from "react-google-recaptcha";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function Application() {
+const SecurityDetails = () => {
+  const handleChange = () => {
+    console.log("ReCaptcha");
+  };
   return (
     <>
       <div className="mx-auto px-4 max-w-full  sm:px-6 lg:px-12 xs:px-10">
@@ -646,9 +650,7 @@ export default function Application() {
               <div className="flex justify-center">
                 <img
                   src={GoogleImage}
-
                   alt="Google Logo"
-
                   className="w-[20px] h-[20px]"
                 />
                 <p className="ml-3">Connect with Google</p>
@@ -709,9 +711,10 @@ export default function Application() {
 
         <div className="flex justify-between flex-wrap mt-7">
           <div>
-            <button className="rounded-md text-white bg-blue-800 border-blue-800 px-20 py-2 text-sm font-semibol shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 border border-solid">
-              iam not a robot
-            </button>
+            <ReCAPTCHA
+              sitekey="6LfAUjgpAAAAABQcBX1BtSezxeoNoBDoZk9XPS7T"
+              onChange={handleChange}
+            />
           </div>
           <div>
             <button className="rounded-md mt-2 text-white bg-blue-800 border-blue-800 px-20 py-2 text-sm font-semibol shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 border border-solid ">
@@ -722,4 +725,5 @@ export default function Application() {
       </div>
     </>
   );
-}
+};
+export default SecurityDetails;
