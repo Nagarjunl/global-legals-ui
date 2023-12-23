@@ -208,9 +208,9 @@ const Homepage = () => {
             Your Roadmap to Achieving Growth
           </h1>
           <div className="grid grid-cols-2 gap-8 max-lg:grid-cols-1">
-            <div className="sm:grid max-lg:justify-items-center">
+            <div className="sm:grid ">
               <div className="relative">
-                <img src={RoadMapImg1} alt="business" />
+                <img src={RoadMapImg1} alt="business" className="w-[821px] max-h-[548px]" />
                 <div className="absolute bottom-[26px] w-full">
                   <div className="flex align-center  mx-[20px] px-[32px] py-[20px] justify-between rounded-full bg-[#f5f5f5]">
                     <div>
@@ -222,9 +222,9 @@ const Homepage = () => {
                 </div>
               </div>
             </div>
-            <div className="sm:grid max-lg:justify-items-center">
+            <div className="sm:grid ">
               <div className="relative ">
-                <img src={RoadMapImg2} alt="business" />
+                <img src={RoadMapImg2} alt="business" className="w-[821px] max-h-[548px]" />
                 <div className="absolute bottom-[26px] w-full">
                   <div className="flex align-center  mx-[20px] px-[32px] py-[20px] justify-between rounded-full bg-[#f5f5f5]">
                     <div>
