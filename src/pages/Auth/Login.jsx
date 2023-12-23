@@ -5,8 +5,21 @@ import Input from "../../components/Input";
 import PrimaryButton from "../../components/PrimaryButton";
 import { Link } from "react-router-dom";
 import LeftsideBar from "../../components/Leftside-Bar";
+import { useForm } from "react-hook-form"
+
 
 const Login = () => {
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  console.log({ errors });
+
+  const onSubmit = (data) => console.log("data", data)
+
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 min-h-screen">
       <div className=" max-lg:hidden lg:flex bg-blue-600 xl:flex items-center justify-center ">
@@ -36,36 +49,40 @@ const Login = () => {
 
           <div className="mt-10">
             <div>
-              <form action="#" method="POST">
-                <label
-                  htmlFor="email"
-                  className="block text-sm font-medium leading-6 text-gray-900"
-                >
-                  Email address
-                </label>
+              <form onSubmit={handleSubmit(onSubmit)}>
+                <>
+                  <label
+                    htmlFor="email"
+                    className={`block text-sm font-medium leading-6 ${errors?.email ? 'text-red-700' : 'text-gray-900'}`}
+                  >
+                    Email address
+                  </label>
+                  <Input
+                    type="email"
+                    placeholder="name@gmail.com"
+                    {...register("email", { required: true })}
+                  />
+                  {errors?.email &&
+                    <p className="mt-2 text-sm text-red-600 dark:text-red-500"> Email Is Required </p>
+                  }
+                </>
+                <>
+                  <label
+                    htmlFor="password"
+                    className={`block text-sm font-medium leading-6 ${errors?.password ? 'text-red-700' : 'text-gray-900'}`}
+                  >
+                    Password
+                  </label>
 
-                <Input
-                  id="email"
-                  name="email"
-                  type="email"
-                  placeholder="name@gmail.com"
-                  autoComplete="email"
-                />
-
-                <label
-                  htmlFor="password"
-                  className="block text-sm font-medium leading-6 text-gray-900"
-                >
-                  Password
-                </label>
-
-                <Input
-                  id="password"
-                  name="password"
-                  type="password"
-                  placeholder="***********"
-                  autoComplete="current-password"
-                />
+                  <Input
+                    type="password"
+                    placeholder="***********"
+                    {...register("password", { required: true })}
+                  />
+                  {errors?.password &&
+                    <p className="mt-2 text-sm text-red-600 dark:text-red-500"> Email Is Required </p>
+                  }
+                </>
 
                 <div className="flex items-center justify-between mt-3">
                   <div className="flex items-center ">
@@ -92,9 +109,8 @@ const Login = () => {
                     </a>
                   </div>
                 </div>
-                <Link to="/dashboard/appointments">
-                  <PrimaryButton type="submit" buttonText="Login" />
-                </Link>
+                {/* <PrimaryButton type="submit" buttonText="Login" /> */}
+                <input type="submit" />
               </form>
             </div>
 
