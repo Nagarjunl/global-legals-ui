@@ -6,17 +6,17 @@ import Register from "./pages/Auth/Register";
 import Login from "./pages/Auth/Login";
 import ForgetPassword from "./pages/Auth/Forgetpassword";
 import NewPassword from "./pages/Auth/Newpassword";
-import ProfileDetails from "./pages/ProfileDetails";
-import SearchProfile from "./pages/SearchProfile";
-import ClientView from "./pages/ClientView";
-import ErrorPage from "./pages/ErrorPage";
-import ServerImage from "./pages/ServerImage";
-import Image404 from "./pages/Image404";
+import ProfileDetails from "./pages/Profile/ProfileDetails";
+import SearchProfile from "./pages/Profile/SearchProfile";
+import ClientView from "./pages/Profile/ClientView";
+import NoResultFound from "./pages/Error/NoResultFound";
+import Error500 from "./pages/Error/Error500";
+import Error404 from "./pages/Error/Error404";
 import EnterOtp from "./pages/Auth/EnterOtp";
 import CreatePassword from "./pages/Auth/CreatePassword";
 import Homepage from "./pages/Homepage";
 import MultiStepper from "./components/MultiStepper";
-import Appointments from "./pages/Appointments";
+import Appointments from "./pages/Profile/Appointments";
 import LawyerEnterDetails from "./pages/SignUpForms/LawyerEnterDetails";
 import BondBailsman from "./pages/SignUpForms/BondBailsman";
 import SecurityDetails from "./pages/SignUpForms/SecurityDetails";
@@ -67,9 +67,9 @@ function App() {
                   <Route path="searchProfile" element={<SearchProfile />} />
                   <Route path="appointments" element={<Appointments />} />
                   <Route path="clientView" element={<ClientView />} />
-                  <Route path="error" element={<ErrorPage />} />
-                  <Route path="404" element={<Image404 />} />
-                  <Route path="500" element={<ServerImage />} />
+                  <Route path="noResultFound" element={<NoResultFound />} />
+                  <Route path="404" element={<Error404 />} />
+                  <Route path="500" element={<Error500 />} />
                 </Routes>
               </DashboardLayout>
             }

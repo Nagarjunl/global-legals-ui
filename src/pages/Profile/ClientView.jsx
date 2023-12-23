@@ -1,4 +1,4 @@
-import image1 from "../assets/image 17.png";
+import image1 from "../../assets/image 17.png";
 
 function ClientImage() {
   return (

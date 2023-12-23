@@ -1,8 +1,8 @@
-import LawyerCard from "../components/LawyerCard";
-import profileImg2 from "../assets/Frame22.svg";
-import profileImg from "../assets/Frame20.svg";
-import cupImage from "../assets/image25.svg";
-import Select from "../components/Select";
+import LawyerCard from "../../components/LawyerCard";
+import profileImg2 from "../../assets/Frame22.svg";
+import profileImg from "../../assets/Frame20.svg";
+import cupImage from "../../assets/image25.svg";
+import Select from "../../components/Select";
 import { IoIosCloseCircleOutline } from "react-icons/io";
 import { Link } from "react-router-dom";
 

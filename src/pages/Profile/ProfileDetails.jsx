@@ -1,12 +1,12 @@
-import ProfileCard from "../components/ProfileDetailsCard";
-import { PrimeryBadge } from "../components/PrimeryBadge";
-import meeting from "../assets/meeting.png";
-import GoogleMeetIcon from "../assets/googlemeet.svg";
+import ProfileCard from "../../components/ProfileDetailsCard";
+import { PrimeryBadge } from "../../components/PrimeryBadge";
+import meeting from "../../assets/meeting.png";
+import GoogleMeetIcon from "../../assets/googlemeet.svg";
 import { BiLogoZoom } from "react-icons/bi";
 import { FaSkype } from "react-icons/fa6";
-import "../App.css";
-import Input from "../components/Input";
-import PrimaryButton from "../components/PrimaryButton";
+import "../../App.css";
+import Input from "../../components/Input";
+import PrimaryButton from "../../components/PrimaryButton";
 
 const ProfileDetails = () => {
   return (
@@ -23,10 +23,10 @@ const ProfileDetails = () => {
               Indiana USA Labor and Employment Attorney
             </h2>
             <p className="pt-2">
-              From our law office in Knoxville, Tennessee, attorney Seth
-              oakes, founder and owner of the Oakes Law Firm, provides
-              outstanding representation and support to a diverse range of
-              cilents across our region who have legal needs involves
+              From our law office in Knoxville, Tennessee, attorney Seth oakes,
+              founder and owner of the Oakes Law Firm, provides outstanding
+              representation and support to a diverse range of cilents across
+              our region who have legal needs involves
             </p>
             <div className=" grid grid-rows-2 ">
               <div className=" flex gap-2 mt-2">
@@ -42,51 +42,50 @@ const ProfileDetails = () => {
             </div>
             <div>
               <p className="pt-5">
-                The Underwood Law Office, P.C., in Knoxville, Tennessee, is
-                a law firm that emphasizes protecting clients and providing
-                them justice when faced with a strenuous ordeal that arises
-                in the workplace. The firm is also knowledgeable in handling
-                issues related to estate planning and administration,
-                probate, wills and trusts and civil rights. When it comes to
-                complex issues pertaining to labor and employment law,
-                employee wage and hour laws, workers&apos; compensation or
-                wrongful termination, the firm stands steadfast and
-                committed to its clients and offers them a variety of
-                avenues to dictate efficacy in their case. The legal team at
-                the firm is acutely aware of the many stressors that one may
-                face when confronted with unethical employment practices
-                that has the potential to impact their livelihood for the
-                worse. The firm takes steps to ensure their clients know
+                The Underwood Law Office, P.C., in Knoxville, Tennessee, is a
+                law firm that emphasizes protecting clients and providing them
+                justice when faced with a strenuous ordeal that arises in the
+                workplace. The firm is also knowledgeable in handling issues
+                related to estate planning and administration, probate, wills
+                and trusts and civil rights. When it comes to complex issues
+                pertaining to labor and employment law, employee wage and hour
+                laws, workers&apos; compensation or wrongful termination, the
+                firm stands steadfast and committed to its clients and offers
+                them a variety of avenues to dictate efficacy in their case. The
+                legal team at the firm is acutely aware of the many stressors
+                that one may face when confronted with unethical employment
+                practices that has the potential to impact their livelihood for
+                the worse. The firm takes steps to ensure their clients know
                 their legal team inside and out and allows them to carry the
                 burden of their legal problems to the conclusion of their
-                case.The firm&#39;s founder, George T. Underwood Jr., has
-                over 30 years of experience in the legal field and has been
+                case.The firm&#39;s founder, George T. Underwood Jr., has over
+                30 years of experience in the legal field and has been
                 recognized by many prominent legal organizations for his
                 tireless advocacy.
               </p>
 
               <p className="pt-3">
-                Licensed to practice in Tennessee since 2013, attorney Oakes
-                has nearly 10 years of total legal experience
+                Licensed to practice in Tennessee since 2013, attorney Oakes has
+                nearly 10 years of total legal experience
               </p>
             </div>
             <div>
               <h2 className="pt-5 font-bold">Articles Published</h2>
               <p className="pt-3">
                 Perspectives on capital Punishment in America, Create Space,
-                2013 Searching Inquiry into the contours of capital
-                punishment in America. contribution features federal habeas
-                corpus protections for state-sentenced capital offenders and
-                the constitutionally of limits on “actual innocence”
-                equitable tolling
+                2013 Searching Inquiry into the contours of capital punishment
+                in America. contribution features federal habeas corpus
+                protections for state-sentenced capital offenders and the
+                constitutionally of limits on “actual innocence” equitable
+                tolling
               </p>
             </div>
             <div>
               <h2 className="pt-5 font-bold">Cases Representated</h2>
               <ul className="pl-8">
                 <li className="list-disc pt-1.5 text-blue-600">
-                  RALPH JUNIOR LOWEV . Roy Province et al, 2021 Tenn., App
-                  Lexis 400 ( Reg No 3204249.210)
+                  RALPH JUNIOR LOWEV . Roy Province et al, 2021 Tenn., App Lexis
+                  400 ( Reg No 3204249.210)
                 </li>
                 <li className="list-disc pt-1 text-blue-600">
                   WATSON .V 2023 Tenn., App Lexis 170 ( Reg No 38948340)
@@ -104,9 +103,9 @@ const ProfileDetails = () => {
                 Schedule a Meeting with us
               </h2>
               <p className="flex justify-center items-center py-2 max-sm:px-2">
-                We&rsquo;re here to assist you. If you have legal concerns
-                or need professional advice, feel free to schedule a meeting
-                with one of our experienced lawyers
+                We&rsquo;re here to assist you. If you have legal concerns or
+                need professional advice, feel free to schedule a meeting with
+                one of our experienced lawyers
               </p>
               <div className="flex justify-center items-center  py-3">
                 <div className="flex-wrap max-lg:flex justify-center items-center gap-1 ">
@@ -151,9 +150,7 @@ const ProfileDetails = () => {
                 </a>
                 <div>
                   <h3 className="pt-2 font-bold">Payment method</h3>
-                  <p className="py-1">
-                    Online Payment, Accepts credit cards
-                  </p>
+                  <p className="py-1">Online Payment, Accepts credit cards</p>
                 </div>
                 <div>
                   <h3 className="pt-2 font-bold">Office Hours</h3>
@@ -261,16 +258,15 @@ const ProfileDetails = () => {
                       </label>
                     </div>
                     <p className=" pt-4 ">
-                      The information contained on this website is intended
-                      to convey general information. It should not be
-                      construed as legal advice or opinion. It is not an
-                      offer to represent you, nor is it intended to create
-                      an attorney-client relationship. The use of the
-                      internet or this contact form for communication is not
-                      necessarily a secure environment. Contacting a lawyer
-                      or law firm via email through this service will not
-                      create an attorney-client relationship, and
-                      information will not necessarily be treated as
+                      The information contained on this website is intended to
+                      convey general information. It should not be construed as
+                      legal advice or opinion. It is not an offer to represent
+                      you, nor is it intended to create an attorney-client
+                      relationship. The use of the internet or this contact form
+                      for communication is not necessarily a secure environment.
+                      Contacting a lawyer or law firm via email through this
+                      service will not create an attorney-client relationship,
+                      and information will not necessarily be treated as
                       privileged or confidential.
                     </p>
                   </div>
