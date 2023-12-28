@@ -138,19 +138,14 @@ const SecurityDetails = () => {
             </h5>
 
             <div className="mt-2">
-              <select
-                id="country"
-                name="country"
-                autoComplete="country-name"
-                className="block w-full rounded-md border-0 py-2  shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600  sm:text-sm sm:leading-6"
-              >
-                <option value="" disabled selected hidden>
-                  Select from dropdown
-                </option>
-                <option>United States</option>
-                <option>Canada</option>
-                <option>Mexico</option>
-              </select>
+              <input
+                type="text"
+                name="first-name"
+                id="first-name"
+                autoComplete="given-name"
+                placeholder="company website"
+                className="block px-2 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              />
             </div>
           </div>
         </div>
@@ -195,19 +190,14 @@ const SecurityDetails = () => {
               </h5>
 
               <div className="mt-2">
-                <select
-                  id="country"
-                  name="country"
-                  autoComplete="country-name"
-                  className="block w-full rounded-md border-0 py-2  shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600  sm:text-sm sm:leading-6"
-                >
-                  <option value="" disabled selected hidden>
-                    Select from dropdown
-                  </option>
-                  <option>United States</option>
-                  <option>Canada</option>
-                  <option>Mexico</option>
-                </select>
+                <input
+                  type="text"
+                  name="first-name"
+                  id="first-name"
+                  autoComplete="given-name"
+                  placeholder="company website"
+                  className="block px-2 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                />
               </div>
             </div>
 
@@ -258,8 +248,8 @@ const SecurityDetails = () => {
                   name="first-name"
                   id="first-name"
                   autoComplete="given-name"
-                  placeholder="Business Address"
-                  className="block w-full px-2 rounded-md border-0 py-1.5  shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  placeholder="company website"
+                  className="block px-2 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
               </div>
             </div>
@@ -269,19 +259,14 @@ const SecurityDetails = () => {
               </h5>
 
               <div className="mt-2">
-                <select
-                  id="country"
-                  name="country"
-                  autoComplete="country-name"
-                  className="block w-full rounded-md border-0 py-2  shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600  sm:text-sm sm:leading-6"
-                >
-                  <option value="" disabled selected hidden>
-                    Select from dropdown
-                  </option>
-                  <option>United States</option>
-                  <option>Canada</option>
-                  <option>Mexico</option>
-                </select>
+                <input
+                  type="text"
+                  name="first-name"
+                  id="first-name"
+                  autoComplete="given-name"
+                  placeholder="company website"
+                  className="block px-2 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                />
               </div>
             </div>
 

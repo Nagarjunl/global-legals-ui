@@ -7,7 +7,7 @@ const Footer = () => {
           <p>
             <span className="text-black-800">Need Assistance?</span> If you have
             any questions or need further assistance, feel free to contact our
-            support team at{" "}
+            support team at
             <Link
               to="mailto:support@globallegals.com"
               className="text-blue-500 hover:underline"
