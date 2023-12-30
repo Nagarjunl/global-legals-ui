@@ -1,7 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit'
 
 import rootReducer from "../reducers/rootReducer";
-import { authApi } from '../services/authAPI'
+import { authApi } from '../services/authAPI';
+import { userApi } from '../services/userAPI';
+import { fileUploadApi } from '../services/fileUploadAPI';
 
 import {
   persistStore,
@@ -30,7 +32,11 @@ export const store = configureStore({
         serializableCheck: {
             ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
         },
-    }).concat(authApi.middleware),
+        }).concat(
+          authApi.middleware,
+          userApi.middleware,
+          fileUploadApi.middleware,
+        ),
     persistedReducer,
 })
 
