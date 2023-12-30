@@ -1,11 +1,69 @@
+import { useEffect } from "react";
 import logo from "../../assets/logo.png";
 import Paperplane from "../../assets/paper-plane.png";
 import "../../App.css";
 import PrimaryButton from "../../components/PrimaryButton";
-import Input from "../../components/Input";
 import LeftsideBar from "../../components/Leftside-Bar";
+import { useSelector } from 'react-redux'
+import { useForm } from "react-hook-form"
+import { useNavigate } from "react-router-dom";
+import { useSetPasswordMutation } from "../../services/authAPI";
+import { useDispatch } from "react-redux";
+import { clearEmail } from "../../reducers/auth/registerSlice";
+import { addTokens } from "../../reducers/auth/authSlice";
+import { currentUser } from "../../reducers/useSlice";
+
+
+const REGEX = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
 
 const CreatePassword = () => {
+  const [setPassword] = useSetPasswordMutation();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const registeredMail = useSelector((state) => state.registeredMail.email)
+  const otp = useSelector((state) => state.registeredMail.otp)
+
+  const {
+    handleSubmit,
+    register,
+    formState: { errors },
+  } = useForm();
+
+  const setPasswordMethod = async (data) => {
+    data.email = registeredMail;
+    const { email, password } = data;
+    try {
+      await setPassword({ email, password })
+        .unwrap()
+        .then((res) => {
+          if (res) {
+            const { user, ...rest } = res;
+            dispatch(addTokens(rest));
+            dispatch(currentUser(user));
+            dispatch(clearEmail());
+            navigate("/");
+          }
+        });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  const onSubmit = (data) => {
+    dispatch(clearEmail());
+    setPasswordMethod(data);
+  }
+
+  useEffect(() => {
+    if (!otp) {
+      navigate("/enterOtp");
+    }
+    if (!registeredMail) {
+      navigate("/");
+    }
+  }, [otp, registeredMail]);
+
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 min-h-screen">
       <div className=" max-lg:hidden lg:flex bg-blue-600 xl:flex items-center justify-center ">
@@ -28,37 +86,44 @@ const CreatePassword = () => {
           </div>
 
           <div className="mt-3 grid gap-3">
-            <form action="#" method="POST">
+            <form onSubmit={handleSubmit(onSubmit)}>
               <label
                 htmlFor="email"
                 className="block text-sm font-medium leading-6 text-gray-900"
               >
                 Email address
               </label>
-
-              <Input
-                id="email"
-                name="email"
+              <input
                 type="email"
-                placeholder="name@gmail.com"
-                autoComplete="email"
+                value={registeredMail}
+                className="block w-full rounded-md border-0 p-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400  focus:ring-blue-600 sm:text-sm sm:leading-6"
+                disabled
+
               />
+
               <label
                 htmlFor="email"
                 className="block text-sm font-medium leading-6 text-gray-900"
               >
-                Set your Password{" "}
+                Set your Password
               </label>
-
-              <Input
-                id="password"
-                name="password"
-                type="password"
+              <input
+                type=""
                 placeholder="Enter New Password"
-                autoComplete="password"
+                className="block w-full rounded-md border-0 p-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400  focus:ring-blue-600 sm:text-sm sm:leading-6"
+                {...register("password", {
+                  required: "Password Is Required",
+                  pattern: {
+                    value: REGEX,
+                    message: "Password should be 8 characters and include at least 1 letter, 1 number and 1 special character!"
+                  }
+                })}
               />
-
+              {errors?.password &&
+                <p className="mt-2 text-sm text-red-600 dark:text-red-500"> {errors?.password?.message} </p>
+              }
               <PrimaryButton type="submit" buttonText="Login" />
+
             </form>
           </div>
 

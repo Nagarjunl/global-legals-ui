@@ -1,24 +1,56 @@
 import logo from "../../assets/logo.png";
 import { SiApple } from "react-icons/si";
 import { FcGoogle } from "react-icons/fc";
-import Input from "../../components/Input";
 import PrimaryButton from "../../components/PrimaryButton";
 import { Link } from "react-router-dom";
 import LeftsideBar from "../../components/Leftside-Bar";
 import { useForm } from "react-hook-form"
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addTokens } from "../../reducers/auth/authSlice";
+import { currentUser } from "../../reducers/useSlice";
+import { useSignInMutation } from "../../services/authAPI";
 
 
 const Login = () => {
 
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const [signIn] = useSignInMutation();
+
   const {
     register,
     handleSubmit,
+    setError,
     formState: { errors },
   } = useForm();
 
-  console.log({ errors });
+  const signInMethod = async (data) => {
+    const { email, password } = data;
+    try {
+      await signIn({ email, password })
+        .unwrap()
+        .then((res) => {
+          if (res) {
+            const { user, ...rest } = res;
+            dispatch(addTokens(rest));
+            dispatch(currentUser(user));
+            navigate("/home");
+          }
+        });
+    } catch (error) {
+      console.log(error);
+      setError("email", {
+        shouldFocus: true,
+        type: "manual",
+        message: "Username or password is incorrect",
+      });
+    }
+  }
 
-  const onSubmit = (data) => console.log("data", data)
+  const onSubmit = (data) => {
+    signInMethod(data);
+  }
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 min-h-screen">
@@ -37,13 +69,9 @@ const Login = () => {
               Login
             </h2>
             <p className="mt-2 text-sm leading-6 text-gray-500">
-              Don&apos;t have an accocunt?
-              <a
-                href="#"
-                className="font-semibold text-blue-600 hover:text-blue-500"
-              >
-                <Link to="/register">Create an account</Link>
-              </a>
+              Don&apos;t have an accocunt?&nbsp;
+              <Link to="/register" className="font-semibold text-blue-600 hover:text-blue-500"
+              >Create an account</Link>
             </p>
           </div>
 
@@ -57,13 +85,16 @@ const Login = () => {
                   >
                     Email address
                   </label>
-                  <Input
-                    type="email"
-                    placeholder="name@gmail.com"
-                    {...register("email", { required: true })}
-                  />
+                  <div className="mt-2">
+                    <input
+                      type="email"
+                      placeholder="name@gmail.com"
+                      className="block w-full rounded-md border-0 p-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400  focus:ring-blue-600 sm:text-sm sm:leading-6"
+                      {...register("email", { required: "Email is required" })}
+                    />
+                  </div>
                   {errors?.email &&
-                    <p className="mt-2 text-sm text-red-600 dark:text-red-500"> Email Is Required </p>
+                    <p className="mt-2 text-sm text-red-600 dark:text-red-500"> {errors?.email?.message} </p>
                   }
                 </>
                 <>
@@ -73,14 +104,16 @@ const Login = () => {
                   >
                     Password
                   </label>
-
-                  <Input
-                    type="password"
-                    placeholder="***********"
-                    {...register("password", { required: true })}
-                  />
+                  <div className="mt-2">
+                    <input
+                      type="password"
+                      placeholder="***********"
+                      className="block w-full rounded-md border-0 p-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400  focus:ring-blue-600 sm:text-sm sm:leading-6"
+                      {...register("password", { required: "Password is required" })}
+                    />
+                  </div>
                   {errors?.password &&
-                    <p className="mt-2 text-sm text-red-600 dark:text-red-500"> Email Is Required </p>
+                    <p className="mt-2 text-sm text-red-600 dark:text-red-500"> {errors?.password?.message} </p>
                   }
                 </>
 
@@ -101,16 +134,11 @@ const Login = () => {
                   </div>
 
                   <div className="text-sm leading-6">
-                    <a
-                      href="#"
-                      className="font-semibold text-blue-600 hover:text-blue-500"
-                    >
-                      <Link to="/forgetPassword">Forgot password</Link>
-                    </a>
+                    <Link to="/forgetPassword" className="font-semibold text-blue-600 hover:text-blue-500"
+                    >Forgot password</Link>
                   </div>
                 </div>
-                {/* <PrimaryButton type="submit" buttonText="Login" /> */}
-                <input type="submit" />
+                <PrimaryButton type="submit" buttonText="Login" />
               </form>
             </div>
 

@@ -14,7 +14,7 @@ const badgeData = [
     badge: "India, USA",
   },
 ];
-console.log(badgeData);
+
 function SearchProfile() {
   return (
     <div className="mx-auto container max-sm:px-6 lg:px-[120px] pb-3">
