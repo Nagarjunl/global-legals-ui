@@ -1,10 +1,51 @@
 import logo from "../../assets/logo.png";
-import Input from "../../components/Input";
 import PrimaryButton from "../../components/PrimaryButton";
-import { Link } from "react-router-dom";
 import LeftsideBar from "../../components/Leftside-Bar";
+import { useForm } from "react-hook-form"
+import { useDispatch } from 'react-redux'
+import { getEmail } from '../../reducers/auth/registerSlice'
+import { useNavigate } from "react-router-dom";
+import { useSendOtpMutation } from "../../services/authAPI";
+
 
 const Register = () => {
+
+  const dispatch = useDispatch();
+  const [sendOtp] = useSendOtpMutation();
+  const navigate = useNavigate();
+
+  const {
+    register,
+    handleSubmit,
+    setError,
+    formState: { errors },
+  } = useForm();
+
+  const sendOtpMethod = async (data) => {
+    const { email } = data;
+    let response;
+
+    try {
+      response = await sendOtp(email);
+      if (response.data.user === true) {
+        setError("email", {
+          shouldFocus: true,
+          type: "manual",
+          message: response.data.message,
+        });
+      } else {
+        navigate("/enterOTP")
+      }
+    } catch (error) {
+      console.log("error");
+    }
+  };
+
+  const onSubmit = (data) => {
+    dispatch(getEmail(data.email));
+    sendOtpMethod(data);
+  }
+
   return (
     <div>
       <div className="grid grid-cols-1 lg:grid-cols-2 min-h-screen">
@@ -29,24 +70,25 @@ const Register = () => {
 
             <div className="mt-10">
               <div>
-                <form action="#" method="POST">
+                <form onSubmit={handleSubmit(onSubmit)}>
                   <label
                     htmlFor="email"
-                    className="block text-sm font-medium leading-6 text-gray-900"
+                    className={`block text-sm font-medium leading-6 ${errors?.email ? 'text-red-700' : 'text-gray-900'}`}
                   >
                     Email address
                   </label>
-
-                  <Input
-                    id="email"
-                    name="email"
-                    type="email"
-                    placeholder="name@gmail.com"
-                    autoComplete="email"
-                  />
-                  <Link to="/enterOTP">
-                    <PrimaryButton type="submit" buttonText="Send OTP" />
-                  </Link>
+                  <div className="mt-2">
+                    <input
+                      type="email"
+                      placeholder="name@gmail.com"
+                      className="block w-full rounded-md border-0 p-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400  focus:ring-blue-600 sm:text-sm sm:leading-6"
+                      {...register("email", { required: "Email Is Required " })}
+                    />
+                  </div>
+                  {errors?.email &&
+                    <p className="mt-2 text-sm text-red-600 dark:text-red-500"> {errors?.email?.message} </p>
+                  }
+                  <PrimaryButton type="submit" buttonText="Send OTP" />
                 </form>
               </div>
             </div>

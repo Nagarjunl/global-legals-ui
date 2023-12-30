@@ -24,6 +24,8 @@ import PrivateInvestigators from "./pages/SignUpForms/PrivateInvestigators";
 import Verification from "./pages/SignUpForms/Verification";
 import PayPremium from "./pages/SignUpForms/PayPremium";
 
+
+
 function App() {
   return (
     <>
