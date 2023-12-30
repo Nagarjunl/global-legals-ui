@@ -1,5 +1,4 @@
 import React from "react";
-
 const ServiceCard = ({ image, content, contentBold }) => {
   return (
     <div>

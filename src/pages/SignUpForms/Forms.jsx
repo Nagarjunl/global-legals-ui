@@ -5,7 +5,6 @@ import SecurityDetails from "./SecurityDetails";
 import PrivateInvestigators from "./PrivateInvestigators";
 const SelectForm = () => {
   const [selectedCountry, setSelectedCountry] = useState(null);
-
   const handleSelectChange = (event) => {
     setSelectedCountry(event.target.value);
   };
@@ -53,7 +52,6 @@ const SelectForm = () => {
                 <option value="" disabled hidden>
                   Select from dropdown
                 </option>
-
                 <option>Lawyers</option>
                 <option>BondBailsman</option>
                 <option>Security</option>
@@ -63,7 +61,6 @@ const SelectForm = () => {
           </div>
         </div>
       </div>
-
       {selectedCountry && <div className="mt-2">{renderCountryData()}</div>}
     </>
   );

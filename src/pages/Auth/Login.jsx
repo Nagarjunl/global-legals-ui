@@ -10,10 +10,7 @@ import { useDispatch } from "react-redux";
 import { addTokens } from "../../reducers/auth/authSlice";
 import { currentUser } from "../../reducers/useSlice";
 import { useSignInMutation } from "../../services/authAPI";
-
-
 const Login = () => {
-
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [signIn] = useSignInMutation();
@@ -70,6 +67,7 @@ const Login = () => {
             </h2>
             <p className="mt-2 text-sm leading-6 text-gray-500">
               Don&apos;t have an accocunt?&nbsp;
+
               <Link to="/register" className="font-semibold text-blue-600 hover:text-blue-500"
               >Create an account</Link>
             </p>
@@ -81,6 +79,7 @@ const Login = () => {
                 <>
                   <label
                     htmlFor="email"
+
                     className={`block text-sm font-medium leading-6 ${errors?.email ? 'text-red-700' : 'text-gray-900'}`}
                   >
                     Email address
@@ -93,6 +92,7 @@ const Login = () => {
                       {...register("email", { required: "Email is required" })}
                     />
                   </div>
+
                   {errors?.email &&
                     <p className="mt-2 text-sm text-red-600 dark:text-red-500"> {errors?.email?.message} </p>
                   }
@@ -100,6 +100,7 @@ const Login = () => {
                 <>
                   <label
                     htmlFor="password"
+
                     className={`block text-sm font-medium leading-6 ${errors?.password ? 'text-red-700' : 'text-gray-900'}`}
                   >
                     Password
@@ -109,7 +110,7 @@ const Login = () => {
                       type="password"
                       placeholder="***********"
                       className="block w-full rounded-md border-0 p-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400  focus:ring-blue-600 sm:text-sm sm:leading-6"
-                      {...register("password", { required: "Password is required" })}
+          {...register("password", { required: "Password is required" })}
                     />
                   </div>
                   {errors?.password &&
@@ -134,6 +135,7 @@ const Login = () => {
                   </div>
 
                   <div className="text-sm leading-6">
+
                     <Link to="/forgetPassword" className="font-semibold text-blue-600 hover:text-blue-500"
                     >Forgot password</Link>
                   </div>
