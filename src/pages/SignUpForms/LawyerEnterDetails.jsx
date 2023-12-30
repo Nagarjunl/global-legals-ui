@@ -1,70 +1,135 @@
+import { useState } from "react";
 import GoogleImage from "../../assets/Google-image.png";
 import ReCAPTCHA from "react-google-recaptcha";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { useNavigate } from "react-router";
+
+import { useCreateLawyerMutation } from "../../services/userAPI";
+import {
+  usePostFileMutation,
+  useDeleteFileMutation,
+} from "../../services/fileUploadAPI";
+
+import "../../styles.css";
+
+const baseUrl = "http://127.0.0.1:3005/";
+
+
 const LawyerEnterDetails = () => {
-  const handleChange = () => {
-    console.log("ReCaptcha");
-  };
+
+  const navigate = useNavigate();
+  const [createLawyer] = useCreateLawyerMutation();
+  const [postFile, { isLoading: isUpdating }] = usePostFileMutation();
+  const [deleteFile] = useDeleteFileMutation();
+  const [singleFile, setSingleFile] = useState("");
+
   const schema = yup.object().shape({
-    username: yup.string().required("Username is required"),
+    clientName: yup.string().required("Name is required"),
     email: yup.string().email("Invalid email").required("Email is required"),
-    number: yup
+    contactNumber: yup
       .string()
-      .min(3, "number must be at least 10 characters")
-      .required("number is required"),
+      // .min(3, "number must be at least 10 characters")
+      .required("Contact number is required"),
     address: yup
       .string()
-      .min(8, "address must be at least 30 characters")
-      .required("address is required"),
+      // .min(8, "address must be at least 30 characters")
+      .required("Address is required"),
     professional: yup
       .string()
-      .min(8, "professional must be at least 30 characters")
-      .required("professional is required"),
-    practicingLaw: yup.string().required("practicing law is required"),
-    LegalSpecialization: yup
+      // .min(8, "professional must be at least 30 characters")
+      .required("Professional is required"),
+    practicingLaw: yup
+      .string(),
+    // .required("practicing law is required"),
+    legalSpecialization: yup
+      .string(),
+    // .required("Legal Specialization is required"),
+    experience: yup
+      .string(),
+    // .min(3, "number must be at least 10 characters")
+    // .required(" number is required"),
+    licenseNumber: yup
+      .string(),
+    // .min(3, "Number must be at least 10 characters")
+    // .required("Number is required"),
+    servedTillNow: yup
+      .string(),
+    // .min(3, "Number must be at least 10 characters")
+    // .required("Number is required"),
+    lawField: yup
+      .string(),
+    // .min(3, "Number must be at least 10 characters")
+    // .required("Number is required"),
+    languages: yup
+      .string(),
+    // .min(3, "Name must be at least 10 characters")
+    // .required("Name is required"),
+    linkedInProfile: yup
+      .string(),
+    // .min(3, "link profile not 5 matched")
+    // .required("profile not matched"),
+    twitterProfile: yup
+      .string(),
+    // .min(3, "Twitter profile not 5 matched")
+    // .required("profile not matched"),
+    acceptTerms: yup
       .string()
-      .required("Legal Specialization is required"),
-    Experience: yup
-      .string()
-      .min(3, "number must be at least 10 characters")
-      .required(" number is required"),
-    LicenseNumber: yup
-      .string()
-      .min(3, "Number must be at least 10 characters")
-      .required("Number is required"),
-    ServedTillNow: yup
-      .string()
-      .min(3, "Number must be at least 10 characters")
-      .required("Number is required"),
-    LawField: yup
-      .string()
-      .min(3, "Number must be at least 10 characters")
-      .required("Number is required"),
-    Languages: yup
-      .string()
-      .min(3, "Name must be at least 10 characters")
-      .required("Name is required"),
-    LinkedinProfile: yup
-      .string()
-      .min(3, "link profile not 5 matched")
-      .required("profile not matched"),
-    TwitterProfile: yup
-      .string()
-      .min(3, "Twitter profile not 5 matched")
-      .required("profile not matched"),
+    // .required("Please check this box"),
   });
+
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
   });
 
+  const handleChange = () => {
+    console.log("ReCaptcha");
+  };
+
+  const uploadFileAPI = async (e) => {
+    const formData = new FormData();
+    formData.append("idProof", e.target.files[0]);
+    await postFile(formData)
+      .unwrap()
+      .then((res) => {
+        setSingleFile(res.filename);
+        setValue("idProof", res.filename);
+      });
+  };
+
+  const removeImage = async (filename) => {
+    await deleteFile(filename)
+      .unwrap()
+      .then(() => {
+        setSingleFile("");
+        setValue("idProof", "");
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const submitLawyer = async (data) => {
+    let response;
+    try {
+      response = await createLawyer(data);
+      if (response) {
+        navigate("/appoinments")
+      } else {
+        console.log("error")
+      }
+    } catch (error) {
+      console.log("error");
+    }
+  }
+
   function onSubmit(data) {
     console.log(data);
+    submitLawyer(data);
   }
   return (
     <>
@@ -82,12 +147,12 @@ const LawyerEnterDetails = () => {
                   </h5>
                   <div className="mt-2">
                     <input
-                      {...register("username")}
+                      {...register("clientName")}
                       className="block w-full p-3  rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       placeholder="Enter your full name"
                     />
-                    {errors.username && (
-                      <p className="text-red-500">{errors.username.message}</p>
+                    {errors.clientName && (
+                      <p className="text-red-500">{errors.clientName.message}</p>
                     )}
                   </div>
                 </div>
@@ -97,12 +162,12 @@ const LawyerEnterDetails = () => {
                   </h5>
                   <div className="mt-2">
                     <input
-                      {...register("number")}
+                      {...register("contactNumber")}
                       className="block w-full p-3  rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       placeholder="Enter your Contact number"
                     />
-                    {errors.number && (
-                      <p className="text-red-500">{errors.number.message}</p>
+                    {errors.contactNumber && (
+                      <p className="text-red-500">{errors.contactNumber.message}</p>
                     )}
                   </div>
                 </div>
@@ -148,12 +213,41 @@ const LawyerEnterDetails = () => {
                         Upload your <br></br>current photo
                       </p>
                     </div>
-                    <button
-                      type="button"
-                      className="rounded-md bg-white px-3.5  py-2.5 text-sm font-semibold text-indigo-700 shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 border border-solid border-blue-500"
-                    >
-                      Browse & upload
-                    </button>
+                    {/* <label htmlFor="files">Select file</label> */}
+
+                    {/* <input
+                      type="file"
+                      className="rounded-md bg-white px-3.5 mt-2 py-2.5 text-sm font-semibold text-indigo-700 shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 border border-solid border-blue-500"
+                      {...register("idProof")}
+                      onChange={(e) => uploadFileAPI(e)}
+                    /> */}
+                    {singleFile.length > 0 && (
+                      <div className="img-block bg-gray">
+                        <img
+                          className="img-fluid2"
+                          src={`${baseUrl}/${singleFile}`}
+                          alt="..."
+                        />
+                        <span
+                          className="remove_img"
+                          onClick={() => removeImage(singleFile)}
+                        >
+                          {"X"}
+                        </span>
+                      </div>
+                    )}
+                    {singleFile.length === 0 && (
+                      <div className="upload-btn-wrapper-one">
+                        <button
+                          className="rounded-md bg-white px-3.5 mt-2 py-2.5 text-sm font-semibold text-indigo-700 shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 border border-solid border-blue-500"
+                        > Browse & Upload </button>
+                        <input
+                          type="file"
+                          {...register("idProof")}
+                          onChange={(e) => uploadFileAPI(e)}
+                        />
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
@@ -195,7 +289,7 @@ const LawyerEnterDetails = () => {
                     id="first-name"
                     {...register("practicingLaw")}
                     autoComplete="given-name"
-                    placeholder="Enter Name"
+                    placeholder="Enter practicing law firm"
                     className="block w-full rounded-md px-2 border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
                   {errors.practicingLaw && (
@@ -215,14 +309,14 @@ const LawyerEnterDetails = () => {
                     type="text"
                     name="first-name"
                     id="first-name"
-                    {...register("LegalSpecialization")}
+                    {...register("legalSpecialization")}
                     autoComplete="given-name"
-                    placeholder="Enter Name"
+                    placeholder="Enter NLegal Specialization"
                     className="block w-full rounded-md px-2 border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
-                  {errors.LegalSpecialization && (
+                  {errors.legalSpecialization && (
                     <p className="text-red-500">
-                      {errors.LegalSpecialization.message}
+                      {errors.legalSpecialization.message}
                     </p>
                   )}
                 </div>
@@ -237,13 +331,13 @@ const LawyerEnterDetails = () => {
                     type="text"
                     name="first-name"
                     id="first-name"
-                    {...register("Experience")}
+                    {...register("experience")}
                     autoComplete="given-name"
-                    placeholder="Enter Name"
+                    placeholder="Enter Years of experience"
                     className="block w-full rounded-md px-2 border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
-                  {errors.Experience && (
-                    <p className="text-red-500">{errors.Experience.message}</p>
+                  {errors.experience && (
+                    <p className="text-red-500">{errors.experience.message}</p>
                   )}
                 </div>
               </div>
@@ -257,14 +351,14 @@ const LawyerEnterDetails = () => {
                     type="text"
                     name="last-name"
                     id="last-name"
-                    {...register("LicenseNumber")}
+                    {...register("licenseNumber")}
                     autoComplete="family-name"
                     placeholder="License Number"
                     className="block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
-                  {errors.LicenseNumber && (
+                  {errors.licenseNumber && (
                     <p className="text-red-500">
-                      {errors.LicenseNumber.message}
+                      {errors.licenseNumber.message}
                     </p>
                   )}
                 </div>
@@ -279,14 +373,14 @@ const LawyerEnterDetails = () => {
                     type="text"
                     name="first-name"
                     id="first-name"
-                    {...register("ServedTillNow")}
+                    {...register("servedTillNow")}
                     autoComplete="given-name"
-                    placeholder="Enter Name"
+                    placeholder="Enter Areas Served till now"
                     className="block w-full rounded-md px-2 border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
-                  {errors.ServedTillNow && (
+                  {errors.servedTillNow && (
                     <p className="text-red-500">
-                      {errors.ServedTillNow.message}
+                      {errors.servedTillNow.message}
                     </p>
                   )}
                 </div>
@@ -301,13 +395,13 @@ const LawyerEnterDetails = () => {
                     type="text"
                     name="first-name"
                     id="first-name"
-                    {...register("LawField")}
+                    {...register("lawField")}
                     autoComplete="given-name"
-                    placeholder="Enter Name"
+                    placeholder="Enter Specialized in"
                     className="block w-full rounded-md px-2 border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
-                  {errors.LawField && (
-                    <p className="text-red-500">{errors.LawField.message}</p>
+                  {errors.lawField && (
+                    <p className="text-red-500">{errors.lawField.message}</p>
                   )}
                 </div>
               </div>
@@ -321,13 +415,13 @@ const LawyerEnterDetails = () => {
                     type="text"
                     name="first-name"
                     id="first-name"
-                    {...register("Languages")}
+                    {...register("languages")}
                     autoComplete="given-name"
-                    placeholder="Enter Name"
+                    placeholder="Enter Language"
                     className="block w-full rounded-md px-2 border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
-                  {errors.Languages && (
-                    <p className="text-red-500">{errors.Languages.message}</p>
+                  {errors.languages && (
+                    <p className="text-red-500">{errors.languages.message}</p>
                   )}
                 </div>
               </div>
@@ -366,15 +460,15 @@ const LawyerEnterDetails = () => {
                 <input
                   type="text"
                   name="first-name"
-                  {...register("LinkedinProfile")}
+                  {...register("linkedInProfile")}
                   id="first-name"
                   placeholder="Linkedin profile"
                   autoComplete="given-name"
                   className="block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
-                {errors.LinkedinProfile && (
+                {errors.linkedInProfile && (
                   <p className="text-red-500">
-                    {errors.LinkedinProfile.message}
+                    {errors.linkedInProfile.message}
                   </p>
                 )}
               </div>
@@ -388,15 +482,15 @@ const LawyerEnterDetails = () => {
                 <input
                   type="text"
                   name="last-name"
-                  {...register("TwitterProfile")}
+                  {...register("twitterProfile")}
                   id="last-name"
                   autoComplete="family-name"
                   placeholder="Twitter Profile"
                   className="block w-full  px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
-                {errors.TwitterProfile && (
+                {errors.twitterProfile && (
                   <p className="text-red-500">
-                    {errors.TwitterProfile.message}
+                    {errors.twitterProfile.message}
                   </p>
                 )}
               </div>
@@ -408,6 +502,7 @@ const LawyerEnterDetails = () => {
               type="checkbox"
               id="myCheckbox"
               className="form-checkbox h-5 w-5 text-indigo-600"
+              {...register('acceptTerms')}
             />
             <label className="ml-2 text-[12px]">
               By proceeding, you confirm that you&apos;ve read, comprehended,
@@ -419,7 +514,9 @@ const LawyerEnterDetails = () => {
               understanding of the guidelines governing your use of Global
               Legals
             </label>
+
           </div>
+          {errors.acceptTerms && <p className="text-red-500">{errors.acceptTerms.message}</p>}
           <div className="flex-1 border-t border-gray-300 mt-7"></div>
           <div className="flex justify-between flex-wrap mt-10 my-3">
             <div>
