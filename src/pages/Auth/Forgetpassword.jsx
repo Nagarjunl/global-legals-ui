@@ -2,11 +2,46 @@ import logo from "../../assets/logo.png";
 import Paperplane from "../../assets/paper-plane.png";
 import "../../App.css";
 import PrimaryButton from "../../components/PrimaryButton";
-import Input from "../../components/Input";
-import { Link } from "react-router-dom";
+import { useForm } from "react-hook-form"
 import LeftsideBar from "../../components/Leftside-Bar";
+import { useForgotPasswordMutation } from "../../services/authAPI";
+import { useNavigate } from "react-router-dom";
+import { getpwResetMail } from '../../reducers/auth/registerSlice'
+import { useDispatch } from 'react-redux'
 
 const ForgetPassword = () => {
+  const [forgotPassword] = useForgotPasswordMutation();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const {
+    handleSubmit,
+    register,
+    setError,
+    formState: { errors },
+  } = useForm();
+
+  const sendOtpMethod = async (data) => {
+    let response;
+    try {
+      response = await forgotPassword(data);
+      if (response.data.user === "Not Registered") {
+        setError("email", {
+          shouldFocus: true,
+          type: "manual",
+          message: response.data.message,
+        });
+      } else {
+        navigate("/newPassword")
+      }
+    } catch (error) {
+      console.log("error");
+    }
+  };
+  const onSubmit = (data) => {
+    dispatch(getpwResetMail(data.email));
+    sendOtpMethod(data);
+  }
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 min-h-screen">
       <div className=" max-lg:hidden lg:flex bg-blue-600 xl:flex items-center justify-center ">
@@ -30,7 +65,7 @@ const ForgetPassword = () => {
           </div>
 
           <div className="mt-10 grid gap-3">
-            <form action="#" method="POST">
+            <form onSubmit={handleSubmit(onSubmit)}>
               <label
                 htmlFor="email"
                 className="block text-sm font-medium leading-6 text-gray-900"
@@ -38,16 +73,18 @@ const ForgetPassword = () => {
                 Email address
               </label>
 
-              <Input
-                id="email"
-                name="email"
-                type="email"
-                placeholder="name@gmail.com"
-                autoComplete="email"
-              />
-              <Link to="/newPassword">
-                <PrimaryButton type="submit" buttonText="Rest Password" />
-              </Link>
+              <div className="mt-2">
+                <input
+                  type="email"
+                  placeholder="name@gmail.com"
+                  className="block w-full rounded-md border-0 p-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400  focus:ring-blue-600 sm:text-sm sm:leading-6"
+                  {...register("email", { required: "Email Is Required " })}
+                />
+              </div>
+              {errors?.email &&
+                <p className="mt-2 text-sm text-red-600 dark:text-red-500"> {errors?.email?.message} </p>
+              }
+              <PrimaryButton type="submit" buttonText="Reset Password" />
             </form>
           </div>
 

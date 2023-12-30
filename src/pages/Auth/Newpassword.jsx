@@ -1,11 +1,53 @@
 import logo from "../../assets/logo.png";
 import Paperplane from "../../assets/paper-plane.png";
-import "../../App.css";
 import PrimaryButton from "../../components/PrimaryButton";
-import Input from "../../components/Input";
+import "../../App.css";
+import { useForm } from "react-hook-form"
 import LeftsideBar from "../../components/Leftside-Bar";
+import { useSelector } from 'react-redux'
+import { useNavigate } from "react-router-dom";
+import { useChangePasswordMutation } from "../../services/authAPI";
+import { useDispatch } from "react-redux";
+import { clearEmail } from "../../reducers/auth/registerSlice";
+
+const REGEX = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
 
 const NewPassword = () => {
+
+  const pwResetMail = useSelector((state) => state.registeredMail.pwResetMail)
+  const [changePassword] = useChangePasswordMutation();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const {
+    handleSubmit,
+    register,
+    watch,
+    formState: { errors },
+  } = useForm();
+
+  const setPasswordMethod = async (data) => {
+    data.email = pwResetMail;
+    const { email, password } = data;
+    try {
+      await changePassword({ email, password })
+        .unwrap()
+        .then((res) => {
+          if (res) {
+            dispatch(clearEmail());
+            navigate("/");
+          }
+        });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  const onSubmit = (data) => {
+    console.log(data);
+    setPasswordMethod(data);
+  }
+
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 min-h-screen">
       <div className=" max-lg:hidden lg:flex bg-blue-600 xl:flex items-center justify-center ">
@@ -29,7 +71,7 @@ const NewPassword = () => {
 
           <div className="mt-10">
             <div>
-              <form action="#" method="POST" className="grid gap-3">
+              <form className="grid gap-3" onSubmit={handleSubmit(onSubmit)}>
                 <div>
                   <label
                     htmlFor="new password"
@@ -38,14 +80,23 @@ const NewPassword = () => {
                     New Password
                   </label>
                   <div>
-                    <Input
-                      id="password"
-                      name="password"
+                    <input
                       type="text"
                       placeholder="Enter new password"
-                      autoComplete="password"
+                      className="block w-full rounded-md border-0 p-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400  focus:ring-blue-600 sm:text-sm sm:leading-6"
+                      {...register('password', {
+                        required: "Password is Required",
+                        pattern: {
+                          value: REGEX,
+                          message: "Password should be 8 characters and include at least 1 letter, 1 number and 1 special character!"
+                        }
+                      })
+                      }
                     />
                   </div>
+                  {errors?.password &&
+                    <p className="mt-2 text-sm text-red-600 dark:text-red-500"> {errors?.password?.message} </p>
+                  }
                 </div>
 
                 <div>
@@ -56,14 +107,22 @@ const NewPassword = () => {
                     Confirm Password
                   </label>
                   <div>
-                    <Input
-                      id="password"
-                      name="password"
+                    <input
                       type="text"
-                      placeholder="Enter new password"
-                      autoComplete="password"
+                      placeholder="Confirm Password"
+                      className="block w-full rounded-md border-0 p-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400  focus:ring-blue-600 sm:text-sm sm:leading-6"
+                      {...register('password1', {
+                        required: "Password is Required",
+                        validate: (value) => {
+                          return value === watch('password') || 'Password does not match'
+                        }
+                      })
+                      }
                     />
                   </div>
+                  {errors?.password1 &&
+                    <p className="mt-2 text-sm text-red-600 dark:text-red-500"> {errors?.password1?.message} </p>
+                  }
                 </div>
 
                 <div className="mt-3">
@@ -74,7 +133,9 @@ const NewPassword = () => {
                     number and one special character.
                   </span>
                 </div>
-                <PrimaryButton type="submit" buttonText="Submit" />
+
+                <PrimaryButton type="submit" buttonText="Submmit" />
+
               </form>
             </div>
           </div>
