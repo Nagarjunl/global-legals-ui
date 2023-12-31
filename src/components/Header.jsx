@@ -3,12 +3,18 @@ import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import GlobalLegals from "../assets/GlobalLegals.svg";
 import UserIcon from "../assets/UserIcon.svg";
+import { removeTokens } from "../reducers/auth/authSlice";
+import { useDispatch } from "react-redux";
+import { removeUser } from "../reducers/userSlice";
+
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
 export default function Example() {
+
+  const dispatch = useDispatch();
   return (
     <Disclosure as="nav" className="bg-white shadow">
       {({ open }) => (
@@ -93,6 +99,12 @@ export default function Example() {
                               active ? "bg-gray-100" : "",
                               "block px-4 py-2 text-sm text-gray-700"
                             )}
+                            onClick={() => {
+                              dispatch(removeTokens());
+                              dispatch(removeUser());
+                            }
+                            }
+
                           >
                             Sign out
                           </a>

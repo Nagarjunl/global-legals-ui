@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useNavigate } from "react-router";
+import { useSelector } from 'react-redux'
 
 import { useCreateLawyerMutation } from "../../services/userAPI";
 import {
@@ -21,9 +22,10 @@ const LawyerEnterDetails = () => {
 
   const navigate = useNavigate();
   const [createLawyer] = useCreateLawyerMutation();
-  const [postFile, { isLoading: isUpdating }] = usePostFileMutation();
+  const [postFile, { isLoading }] = usePostFileMutation();
   const [deleteFile] = useDeleteFileMutation();
   const [singleFile, setSingleFile] = useState("");
+  const currentUser = useSelector((state) => state.user.id)
 
   const schema = yup.object().shape({
     clientName: yup.string().required("Name is required"),
@@ -114,21 +116,21 @@ const LawyerEnterDetails = () => {
   };
 
   const submitLawyer = async (data) => {
-    let response;
+    data.userId = currentUser;
+    const { idProof } = data;
+    let proof = idProof.length === 0 ? "" : idProof
+    data.idProof = proof;
     try {
-      response = await createLawyer(data);
-      if (response) {
-        navigate("/appoinments")
-      } else {
-        console.log("error")
-      }
+      await createLawyer(data).unwrap()
+        .then(() => {
+          navigate("/appoinments")
+        });
     } catch (error) {
       console.log("error");
     }
   }
 
   function onSubmit(data) {
-    console.log(data);
     submitLawyer(data);
   }
   return (
@@ -140,71 +142,76 @@ const LawyerEnterDetails = () => {
               <h3 className="lg:col-span-3 font-medium leading-[34.32px] text-[24px]">
                 Personal Information
               </h3>
-              <div>
-                <div className="">
-                  <h5 className="font-normal leading-[17.16px] text-[12px]">
-                    Enter your full name
-                  </h5>
-                  <div className="mt-2">
-                    <input
-                      {...register("clientName")}
-                      className="block w-full p-3  rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                      placeholder="Enter your full name"
-                    />
-                    {errors.clientName && (
-                      <p className="text-red-500">{errors.clientName.message}</p>
-                    )}
+
+              <div className="sm:col-span-2">
+                <div className="grid xs:grid-cols-1 lg:grid-cols-2 gap-4">
+                  <div>
+                    <h5 className="font-normal leading-[17.16px] text-[12px]">
+                      Enter your full name
+                    </h5>
+                    <div className="mt-2">
+                      <input
+                        {...register("clientName")}
+                        className="block w-full p-3  rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                        placeholder="Enter your full name"
+                      />
+                      {errors.clientName && (
+                        <p className="text-red-500">{errors.clientName.message}</p>
+                      )}
+                    </div>
+                  </div>
+                  <div>
+                    <h5 className="font-normal leading-[17.16px] text-[12px]">
+                      Enter Email Address
+                    </h5>
+                    <div className="mt-2">
+                      <input
+                        {...register("email")}
+                        className="block w-full p-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                        placeholder="Enter Email Address"
+                      />
+                      {errors.email && (
+                        <p className="text-red-500">{errors.email.message}</p>
+                      )}
+                    </div>
                   </div>
                 </div>
-                <div className="mt-2">
-                  <h5 className="font-normal leading-[17.16px] text-[12px]">
-                    Contact number
-                  </h5>
+
+                <div className="grid xs:grid-cols-1 lg:grid-cols-2 gap-4">
+
                   <div className="mt-2">
-                    <input
-                      {...register("contactNumber")}
-                      className="block w-full p-3  rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                      placeholder="Enter your Contact number"
-                    />
-                    {errors.contactNumber && (
-                      <p className="text-red-500">{errors.contactNumber.message}</p>
-                    )}
+                    <h5 className="font-normal leading-[17.16px] text-[12px]">
+                      Contact number
+                    </h5>
+                    <div className="mt-2">
+                      <input
+                        {...register("contactNumber")}
+                        className="block w-full p-3  rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                        placeholder="Enter your Contact number"
+                      />
+                      {errors.contactNumber && (
+                        <p className="text-red-500">{errors.contactNumber.message}</p>
+                      )}
+                    </div>
+                  </div>
+                  <div className="mt-2">
+                    <h5 className="font-normal leading-[17.16px] text-[12px]">
+                      Location / Address
+                    </h5>
+                    <div className="mt-2">
+                      <input
+                        {...register("address")}
+                        className="block w-full p-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                        placeholder="Enter your location "
+                      />
+                      {errors.address && (
+                        <p className="text-red-500">{errors.address.message}</p>
+                      )}
+                    </div>
                   </div>
                 </div>
               </div>
 
-              <div>
-                <div className="">
-                  <h5 className="font-normal leading-[17.16px] text-[12px]">
-                    Enter Email Address
-                  </h5>
-                  <div className="mt-2">
-                    <input
-                      {...register("email")}
-                      className="block w-full p-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                      placeholder="Enter Email Address"
-                    />
-                    {errors.email && (
-                      <p className="text-red-500">{errors.email.message}</p>
-                    )}
-                  </div>
-                </div>
-                <div className="mt-2">
-                  <h5 className="font-normal leading-[17.16px] text-[12px]">
-                    Location / Address
-                  </h5>
-                  <div className="mt-2">
-                    <input
-                      {...register("address")}
-                      className="block w-full p-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                      placeholder="Enter your location "
-                    />
-                    {errors.address && (
-                      <p className="text-red-500">{errors.address.message}</p>
-                    )}
-                  </div>
-                </div>
-              </div>
               <div className="rounded-lg border border-dashed border-gray-900/25">
                 <div className="flex justify-center">
                   <div className="text-center mb-2 ">
@@ -213,14 +220,6 @@ const LawyerEnterDetails = () => {
                         Upload your <br></br>current photo
                       </p>
                     </div>
-                    {/* <label htmlFor="files">Select file</label> */}
-
-                    {/* <input
-                      type="file"
-                      className="rounded-md bg-white px-3.5 mt-2 py-2.5 text-sm font-semibold text-indigo-700 shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 border border-solid border-blue-500"
-                      {...register("idProof")}
-                      onChange={(e) => uploadFileAPI(e)}
-                    /> */}
                     {singleFile.length > 0 && (
                       <div className="img-block bg-gray">
                         <img
@@ -526,7 +525,7 @@ const LawyerEnterDetails = () => {
               />
             </div>
             <div>
-              <button className="rounded-md mt-2 text-white bg-blue-800 border-blue-800 px-20 py-2 text-sm font-semibol shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 border border-solid ">
+              <button type="submit" disabled={isLoading} className="rounded-md mt-2 text-white bg-blue-800 border-blue-800 px-20 py-2 text-sm font-semibol shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 border border-solid ">
                 Save & Submit
               </button>
             </div>

@@ -8,12 +8,12 @@ import { useForm } from "react-hook-form"
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addTokens } from "../../reducers/auth/authSlice";
-import { currentUser } from "../../reducers/useSlice";
+import { currentUser } from "../../reducers/userSlice";
 import { useSignInMutation } from "../../services/authAPI";
 const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [signIn] = useSignInMutation();
+  const [signIn, { isLoading }] = useSignInMutation();
 
   const {
     register,
@@ -110,7 +110,7 @@ const Login = () => {
                       type="password"
                       placeholder="***********"
                       className="block w-full rounded-md border-0 p-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400  focus:ring-blue-600 sm:text-sm sm:leading-6"
-          {...register("password", { required: "Password is required" })}
+                      {...register("password", { required: "Password is required" })}
                     />
                   </div>
                   {errors?.password &&
@@ -140,7 +140,7 @@ const Login = () => {
                     >Forgot password</Link>
                   </div>
                 </div>
-                <PrimaryButton type="submit" buttonText="Login" />
+                <PrimaryButton type="submit" disabled={isLoading} buttonText="Login" />
               </form>
             </div>
 
