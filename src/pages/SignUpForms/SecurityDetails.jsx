@@ -413,12 +413,12 @@ const SecurityDetails = () => {
             </h5>
             <div className="mt-2">
               <Controller
-                name="experienceDateOfInsurance"
+                name="expirationDateOfInsurance"
                 control={control}
-                rules={{
-                  required: "Date is required",
-                  max: { value: new Date(), message: "Date cannot be in the future" }
-                }}
+                // rules={{
+                //   required: "Date is required",
+                //   max: { value: new Date(), message: "Date cannot be in the future" }
+                // }}
                 render={({ field: { onChange, value } }) => {
                   return (
                     <DatePicker
@@ -430,8 +430,8 @@ const SecurityDetails = () => {
                   );
                 }}
               />                    {
-                errors.experienceDateOfInsurance && (
-                  <p className="text-red-500">{errors.experienceDateOfInsurance.message}</p>
+                errors.expirationDateOfInsurance && (
+                  <p className="text-red-500">{errors.expirationDateOfInsurance.message}</p>
                 )
               }
             </div>
@@ -495,7 +495,7 @@ const SecurityDetails = () => {
                 type="text"
                 placeholder="Area of Expertise"
                 className="block w-full px-2 rounded-md border-0 py-1.5  shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                {...register("contactNumber")}
+                {...register("referenceContactNumber")}
               />
             </div>
           </div>

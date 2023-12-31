@@ -17,7 +17,7 @@ function BondBailsman() {
       setValue("dateOfLicenceing", date, { shouldValidate: true });
     } else {
       setSelectedDate2(date);
-      setValue("experienceDateOfInsurance", date, { shouldValidate: true });
+      setValue("expirationDateOfInsurance", date, { shouldValidate: true });
     }
   };
 
@@ -74,7 +74,7 @@ function BondBailsman() {
       .string(),
     // .min(3, "Number must be at least 10 characters")
     // .required("Number is required"),
-    experienceDateOfInsurance: yup
+    expirationDateOfInsurance: yup
       .date()
       .nullable()
       .required("Date is required")
@@ -399,8 +399,8 @@ function BondBailsman() {
                   placeholder="Enter date of licensing"
                   className="block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
-                {errors.experienceDateOfInsurance && (
-                  <p className="text-red-500">{errors.experienceDateOfInsurance.message}</p>
+                {errors.expirationDateOfInsurance && (
+                  <p className="text-red-500">{errors.expirationDateOfInsurance.message}</p>
                 )}
               </div>
             </div>
