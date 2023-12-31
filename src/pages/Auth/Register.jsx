@@ -11,7 +11,7 @@ import { useSendOtpMutation } from "../../services/authAPI";
 const Register = () => {
 
   const dispatch = useDispatch();
-  const [sendOtp] = useSendOtpMutation();
+  const [sendOtp, { isLoading }] = useSendOtpMutation();
   const navigate = useNavigate();
 
   const {
@@ -88,7 +88,7 @@ const Register = () => {
                   {errors?.email &&
                     <p className="mt-2 text-sm text-red-600 dark:text-red-500"> {errors?.email?.message} </p>
                   }
-                  <PrimaryButton type="submit" buttonText="Send OTP" />
+                  <PrimaryButton type="submit" disabled={isLoading} buttonText="Send OTP" />
                 </form>
               </div>
             </div>

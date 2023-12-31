@@ -37,16 +37,20 @@ function App() {
           <Route
             path="*"
             element={
-              <AuthLayout>
-                <Routes>
-                  <Route index element={<Login />} />
-                  <Route path="register" element={<Register />} />
-                  <Route path="newPassword" element={<NewPassword />} />
-                  <Route path="forgetPassword" element={<ForgetPassword />} />
-                  <Route path="createPassword" element={<CreatePassword />} />
-                  <Route path="enterOTP" element={<EnterOtp />} />
-                </Routes>
-              </AuthLayout>
+              !isAuthenticated ? (
+                <AuthLayout>
+                  <Routes>
+                    <Route index element={<Login />} />
+                    <Route path="register" element={<Register />} />
+                    <Route path="newPassword" element={<NewPassword />} />
+                    <Route path="forgetPassword" element={<ForgetPassword />} />
+                    <Route path="createPassword" element={<CreatePassword />} />
+                    <Route path="enterOTP" element={<EnterOtp />} />
+                  </Routes>
+                </AuthLayout>
+              )
+                :
+                <Navigate to="/home" />
             }
           />
           <Route path="/home" element={<Homepage />} />

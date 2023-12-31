@@ -11,13 +11,13 @@ import { useSetPasswordMutation } from "../../services/authAPI";
 import { useDispatch } from "react-redux";
 import { clearEmail } from "../../reducers/auth/registerSlice";
 import { addTokens } from "../../reducers/auth/authSlice";
-import { currentUser } from "../../reducers/useSlice";
+import { currentUser } from "../../reducers/userSlice";
 
 
 const REGEX = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
 
 const CreatePassword = () => {
-  const [setPassword] = useSetPasswordMutation();
+  const [setPassword, { isLoading }] = useSetPasswordMutation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -122,7 +122,7 @@ const CreatePassword = () => {
               {errors?.password &&
                 <p className="mt-2 text-sm text-red-600 dark:text-red-500"> {errors?.password?.message} </p>
               }
-              <PrimaryButton type="submit" buttonText="Login" />
+              <PrimaryButton type="submit" disabled={isLoading} buttonText="Login" />
 
             </form>
           </div>

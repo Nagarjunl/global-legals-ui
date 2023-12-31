@@ -3,7 +3,7 @@ import registerReducer from '../reducers/auth/registerSlice'
 import { authApi } from '../services/authAPI'
 import { userApi } from '../services/userAPI'
 import authReducer from "../reducers/auth/authSlice";
-import userReducer from "./useSlice";
+import userReducer from "./userSlice";
 
 const rootReducer = combineReducers({
     registeredMail: registerReducer,

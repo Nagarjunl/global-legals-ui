@@ -16,7 +16,7 @@ const EnterOtp = () => {
   const navigate = useNavigate();
   const registeredMail = useSelector((state) => state.registeredMail.email)
   const otpFromStore = useSelector((state) => state.registeredMail.otp)
-  const [verifyOtp] = useVerifyOtpMutation();
+  const [verifyOtp, { isLoading }] = useVerifyOtpMutation();
 
   const {
     handleSubmit,
@@ -151,7 +151,7 @@ const EnterOtp = () => {
 
                   <div className="pt-4">
                     <div>
-                      <PrimaryButton type="submit" buttonText="Create Account" />
+                      <PrimaryButton type="submit" disabled={isLoading} buttonText="Create Account" />
                     </div>
                   </div>
                 </form>
