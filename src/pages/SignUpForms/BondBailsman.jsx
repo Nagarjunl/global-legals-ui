@@ -7,7 +7,21 @@ import * as yup from "yup";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
+import {
+  usePostFileMutation,
+  useDeleteFileMutation,
+} from "../../services/fileUploadAPI";
+import "../../styles.css";
+
+const baseUrl = "http://127.0.0.1:3005/";
+
+
 function BondBailsman() {
+
+  const [postFile, { isLoading }] = usePostFileMutation();
+  const [deleteFile] = useDeleteFileMutation();
+  const [singleFile, setSingleFile] = useState("");
+
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedDate2, setSelectedDate2] = useState(null);
 
@@ -109,6 +123,27 @@ function BondBailsman() {
   } = useForm({
     resolver: yupResolver(schema),
   });
+
+  const uploadFileAPI = async (e) => {
+    const formData = new FormData();
+    formData.append("idProof", e.target.files[0]);
+    await postFile(formData)
+      .unwrap()
+      .then((res) => {
+        setSingleFile(res.filename);
+        setValue("idProof", res.filename);
+      });
+  };
+
+  const removeImage = async (filename) => {
+    await deleteFile(filename)
+      .unwrap()
+      .then(() => {
+        setSingleFile("");
+        setValue("idProof", "");
+      })
+      .catch((err) => console.log(err));
+  };
 
   function onSubmit(data) {
     console.log(data);
@@ -244,12 +279,33 @@ function BondBailsman() {
                         Upload your <br></br>current photo
                       </p>
                     </div>
-                    <button
-                      type="button"
-                      className="rounded-md bg-white px-3.5  py-2.5 text-sm font-semibold text-indigo-700 shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 border border-solid border-blue-500"
-                    >
-                      Browse & upload
-                    </button>
+                    {singleFile.length > 0 && (
+                      <div className="img-block bg-gray">
+                        <img
+                          className="img-fluid2"
+                          src={`${baseUrl}/${singleFile}`}
+                          alt="..."
+                        />
+                        <span
+                          className="remove_img"
+                          onClick={() => removeImage(singleFile)}
+                        >
+                          {"X"}
+                        </span>
+                      </div>
+                    )}
+                    {singleFile.length === 0 && (
+                      <div className="upload-btn-wrapper-one">
+                        <button
+                          className="rounded-md bg-white px-3.5 mt-2 py-2.5 text-sm font-semibold text-indigo-700 shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 border border-solid border-blue-500"
+                        > Browse & Upload </button>
+                        <input
+                          type="file"
+                          {...register("idProof")}
+                          onChange={(e) => uploadFileAPI(e)}
+                        />
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
