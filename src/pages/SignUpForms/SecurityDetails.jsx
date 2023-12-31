@@ -1,12 +1,31 @@
 import GoogleImage from "../../assets/Google-image.png";
 import ReCAPTCHA from "react-google-recaptcha";
 
+import { useForm, Controller } from "react-hook-form";
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+
+
 const SecurityDetails = () => {
+
   const handleChange = () => {
     console.log("ReCaptcha");
   };
+
+  const {
+    register,
+    handleSubmit,
+    control,
+    formState: { errors },
+  } = useForm();
+
+  function onSubmit(data) {
+    console.log(data);
+  }
+
   return (
-    <>
+    <form onSubmit={handleSubmit(onSubmit)}>
+
       <div className="container mx-auto sm:px-6 lg:px-12">
         <div className="mt-10">
           <div className="grid xs:grid-cols-1 lg:grid-cols-3 gap-4">
@@ -14,52 +33,71 @@ const SecurityDetails = () => {
               Personal Information
             </h3>
 
-            <div>
-              <div>
-                <h5 className="font-normal leading-[17.16px] text-[12px]">
-                  Enter your full name
-                </h5>
-                <div className="mt-2">
-                  <input
-                    className="block w-full p-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm  text-xs ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-xs sm:leading-6"
-                    placeholder="Enter your full name"
-                  />
+            <div className="sm:col-span-2">
+              <div className="grid xs:grid-cols-1 lg:grid-cols-2 gap-4">
+                <div>
+                  <h5 className="font-normal leading-[17.16px] text-[12px]">
+                    Enter your full name
+                  </h5>
+                  <div className="mt-2">
+                    <input
+                      className="block w-full p-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm  text-xs ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-xs sm:leading-6"
+                      placeholder="Enter your full name"
+                      {...register("clientName", {
+                        required: "Please enter the name"
+                      })}
+                    />
+                    {errors.clientName && (
+                      <p className="text-red-500">
+                        {errors.clientName.message}
+                      </p>
+                    )}
+                  </div>
+                </div>
+                <div>
+                  <h5 className="font-normal leading-[17.16px] text-[12px]">
+                    Enter Email Address
+                  </h5>
+                  <div>
+                    <input
+                      className="block w-full p-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      placeholder="Enter Email Address"
+                      {...register("email", { required: "Please enter the mail" }
+                      )}
+                    />
+                    {errors.email && (
+                      <p className="text-red-500">
+                        {errors.email.message}
+                      </p>
+                    )}
+                  </div>
                 </div>
               </div>
-              <div className="mt-2">
-                <h5 className="font-normal leading-[17.16px] text-[12px]">
-                  Contact number
-                </h5>
-                <div className="mt-2">
-                  <input
-                    className="block w-full p-3  rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                    placeholder="Enter your Contact number"
-                  />
-                </div>
-              </div>
-            </div>
 
-            <div>
-              <div>
-                <h5 className="font-normal leading-[17.16px] text-[12px]">
-                  Enter Email Address
-                </h5>
+              <div className="grid xs:grid-cols-1 lg:grid-cols-2 gap-4">
                 <div className="mt-2">
-                  <input
-                    className="block w-full p-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                    placeholder="Enter Email Address"
-                  />
+                  <h5 className="font-normal leading-[17.16px] text-[12px]">
+                    Contact number
+                  </h5>
+                  <div className="mt-2">
+                    <input
+                      className="block w-full p-3  rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      placeholder="Enter your Contact number"
+                      {...register("contactNumber")}
+                    />
+                  </div>
                 </div>
-              </div>
-              <div className="mt-2">
-                <h5 className="font-normal leading-[17.16px] text-[12px]">
-                  Location / Address
-                </h5>
                 <div className="mt-2">
-                  <input
-                    className="block w-full p-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                    placeholder="Enter your location "
-                  />
+                  <h5 className="font-normal leading-[17.16px] text-[12px]">
+                    Location / Address
+                  </h5>
+                  <div className="mt-2">
+                    <input
+                      className="block w-full p-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      placeholder="Enter your location "
+                      {...register("location")}
+                    />
+                  </div>
                 </div>
               </div>
             </div>
@@ -89,11 +127,10 @@ const SecurityDetails = () => {
             <div className="mt-2">
               <textarea
                 rows={4}
-                name="comment"
-                id="comment"
                 className="block w-full  p-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 defaultValue={""}
                 placeholder="Write a professional Bio"
+                {...register("professionalBio")}
               />
             </div>
           </div>
@@ -109,11 +146,9 @@ const SecurityDetails = () => {
             <div className="mt-2">
               <input
                 type="text"
-                name="first-name"
-                id="first-name"
-                autoComplete="given-name"
                 placeholder="Security License Number"
                 className="block w-full px-2 rounded-md border-0 py-1.5  shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                {...register("licenseNumber")}
               />
             </div>
           </div>
@@ -122,14 +157,29 @@ const SecurityDetails = () => {
               License Expiry Date
             </h5>
             <div className="mt-2">
-              <input
-                type="text"
-                name="first-name"
-                id="first-name"
-                autoComplete="given-name"
-                placeholder="Expiry Date"
-                className="block w-full px-2 rounded-md border-0 py-1.5  shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              <Controller
+                name="licExpDate"
+                control={control}
+                // rules={{
+                //   required: "Date is required",
+                //   max: { value: new Date(), message: "Date cannot be in the future" }
+                // }}
+                render={({ field: { onChange, value } }) => {
+                  return (
+                    <DatePicker
+                      onChange={onChange}
+                      selected={value}
+                      placeholder="Expiry Date"
+                      className="block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    />
+                  );
+                }}
               />
+              {
+                errors.licExpDate && (
+                  <p className="text-red-500">{errors.licExpDate.message}</p>
+                )
+              }
             </div>
           </div>
           <div className="sm:col-span-3 ">
@@ -140,11 +190,9 @@ const SecurityDetails = () => {
             <div className="mt-2">
               <input
                 type="text"
-                name="first-name"
-                id="first-name"
-                autoComplete="given-name"
                 placeholder="company website"
                 className="block px-2 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                {...register("companyWebsite")}
               />
             </div>
           </div>
@@ -161,12 +209,9 @@ const SecurityDetails = () => {
               <div className="mt-2">
                 <input
                   type="text"
-                  name="first-name"
-                  id="first-name"
-                  autoComplete="given-name"
                   placeholder="Branch of services"
                   className="block w-full px-2 rounded-md border-0 py-1.5  shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                />
+                  {...register("branchOfService")} />
               </div>
             </div>
             <div className="sm:col-span-3">
@@ -176,11 +221,9 @@ const SecurityDetails = () => {
               <div className="mt-2">
                 <input
                   type="text"
-                  name="first-name"
-                  id="first-name"
-                  autoComplete="given-name"
                   placeholder="Rank at Discharge"
                   className="block w-full px-2 rounded-md border-0 py-1.5  shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  {...register("rankAtDischarge")}
                 />
               </div>
             </div>
@@ -192,11 +235,9 @@ const SecurityDetails = () => {
               <div className="mt-2">
                 <input
                   type="text"
-                  name="first-name"
-                  id="first-name"
-                  autoComplete="given-name"
                   placeholder="company website"
                   className="block px-2 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  {...register("mos")}
                 />
               </div>
             </div>
@@ -208,11 +249,9 @@ const SecurityDetails = () => {
               <div className="mt-2">
                 <input
                   type="text"
-                  name="first-name"
-                  id="first-name"
-                  autoComplete="given-name"
                   placeholder="year of service"
                   className="block w-full px-2 rounded-md border-0 py-1.5  shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  {...register("yms")}
                 />
               </div>
             </div>
@@ -230,11 +269,9 @@ const SecurityDetails = () => {
               <div className="mt-2">
                 <input
                   type="text"
-                  name="first-name"
-                  id="first-name"
-                  autoComplete="given-name"
                   placeholder="Business Name"
                   className="block w-full px-2 rounded-md border-0 py-1.5  shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  {...register("businessName")}
                 />
               </div>
             </div>
@@ -245,11 +282,9 @@ const SecurityDetails = () => {
               <div className="mt-2">
                 <input
                   type="text"
-                  name="first-name"
-                  id="first-name"
-                  autoComplete="given-name"
                   placeholder="company website"
                   className="block px-2 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  {...register("businessAddress")}
                 />
               </div>
             </div>
@@ -261,11 +296,9 @@ const SecurityDetails = () => {
               <div className="mt-2">
                 <input
                   type="text"
-                  name="first-name"
-                  id="first-name"
-                  autoComplete="given-name"
                   placeholder="company website"
                   className="block px-2 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  {...register("businessMail")}
                 />
               </div>
             </div>
@@ -277,11 +310,9 @@ const SecurityDetails = () => {
               <div className="mt-2">
                 <input
                   type="text"
-                  name="first-name"
-                  id="first-name"
-                  autoComplete="given-name"
                   placeholder="Enter number"
                   className="block w-full px-2 rounded-md border-0 py-1.5  shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  {...register("businessPhoneNumber")}
                 />
               </div>
             </div>
@@ -299,11 +330,9 @@ const SecurityDetails = () => {
             <div className="mt-2">
               <input
                 type="text"
-                name="first-name"
-                id="first-name"
-                autoComplete="given-name"
                 placeholder="Insurance pilicy number"
                 className="block w-full px-2 rounded-md border-0 py-1.5  shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                {...register("tsso")}
               />
             </div>
           </div>
@@ -314,11 +343,9 @@ const SecurityDetails = () => {
             <div className="mt-2">
               <input
                 type="text"
-                name="first-name"
-                id="first-name"
-                autoComplete="given-name"
                 placeholder="Coverage Areas"
                 className="block w-full px-2 rounded-md border-0 py-1.5  shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                {...register("coverageArea")}
               />
             </div>
           </div>
@@ -329,11 +356,9 @@ const SecurityDetails = () => {
             <div className="mt-2">
               <input
                 type="text"
-                name="first-name"
-                id="first-name"
-                autoComplete="given-name"
                 placeholder="Fee Structure"
                 className="block w-full px-2 rounded-md border-0 py-1.5  shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                {...register("feeStructure")}
               />
             </div>
           </div>
@@ -344,16 +369,14 @@ const SecurityDetails = () => {
           </h3>
           <div className="sm:col-span-3">
             <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">
-              Insurance Pilicy Number
+              Insurance Policy Number
             </h5>
             <div className="mt-2">
               <input
                 type="text"
-                name="first-name"
-                id="first-name"
-                autoComplete="given-name"
                 placeholder="Insurance pilicy number"
                 className="block w-full px-2 rounded-md border-0 py-1.5  shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                {...register("insurancePolicyNumber")}
               />
             </div>
           </div>
@@ -364,11 +387,9 @@ const SecurityDetails = () => {
             <div className="mt-2">
               <input
                 type="text"
-                name="first-name"
-                id="first-name"
-                autoComplete="given-name"
                 placeholder="Insurance provider"
                 className="block w-full px-2 rounded-md border-0 py-1.5  shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                {...register("insuranceProvider")}
               />
             </div>
           </div>
@@ -379,11 +400,9 @@ const SecurityDetails = () => {
             <div className="mt-2">
               <input
                 type="text"
-                name="first-name"
-                id="first-name"
-                autoComplete="given-name"
-                placeholder="coverage Amount"
+                placeholder="Enter Coverage Amount"
                 className="block w-full px-2 rounded-md border-0 py-1.5  shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                {...register("coverageAmount")}
               />
             </div>
           </div>
@@ -393,15 +412,30 @@ const SecurityDetails = () => {
               Expiration date of Insurance ( if-applicable)
             </h5>
             <div className="mt-2">
-              <input
-                type="text"
-                name="first-name"
-                id="first-name"
-                autoComplete="given-name"
-                placeholder="Expiration date"
-                className="block w-full px-2 rounded-md border-0 py-1.5  shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-              />
+              <Controller
+                name="experienceDateOfInsurance"
+                control={control}
+                rules={{
+                  required: "Date is required",
+                  max: { value: new Date(), message: "Date cannot be in the future" }
+                }}
+                render={({ field: { onChange, value } }) => {
+                  return (
+                    <DatePicker
+                      onChange={onChange}
+                      selected={value}
+                      placeholder="Enter date of licensing"
+                      className="block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    />
+                  );
+                }}
+              />                    {
+                errors.experienceDateOfInsurance && (
+                  <p className="text-red-500">{errors.experienceDateOfInsurance.message}</p>
+                )
+              }
             </div>
+
           </div>
         </div>
         <div className="mt-10 grid grid-cols-1 gap-x-6  sm:grid-cols-6">
@@ -415,11 +449,9 @@ const SecurityDetails = () => {
             <div className="mt-2">
               <input
                 type="text"
-                name="first-name"
-                id="first-name"
-                autoComplete="given-name"
                 placeholder="Relevant Certifications"
                 className="block w-full px-2 rounded-md border-0 py-1.5  shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                {...register("relevantCertifications")}
               />
             </div>
           </div>
@@ -430,11 +462,9 @@ const SecurityDetails = () => {
             <div className="mt-2">
               <input
                 type="text"
-                name="first-name"
-                id="first-name"
-                autoComplete="given-name"
                 placeholder="Area of Expertise"
                 className="block w-full px-2 rounded-md border-0 py-1.5  shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                {...register("areaOfExpertise")}
               />
             </div>
           </div>
@@ -450,26 +480,22 @@ const SecurityDetails = () => {
             <div className="mt-2">
               <input
                 type="text"
-                name="first-name"
-                id="first-name"
-                autoComplete="given-name"
                 placeholder="Relevant Certifications"
                 className="block w-full px-2 rounded-md border-0 py-1.5  shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                {...register("clientReferences")}
               />
             </div>
           </div>
           <div className="sm:col-span-3">
             <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">
-              Contact number
+              Contact Number
             </h5>
             <div className="mt-2">
               <input
                 type="text"
-                name="first-name"
-                id="first-name"
-                autoComplete="given-name"
                 placeholder="Area of Expertise"
                 className="block w-full px-2 rounded-md border-0 py-1.5  shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                {...register("contactNumber")}
               />
             </div>
           </div>
@@ -480,6 +506,7 @@ const SecurityDetails = () => {
             type="checkbox"
             id="myCheckbox"
             className="form-checkbox h-5 w-[29px] text-indigo-600"
+            {...register("rpCheckboxOne")}
           />
           <label className="ml-2 font-normal leading-[17.16px] text-[12px]">
             I hereby grant consent to Globallegals for a background check,
@@ -496,13 +523,14 @@ const SecurityDetails = () => {
             type="checkbox"
             id="myCheckbox"
             className="form-checkbox h-5 w-5 text-indigo-600"
+            {...register("rpCheckboxTwo")}
           />
           <label className="ml-2 font-normal leading-[17.16px] text-[12px]">
             By proceeding, you confirm that you&apos;ve read, comprehended, and
-            consent to abide by our{" "}
+            consent to abide by our
             <span className="text-blue-700 underline">
               Terms and Conditions.
-            </span>{" "}
+            </span>
             Your commitment to reviewing our terms ensures a comprehensive
             understanding of the guidelines governing your use of Global Legals
           </label>
@@ -540,11 +568,9 @@ const SecurityDetails = () => {
             <div className="mt-2">
               <input
                 type="text"
-                name="first-name"
-                id="first-name"
                 placeholder="Linkedin profile"
-                autoComplete="given-name"
                 className="block w-full px-2 rounded-md border-0 py-1.5  shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                {...register("linkedInProfile")}
               />
             </div>
           </div>
@@ -556,11 +582,9 @@ const SecurityDetails = () => {
             <div className="mt-2">
               <input
                 type="text"
-                name="last-name"
-                id="last-name"
-                autoComplete="family-name"
                 placeholder="Twitter Profile"
                 className="block w-full  px-2 rounded-md border-0 py-1.5  shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                {...register("twitterProfile")}
               />
             </div>
           </div>
@@ -570,6 +594,7 @@ const SecurityDetails = () => {
             type="checkbox"
             id="myCheckbox"
             className="form-checkbox h-5 w-5 text-indigo-600"
+            {...register("peCheckbox")}
           />
           <label className="ml-2 font-normal leading-[17.16px] text-[12px]">
             By proceeding, you confirm that you&apos;ve read, comprehended, and
@@ -596,7 +621,7 @@ const SecurityDetails = () => {
           </div>
         </div>
       </div>
-    </>
+    </form >
   );
 };
 export default SecurityDetails;
