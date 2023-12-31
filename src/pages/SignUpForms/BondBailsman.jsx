@@ -9,77 +9,98 @@ import "react-datepicker/dist/react-datepicker.css";
 
 function BondBailsman() {
   const [selectedDate, setSelectedDate] = useState(null);
-  const onDateChange = (date) => {
-    setSelectedDate(date);
-    setValue("date", date, { shouldValidate: true });
+  const [selectedDate2, setSelectedDate2] = useState(null);
+
+  const onDateChange = (date, field) => {
+    if (field == "dateOfLicenceing") {
+      setSelectedDate(date);
+      setValue("dateOfLicenceing", date, { shouldValidate: true });
+    } else {
+      setSelectedDate2(date);
+      setValue("experienceDateOfInsurance", date, { shouldValidate: true });
+    }
   };
 
   const handleChange = () => {
     console.log("ReCaptcha");
   };
+
   const schema = yup.object().shape({
-    BusinessName: yup.string().required("Business Name is not required"),
-    BusinessEmailAddress: yup
+    businessName: yup.string().required("Business name is required"),
+    businessEmailAddress: yup
       .string()
       .email("Invalid email")
       .required("Email is required"),
-    BusinessPhoneNumber: yup
+    businessPhoneNumber: yup
       .string()
-      .min(3, "number must be at least 10 characters")
-      .required("number is required"),
-    BusinessAddress: yup
+      // .min(3, "number must be at least 10 characters")
+      .required("Business number is required"),
+    businessAddress: yup
       .string()
-      .min(8, "address must be at least 30 characters")
-      .required("address is required"),
-
-    CompanyWebsite: yup
-      .string()
-      .min(8, "CompanyWebsite must be at least 30 characters")
-      .required("professional is required"),
-    LicensingAuthority: yup
-      .string()
-      .required("Licensing Authority is required"),
-    OwnerAgentInformation: yup
-      .string()
-      .required("Legal Specialization is required"),
-    BondingCapacity: yup
-      .string()
-      .min(3, " Name is not BondingCapacity")
-      .required(" Name is required"),
-    LicenseNumber: yup
-      .string()
-      .min(3, "Number must be at least 10 characters")
-      .required("Number is required"),
-    InsurancePolicyNumber: yup
-      .string()
-      .min(3, "Number must be at least 10 characters")
-      .required("Number is required"),
-    date: yup
+      // .min(8, "address must be at least 30 characters")
+      .required("Address is required"),
+    companyWebsite: yup
+      .string(),
+    // .min(8, "Company Website must be at least 30 characters")
+    // .required("professional is required"),
+    ownerAgentInformation: yup
+      .string(),
+    // .required("Legal Specialization is required"),
+    licensingAuthority: yup
+      .string(),
+    // .required("Licensing Authority is required"),
+    bondingCapacity: yup
+      .string(),
+    // .min(3, " Name is not BondingCapacity")
+    // .required(" Name is required"),
+    licenseNumber: yup
+      .string(),
+    // .min(3, "Number must be at least 10 characters")
+    // .required("Number is required"),
+    dateOfLicenceing: yup
       .date()
       .nullable()
       .required("Date is required")
-      .max(new Date(), "date cannot be in the future"),
-    InsuranceProvider: yup
-      .string()
-      .min(3, "Number must be at least 10 characters")
-      .required("Number is required"),
-    Amount: yup
-      .string()
-      .min(3, "Number must be at least 10 characters")
-      .required("Number is required"),
-    AreasCovered: yup
-      .string()
-      .min(3, "Name must be at least AreasCovered")
-      .required("Name is required"),
-    Structure: yup
-      .string()
-      .min(3, "Name must be at least AreasCovered")
-      .required("profile not matched"),
-    // TwitterProfile: yup
-    //   .string()
-    //   .min(3, "Twitter profile not 5 matched")
-    //   .required("profile not matched"),
+      .max(new Date(), "Date cannot be in the future"),
+    insurancePolicyNumber: yup
+      .string(),
+    // .min(3, "Number must be at least 10 characters")
+    // .required("Number is required"),\
+    insuranceProvider: yup
+      .string(),
+    // .min(3, "Number must be at least 10 characters")
+    // .required("Number is required"),
+    amount: yup
+      .string(),
+    // .min(3, "Number must be at least 10 characters")
+    // .required("Number is required"),
+    experienceDateOfInsurance: yup
+      .date()
+      .nullable()
+      .required("Date is required")
+      .max(new Date(), "Date cannot be in the future"),
+    areasCovered: yup
+      .string(),
+    // .min(3, "Name must be at least AreasCovered")
+    // .required("Name is required"),
+    feeStructure: yup
+      .string(),
+    // .min(3, "Name must be at least AreasCovered")
+    // .required("profile not matched"),
+    typesOfBonds: yup
+      .string(),
+    bondsmanExperience: yup
+      .string(),
+    linkedInProfile: yup
+      .string(),
+    twitterProfile: yup
+      .string(),
+    clientReference: yup
+      .string(),
+    contactNumber: yup
+      .string(),
   });
+
   const {
     register,
     handleSubmit,
@@ -101,75 +122,116 @@ function BondBailsman() {
               <h3 className="lg:col-span-3 font-medium leading-[34.32px] text-[24px]">
                 Business Information
               </h3>
-              <div>
-                <div className="">
-                  <h5 className="font-normal leading-[17.16px] text-[12px]">
-                    Full Legal Business Name
-                  </h5>
-                  <div className="mt-2">
-                    <input
-                      {...register("BusinessName")}
-                      className="block w-full p-3  rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                      placeholder="Enter your full name"
-                    />
-                    {errors.BusinessName && (
-                      <p className="text-red-500">
-                        {errors.BusinessName.message}
-                      </p>
-                    )}
+              <div className="sm:col-span-2">
+
+                <div className="grid xs:grid-cols-1 lg:grid-cols-2 gap-4">
+                  <div className="">
+                    <h5 className="font-normal leading-[17.16px] text-[12px]">
+                      Full Legal Business Name
+                    </h5>
+                    <div className="mt-2">
+                      <input
+                        {...register("businessName")}
+                        className="block w-full p-3  rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                        placeholder="Enter Business Name"
+                      />
+                      {errors.businessName && (
+                        <p className="text-red-500">
+                          {errors.businessName.message}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                  <div className="">
+                    <h5 className="font-normal leading-[17.16px] text-[12px]">
+                      Business Address
+                    </h5>
+                    <div className="mt-2">
+                      <input
+                        {...register("businessAddress")}
+                        className="block w-full p-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                        placeholder="Enter Business Address"
+                      />
+                      {errors.businessAddress && (
+                        <p className="text-red-500">
+                          {errors.businessAddress.message}
+                        </p>
+                      )}
+                    </div>
                   </div>
                 </div>
-                <div className="mt-2">
-                  <h5 className="font-normal leading-[17.16px] text-[12px]">
-                    Business Email Address
-                  </h5>
+
+                <div className="grid xs:grid-cols-1 lg:grid-cols-2 gap-4">
                   <div className="mt-2">
-                    <input
-                      {...register("BusinessEmailAddress")}
-                      className="block w-full p-3  rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                      placeholder="Enter your Contact number"
-                    />
-                    {errors.BusinessEmailAddress && (
-                      <p className="text-red-500">
-                        {errors.BusinessEmailAddress.message}
-                      </p>
-                    )}
+                    <h5 className="font-normal leading-[17.16px] text-[12px]">
+                      Business Email Address
+                    </h5>
+                    <div className="mt-2">
+                      <input
+                        {...register("businessEmailAddress")}
+                        className="block w-full p-3  rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                        placeholder="Enter Business Email Address"
+                      />
+                      {errors.businessEmailAddress && (
+                        <p className="text-red-500">
+                          {errors.businessEmailAddress.message}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                  <div className="mt-2">
+                    <h5 className="font-normal leading-[17.16px] text-[12px]">
+                      Business Phone number
+                    </h5>
+                    <div className="mt-2">
+                      <input
+                        {...register("businessPhoneNumber")}
+                        className="block w-full p-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                        placeholder="Enter your location "
+                      />
+                      {errors.businessPhoneNumber && (
+                        <p className="text-red-500">
+                          {errors.businessPhoneNumber.message}
+                        </p>
+                      )}
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div>
-                <div className="">
-                  <h5 className="font-normal leading-[17.16px] text-[12px]">
-                    Business Address
-                  </h5>
+
+                <div className="grid xs:grid-cols-1 lg:grid-cols-2 gap-4">
                   <div className="mt-2">
-                    <input
-                      {...register("BusinessAddress")}
-                      className="block w-full p-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                      placeholder="Enter Email Address"
-                    />
-                    {errors.BusinessAddress && (
-                      <p className="text-red-500">
-                        {errors.BusinessAddress.message}
-                      </p>
-                    )}
+                    <h5 className="font-normal leading-[17.16px] text-[12px]">
+                      Company website
+                    </h5>
+                    <div className="mt-2">
+                      <input
+                        {...register("companyWebsite")}
+                        className="block w-full p-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                        placeholder="Enter Company Website"
+                      />
+                      {errors.companyWebsite && (
+                        <p className="text-red-500">
+                          {errors.companyWebsite.message}
+                        </p>
+                      )}
+                    </div>
                   </div>
-                </div>
-                <div className="mt-2">
-                  <h5 className="font-normal leading-[17.16px] text-[12px]">
-                    Business Phone number
-                  </h5>
                   <div className="mt-2">
-                    <input
-                      {...register("BusinessPhoneNumber")}
-                      className="block w-full p-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                      placeholder="Enter your location "
-                    />
-                    {errors.BusinessPhoneNumber && (
-                      <p className="text-red-500">
-                        {errors.BusinessPhoneNumber.message}
-                      </p>
-                    )}
+                    <h5 className="font-normal leading-[17.16px] text-[12px]">
+                      Owner Agent Information
+                    </h5>
+                    <div className="mt-2">
+                      <input
+                        {...register("ownerAgentInformation")}
+                        className="block w-full p-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                        placeholder="Enter Owner Agent Information"
+                      />
+                      {errors.ownerAgentInformation && (
+                        <p className="text-red-500">
+                          {errors.ownerAgentInformation.message}
+                        </p>
+                      )}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -191,42 +253,10 @@ function BondBailsman() {
                   </div>
                 </div>
               </div>
-              <div>
-                <h5 className="font-normal leading-[17.16px] text-[12px]">
-                  Company website
-                </h5>
-                <div className="mt-2">
-                  <input
-                    {...register("CompanyWebsite")}
-                    className="block w-full p-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                    placeholder="Enter Email Address"
-                  />
-                  {errors.CompanyWebsite && (
-                    <p className="text-red-500">
-                      {errors.CompanyWebsite.message}
-                    </p>
-                  )}
-                </div>
-              </div>
-              <div>
-                <h5 className="font-normal leading-[17.16px] text-[12px]">
-                  Owner Agent Information
-                </h5>
-                <div className="mt-2">
-                  <input
-                    {...register("OwnerAgentInformation")}
-                    className="block w-full p-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                    placeholder="Enter Email Address"
-                  />
-                  {errors.OwnerAgentInformation && (
-                    <p className="text-red-500">
-                      {errors.OwnerAgentInformation.message}
-                    </p>
-                  )}
-                </div>
-              </div>
+
             </div>
           </div>
+
           <div className="mt-10 grid grid-cols-1 gap-x-6  sm:grid-cols-6">
             <h3 className="font-medium leading-[34.32px] text-[24px] sm:col-span-6">
               Licensing Credentials
@@ -238,15 +268,12 @@ function BondBailsman() {
               <div className="mt-2">
                 <input
                   type="text"
-                  name="first-name"
-                  {...register("LicenseNumber")}
-                  id="first-name"
-                  placeholder="Enter number"
-                  autoComplete="given-name"
+                  {...register("licenseNumber")}
+                  placeholder="Enter License Number"
                   className="block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
-                {errors.LicenseNumber && (
-                  <p className="text-red-500">{errors.LicenseNumber.message}</p>
+                {errors.licenseNumber && (
+                  <p className="text-red-500">{errors.licenseNumber.message}</p>
                 )}
               </div>
             </div>
@@ -256,15 +283,13 @@ function BondBailsman() {
               </h5>
               <div className="mt-2">
                 <DatePicker
-                  id="date"
                   selected={selectedDate}
-                  onChange={onDateChange}
-                  autoComplete="given-name"
-                  placeholder="Enter date"
+                  onChange={(e) => { onDateChange(e, "dateOfLicenceing") }}
+                  placeholder="Enter date of licensing"
                   className="block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
-                {errors.date && (
-                  <p className="text-red-500">{errors.date.message}</p>
+                {errors.dateOfLicenceing && (
+                  <p className="text-red-500">{errors.dateOfLicenceing.message}</p>
                 )}
               </div>
             </div>
@@ -275,16 +300,13 @@ function BondBailsman() {
               <div className="mt-2">
                 <input
                   type="text"
-                  name="first-name"
-                  {...register("LicensingAuthority")}
-                  id="first-name"
-                  autoComplete="given-name"
-                  placeholder="Licensing Authority"
+                  {...register("licensingAuthority")}
+                  placeholder="Enter Licensing Authority"
                   className="block px-2 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
-                {errors.LicensingAuthority && (
+                {errors.licensingAuthority && (
                   <p className="text-red-500">
-                    {errors.LicensingAuthority.message}
+                    {errors.licensingAuthority.message}
                   </p>
                 )}
               </div>
@@ -296,16 +318,13 @@ function BondBailsman() {
               <div className="mt-2">
                 <input
                   type="text"
-                  name="first-name"
-                  {...register("BondingCapacity")}
-                  id="first-name"
-                  placeholder="Bonding capacity"
-                  autoComplete="given-name"
+                  {...register("bondingCapacity")}
+                  placeholder="Enter Bonding Capacity"
                   className="block px-2 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
-                {errors.BondingCapacity && (
+                {errors.bondingCapacity && (
                   <p className="text-red-500">
-                    {errors.BondingCapacity.message}
+                    {errors.bondingCapacity.message}
                   </p>
                 )}
               </div>
@@ -323,16 +342,13 @@ function BondBailsman() {
               <div className="mt-2">
                 <input
                   type="text"
-                  name="first-name"
-                  {...register("InsurancePolicyNumber")}
-                  id="first-name"
-                  placeholder="Enter number"
-                  autoComplete="given-name"
+                  {...register("insurancePolicyNumber")}
+                  placeholder="Enter Insurance Policy Number"
                   className="block px-2 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
-                {errors.InsurancePolicyNumber && (
+                {errors.insurancePolicyNumber && (
                   <p className="text-red-500">
-                    {errors.InsurancePolicyNumber.message}
+                    {errors.insurancePolicyNumber.message}
                   </p>
                 )}
               </div>
@@ -344,16 +360,13 @@ function BondBailsman() {
               <div className="mt-2">
                 <input
                   type="text"
-                  name="first-name"
-                  {...register("InsuranceProvider")}
-                  id="first-name"
-                  placeholder="Enter date"
-                  autoComplete="given-name"
+                  {...register("insuranceProvider")}
+                  placeholder="Enter Insurance Provider"
                   className="block px-2 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
-                {errors.InsuranceProvider && (
+                {errors.insuranceProvider && (
                   <p className="text-red-500">
-                    {errors.InsuranceProvider.message}
+                    {errors.insuranceProvider.message}
                   </p>
                 )}
               </div>
@@ -366,15 +379,12 @@ function BondBailsman() {
               <div className="mt-2">
                 <input
                   type="text"
-                  name="first-name"
-                  {...register("Amount")}
-                  id="first-name"
-                  autoComplete="given-name"
-                  placeholder="company website"
+                  {...register("amount")}
+                  placeholder="Enter Coverage Amount"
                   className="block px-2 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
-                {errors.Amount && (
-                  <p className="text-red-500">{errors.Amount.message}</p>
+                {errors.amount && (
+                  <p className="text-red-500">{errors.amount.message}</p>
                 )}
               </div>
             </div>
@@ -384,17 +394,13 @@ function BondBailsman() {
               </h5>
               <div className="mt-2">
                 <DatePicker
-                  id="date"
-                  selected={selectedDate}
-                  onChange={onDateChange}
-                  type="text"
-                  name="first-name"
-                  placeholder="Bonding capacity"
-                  autoComplete="given-name"
+                  selected={selectedDate2}
+                  onChange={(e) => { onDateChange(e, "") }}
+                  placeholder="Enter date of licensing"
                   className="block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
-                {errors.date && (
-                  <p className="text-red-500">{errors.date.message}</p>
+                {errors.experienceDateOfInsurance && (
+                  <p className="text-red-500">{errors.experienceDateOfInsurance.message}</p>
                 )}
               </div>
             </div>
@@ -412,16 +418,13 @@ function BondBailsman() {
                 <div className="mt-2">
                   <input
                     type="text"
-                    name="first-name"
-                    {...register("AreasCovered")}
-                    id="first-name"
-                    autoComplete="given-name"
-                    placeholder="Areas covered"
+                    {...register("areasCovered")}
+                    placeholder="Enter Areas Covered"
                     className="block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
-                  {errors.AreasCovered && (
+                  {errors.areasCovered && (
                     <p className="text-red-500">
-                      {errors.AreasCovered.message}
+                      {errors.areasCovered.message}
                     </p>
                   )}
                 </div>
@@ -433,15 +436,12 @@ function BondBailsman() {
                 <div className="mt-2">
                   <input
                     type="text"
-                    name="first-name"
-                    {...register("Structure")}
-                    id="first-name"
-                    autoComplete="given-name"
-                    placeholder="Fee structure"
+                    {...register("feeStructure")}
+                    placeholder="Enter Fee Structure"
                     className="block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
-                  {errors.Structure && (
-                    <p className="text-red-500">{errors.Structure.message}</p>
+                  {errors.feeStructure && (
+                    <p className="text-red-500">{errors.feeStructure.message}</p>
                   )}
                 </div>
               </div>
@@ -452,12 +452,13 @@ function BondBailsman() {
                 <div className="mt-2">
                   <input
                     type="text"
-                    name="first-name"
-                    id="first-name"
-                    autoComplete="given-name"
-                    placeholder="Types of bonds served"
+                    placeholder="Enter Types of bonds served"
                     className="block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    {...register("typesOfBonds")}
                   />
+                  {errors.typesOfBonds && (
+                    <p className="text-red-500">{errors.typesOfBonds.message}</p>
+                  )}
                 </div>
               </div>
 
@@ -468,12 +469,13 @@ function BondBailsman() {
                 <div className="mt-2">
                   <input
                     type="text"
-                    name="first-name"
-                    id="first-name"
-                    autoComplete="given-name"
                     placeholder="year of experience"
                     className="block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    {...register("bondsmanExperience")}
                   />
+                  {errors.bondsmanExperience && (
+                    <p className="text-red-500">{errors.bondsmanExperience.message}</p>
+                  )}
                 </div>
               </div>
             </div>
@@ -512,11 +514,9 @@ function BondBailsman() {
               <div className="mt-2">
                 <input
                   type="text"
-                  name="first-name"
-                  id="first-name"
                   placeholder="Linkedin profile"
-                  autoComplete="given-name"
                   className="block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  {...register("linkedInProfile")}
                 />
               </div>
             </div>
@@ -528,11 +528,9 @@ function BondBailsman() {
               <div className="mt-2">
                 <input
                   type="text"
-                  name="last-name"
-                  id="last-name"
-                  autoComplete="family-name"
                   placeholder="Twitter Profile"
                   className="block w-full  px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  {...register("twitterProfile")}
                 />
               </div>
             </div>
@@ -542,6 +540,7 @@ function BondBailsman() {
               type="checkbox"
               id="myCheckbox"
               className="form-checkbox h-5 w-5 text-indigo-600"
+              {...register('peCheckbox')}
             />
             <label className="ml-2 text-[12px]">
               By proceeding, you confirm that you&apos;ve read, comprehended,
@@ -561,16 +560,14 @@ function BondBailsman() {
             </h3>
             <div className="sm:col-span-3">
               <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">
-                Cleint References
+                Client References
               </h5>
               <div className="mt-2">
                 <input
                   type="text"
-                  name="first-name"
-                  id="first-name"
-                  autoComplete="given-name"
-                  placeholder="Client reference"
+                  placeholder="Enter client reference"
                   className="block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  {...register("clientReference")}
                 />
               </div>
             </div>
@@ -581,11 +578,9 @@ function BondBailsman() {
               <div className="mt-2">
                 <input
                   type="text"
-                  name="first-name"
-                  id="first-name"
-                  autoComplete="given-name"
                   placeholder="Enter number"
                   className="block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  {...register("contactNumber")}
                 />
               </div>
             </div>
@@ -595,6 +590,7 @@ function BondBailsman() {
               type="checkbox"
               id="myCheckbox"
               className="form-checkbox h-5 w-[46px] text-indigo-600"
+              {...register('rpCheckboxOne')}
             />
             <label className="ml-2 text-[12px]">
               I hereby authorize Globallegals to conduct a background check for
@@ -614,6 +610,7 @@ function BondBailsman() {
               type="checkbox"
               id="myCheckbox"
               className="form-checkbox h-5 w-5 text-indigo-600"
+              {...register('rpCheckboxTwo')}
             />
             <label className="ml-2 text-[12px]">
               By proceeding, you confirm that you&apos;ve read, comprehended,
@@ -635,7 +632,7 @@ function BondBailsman() {
               />
             </div>
             <div>
-              <button className="rounded-md mt-2 text-white bg-blue-800 border-blue-800 px-20 py-2 text-sm font-semibol shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 border border-solid ">
+              <button type="submit" className="rounded-md mt-2 text-white bg-blue-800 border-blue-800 px-20 py-2 text-sm font-semibol shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 border border-solid ">
                 Save & Submit
               </button>
             </div>
