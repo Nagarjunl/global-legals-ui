@@ -27,7 +27,7 @@ function BondBailsman() {
 
   const schema = yup.object().shape({
     businessName: yup.string().required("Business name is required"),
-    businessEmailAddress: yup
+    businessMail: yup
       .string()
       .email("Invalid email")
       .required("Email is required"),
@@ -70,7 +70,7 @@ function BondBailsman() {
       .string(),
     // .min(3, "Number must be at least 10 characters")
     // .required("Number is required"),
-    amount: yup
+    coverageAmount: yup
       .string(),
     // .min(3, "Number must be at least 10 characters")
     // .required("Number is required"),
@@ -95,9 +95,9 @@ function BondBailsman() {
       .string(),
     twitterProfile: yup
       .string(),
-    clientReference: yup
+    clientReferences: yup
       .string(),
-    contactNumber: yup
+    referenceNumber: yup
       .string(),
   });
 
@@ -168,13 +168,13 @@ function BondBailsman() {
                     </h5>
                     <div className="mt-2">
                       <input
-                        {...register("businessEmailAddress")}
+                        {...register("businessMail")}
                         className="block w-full p-3  rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                         placeholder="Enter Business Email Address"
                       />
-                      {errors.businessEmailAddress && (
+                      {errors.businessMail && (
                         <p className="text-red-500">
-                          {errors.businessEmailAddress.message}
+                          {errors.businessMail.message}
                         </p>
                       )}
                     </div>
@@ -379,12 +379,12 @@ function BondBailsman() {
               <div className="mt-2">
                 <input
                   type="text"
-                  {...register("amount")}
+                  {...register("coverageAmount")}
                   placeholder="Enter Coverage Amount"
                   className="block px-2 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
-                {errors.amount && (
-                  <p className="text-red-500">{errors.amount.message}</p>
+                {errors.coverageAmount && (
+                  <p className="text-red-500">{errors.coverageAmount.message}</p>
                 )}
               </div>
             </div>
@@ -567,7 +567,7 @@ function BondBailsman() {
                   type="text"
                   placeholder="Enter client reference"
                   className="block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                  {...register("clientReference")}
+                  {...register("clientReferences")}
                 />
               </div>
             </div>
@@ -580,7 +580,7 @@ function BondBailsman() {
                   type="text"
                   placeholder="Enter number"
                   className="block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                  {...register("contactNumber")}
+                  {...register("referenceNumber")}
                 />
               </div>
             </div>
