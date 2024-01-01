@@ -1,28 +1,40 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import LawyerEnterDetails from "./LawyerEnterDetails";
 import BondBailsman from "./BondBailsman";
 import SecurityDetails from "./SecurityDetails";
 import PrivateInvestigators from "./PrivateInvestigators";
-const SelectForm = () => {
-  const [selectedCountry, setSelectedCountry] = useState(null);
+import { useSelector, useDispatch } from 'react-redux';
+import { currentForm } from "../../reducers/formTypeSlice";
+
+
+const SelectForm = ({ handleStepClick }) => {
+
+  const dispatch = useDispatch();
+  const currentFormValue = useSelector((state) => state.formType);
+
   const handleSelectChange = (event) => {
-    setSelectedCountry(event.target.value);
+    dispatch(currentForm(event.target.value));
+    renderComponent();
   };
 
-  const renderCountryData = () => {
-    switch (selectedCountry) {
+  const renderComponent = () => {
+    switch (currentFormValue) {
       case "Lawyers":
-        return <LawyerEnterDetails />;
+        return <LawyerEnterDetails handleStepClick={handleStepClick} />;
       case "BondBailsman":
-        return <BondBailsman />;
+        return <BondBailsman handleStepClick={handleStepClick} />;
       case "Security":
-        return <SecurityDetails />;
-      case "Private":
-        return <PrivateInvestigators />;
+        return <SecurityDetails handleStepClick={handleStepClick} />;
+      case "PrivateInvestigators":
+        return <PrivateInvestigators handleStepClick={handleStepClick} />;
       default:
         return null;
     }
   };
+
+  // useEffect(() => {
+  //   renderComponent(currentFormValue);
+  // }, [currentFormValue, renderComponent])
 
   return (
     <>
@@ -43,10 +55,9 @@ const SelectForm = () => {
           <div className="w-full sm:w-1/3 ">
             <div className="text-right pt-4">
               <select
-                id="location"
-                name="location"
                 className="w-full sm:w-52 mt-8 rounded-md border-0 py-3  text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 defaultValue=""
+                value={currentFormValue}
                 onChange={handleSelectChange}
               >
                 <option value="" disabled hidden>
@@ -55,13 +66,13 @@ const SelectForm = () => {
                 <option>Lawyers</option>
                 <option>BondBailsman</option>
                 <option>Security</option>
-                <option>Private</option>
+                <option>PrivateInvestigators</option>
               </select>
             </div>
           </div>
         </div>
       </div>
-      {selectedCountry && <div className="mt-2">{renderCountryData()}</div>}
+      {currentFormValue && <div className="mt-2">{renderComponent()}</div>}
     </>
   );
 };

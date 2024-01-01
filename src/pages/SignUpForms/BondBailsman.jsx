@@ -20,7 +20,7 @@ import { useNavigate } from "react-router";
 
 const baseUrl = "http://127.0.0.1:3005/";
 
-function BondBailsman() {
+function BondBailsman({ handleStepClick }) {
   const navigate = useNavigate();
 
   const [postFile, { isLoading }] = usePostFileMutation();
@@ -162,7 +162,7 @@ function BondBailsman() {
     try {
       await createBondBailsMan(data).unwrap()
         .then(() => {
-          navigate("/appoinments")
+          handleStepClick(1);
         });
     } catch (error) {
       console.log("error");
