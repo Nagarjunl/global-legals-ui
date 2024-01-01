@@ -11,14 +11,39 @@ export const userApi = createApi({
       query: (data) => ({
         url: `/lawyers`,
         method: "POST",
-        body: data ,
+        body: data,
       }),
     }),
-  }),
+    createBondBailsMan: builder.mutation({
+      query: (data) => ({
+        url: `/bondbailsmans`,
+        method: "POST",
+        body: data,
+      }),
+    }),
+    createSecurity: builder.mutation({
+        query: (data) => ({
+          url: `/security`,
+          method: "POST",
+          body: data,
+        }),
+    }),
+    createPrivateInvestigators: builder.mutation({
+        query: (data) => ({
+          url: `/privateinvestigators`,
+          method: "POST",
+          body: data,
+        }),
+    }),
+ 
+  })
 })
 
 // Export hooks for usage in functional components, which are
 // auto-generated based on the defined endpoints
 export const {
-  useCreateLawyerMutation,
-} = userApi
+    useCreateLawyerMutation,
+    useCreateBondBailsManMutation,
+    useCreatePrivateInvestigatorsMutation,
+    useCreateSecurityMutation,
+  } = userApi;
