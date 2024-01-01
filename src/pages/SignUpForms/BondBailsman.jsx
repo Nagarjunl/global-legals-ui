@@ -13,17 +13,24 @@ import {
 } from "../../services/fileUploadAPI";
 import "../../styles.css";
 
-const baseUrl = "http://127.0.0.1:3005/";
+import { useCreateBondBailsManMutation } from "../../services/userAPI";
+import { useSelector } from 'react-redux'
 
+
+const baseUrl = "http://127.0.0.1:3005/";
 
 function BondBailsman() {
 
   const [postFile, { isLoading }] = usePostFileMutation();
+  const [createBondBailsMan] = useCreateBondBailsManMutation()
   const [deleteFile] = useDeleteFileMutation();
   const [singleFile, setSingleFile] = useState("");
 
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedDate2, setSelectedDate2] = useState(null);
+
+  const currentUser = useSelector((state) => state.user.id)
+
 
   const onDateChange = (date, field) => {
     if (field == "dateOfLicenceing") {
@@ -72,10 +79,10 @@ function BondBailsman() {
     // .min(3, "Number must be at least 10 characters")
     // .required("Number is required"),
     dateOfLicenceing: yup
-      .date()
-      .nullable()
-      .required("Date is required")
-      .max(new Date(), "Date cannot be in the future"),
+      .date(),
+    // .nullable()
+    // .required("Date is required")
+    // .max(new Date(), "Date cannot be in the future"),
     insurancePolicyNumber: yup
       .string(),
     // .min(3, "Number must be at least 10 characters")
@@ -89,10 +96,10 @@ function BondBailsman() {
     // .min(3, "Number must be at least 10 characters")
     // .required("Number is required"),
     expirationDateOfInsurance: yup
-      .date()
-      .nullable()
-      .required("Date is required")
-      .max(new Date(), "Date cannot be in the future"),
+      .date(),
+    // .nullable()
+    // .required("Date is required")
+    // .max(new Date(), "Date cannot be in the future"),
     areasCovered: yup
       .string(),
     // .min(3, "Name must be at least AreasCovered")
@@ -145,9 +152,25 @@ function BondBailsman() {
       .catch((err) => console.log(err));
   };
 
-  function onSubmit(data) {
-    console.log(data);
+  const submitBondBailsMan = async (data) => {
+    data.userId = currentUser;
+    const { idProof } = data;
+    let proof = idProof.length === 0 ? "" : idProof
+    data.idProof = proof;
+    try {
+      await createBondBailsMan(data).unwrap()
+        .then(() => {
+          navigate("/appoinments")
+        });
+    } catch (error) {
+      console.log("error");
+    }
   }
+
+  function onSubmit(data) {
+    submitBondBailsMan(data);
+  }
+
   return (
     <>
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -688,7 +711,7 @@ function BondBailsman() {
               />
             </div>
             <div>
-              <button type="submit" className="rounded-md mt-2 text-white bg-blue-800 border-blue-800 px-20 py-2 text-sm font-semibol shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 border border-solid ">
+              <button type="submit" disabled={isLoading} className="rounded-md mt-2 text-white bg-blue-800 border-blue-800 px-20 py-2 text-sm font-semibol shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 border border-solid ">
                 Save & Submit
               </button>
             </div>
