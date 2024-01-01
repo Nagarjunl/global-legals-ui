@@ -24,23 +24,21 @@ export default function Example() {
           {steps.map((step, index) => (
             <li
               key={step.id}
-              className={`flex items-center ${
-                index === currentStep
-                  ? "text-blue-600 dark:text-blue-500"
-                  : index < currentStep
+              className={`flex items-center ${index === currentStep
+                ? "text-blue-600 dark:text-blue-500"
+                : index < currentStep
                   ? "text-green-500"
                   : "text-gray-500 dark:text-gray-400"
-              } cursor-pointer`}
+                } cursor-pointer`}
               onClick={() => handleStepClick(index)}
             >
               <span
-                className={`flex items-center justify-center w-5 h-5 me-2 text-xs border rounded-full shrink-0 ${
-                  index === currentStep
-                    ? "border-blue-600 dark:border-blue-500"
-                    : index < currentStep
+                className={`flex items-center justify-center w-5 h-5 me-2 text-xs border rounded-full shrink-0 ${index === currentStep
+                  ? "border-blue-600 dark:border-blue-500"
+                  : index < currentStep
                     ? "border-green-500 bg-green-500"
                     : "border-gray-500 dark:border-gray-400"
-                }`}
+                  }`}
               >
                 {index < currentStep ? (
                   <CheckIcon className="w-4 h-4 text-white" />
@@ -65,12 +63,12 @@ export default function Example() {
       <div className="max-w-full mx-auto p-4">
         {currentStep === 0 && (
           <div>
-            <SelectForm />
+            <SelectForm handleStepClick={handleStepClick} />
           </div>
         )}
         {currentStep === 1 && (
           <div>
-            <PayPremium />
+            <PayPremium handleStepClick={handleStepClick} />
           </div>
         )}
         {currentStep === 2 && (

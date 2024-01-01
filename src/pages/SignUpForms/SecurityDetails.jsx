@@ -20,7 +20,8 @@ import "../../styles.css";
 const baseUrl = "http://127.0.0.1:3005/";
 
 
-const SecurityDetails = () => {
+const SecurityDetails = ({ handleStepClick }) => {
+
   const navigate = useNavigate();
 
   const [postFile, { isLoading }] = usePostFileMutation();
@@ -70,7 +71,7 @@ const SecurityDetails = () => {
     try {
       await createSecurity(data).unwrap()
         .then(() => {
-          navigate("/appoinments")
+          handleStepClick(1);
         });
     } catch (error) {
       console.log("error");

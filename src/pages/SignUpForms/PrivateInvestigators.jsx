@@ -20,7 +20,7 @@ import "../../styles.css";
 const baseUrl = "http://127.0.0.1:3005/";
 
 
-const PrivateInvestigators = () => {
+const PrivateInvestigators = ({ handleStepClick }) => {
 
   const navigate = useNavigate();
 
@@ -71,7 +71,7 @@ const PrivateInvestigators = () => {
     try {
       await createPrivateInvestigators(data).unwrap()
         .then(() => {
-          navigate("/appoinments")
+          handleStepClick(1);
         });
     } catch (error) {
       console.log("error");

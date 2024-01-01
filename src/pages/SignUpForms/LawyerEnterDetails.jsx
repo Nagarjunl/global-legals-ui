@@ -18,7 +18,7 @@ import "../../styles.css";
 const baseUrl = "http://127.0.0.1:3005/";
 
 
-const LawyerEnterDetails = () => {
+const LawyerEnterDetails = ({ handleStepClick }) => {
 
   const navigate = useNavigate();
   const [createLawyer] = useCreateLawyerMutation();
@@ -77,7 +77,7 @@ const LawyerEnterDetails = () => {
     // .min(3, "Twitter profile not 5 matched")
     // .required("profile not matched"),
     acceptTerms: yup
-      .string()
+      .bool(),
     // .required("Please check this box"),
   });
 
@@ -123,7 +123,7 @@ const LawyerEnterDetails = () => {
     try {
       await createLawyer(data).unwrap()
         .then(() => {
-          navigate("/appoinments")
+          handleStepClick(1);
         });
     } catch (error) {
       console.log("error");
