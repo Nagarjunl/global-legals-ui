@@ -2,6 +2,7 @@ import { useState } from "react";
 
 import { useForm, Controller } from "react-hook-form";
 import DatePicker from 'react-datepicker';
+import { useSelector } from 'react-redux'
 
 import GoogleImage from "../../assets/Google-image.png";
 import ReCAPTCHA from "react-google-recaptcha";
@@ -10,6 +11,10 @@ import {
   usePostFileMutation,
   useDeleteFileMutation,
 } from "../../services/fileUploadAPI";
+import { useCreatePrivateInvestigatorsMutation } from "../../services/userAPI";
+import { useNavigate } from "react-router";
+
+
 import "../../styles.css";
 
 const baseUrl = "http://127.0.0.1:3005/";
@@ -17,9 +22,13 @@ const baseUrl = "http://127.0.0.1:3005/";
 
 const PrivateInvestigators = () => {
 
+  const navigate = useNavigate();
+
   const [postFile, { isLoading }] = usePostFileMutation();
   const [deleteFile] = useDeleteFileMutation();
   const [singleFile, setSingleFile] = useState("");
+  const [createPrivateInvestigators] = useCreatePrivateInvestigatorsMutation();
+  const currentUser = useSelector((state) => state.user.id)
 
   const handleChange = () => {
     console.log("ReCaptcha");
@@ -54,8 +63,23 @@ const PrivateInvestigators = () => {
       .catch((err) => console.log(err));
   };
 
+  const submitPrivateMethod = async (data) => {
+    data.userId = currentUser;
+    const { idProof } = data;
+    let proof = idProof.length === 0 ? "" : idProof
+    data.idProof = proof;
+    try {
+      await createPrivateInvestigators(data).unwrap()
+        .then(() => {
+          navigate("/appoinments")
+        });
+    } catch (error) {
+      console.log("error");
+    }
+  }
+
   function onSubmit(data) {
-    console.log(data);
+    submitPrivateMethod(data);
   }
 
   return (
@@ -654,7 +678,10 @@ const PrivateInvestigators = () => {
             <ReCAPTCHA sitekey="Your client site key" onChange={handleChange} />
           </div>
           <div>
-            <button className="rounded-md mt-2 text-white bg-blue-800 border-blue-800 px-20 py-2 text-sm font-semibol shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 border border-solid ">
+            <button
+              type="submit"
+              disabled={isLoading}
+              className="rounded-md mt-2 text-white bg-blue-800 border-blue-800 px-20 py-2 text-sm font-semibol shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 border border-solid ">
               Save & Submit
             </button>
           </div>

@@ -5,21 +5,29 @@ import ReCAPTCHA from "react-google-recaptcha";
 import { useForm, Controller } from "react-hook-form";
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import { useSelector } from 'react-redux'
 
 import {
   usePostFileMutation,
   useDeleteFileMutation,
 } from "../../services/fileUploadAPI";
+import { useCreateSecurityMutation } from "../../services/userAPI";
+import { useNavigate } from "react-router";
+
+
 import "../../styles.css";
 
 const baseUrl = "http://127.0.0.1:3005/";
 
 
 const SecurityDetails = () => {
+  const navigate = useNavigate();
 
   const [postFile, { isLoading }] = usePostFileMutation();
   const [deleteFile] = useDeleteFileMutation();
   const [singleFile, setSingleFile] = useState("");
+  const currentUser = useSelector((state) => state.user.id)
+  const [createSecurity] = useCreateSecurityMutation();
 
   const handleChange = () => {
     console.log("ReCaptcha");
@@ -54,8 +62,23 @@ const SecurityDetails = () => {
       .catch((err) => console.log(err));
   };
 
+  const submitSecurity = async (data) => {
+    data.userId = currentUser;
+    const { idProof } = data;
+    let proof = idProof.length === 0 ? "" : idProof
+    data.idProof = proof;
+    try {
+      await createSecurity(data).unwrap()
+        .then(() => {
+          navigate("/appoinments")
+        });
+    } catch (error) {
+      console.log("error");
+    }
+  }
+
   function onSubmit(data) {
-    console.log(data);
+    submitSecurity(data);
   }
 
   return (
@@ -671,7 +694,10 @@ const SecurityDetails = () => {
             />
           </div>
           <div>
-            <button className="rounded-md mt-2 text-white bg-blue-800 border-blue-800 px-20 py-2 text-sm font-semibol shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 border border-solid ">
+            <button
+              type="submit"
+              disabled={isLoading}
+              className="rounded-md mt-2 text-white bg-blue-800 border-blue-800 px-20 py-2 text-sm font-semibol shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 border border-solid ">
               Save & Submit
             </button>
           </div>

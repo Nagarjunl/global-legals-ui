@@ -23,7 +23,7 @@ export const userApi = createApi({
     }),
     createSecurity: builder.mutation({
         query: (data) => ({
-          url: `/security`,
+          url: `/securities`,
           method: "POST",
           body: data,
         }),
