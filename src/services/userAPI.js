@@ -35,6 +35,13 @@ export const userApi = createApi({
           body: data,
         }),
     }),
+    createMembers: builder.mutation({
+        query: (data) => ({
+          url: `/members`,
+          method: "POST",
+          body: data,
+        }),
+    }),
  
   })
 })
@@ -46,4 +53,5 @@ export const {
     useCreateBondBailsManMutation,
     useCreatePrivateInvestigatorsMutation,
     useCreateSecurityMutation,
+    useCreateMembersMutation,
   } = userApi;

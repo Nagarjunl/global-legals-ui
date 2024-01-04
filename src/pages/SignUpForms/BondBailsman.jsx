@@ -1,9 +1,6 @@
-import { useState } from "react";
-import GoogleImage from "../../assets/Google-image.png";
-import ReCAPTCHA from "react-google-recaptcha";
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
+import { useState, useEffect } from "react";
+
+import { useForm, Controller } from "react-hook-form";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -13,132 +10,43 @@ import {
 } from "../../services/fileUploadAPI";
 import "../../styles.css";
 
-import { useCreateBondBailsManMutation } from "../../services/userAPI";
-import { useSelector } from 'react-redux'
-import { useNavigate } from "react-router";
+import GoogleImage from "../../assets/Google-image.png";
+import ReCAPTCHA from "react-google-recaptcha";
 
+import { useSelector, useDispatch } from 'react-redux'
+import { formData } from "../../reducers/formTypeSlice";
 
 const baseUrl = "http://127.0.0.1:3005/";
 
 function BondBailsman({ handleStepClick }) {
-  const navigate = useNavigate();
 
   const [postFile, { isLoading }] = usePostFileMutation();
-  const [createBondBailsMan] = useCreateBondBailsManMutation()
   const [deleteFile] = useDeleteFileMutation();
   const [singleFile, setSingleFile] = useState("");
+  const dispatch = useDispatch();
 
-  const [selectedDate, setSelectedDate] = useState(null);
-  const [selectedDate2, setSelectedDate2] = useState(null);
-
-  const currentUser = useSelector((state) => state.user.id)
-
-
-  const onDateChange = (date, field) => {
-    if (field == "dateOfLicenceing") {
-      setSelectedDate(date);
-      setValue("dateOfLicenceing", date, { shouldValidate: true });
-    } else {
-      setSelectedDate2(date);
-      setValue("expirationDateOfInsurance", date, { shouldValidate: true });
-    }
-  };
+  const formDatas = useSelector((state) => state.formType.formData);
 
   const handleChange = () => {
     console.log("ReCaptcha");
   };
 
-  const schema = yup.object().shape({
-    businessName: yup.string().required("Business name is required"),
-    businessMail: yup
-      .string()
-      .email("Invalid email")
-      .required("Email is required"),
-    businessPhoneNumber: yup
-      .string()
-      // .min(3, "number must be at least 10 characters")
-      .required("Business number is required"),
-    businessAddress: yup
-      .string()
-      // .min(8, "address must be at least 30 characters")
-      .required("Address is required"),
-    companyWebsite: yup
-      .string(),
-    // .min(8, "Company Website must be at least 30 characters")
-    // .required("professional is required"),
-    ownerAgentInformation: yup
-      .string(),
-    // .required("Legal Specialization is required"),
-    licensingAuthority: yup
-      .string(),
-    // .required("Licensing Authority is required"),
-    bondingCapacity: yup
-      .string(),
-    // .min(3, " Name is not BondingCapacity")
-    // .required(" Name is required"),
-    licenseNumber: yup
-      .string(),
-    // .min(3, "Number must be at least 10 characters")
-    // .required("Number is required"),
-    dateOfLicenceing: yup
-      .date(),
-    // .nullable()
-    // .required("Date is required")
-    // .max(new Date(), "Date cannot be in the future"),
-    insurancePolicyNumber: yup
-      .string(),
-    // .min(3, "Number must be at least 10 characters")
-    // .required("Number is required"),\
-    insuranceProvider: yup
-      .string(),
-    // .min(3, "Number must be at least 10 characters")
-    // .required("Number is required"),
-    coverageAmount: yup
-      .string(),
-    // .min(3, "Number must be at least 10 characters")
-    // .required("Number is required"),
-    expirationDateOfInsurance: yup
-      .date(),
-    // .nullable()
-    // .required("Date is required")
-    // .max(new Date(), "Date cannot be in the future"),
-    areasCovered: yup
-      .string(),
-    // .min(3, "Name must be at least AreasCovered")
-    // .required("Name is required"),
-    feeStructure: yup
-      .string(),
-    // .min(3, "Name must be at least AreasCovered")
-    // .required("profile not matched"),
-    typesOfBonds: yup
-      .string(),
-    bondsmanExperience: yup
-      .string(),
-    linkedInProfile: yup
-      .string(),
-    twitterProfile: yup
-      .string(),
-    clientReferences: yup
-      .string(),
-    referenceNumber: yup
-      .string(),
-  });
-
   const {
     register,
     handleSubmit,
+    control,
     formState: { errors },
     setValue,
-  } = useForm({
-    resolver: yupResolver(schema),
-  });
+  } = useForm();
 
   const uploadFileAPI = async (e) => {
-    const formData = new FormData();
-    formData.append("idProof", e.target.files[0]);
-    await postFile(formData)
+    const formFileData = new FormData();
+    formFileData.append("idProof", e.target.files[0]);
+    await postFile(formFileData)
       .unwrap()
       .then((res) => {
+        const data = { ...formDatas, idProof: res.filename }
+        dispatch(formData(data));
         setSingleFile(res.filename);
         setValue("idProof", res.filename);
       });
@@ -150,28 +58,51 @@ function BondBailsman({ handleStepClick }) {
       .then(() => {
         setSingleFile("");
         setValue("idProof", "");
+        const data = { ...formDatas, idProof: "" }
+        dispatch(formData(data));
       })
       .catch((err) => console.log(err));
   };
 
-  const submitBondBailsMan = async (data) => {
-    data.userId = currentUser;
-    const { idProof } = data;
-    let proof = idProof.length === 0 ? "" : idProof
-    data.idProof = proof;
-    try {
-      await createBondBailsMan(data).unwrap()
-        .then(() => {
-          handleStepClick(1);
-        });
-    } catch (error) {
-      console.log("error");
+  const onSubmit = (data) => {
+    console.log(formDatas);
+    const datas = {
+      ...data,
+      idProof: formDatas.idProof || "",
     }
+    dispatch(formData(datas));
+    // dispatch(formSubmited(true));
+    handleStepClick(1);
   }
 
-  function onSubmit(data) {
-    submitBondBailsMan(data);
-  }
+  useEffect(() => {
+    if (formDatas.idProof !== "" && formDatas.idProof !== undefined) {
+      setSingleFile(formDatas.idProof);
+    }
+    const keys = Object.keys(formDatas);
+
+    keys.forEach((key) => {
+      if (formDatas[key] !== undefined) {
+        if (`${formDatas[key]}` === true || `${formDatas[key]}` === "true") {
+          setValue(`${key}`, true);
+          return false;
+        }
+        if (`${formDatas[key]}` === false || `${formDatas[key]}` === "false") {
+          setValue(`${key}`, false);
+          return false;
+        }
+        if (`${key}` === "dateOfLicenceing") {
+          setValue(`${key}`, new Date(`${formDatas[key]}`));
+          return false;
+        }
+        if (`${key}` === "expirationDateOfInsurance") {
+          setValue(`${key}`, new Date(`${formDatas[key]}`));
+          return false;
+        }
+        setValue(`${key}`, `${formDatas[key]}`);
+      }
+    });
+  }, [formDatas, setValue, setSingleFile]);
 
   return (
     <>
@@ -191,7 +122,7 @@ function BondBailsman({ handleStepClick }) {
                     </h5>
                     <div className="mt-2">
                       <input
-                        {...register("businessName")}
+                        {...register("businessName", { required: "Business Name Is Required" })}
                         className="block w-full p-3  rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                         placeholder="Enter Business Name"
                       />
@@ -228,7 +159,7 @@ function BondBailsman({ handleStepClick }) {
                     </h5>
                     <div className="mt-2">
                       <input
-                        {...register("businessMail")}
+                        {...register("businessMail", { required: "Business Email Is Required" })}
                         className="block w-full p-3  rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                         placeholder="Enter Business Email Address"
                       />
@@ -299,16 +230,13 @@ function BondBailsman({ handleStepClick }) {
               <div className="rounded-lg border border-dashed border-gray-900/25">
                 <div className="flex justify-center">
                   <div className="text-center mb-2 ">
-                    <div className="mt-4 flex">
-                      <p className="mb-2 text-[16px] font-normal w-[204px]">
-                        Upload your <br></br>current photo
-                      </p>
-                    </div>
+
                     {singleFile.length > 0 && (
+
                       <div className="img-block bg-gray">
                         <img
                           className="img-fluid2"
-                          src={`${baseUrl}/${singleFile}`}
+                          src={`${baseUrl}${singleFile}`}
                           alt="..."
                         />
                         <span
@@ -320,16 +248,23 @@ function BondBailsman({ handleStepClick }) {
                       </div>
                     )}
                     {singleFile.length === 0 && (
-                      <div className="upload-btn-wrapper-one">
-                        <button
-                          className="rounded-md bg-white px-3.5 mt-2 py-2.5 text-sm font-semibold text-indigo-700 shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 border border-solid border-blue-500"
-                        > Browse & Upload </button>
-                        <input
-                          type="file"
-                          {...register("idProof")}
-                          onChange={(e) => uploadFileAPI(e)}
-                        />
-                      </div>
+                      <>
+                        <div className="mt-4 flex">
+                          <p className="mb-2 text-[16px] font-normal w-[204px]">
+                            Upload your <br></br>current photo
+                          </p>
+                        </div>
+                        <div className="upload-btn-wrapper-one">
+                          <button
+                            className="rounded-md bg-white px-3.5 mt-2 py-2.5 text-sm font-semibold text-indigo-700 shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 border border-solid border-blue-500"
+                          > Browse & Upload </button>
+                          <input
+                            type="file"
+                            {...register("idProof")}
+                            onChange={(e) => uploadFileAPI(e)}
+                          />
+                        </div>
+                      </>
                     )}
                   </div>
                 </div>
@@ -363,11 +298,23 @@ function BondBailsman({ handleStepClick }) {
                 Date of Licensing
               </h5>
               <div className="mt-2">
-                <DatePicker
-                  selected={selectedDate}
-                  onChange={(e) => { onDateChange(e, "dateOfLicenceing") }}
-                  placeholder="Enter date of licensing"
-                  className="block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                <Controller
+                  name="dateOfLicenceing"
+                  control={control}
+                  // rules={{
+                  //   required: "Date is required",
+                  //   max: { value: new Date(), message: "Date cannot be in the future" }
+                  // }}
+                  render={({ field: { onChange, value } }) => {
+                    return (
+                      <DatePicker
+                        onChange={onChange}
+                        selected={value}
+                        placeholder="Enter date of licensing"
+                        className="block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      />
+                    );
+                  }}
                 />
                 {errors.dateOfLicenceing && (
                   <p className="text-red-500">{errors.dateOfLicenceing.message}</p>
@@ -474,11 +421,23 @@ function BondBailsman({ handleStepClick }) {
                 Experience Date of Insurance
               </h5>
               <div className="mt-2">
-                <DatePicker
-                  selected={selectedDate2}
-                  onChange={(e) => { onDateChange(e, "") }}
-                  placeholder="Enter date of licensing"
-                  className="block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                <Controller
+                  name="expirationDateOfInsurance"
+                  control={control}
+                  // rules={{
+                  //   required: "Date is required",
+                  //   max: { value: new Date(), message: "Date cannot be in the future" }
+                  // }}
+                  render={({ field: { onChange, value } }) => {
+                    return (
+                      <DatePicker
+                        onChange={onChange}
+                        selected={value}
+                        placeholder="Enter date of licensing"
+                        className="block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      />
+                    );
+                  }}
                 />
                 {errors.expirationDateOfInsurance && (
                   <p className="text-red-500">{errors.expirationDateOfInsurance.message}</p>
@@ -486,7 +445,6 @@ function BondBailsman({ handleStepClick }) {
               </div>
             </div>
           </div>
-
           <div>
             <div className="mt-10 grid grid-cols-1 gap-x-6  sm:grid-cols-6">
               <h3 className="font-medium leading-[34.32px] text-[24px]  sm:col-span-6">
