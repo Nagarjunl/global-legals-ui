@@ -1,3 +1,6 @@
+import { useEffect } from "react";
+import { useGetMembersQuery } from "../../services/userAPI";
+
 import LawyerCard from "../../components/LawyerCard";
 import profileImg2 from "../../assets/Frame22.svg";
 import profileImg from "../../assets/Frame20.svg";
@@ -16,6 +19,13 @@ const badgeData = [
 ];
 
 function SearchProfile() {
+
+  const { data: members, isLoading: fetchingMembers } = useGetMembersQuery("BondBailsman");
+  console.log(members)
+
+  useEffect(() => {
+
+  }, []);
   return (
     <div className="mx-auto container max-sm:px-6 lg:px-[120px] pb-3">
       <div>

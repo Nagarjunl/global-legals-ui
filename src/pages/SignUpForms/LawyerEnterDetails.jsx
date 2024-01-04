@@ -13,7 +13,7 @@ import {
 
 import "../../styles.css";
 
-const baseUrl = "global.chitmanager.com";
+const baseUrl = import.meta.env.VITE_API_URL;
 
 const LawyerEnterDetails = ({ handleStepClick }) => {
 

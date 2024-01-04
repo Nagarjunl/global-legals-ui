@@ -4,9 +4,7 @@ import { addTokens, removeTokens } from "../reducers/auth/authSlice";
 
 const mutex = new Mutex();
 
-// const baseUrl = process.env.REACT_APP_API_URL;
-// const baseUrl = "http://127.0.0.1:3017/";
-const baseUrl = "global.chitmanager.com";
+const baseUrl = import.meta.env.VITE_API_URL;
 
 const baseQuery = fetchBaseQuery({
   baseUrl,
@@ -46,7 +44,8 @@ const customFetchBase = async (args, api, extraOptions) => {
           result = await baseQuery(args, api, extraOptions);
         } else {
           api.dispatch(removeTokens());
-          window.location.href = "/sign-in";
+          console.log("hjhjhjjhjhjhjhjhj")
+          window.location.href = "/";
         }
       } finally {
         release();
