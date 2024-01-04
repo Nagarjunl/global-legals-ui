@@ -16,7 +16,6 @@ import "../../styles.css";
 
 const baseUrl = "global.chitmanager.com";
 
-
 const LawyerEnterDetails = ({ handleStepClick }) => {
 
   const [createLawyer] = useCreateLawyerMutation();
