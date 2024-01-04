@@ -3,6 +3,8 @@ import { ChevronRightIcon, CheckIcon } from "@heroicons/react/20/solid";
 import PayPremium from "../pages/SignUpForms/PayPremium";
 import Verification from "../pages/SignUpForms/Verification";
 import SelectForm from "../pages/SignUpForms/Forms";
+import { useSelector } from 'react-redux'
+
 
 const steps = [
   { id: "1", name: "Personal Details", href: "#", status: "current" },
@@ -12,8 +14,10 @@ const steps = [
 
 export default function Example() {
   const [currentStep, setCurrentStep] = useState(0);
+  const formSubmited = useSelector((state) => state.formType.formSubmited);
 
   const handleStepClick = (index) => {
+    // if (formSubmited)
     setCurrentStep(index);
   };
 
@@ -32,7 +36,7 @@ export default function Example() {
                 } cursor-pointer`}
               onClick={() => handleStepClick(index)}
             >
-              <span
+              <button
                 className={`flex items-center justify-center w-5 h-5 me-2 text-xs border rounded-full shrink-0 ${index === currentStep
                   ? "border-blue-600 dark:border-blue-500"
                   : index < currentStep
@@ -45,15 +49,15 @@ export default function Example() {
                 ) : (
                   index + 1
                 )}
-              </span>
+              </button>
               {/* Render the step name only on larger screens */}
-              <span className="whitespace-nowrap hidden sm:inline">
+              <button className="whitespace-nowrap hidden sm:inline">
                 {step.name}
-              </span>
+              </button>
               {index !== steps.length - 1 && (
-                <span>
+                <button>
                   <ChevronRightIcon className="w-6 h-6 mx-2 text-gray-500" />
-                </span>
+                </button>
               )}
             </li>
           ))}

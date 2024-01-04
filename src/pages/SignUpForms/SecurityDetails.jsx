@@ -1,19 +1,18 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import GoogleImage from "../../assets/Google-image.png";
 import ReCAPTCHA from "react-google-recaptcha";
 
 import { useForm, Controller } from "react-hook-form";
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { formData } from "../../reducers/formTypeSlice";
+
 
 import {
   usePostFileMutation,
   useDeleteFileMutation,
 } from "../../services/fileUploadAPI";
-import { useCreateSecurityMutation } from "../../services/userAPI";
-import { useNavigate } from "react-router";
-
 
 import "../../styles.css";
 
@@ -22,13 +21,13 @@ const baseUrl = "http://127.0.0.1:3005/";
 
 const SecurityDetails = ({ handleStepClick }) => {
 
-  const navigate = useNavigate();
+  const dispatch = useDispatch()
 
   const [postFile, { isLoading }] = usePostFileMutation();
   const [deleteFile] = useDeleteFileMutation();
   const [singleFile, setSingleFile] = useState("");
-  const currentUser = useSelector((state) => state.user.id)
-  const [createSecurity] = useCreateSecurityMutation();
+
+  const formDatas = useSelector((state) => state.formType.formData);
 
   const handleChange = () => {
     console.log("ReCaptcha");
@@ -43,11 +42,13 @@ const SecurityDetails = ({ handleStepClick }) => {
   } = useForm();
 
   const uploadFileAPI = async (e) => {
-    const formData = new FormData();
-    formData.append("idProof", e.target.files[0]);
-    await postFile(formData)
+    const formFileData = new FormData();
+    formFileData.append("idProof", e.target.files[0]);
+    await postFile(formFileData)
       .unwrap()
       .then((res) => {
+        const data = { ...formDatas, idProof: res.filename }
+        dispatch(formData(data));
         setSingleFile(res.filename);
         setValue("idProof", res.filename);
       });
@@ -59,28 +60,50 @@ const SecurityDetails = ({ handleStepClick }) => {
       .then(() => {
         setSingleFile("");
         setValue("idProof", "");
+        const data = { ...formDatas, idProof: "" }
+        dispatch(formData(data));
       })
       .catch((err) => console.log(err));
   };
 
-  const submitSecurity = async (data) => {
-    data.userId = currentUser;
-    const { idProof } = data;
-    let proof = idProof.length === 0 ? "" : idProof
-    data.idProof = proof;
-    try {
-      await createSecurity(data).unwrap()
-        .then(() => {
-          handleStepClick(1);
-        });
-    } catch (error) {
-      console.log("error");
-    }
+  const onSubmit = (data) => {
+    const datas = { ...data, idProof: formDatas.idProof || "" }
+    console.log(data);
+    dispatch(formData(datas));
+    // dispatch(formSubmited(true));
+    handleStepClick(1);
   }
 
-  function onSubmit(data) {
-    submitSecurity(data);
-  }
+
+  useEffect(() => {
+    // if (formSubmited) {
+    if (formDatas.idProof !== "" && formDatas.idProof !== undefined) {
+      setSingleFile(formDatas.idProof);
+    }
+    const keys = Object.keys(formDatas);
+    keys.forEach((key) => {
+      if (formDatas[key] !== undefined) {
+        if (`${formDatas[key]}` === true || `${formDatas[key]}` === "true") {
+          setValue(`${key}`, true);
+          return false;
+        }
+        if (`${formDatas[key]}` === false || `${formDatas[key]}` === "false") {
+          setValue(`${key}`, false);
+          return false;
+        }
+        if (`${key}` === "licenseExpiryDate") {
+          setValue(`${key}`, new Date(`${formDatas[key]}`));
+          return false;
+        }
+        if (`${key}` === "expirationDateOfInsurance") {
+          setValue(`${key}`, new Date(`${formDatas[key]}`));
+          return false;
+        }
+        setValue(`${key}`, `${formDatas[key]}`);
+      }
+    });
+    // }
+  }, [formDatas, setValue, setSingleFile]);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -117,7 +140,7 @@ const SecurityDetails = ({ handleStepClick }) => {
                   <h5 className="font-normal leading-[17.16px] text-[12px]">
                     Enter Email Address
                   </h5>
-                  <div>
+                  <div className="mt-2">
                     <input
                       className="block w-full p-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       placeholder="Enter Email Address"
@@ -164,16 +187,13 @@ const SecurityDetails = ({ handleStepClick }) => {
             <div className="rounded-lg border border-dashed border-gray-900/25">
               <div className="flex justify-center">
                 <div className="text-center mb-2 ">
-                  <div className="mt-4 flex">
-                    <p className="mb-2 text-[16px] font-normal w-[204px]">
-                      Upload your <br></br>current photo
-                    </p>
-                  </div>
+
                   {singleFile.length > 0 && (
+
                     <div className="img-block bg-gray">
                       <img
                         className="img-fluid2"
-                        src={`${baseUrl}/${singleFile}`}
+                        src={`${baseUrl}${singleFile}`}
                         alt="..."
                       />
                       <span
@@ -185,16 +205,23 @@ const SecurityDetails = ({ handleStepClick }) => {
                     </div>
                   )}
                   {singleFile.length === 0 && (
-                    <div className="upload-btn-wrapper-one">
-                      <button
-                        className="rounded-md bg-white px-3.5 mt-2 py-2.5 text-sm font-semibold text-indigo-700 shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 border border-solid border-blue-500"
-                      > Browse & Upload </button>
-                      <input
-                        type="file"
-                        {...register("idProof")}
-                        onChange={(e) => uploadFileAPI(e)}
-                      />
-                    </div>
+                    <>
+                      <div className="mt-4 flex">
+                        <p className="mb-2 text-[16px] font-normal w-[204px]">
+                          Upload your <br></br>current photo
+                        </p>
+                      </div>
+                      <div className="upload-btn-wrapper-one">
+                        <button
+                          className="rounded-md bg-white px-3.5 mt-2 py-2.5 text-sm font-semibold text-indigo-700 shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 border border-solid border-blue-500"
+                        > Browse & Upload </button>
+                        <input
+                          type="file"
+                          {...register("idProof")}
+                          onChange={(e) => uploadFileAPI(e)}
+                        />
+                      </div>
+                    </>
                   )}
                 </div>
               </div>
@@ -238,7 +265,7 @@ const SecurityDetails = ({ handleStepClick }) => {
             </h5>
             <div className="mt-2">
               <Controller
-                name="licExpDate"
+                name="licenseExpiryDate"
                 control={control}
                 // rules={{
                 //   required: "Date is required",
@@ -256,8 +283,8 @@ const SecurityDetails = ({ handleStepClick }) => {
                 }}
               />
               {
-                errors.licExpDate && (
-                  <p className="text-red-500">{errors.licExpDate.message}</p>
+                errors.licenseExpiryDate && (
+                  <p className="text-red-500">{errors.licenseExpiryDate.message}</p>
                 )
               }
             </div>

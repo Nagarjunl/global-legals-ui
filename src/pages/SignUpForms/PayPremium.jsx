@@ -1,4 +1,6 @@
 import Asset from "../../assets/pay.jpg";
+import { useCreateMembersMutation } from "../../services/userAPI";
+import { useSelector, useDispatch } from 'react-redux';
 
 const people = [
   {
@@ -22,7 +24,28 @@ const people = [
       "Benefit from strategic marketing efforts aimed at expanding your reach and attracting clients seeking legal expertise",
   },
 ];
-const PayPremium = () => {
+const PayPremium = ({ handleStepClick }) => {
+
+  const [createMembers, { isLoading }] = useCreateMembersMutation();
+  const dispatch = useDispatch();
+
+  const currentUser = useSelector((state) => state.user.id)
+  const formType = useSelector((state) => state.formType.formType);
+  const formDatas = useSelector((state) => state.formType.formData);
+  const formSubmited = useSelector((state) => state.formType.formSubmited);
+
+  const submitMembers = async (data) => {
+    const datas = { ...data, userId: currentUser, type: formType }
+    try {
+      await createMembers(datas).unwrap()
+        .then(() => {
+          dispatch(formSubmited(false));
+        });
+    } catch (error) {
+      console.log("error");
+    }
+  }
+
   return (
     <div className="container mx-auto">
       <div className="flex justify-center items-start pt-4">
@@ -63,6 +86,8 @@ const PayPremium = () => {
         <button
           type="button"
           className="rounded bg-blue-600 w-96 h-10  px-2 py-1 text-xs font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+          onClick={() => submitMembers(formDatas)}
+          disabled={isLoading}
         >
           Proceed to pay $10
         </button>

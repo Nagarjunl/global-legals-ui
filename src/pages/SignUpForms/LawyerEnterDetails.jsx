@@ -1,11 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import GoogleImage from "../../assets/Google-image.png";
 import ReCAPTCHA from "react-google-recaptcha";
 import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
-import { useNavigate } from "react-router";
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux';
+import { formData } from "../../reducers/formTypeSlice";
 
 import { useCreateLawyerMutation } from "../../services/userAPI";
 import {
@@ -20,86 +18,35 @@ const baseUrl = "http://127.0.0.1:3005/";
 
 const LawyerEnterDetails = ({ handleStepClick }) => {
 
-  const navigate = useNavigate();
   const [createLawyer] = useCreateLawyerMutation();
   const [postFile, { isLoading }] = usePostFileMutation();
   const [deleteFile] = useDeleteFileMutation();
   const [singleFile, setSingleFile] = useState("");
-  const currentUser = useSelector((state) => state.user.id)
+  const dispatch = useDispatch();
 
-  const schema = yup.object().shape({
-    clientName: yup.string().required("Name is required"),
-    email: yup.string().email("Invalid email").required("Email is required"),
-    contactNumber: yup
-      .string()
-      // .min(3, "number must be at least 10 characters")
-      .required("Contact number is required"),
-    address: yup
-      .string()
-      // .min(8, "address must be at least 30 characters")
-      .required("Address is required"),
-    professional: yup
-      .string()
-      // .min(8, "professional must be at least 30 characters")
-      .required("Professional is required"),
-    practicingLaw: yup
-      .string(),
-    // .required("practicing law is required"),
-    legalSpecialization: yup
-      .string(),
-    // .required("Legal Specialization is required"),
-    experience: yup
-      .string(),
-    // .min(3, "number must be at least 10 characters")
-    // .required(" number is required"),
-    licenseNumber: yup
-      .string(),
-    // .min(3, "Number must be at least 10 characters")
-    // .required("Number is required"),
-    servedTillNow: yup
-      .string(),
-    // .min(3, "Number must be at least 10 characters")
-    // .required("Number is required"),
-    lawField: yup
-      .string(),
-    // .min(3, "Number must be at least 10 characters")
-    // .required("Number is required"),
-    languages: yup
-      .string(),
-    // .min(3, "Name must be at least 10 characters")
-    // .required("Name is required"),
-    linkedInProfile: yup
-      .string(),
-    // .min(3, "link profile not 5 matched")
-    // .required("profile not matched"),
-    twitterProfile: yup
-      .string(),
-    // .min(3, "Twitter profile not 5 matched")
-    // .required("profile not matched"),
-    acceptTerms: yup
-      .bool(),
-    // .required("Please check this box"),
-  });
+  const currentUser = useSelector((state) => state.user.id)
+  const currentFormValue = useSelector((state) => state.formType.formType);
+  const formDatas = useSelector((state) => state.formType.formData);
 
   const {
     register,
     handleSubmit,
     setValue,
     formState: { errors },
-  } = useForm({
-    resolver: yupResolver(schema),
-  });
+  } = useForm();
 
   const handleChange = () => {
     console.log("ReCaptcha");
   };
 
   const uploadFileAPI = async (e) => {
-    const formData = new FormData();
-    formData.append("idProof", e.target.files[0]);
-    await postFile(formData)
+    const formFileData = new FormData();
+    formFileData.append("idProof", e.target.files[0]);
+    await postFile(formFileData)
       .unwrap()
       .then((res) => {
+        const data = { ...formDatas, idProof: res.filename }
+        dispatch(formData(data));
         setSingleFile(res.filename);
         setValue("idProof", res.filename);
       });
@@ -111,28 +58,43 @@ const LawyerEnterDetails = ({ handleStepClick }) => {
       .then(() => {
         setSingleFile("");
         setValue("idProof", "");
+        const data = { ...formDatas, idProof: "" }
+        dispatch(formData(data));
       })
       .catch((err) => console.log(err));
   };
 
-  const submitLawyer = async (data) => {
-    data.userId = currentUser;
-    const { idProof } = data;
-    let proof = idProof.length === 0 ? "" : idProof
-    data.idProof = proof;
-    try {
-      await createLawyer(data).unwrap()
-        .then(() => {
-          handleStepClick(1);
-        });
-    } catch (error) {
-      console.log("error");
-    }
+  const onSubmit = (data) => {
+    console.log(data);
+    const datas = { ...data, idProof: formDatas.idProof || "" }
+    console.log(data);
+    dispatch(formData(datas));
+    // dispatch(formSubmited(true));
+    handleStepClick(1);
   }
 
-  function onSubmit(data) {
-    submitLawyer(data);
-  }
+  useEffect(() => {
+    // if (formSubmited) {
+    if (formDatas.idProof !== "" && formDatas.idProof !== undefined) {
+      setSingleFile(formDatas.idProof);
+    }
+    const keys = Object.keys(formDatas);
+    keys.forEach((key) => {
+      if (formDatas[key] !== undefined) {
+        if (`${formDatas[key]}` === true || `${formDatas[key]}` === "true") {
+          setValue(`${key}`, true);
+          return false;
+        }
+        if (`${formDatas[key]}` === false || `${formDatas[key]}` === "false") {
+          setValue(`${key}`, false);
+          return false;
+        }
+        setValue(`${key}`, `${formDatas[key]}`);
+      }
+    });
+    // }
+  }, [formDatas, setValue, setSingleFile]);
+
   return (
     <>
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -151,7 +113,7 @@ const LawyerEnterDetails = ({ handleStepClick }) => {
                     </h5>
                     <div className="mt-2">
                       <input
-                        {...register("clientName")}
+                        {...register("clientName", { required: "This Field Is Required" })}
                         className="block w-full p-3  rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                         placeholder="Enter your full name"
                       />
@@ -166,7 +128,7 @@ const LawyerEnterDetails = ({ handleStepClick }) => {
                     </h5>
                     <div className="mt-2">
                       <input
-                        {...register("email")}
+                        {...register("email", { required: "This Field Is Required" })}
                         className="block w-full p-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                         placeholder="Enter Email Address"
                       />
@@ -215,16 +177,13 @@ const LawyerEnterDetails = ({ handleStepClick }) => {
               <div className="rounded-lg border border-dashed border-gray-900/25">
                 <div className="flex justify-center">
                   <div className="text-center mb-2 ">
-                    <div className="mt-4 flex">
-                      <p className="mb-2 text-[16px] font-normal w-[204px]">
-                        Upload your <br></br>current photo
-                      </p>
-                    </div>
+
                     {singleFile.length > 0 && (
+
                       <div className="img-block bg-gray">
                         <img
                           className="img-fluid2"
-                          src={`${baseUrl}/${singleFile}`}
+                          src={`${baseUrl}${singleFile}`}
                           alt="..."
                         />
                         <span
@@ -236,16 +195,23 @@ const LawyerEnterDetails = ({ handleStepClick }) => {
                       </div>
                     )}
                     {singleFile.length === 0 && (
-                      <div className="upload-btn-wrapper-one">
-                        <button
-                          className="rounded-md bg-white px-3.5 mt-2 py-2.5 text-sm font-semibold text-indigo-700 shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 border border-solid border-blue-500"
-                        > Browse & Upload </button>
-                        <input
-                          type="file"
-                          {...register("idProof")}
-                          onChange={(e) => uploadFileAPI(e)}
-                        />
-                      </div>
+                      <>
+                        <div className="mt-4 flex">
+                          <p className="mb-2 text-[16px] font-normal w-[204px]">
+                            Upload your <br></br>current photo
+                          </p>
+                        </div>
+                        <div className="upload-btn-wrapper-one">
+                          <button
+                            className="rounded-md bg-white px-3.5 mt-2 py-2.5 text-sm font-semibold text-indigo-700 shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 border border-solid border-blue-500"
+                          > Browse & Upload </button>
+                          <input
+                            type="file"
+                            {...register("idProof")}
+                            onChange={(e) => uploadFileAPI(e)}
+                          />
+                        </div>
+                      </>
                     )}
                   </div>
                 </div>
@@ -501,7 +467,7 @@ const LawyerEnterDetails = ({ handleStepClick }) => {
               type="checkbox"
               id="myCheckbox"
               className="form-checkbox h-5 w-5 text-indigo-600"
-              {...register('acceptTerms')}
+              {...register('peCheckbox')}
             />
             <label className="ml-2 text-[12px]">
               By proceeding, you confirm that you&apos;ve read, comprehended,
@@ -515,7 +481,7 @@ const LawyerEnterDetails = ({ handleStepClick }) => {
             </label>
 
           </div>
-          {errors.acceptTerms && <p className="text-red-500">{errors.acceptTerms.message}</p>}
+          {errors.peCheckbox && <p className="text-red-500">{errors.peCheckbox.message}</p>}
           <div className="flex-1 border-t border-gray-300 mt-7"></div>
           <div className="flex justify-between flex-wrap mt-10 my-3">
             <div>

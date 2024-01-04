@@ -4,16 +4,23 @@ import BondBailsman from "./BondBailsman";
 import SecurityDetails from "./SecurityDetails";
 import PrivateInvestigators from "./PrivateInvestigators";
 import { useSelector, useDispatch } from 'react-redux';
-import { currentForm } from "../../reducers/formTypeSlice";
+import { formType, formData } from "../../reducers/formTypeSlice";
+import { useForm, Controller } from "react-hook-form";
 
 
 const SelectForm = ({ handleStepClick }) => {
 
   const dispatch = useDispatch();
-  const currentFormValue = useSelector((state) => state.formType);
+  const currentFormValue = useSelector((state) => state.formType.formType);
+
+  const {
+    control
+  } = useForm({
+  });
 
   const handleSelectChange = (event) => {
-    dispatch(currentForm(event.target.value));
+    dispatch(formType(event.target.value));
+    dispatch(formData(""));
     renderComponent();
   };
 
@@ -54,20 +61,25 @@ const SelectForm = ({ handleStepClick }) => {
           </div>
           <div className="w-full sm:w-1/3 ">
             <div className="text-right pt-4">
-              <select
-                className="w-full sm:w-52 mt-8 rounded-md border-0 py-3  text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                defaultValue=""
-                value={currentFormValue}
-                onChange={handleSelectChange}
-              >
-                <option value="" disabled hidden>
-                  Select from dropdown
-                </option>
-                <option>Lawyers</option>
-                <option>BondBailsman</option>
-                <option>Security</option>
-                <option>PrivateInvestigators</option>
-              </select>
+              <Controller
+                name="formName"
+                control={control}
+                render={({ field: { value } }) => (
+                  <select
+                    className="w-full sm:w-52 mt-8 rounded-md border-0 py-3  text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    value={value || currentFormValue}
+                    onChange={handleSelectChange}
+                  >
+                    <option value="" hidden>
+                      Select from dropdown
+                    </option>
+                    <option>Lawyers</option>
+                    <option>BondBailsman</option>
+                    <option>Security</option>
+                    <option>PrivateInvestigators</option>
+                  </select>
+                )}
+              />
             </div>
           </div>
         </div>
