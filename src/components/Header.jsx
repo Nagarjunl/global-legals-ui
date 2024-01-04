@@ -6,14 +6,22 @@ import UserIcon from "../assets/UserIcon.svg";
 import { removeTokens } from "../reducers/auth/authSlice";
 import { useDispatch } from "react-redux";
 import { removeUser } from "../reducers/userSlice";
-
+import { GoogleLogout } from "react-google-login";
+import { useNavigate } from "react-router-dom";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
+const clientId =
+  "1088488217067-p3bcsi9hbqg9v5befpfir4ak29dfd28i.apps.googleusercontent.com";
 export default function Example() {
+  const navigate = useNavigate();
 
+  const onSuccess = () => {
+    console.log("Log out Successfully");
+    navigate("/");
+  };
   const dispatch = useDispatch();
   return (
     <Disclosure as="nav" className="bg-white shadow">
@@ -102,12 +110,19 @@ export default function Example() {
                             onClick={() => {
                               dispatch(removeTokens());
                               dispatch(removeUser());
-                            }
-                            }
-
+                            }}
                           >
                             Sign out
                           </a>
+                        )}
+                      </Menu.Item>
+                      <Menu.Item>
+                        {({ active }) => (
+                          <GoogleLogout
+                            clientId={clientId}
+                            buttonText={"Logout"}
+                            onLogoutSuccess={onSuccess}
+                          />
                         )}
                       </Menu.Item>
                     </Menu.Items>
