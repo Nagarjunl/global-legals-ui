@@ -42,16 +42,29 @@ export const userApi = createApi({
           body: data,
         }),
     }),
- 
+    getMembers: builder.query({
+        query: (data) => ({
+          url: `/members/?type=${data}`,
+          method: "GET",
+        }),
+    }),
+    // getMembers: builder.query({
+    //  query: ({ limit, offset }) => ({
+    //     url: `/chits?limit=${limit}&offset=${offset}`,
+    //     method: "GET",
+    //     }),
+    // }),
+
   })
 })
 
 // Export hooks for usage in functional components, which are
 // auto-generated based on the defined endpoints
 export const {
-    useCreateLawyerMutation,
-    useCreateBondBailsManMutation,
-    useCreatePrivateInvestigatorsMutation,
-    useCreateSecurityMutation,
-    useCreateMembersMutation,
-  } = userApi;
+  useCreateLawyerMutation,
+  useCreateBondBailsManMutation,
+  useCreatePrivateInvestigatorsMutation,
+  useCreateSecurityMutation,
+  useCreateMembersMutation,
+  useGetMembersQuery,
+} = userApi;
