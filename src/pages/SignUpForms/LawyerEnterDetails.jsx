@@ -4,6 +4,7 @@ import ReCAPTCHA from "react-google-recaptcha";
 import { useForm } from "react-hook-form";
 import { useSelector, useDispatch } from 'react-redux';
 import { formData } from "../../reducers/formTypeSlice";
+import 'dotenv/config'
 
 import { useCreateLawyerMutation } from "../../services/userAPI";
 import {
@@ -13,7 +14,7 @@ import {
 
 import "../../styles.css";
 
-const baseUrl = "http://127.0.0.1:3005/";
+const baseUrl = "global.chitmanager.com";
 
 
 const LawyerEnterDetails = ({ handleStepClick }) => {
