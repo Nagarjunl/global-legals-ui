@@ -4,7 +4,6 @@ import ReCAPTCHA from "react-google-recaptcha";
 import { useForm } from "react-hook-form";
 import { useSelector, useDispatch } from 'react-redux';
 import { formData } from "../../reducers/formTypeSlice";
-import 'dotenv/config'
 
 import { useCreateLawyerMutation } from "../../services/userAPI";
 import {
