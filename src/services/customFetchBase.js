@@ -5,7 +5,8 @@ import { addTokens, removeTokens } from "../reducers/auth/authSlice";
 const mutex = new Mutex();
 
 // const baseUrl = process.env.REACT_APP_API_URL;
-const baseUrl = "http://127.0.0.1:3005/";
+// const baseUrl = "http://127.0.0.1:3017/";
+const baseUrl = "global.chitmanager.com";
 
 const baseQuery = fetchBaseQuery({
   baseUrl,

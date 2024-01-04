@@ -16,7 +16,8 @@ import {
 
 import "../../styles.css";
 
-const baseUrl = "http://127.0.0.1:3005/";
+// const baseUrl = "http://127.0.0.1:3017/";
+const baseUrl = "global.chitmanager.com";
 
 
 const SecurityDetails = ({ handleStepClick }) => {
