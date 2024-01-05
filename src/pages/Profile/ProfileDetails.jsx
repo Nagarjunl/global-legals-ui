@@ -8,14 +8,62 @@ import "../../App.css";
 import Input from "../../components/Input";
 import PrimaryButton from "../../components/PrimaryButton";
 
-const ProfileDetails = () => {
+import { useNavigate, useParams } from "react-router-dom";
+import { useGetMemberQuery, useGetMemberFromSuperIdQuery } from "../../services/userAPI";
+import { useSelector } from "react-redux";
+
+
+// const pathName = {
+//   `/dashboard/lawyerDetails/${id}`
+//   `/dashboard/bondBailsman/${id}`
+//   `/dashboard/securityDetails/${id}`
+//   `/dashboard/privateInvestigators/${id}`
+// }
+const ProfileDetails = ({ hideSchedule }) => {
+
+  const formType = useSelector((state) => state.formType.formType);
+  console.log("formType", formType)
+
+  const { memberId, mainId } = useParams();
+  const navigate = useNavigate();
+
+  const { data: supermember } = useGetMemberFromSuperIdQuery(mainId, {
+    skip: mainId === undefined,
+  });
+
+  const { data: member } = useGetMemberQuery(memberId, {
+    skip: memberId === undefined,
+  });
+
+  const data = member ? member : supermember;
+
+
+  const pathSwitch = () => {
+    if (data.type === "Lawyers") {
+      console.log("Lwyers");
+      navigate(`/dashboard/lawyerDetails/${data.userId}`);
+    }
+    if (data.type === "BondBailsman") {
+      console.log("bondBailsman");
+      navigate(`/dashboard/bondBailsman/${data.userId}`);
+    }
+    if (data.type === "Security") {
+      console.log("securityDetails");
+      navigate(`/dashboard/securityDetails/${data.userId}`);
+    }
+
+    if (data.type === "PrivateInvestigators") {
+      navigate(`/dashboard/privateInvestigators/${data.userId}`);
+    }
+  }
+
   return (
     <>
       <main>
         <div className="mx-auto container max-sm:px-6 lg:px-[120px] pb-3">
           {/* Profilecard */}
           <div className="mt-5">
-            <ProfileCard />
+            <ProfileCard data={data} hideSchedule={hideSchedule} />
           </div>
           {/* ProfileDetails */}
           <div className=" max-md:px-2">
@@ -94,191 +142,211 @@ const ProfileDetails = () => {
             </div>
           </div>
           {/* Meeting card */}
-          <div className=" grid-rows-4  border-solid border-2 rounded-lg  py-5 mx-auto mt-4  sm:px-6 lg:px-8">
-            <div className="flex justify-center items-center ">
-              <img src={meeting} />
-            </div>
-            <div className="grid-rows-4">
-              <h2 className="flex justify-center items-center font-medium text-lg mt-2">
-                Schedule a Meeting with us
-              </h2>
-              <p className="flex justify-center items-center py-2 max-sm:px-2">
-                We&rsquo;re here to assist you. If you have legal concerns or
-                need professional advice, feel free to schedule a meeting with
-                one of our experienced lawyers
-              </p>
-              <div className="flex justify-center items-center  py-3">
-                <div className="flex-wrap max-lg:flex justify-center items-center gap-1 ">
-                  <button
-                    type="button"
-                    className="inline-flex items-center  gap-x-1.5 rounded-md bg-white mr-2 px-4 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
-                  >
-                    <img src={GoogleMeetIcon} width={22} />
-                    Schedule with google Meet
-                  </button>
-                  <button
-                    type="button"
-                    className="inline-flex items-center max-md:mt-2  gap-x-1.5 rounded-md bg-blue-50 mr-2 px-4 py-1.5 text-sm font-semibold text-blue-500 shadow-sm ring-1 ring-inset ring-blue-500 hover:bg-gray-50"
-                  >
-                    <BiLogoZoom size={22} />
-                    Schedule with Zoom
-                  </button>
-                  <button
-                    type="button"
-                    className="inline-flex items-center max-md:mt-2 max gap-x-1.5 rounded-md bg-sky-50 mr-2 px-4 py-1.5 text-sm font-semibold text-sky-500 shadow-sm ring-1 ring-inset ring-sky-500 hover:bg-gray-50"
-                  >
-                    <FaSkype size={20} />
-                    Schedule with Skype
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
 
-          <div className="grid grid-cols-2 mt-6 max-md:grid-cols-1">
-            <div className=" max-md:mb-8 ">
-              <div>
-                <h2 className=" font-bold">Law Firm Address</h2>
-                <p className="py-2">
-                  10412 Kinston pike Suite 201
-                  <br />
-                  <span>Knoxville, TN 37922</span>
-                </p>
-
-                <a href="#" className="text-blue-600 font-semibold ">
-                  Get Directions
-                </a>
-                <div>
-                  <h3 className="pt-2 font-bold">Payment method</h3>
-                  <p className="py-1">Online Payment, Accepts credit cards</p>
-                </div>
-                <div>
-                  <h3 className="pt-2 font-bold">Office Hours</h3>
-                  <p className="py-1">Mon - Fri : 9:00 am - 4:00 pm</p>
-                </div>
-              </div>
-            </div>
-            <div className=" border-solid border-2 gap-x-px	 rounded-lg px-6 py-4 ">
-              <form action="#" method="POST">
-                <h2 className=" font-bold text-2xl mb-[-20px]">
-                  {" "}
-                  Contact Form
-                </h2>
-                <div className="mt-10 grid grid-cols-1 gap-x-4 gap-y-4 sm:grid-cols-6">
-                  <div className="sm:col-span-3">
-                    <label className="block text-sm font-medium leading-6 text-gray-900">
-                      Enter your full name
-                    </label>
-                    <div className="mt-2">
-                      <Input
-                        id="email"
-                        name="email"
-                        type="email"
-                        placeholder="Enter your name"
-                        autoComplete="email"
-                      />
-                    </div>
+          {!hideSchedule ?
+            (
+              <>
+                < div className=" grid-rows-4  border-solid border-2 rounded-lg  py-5 mx-auto mt-4  sm:px-6 lg:px-8">
+                  <div className="flex justify-center items-center ">
+                    <img src={meeting} />
                   </div>
-
-                  <div className="sm:col-span-3">
-                    <label className="block text-sm font-medium leading-6 text-gray-900">
-                      Enter Email Address
-                    </label>
-                    <div className="mt-2">
-                      <Input
-                        id="email"
-                        name="email"
-                        type="email"
-                        placeholder="name@gmail.com"
-                        autoComplete="email"
-                      />
-                    </div>
-                  </div>
-                  <div className="sm:col-span-3">
-                    <label className="block text-sm font-medium leading-6 text-gray-900">
-                      Contact number
-                    </label>
-                    <div className="mt-2 ">
-                      <Input
-                        id="email"
-                        name="email"
-                        type="number"
-                        placeholder="Enter contact number"
-                        autoComplete="email"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="sm:col-span-3">
-                    <label
-                      htmlFor="last-name"
-                      className="block text-sm font-medium leading-6 text-gray-900"
-                    >
-                      Location / Zipcode
-                    </label>
-                    <div className="mt-2">
-                      <Input
-                        id="email"
-                        name="email"
-                        type="email"
-                        placeholder="Address / pincode"
-                        autoComplete="email"
-                      />
-                    </div>
-                  </div>
-                  <div className="col-span-full">
-                    <label
-                      htmlFor="about"
-                      className="block text-sm font-medium leading-6 text-gray-900"
-                    >
-                      Tell us more about your legal need
-                    </label>
-                    <div className="mt-2">
-                      <textarea
-                        id="about"
-                        name="about"
-                        rows={3}
-                        placeholder="Short profile description"
-                        className="block w-full rounded-md border-0 p-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                        defaultValue={""}
-                      />
-                    </div>
-                    <div className="flex items-center pt-4 ">
-                      <input
-                        id="remember-me"
-                        name="remember-me"
-                        type="checkbox"
-                        className="h-4 w-4 rounded bg-gray-00 border-gray-300 text-indigo-600 focus:ring-indigo-600"
-                      />
-                      <label
-                        htmlFor="remember-me"
-                        className="ml-3 block font-medium text-sm leading-6 text-black"
-                      >
-                        Send me a copy of this mail
-                      </label>
-                    </div>
-                    <p className=" pt-4 ">
-                      The information contained on this website is intended to
-                      convey general information. It should not be construed as
-                      legal advice or opinion. It is not an offer to represent
-                      you, nor is it intended to create an attorney-client
-                      relationship. The use of the internet or this contact form
-                      for communication is not necessarily a secure environment.
-                      Contacting a lawyer or law firm via email through this
-                      service will not create an attorney-client relationship,
-                      and information will not necessarily be treated as
-                      privileged or confidential.
+                  <div className="grid-rows-4">
+                    <h2 className="flex justify-center items-center font-medium text-lg mt-2">
+                      Schedule a Meeting with us
+                    </h2>
+                    <p className="flex justify-center items-center py-2 max-sm:px-2">
+                      We&rsquo;re here to assist you. If you have legal concerns or
+                      need professional advice, feel free to schedule a meeting with
+                      one of our experienced lawyers
                     </p>
+                    <div className="flex justify-center items-center  py-3">
+                      <div className="flex-wrap max-lg:flex justify-center items-center gap-1 ">
+                        <button
+                          type="button"
+                          className="inline-flex items-center  gap-x-1.5 rounded-md bg-white mr-2 px-4 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+                        >
+                          <img src={GoogleMeetIcon} width={22} />
+                          Schedule with google Meet
+                        </button>
+                        <button
+                          type="button"
+                          className="inline-flex items-center max-md:mt-2  gap-x-1.5 rounded-md bg-blue-50 mr-2 px-4 py-1.5 text-sm font-semibold text-blue-500 shadow-sm ring-1 ring-inset ring-blue-500 hover:bg-gray-50"
+                        >
+                          <BiLogoZoom size={22} />
+                          Schedule with Zoom
+                        </button>
+                        <button
+                          type="button"
+                          className="inline-flex items-center max-md:mt-2 max gap-x-1.5 rounded-md bg-sky-50 mr-2 px-4 py-1.5 text-sm font-semibold text-sky-500 shadow-sm ring-1 ring-inset ring-sky-500 hover:bg-gray-50"
+                        >
+                          <FaSkype size={20} />
+                          Schedule with Skype
+                        </button>
+                      </div>
+                    </div>
                   </div>
                 </div>
-                <div className=" w-60 pt-5">
-                  <PrimaryButton type="submit" buttonText="Send Mail" />
+
+                <div className="grid grid-cols-2 mt-6 max-md:grid-cols-1">
+                  <div className=" max-md:mb-8 ">
+                    <div>
+                      <h2 className=" font-bold">Law Firm Address</h2>
+                      <p className="py-2">
+                        10412 Kinston pike Suite 201
+                        <br />
+                        <span>Knoxville, TN 37922</span>
+                      </p>
+
+                      <a href="#" className="text-blue-600 font-semibold ">
+                        Get Directions
+                      </a>
+                      <div>
+                        <h3 className="pt-2 font-bold">Payment method</h3>
+                        <p className="py-1">Online Payment, Accepts credit cards</p>
+                      </div>
+                      <div>
+                        <h3 className="pt-2 font-bold">Office Hours</h3>
+                        <p className="py-1">Mon - Fri : 9:00 am - 4:00 pm</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className=" border-solid border-2 gap-x-px	 rounded-lg px-6 py-4 ">
+                    <form action="#" method="POST">
+                      <h2 className=" font-bold text-2xl mb-[-20px]">
+                        {" "}
+                        Contact Form
+                      </h2>
+                      <div className="mt-10 grid grid-cols-1 gap-x-4 gap-y-4 sm:grid-cols-6">
+                        <div className="sm:col-span-3">
+                          <label className="block text-sm font-medium leading-6 text-gray-900">
+                            Enter your full name
+                          </label>
+                          <div className="mt-2">
+                            <Input
+                              id="email"
+                              name="email"
+                              type="email"
+                              placeholder="Enter your name"
+                              autoComplete="email"
+                            />
+                          </div>
+                        </div>
+
+                        <div className="sm:col-span-3">
+                          <label className="block text-sm font-medium leading-6 text-gray-900">
+                            Enter Email Address
+                          </label>
+                          <div className="mt-2">
+                            <Input
+                              id="email"
+                              name="email"
+                              type="email"
+                              placeholder="name@gmail.com"
+                              autoComplete="email"
+                            />
+                          </div>
+                        </div>
+                        <div className="sm:col-span-3">
+                          <label className="block text-sm font-medium leading-6 text-gray-900">
+                            Contact number
+                          </label>
+                          <div className="mt-2 ">
+                            <Input
+                              id="email"
+                              name="email"
+                              type="number"
+                              placeholder="Enter contact number"
+                              autoComplete="email"
+                            />
+                          </div>
+                        </div>
+
+                        <div className="sm:col-span-3">
+                          <label
+                            htmlFor="last-name"
+                            className="block text-sm font-medium leading-6 text-gray-900"
+                          >
+                            Location / Zipcode
+                          </label>
+                          <div className="mt-2">
+                            <Input
+                              id="email"
+                              name="email"
+                              type="email"
+                              placeholder="Address / pincode"
+                              autoComplete="email"
+                            />
+                          </div>
+                        </div>
+                        <div className="col-span-full">
+                          <label
+                            htmlFor="about"
+                            className="block text-sm font-medium leading-6 text-gray-900"
+                          >
+                            Tell us more about your legal need
+                          </label>
+                          <div className="mt-2">
+                            <textarea
+                              id="about"
+                              name="about"
+                              rows={3}
+                              placeholder="Short profile description"
+                              className="block w-full rounded-md border-0 p-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                              defaultValue={""}
+                            />
+                          </div>
+                          <div className="flex items-center pt-4 ">
+                            <input
+                              id="remember-me"
+                              name="remember-me"
+                              type="checkbox"
+                              className="h-4 w-4 rounded bg-gray-00 border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                            />
+                            <label
+                              htmlFor="remember-me"
+                              className="ml-3 block font-medium text-sm leading-6 text-black"
+                            >
+                              Send me a copy of this mail
+                            </label>
+                          </div>
+                          <p className=" pt-4 ">
+                            The information contained on this website is intended to
+                            convey general information. It should not be construed as
+                            legal advice or opinion. It is not an offer to represent
+                            you, nor is it intended to create an attorney-client
+                            relationship. The use of the internet or this contact form
+                            for communication is not necessarily a secure environment.
+                            Contacting a lawyer or law firm via email through this
+                            service will not create an attorney-client relationship,
+                            and information will not necessarily be treated as
+                            privileged or confidential.
+                          </p>
+                        </div>
+                      </div>
+                      <div className=" w-60 pt-5">
+                        <PrimaryButton type="submit" buttonText="Send Mail" />
+                      </div>
+                    </form>
+                  </div>
                 </div>
-              </form>
-            </div>
-          </div>
+              </>) : ""
+          }
+
+          {hideSchedule ?
+            (
+              <>
+                <button
+                  className="flex w-full justify-center mt-3 rounded-md bg-blue-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                  onClick={() => pathSwitch()}
+                >
+                  Edit Profile
+                </button>
+              </>
+            ) : ""
+          }
+
         </div>
-      </main>
+      </main >
     </>
   );
 };

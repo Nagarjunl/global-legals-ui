@@ -13,17 +13,26 @@ import {
 import { formData } from "../../reducers/formTypeSlice";
 
 import "../../styles.css";
+import { useNavigate, useParams } from "react-router-dom";
+import { useUpdateMemberMutation, useGetMemberFromSuperIdQuery } from "../../services/userAPI";
 
 const baseUrl = import.meta.env.VITE_API_URL;
 
 
 
 const PrivateInvestigators = ({ handleStepClick }) => {
+
+  const { memberId } = useParams();
+  const navigate = useNavigate();
+
   const dispatch = useDispatch();
   const formDatas = useSelector((state) => state.formType.formData);
   const [postFile, { isLoading }] = usePostFileMutation();
   const [deleteFile] = useDeleteFileMutation();
   const [singleFile, setSingleFile] = useState("");
+
+  const [updateMember, { isLoading: updatingMember }] = useUpdateMemberMutation();
+
 
   const handleChange = () => {
     console.log("ReCaptcha");
@@ -62,20 +71,44 @@ const PrivateInvestigators = ({ handleStepClick }) => {
       .catch((err) => console.log(err));
   };
 
-  const onSubmit = (data) => {
-    const datas = { ...data, idProof: formDatas.idProof || "" }
-    console.log(data);
-    dispatch(formData(datas));
-    // dispatch(formSubmited(true));
-    handleStepClick(1);
+  const submitMembers = async (data) => {
+    try {
+      await updateMember(data).unwrap()
+        .then(() => {
+          navigate(`/dashboard/profileDetails/${data.userId}`)
+        });
+    } catch (error) {
+      console.log("error");
+    }
   }
 
+  const onSubmit = (data) => {
+    const datas = { ...data, idProof: formDatas.idProof || "" }
+    if (!memberId) {
+      dispatch(formData(datas));
+      handleStepClick(1);
+    } else {
+      submitMembers(data)
+    }
+  }
+
+  const { data: member, isLoading: fetchingData }
+    = useGetMemberFromSuperIdQuery(memberId, {
+      skip: memberId === undefined,
+    });
+
   useEffect(() => {
-    // if (formSubmited) {
+    if (!fetchingData && memberId !== undefined) {
+      dispatch(formData(member));
+    }
+  }, [member, fetchingData]);
+
+  useEffect(() => {
     if (formDatas.idProof !== "" && formDatas.idProof !== undefined) {
       setSingleFile(formDatas.idProof);
     }
     const keys = Object.keys(formDatas);
+
     keys.forEach((key) => {
       if (formDatas[key] !== undefined) {
         if (`${formDatas[key]}` === true || `${formDatas[key]}` === "true") {
@@ -86,6 +119,10 @@ const PrivateInvestigators = ({ handleStepClick }) => {
           setValue(`${key}`, false);
           return false;
         }
+        if (`${key}` === "dateOfLicenceing") {
+          setValue(`${key}`, new Date(`${formDatas[key]}`));
+          return false;
+        }
         if (`${key}` === "licenseExpiryDate") {
           setValue(`${key}`, new Date(`${formDatas[key]}`));
           return false;
@@ -94,10 +131,13 @@ const PrivateInvestigators = ({ handleStepClick }) => {
           setValue(`${key}`, new Date(`${formDatas[key]}`));
           return false;
         }
+        if (`${formDatas[key]}` === null || `${formDatas[key]}` === "null") {
+          setValue(`${key}`, "");
+          return false;
+        }
         setValue(`${key}`, `${formDatas[key]}`);
       }
     });
-    // }
   }, [formDatas, setValue, setSingleFile]);
 
   return (
@@ -262,6 +302,10 @@ const PrivateInvestigators = ({ handleStepClick }) => {
               <Controller
                 name="licenseExpiryDate"
                 control={control}
+                rules={{
+                  required: "Date is required",
+                  // max: { value: new Date(), message: "Date cannot be in the future" }
+                }}
                 render={({ field: { onChange, value } }) => {
                   return (
                     <DatePicker
@@ -273,6 +317,9 @@ const PrivateInvestigators = ({ handleStepClick }) => {
                   );
                 }}
               />
+              {errors.licenseExpiryDate && (
+                <p className="text-red-500">{errors.licenseExpiryDate.message}</p>
+              )}
             </div>
           </div>
           <div className="sm:col-span-3 ">
@@ -510,6 +557,10 @@ const PrivateInvestigators = ({ handleStepClick }) => {
               <Controller
                 name="expirationDateOfInsurance"
                 control={control}
+                rules={{
+                  required: "Date is required",
+                  // max: { value: new Date(), message: "Date cannot be in the future" }
+                }}
                 render={({ field: { onChange, value } }) => {
                   return (
                     <DatePicker
@@ -521,6 +572,9 @@ const PrivateInvestigators = ({ handleStepClick }) => {
                   );
                 }}
               />
+              {errors.expirationDateOfInsurance && (
+                <p className="text-red-500">{errors.expirationDateOfInsurance.message}</p>
+              )}
             </div>
           </div>
         </div>
@@ -702,7 +756,7 @@ const PrivateInvestigators = ({ handleStepClick }) => {
           <div>
             <button
               type="submit"
-              disabled={isLoading}
+              disabled={isLoading || updatingMember}
               className="rounded-md mt-2 text-white bg-blue-800 border-blue-800 px-20 py-2 text-sm font-semibol shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 border border-solid ">
               Save & Submit
             </button>

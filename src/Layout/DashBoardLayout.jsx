@@ -2,18 +2,18 @@
 // DashboardLayout.js
 import Footer from "../components/Footer";
 import Header from "../components/Header";
-const DashboardLayout = ({ children }) => {
+const DashboardLayout = ({ children, hideHeaderAvator }) => {
   return (
     <>
       <div className="flex flex-col min-h-screen">
-        <header>
-          <Header />
+        < header >
+          <Header hideHeaderAvator={hideHeaderAvator} />
         </header>
         <main className="flex-grow">{children}</main>
         <footer>
           <Footer />
         </footer>
-      </div>
+      </div >
     </>
   );
 };

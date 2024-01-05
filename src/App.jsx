@@ -30,6 +30,7 @@ function App() {
 
   const isAuthenticated = useSelector((state) => state.auth.access_token);
 
+
   return (
     <>
       <Router>
@@ -54,6 +55,21 @@ function App() {
             }
           />
           <Route path="/home" element={<Homepage />} />
+
+          <Route path="profileDetails/:memberId"
+            element={
+              <DashboardLayout hideHeaderAvator={true} >
+                <ProfileDetails />
+              </DashboardLayout>
+            }
+          />
+
+          <Route path="searchProfile" element={
+            <DashboardLayout hideHeaderAvator={true} >
+              <SearchProfile />
+            </DashboardLayout>
+          } />
+
           <Route
             path="dashboard/*"
             element={
@@ -65,27 +81,40 @@ function App() {
                       path="lawyerDetails"
                       element={<LawyerEnterDetails />}
                     />
+                    <Route
+                      path="lawyerDetails/:memberId"
+                      element={<LawyerEnterDetails />}
+                    />
                     <Route path="bondBailsman" element={<BondBailsman />} />
+                    <Route path="bondBailsman/:memberId" element={<BondBailsman />} />
                     <Route path="securityDetails" element={<SecurityDetails />} />
+                    <Route path="securityDetails/:memberId" element={<SecurityDetails />} />
                     <Route
                       path="privateInvestigators"
                       element={<PrivateInvestigators />}
                     />
+                    <Route
+                      path="privateInvestigators/:memberId"
+                      element={<PrivateInvestigators />}
+                    />
                     <Route path="verification" element={<Verification />} />
                     <Route path="payPremium" element={<PayPremium />} />
-                    <Route path="profileDetails" element={<ProfileDetails />} />
-                    <Route path="searchProfile" element={<SearchProfile />} />
                     <Route path="appointments" element={<Appointments />} />
                     <Route path="clientView" element={<ClientView />} />
                     <Route path="noResultFound" element={<NoResultFound />} />
+                    <Route path="profileDetails/:mainId" element={<ProfileDetails hideSchedule={true} />} />
                     <Route path="404" element={<Error404 />} />
                     <Route path="500" element={<Error500 />} />
+                    <Route
+                      path="*"
+                      element={<Error404 />} />
                   </Routes>
                 </DashboardLayout>)
                 :
                 <Navigate to="/" />
             }
           />
+
         </Routes>
       </Router>
     </>

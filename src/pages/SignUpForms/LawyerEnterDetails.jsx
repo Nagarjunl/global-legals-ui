@@ -5,27 +5,30 @@ import { useForm } from "react-hook-form";
 import { useSelector, useDispatch } from 'react-redux';
 import { formData } from "../../reducers/formTypeSlice";
 
-import { useCreateLawyerMutation } from "../../services/userAPI";
 import {
   usePostFileMutation,
   useDeleteFileMutation,
 } from "../../services/fileUploadAPI";
-
+import { useNavigate, useParams } from "react-router-dom";
 import "../../styles.css";
+import { useUpdateMemberMutation, useGetMemberFromSuperIdQuery } from "../../services/userAPI";
+
 
 const baseUrl = import.meta.env.VITE_API_URL;
 
 const LawyerEnterDetails = ({ handleStepClick }) => {
+  const { memberId } = useParams();
+  const navigate = useNavigate();
 
-  const [createLawyer] = useCreateLawyerMutation();
   const [postFile, { isLoading }] = usePostFileMutation();
   const [deleteFile] = useDeleteFileMutation();
   const [singleFile, setSingleFile] = useState("");
   const dispatch = useDispatch();
 
-  const currentUser = useSelector((state) => state.user.id)
-  const currentFormValue = useSelector((state) => state.formType.formType);
   const formDatas = useSelector((state) => state.formType.formData);
+  const formSubmited = useSelector((state) => state.formType.formSubmited);
+
+  const [updateMember, { isLoading: updatingMember }] = useUpdateMemberMutation();
 
   const {
     register,
@@ -63,35 +66,78 @@ const LawyerEnterDetails = ({ handleStepClick }) => {
       .catch((err) => console.log(err));
   };
 
-  const onSubmit = (data) => {
-    console.log(data);
-    const datas = { ...data, idProof: formDatas.idProof || "" }
-    console.log(data);
-    dispatch(formData(datas));
-    // dispatch(formSubmited(true));
-    handleStepClick(1);
+  const submitMembers = async (data) => {
+    try {
+      await updateMember(data).unwrap()
+        .then(() => {
+          console.log("sdfjsdfjhsjhfkjsjfjshfks");
+          // dispatch(formSubmited(false));
+          navigate(`/dashboard/profileDetails/${data.userId}`)
+        });
+    } catch (error) {
+      console.log("error");
+    }
   }
 
-  useEffect(() => {
-    // if (formSubmited) {
-    if (formDatas.idProof !== "" && formDatas.idProof !== undefined) {
-      setSingleFile(formDatas.idProof);
+  const onSubmit = (data) => {
+    const datas = { ...data, idProof: formDatas.idProof || "" }
+    if (!memberId) {
+      dispatch(formData(datas));
+      handleStepClick(1);
+    } else {
+      submitMembers(data)
     }
-    const keys = Object.keys(formDatas);
-    keys.forEach((key) => {
-      if (formDatas[key] !== undefined) {
-        if (`${formDatas[key]}` === true || `${formDatas[key]}` === "true") {
-          setValue(`${key}`, true);
-          return false;
-        }
-        if (`${formDatas[key]}` === false || `${formDatas[key]}` === "false") {
-          setValue(`${key}`, false);
-          return false;
-        }
-        setValue(`${key}`, `${formDatas[key]}`);
-      }
+
+  }
+
+  const { data: member, isLoading: fetchingData }
+    = useGetMemberFromSuperIdQuery(memberId, {
+      skip: memberId === undefined,
     });
-    // }
+
+
+  useEffect(() => {
+    if (!fetchingData && memberId !== undefined) {
+      dispatch(formData(member));
+    }
+  }, [member, fetchingData]);
+
+  useEffect(() => {
+    if (formDatas) {
+      if (formDatas.idProof !== "" && formDatas?.idProof !== undefined) {
+        setSingleFile(formDatas.idProof);
+      }
+      const keys = Object.keys(formDatas);
+      keys.forEach((key) => {
+        if (formDatas[key] !== undefined) {
+          if (`${formDatas[key]}` === true || `${formDatas[key]}` === "true") {
+            setValue(`${key}`, true);
+            return false;
+          }
+          if (`${formDatas[key]}` === false || `${formDatas[key]}` === "false") {
+            setValue(`${key}`, false);
+            return false;
+          }
+          if (`${key}` === "dateOfLicenceing") {
+            setValue(`${key}`, new Date(`${formDatas[key]}`));
+            return false;
+          }
+          if (`${key}` === "licenseExpiryDate") {
+            setValue(`${key}`, new Date(`${formDatas[key]}`));
+            return false;
+          }
+          if (`${key}` === "expirationDateOfInsurance") {
+            setValue(`${key}`, new Date(`${formDatas[key]}`));
+            return false;
+          }
+          // if (`${formDatas[key]}` === null || `${formDatas[key]}` === "null") {
+          //   setValue(`${key}`, null);
+          //   return false;
+          // }
+          setValue(`${key}`, `${formDatas[key]}`);
+        }
+      });
+    }
   }, [formDatas, setValue, setSingleFile]);
 
   return (
@@ -275,7 +321,7 @@ const LawyerEnterDetails = ({ handleStepClick }) => {
                     id="first-name"
                     {...register("legalSpecialization")}
                     autoComplete="given-name"
-                    placeholder="Enter NLegal Specialization"
+                    placeholder="Enter Legal Specialization"
                     className="block w-full rounded-md px-2 border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
                   {errors.legalSpecialization && (
@@ -490,7 +536,7 @@ const LawyerEnterDetails = ({ handleStepClick }) => {
               />
             </div>
             <div>
-              <button type="submit" disabled={isLoading} className="rounded-md mt-2 text-white bg-blue-800 border-blue-800 px-20 py-2 text-sm font-semibol shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 border border-solid ">
+              <button type="submit" disabled={isLoading || updatingMember} className="rounded-md mt-2 text-white bg-blue-800 border-blue-800 px-20 py-2 text-sm font-semibol shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 border border-solid ">
                 Save & Submit
               </button>
             </div>
