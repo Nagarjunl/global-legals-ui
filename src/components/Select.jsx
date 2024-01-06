@@ -2,7 +2,7 @@ import { Fragment, useState, useEffect } from "react";
 import { Listbox, Transition } from '@headlessui/react'
 import { CheckIcon, ChevronDownIcon } from '@heroicons/react/20/solid'
 import PropTypes from 'prop-types';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { setPeople, setLocation, setRatings } from "../reducers/searchSlice";
 
 function classNames(...classes) {

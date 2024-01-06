@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { useGetMembersQuery, useSearchMembersQuery } from "../../services/userAPI";
-import { useSelector, useDispatch } from 'react-redux';
+import { useSearchMembersQuery } from "../../services/userAPI";
+import { useSelector } from 'react-redux';
 
 import LawyerCard from "../../components/LawyerCard";
 import cupImage from "../../assets/image25.svg";

@@ -5,12 +5,21 @@ import PrivateInvestigators from "./PrivateInvestigators";
 import { useSelector, useDispatch } from 'react-redux';
 import { formType, formData } from "../../reducers/formTypeSlice";
 import { useForm, Controller } from "react-hook-form";
+import { useNavigate, useParams } from "react-router-dom";
+import { useEffect } from "react";
 
 const SelectForm = ({ handleStepClick }) => {
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const currentFormValue = useSelector((state) => state.formType.formType);
   const quota = useSelector((state) => state.user.quota);
+  const verify = useSelector((state) => state.user.verify);
+
+
+  console.log(quota)
+  console.log(verify)
 
   const {
     control
@@ -38,13 +47,18 @@ const SelectForm = ({ handleStepClick }) => {
     }
   };
 
-  // useEffect(() => {
-  //   renderComponent(currentFormValue);
-  // }, [currentFormValue, renderComponent])
+  useEffect(() => {
+    if (verify === false) {
+      navigate('/dashboard/verification')
+    }
+    if (quota) {
+      navigate('/dashboard/appointments')
+    }
+
+  }, [verify, quota, navigate])
 
   return (
     <>
-
       <div className="container mx-auto sm:px-6 lg:px-12">
         <div className="flex flex-col sm:flex-row justify-between gap-4">
           <div className="sm:w-2/3">
@@ -84,7 +98,9 @@ const SelectForm = ({ handleStepClick }) => {
           </div>
         </div>
       </div>
+
       {currentFormValue && <div className="mt-2">{renderComponent()}</div>}
+
     </>
   );
 };

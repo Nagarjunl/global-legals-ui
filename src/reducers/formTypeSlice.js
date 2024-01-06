@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     formData:"",
-    formSubmited: false,
+    formSubmit: false,
     formType:"",
 };
 
@@ -17,7 +17,7 @@ export const formTypeSlice = createSlice({
             return { ...state, formType:payload }
         },
         formSubmited: (state, { payload }) => {
-            return { ...state, formSubmited:payload }
+            return { ...state, formSubmit:payload }
         },
     },
 });
