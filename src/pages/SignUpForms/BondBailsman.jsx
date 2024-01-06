@@ -18,7 +18,8 @@ import { formData } from "../../reducers/formTypeSlice";
 import { useUpdateMemberMutation, useGetMemberFromSuperIdQuery } from "../../services/userAPI";
 import { useNavigate, useParams } from "react-router-dom";
 
-const baseUrl = import.meta.env.VITE_API_URL;
+// const baseUrl = import.meta.env.VITE_API_URL;
+const baseUrl = "https://api.chitmanager.com/";
 
 function BondBailsman({ handleStepClick }) {
   const { memberId } = useParams();
