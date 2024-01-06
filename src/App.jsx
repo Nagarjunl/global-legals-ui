@@ -1,4 +1,9 @@
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 import "./App.css";
 import AuthLayout from "./Layout/AuthLayout";
 import DashboardLayout from "./Layout/DashBoardLayout";
@@ -24,10 +29,9 @@ import PrivateInvestigators from "./pages/SignUpForms/PrivateInvestigators";
 import Verification from "./pages/SignUpForms/Verification";
 import PayPremium from "./pages/SignUpForms/PayPremium";
 
-import { useSelector } from 'react-redux'
+import { useSelector } from "react-redux";
 
 function App() {
-
   const isAuthenticated = useSelector((state) => state.auth.access_token);
 
 
@@ -38,20 +42,20 @@ function App() {
           <Route
             path="*"
             element={
-              !isAuthenticated ? (
-                <AuthLayout>
-                  <Routes>
-                    <Route index element={<Login />} />
-                    <Route path="register" element={<Register />} />
-                    <Route path="newPassword" element={<NewPassword />} />
-                    <Route path="forgetPassword" element={<ForgetPassword />} />
-                    <Route path="createPassword" element={<CreatePassword />} />
-                    <Route path="enterOTP" element={<EnterOtp />} />
-                  </Routes>
-                </AuthLayout>
-              )
-                :
-                <Navigate to="/home" />
+              // !isAuthenticated ? (
+              <AuthLayout>
+                <Routes>
+                  <Route index element={<Login />} />
+                  <Route path="register" element={<Register />} />
+                  <Route path="newPassword" element={<NewPassword />} />
+                  <Route path="forgetPassword" element={<ForgetPassword />} />
+                  <Route path="createPassword" element={<CreatePassword />} />
+                  <Route path="enterOTP" element={<EnterOtp />} />
+                </Routes>
+              </AuthLayout>
+              // )
+              // :
+              // <Navigate to="/home" />
             }
           />
           <Route path="/home" element={<Homepage />} />
@@ -112,6 +116,7 @@ function App() {
                 </DashboardLayout>)
                 :
                 <Navigate to="/" />
+
             }
           />
 

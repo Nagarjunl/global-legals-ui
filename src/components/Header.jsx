@@ -11,13 +11,23 @@ import { useSelector } from "react-redux";
 import PropTypes from 'prop-types';
 import { formData } from "../reducers/formTypeSlice";
 
+import { GoogleLogout } from "react-google-login";
+import { useNavigate } from "react-router-dom";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
 const Example = ({ hideHeaderAvator }) => {
+const clientId =
+  "1088488217067-p3bcsi9hbqg9v5befpfir4ak29dfd28i.apps.googleusercontent.com";
+export default function Example() {
+  const navigate = useNavigate();
 
+  const onSuccess = () => {
+    console.log("Log out Successfully");
+    navigate("/");
+  };
   const dispatch = useDispatch();
   const id = useSelector((state) => state.user.id);
 
@@ -130,6 +140,24 @@ const Example = ({ hideHeaderAvator }) => {
                   </div>
                 ) : ""
               }
+                          >
+                            Settings
+                          </a>
+                        )}
+                      </Menu.Item>
+                      <Menu.Item>
+                        {({ active }) => (
+                          <GoogleLogout
+                            clientId={clientId}
+                            buttonText={"Logout"}
+                            onLogoutSuccess={onSuccess}
+                          />
+                        )}
+                      </Menu.Item>
+                    </Menu.Items>
+                  </Transition>
+                </Menu>
+              </div>
             </div>
           </div>
 

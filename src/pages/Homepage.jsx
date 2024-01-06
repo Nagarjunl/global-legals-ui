@@ -18,6 +18,9 @@ import BanerPerson from "../assets/New_folder/banner_person_img.svg";
 import Footer from "../components/footer/Footer";
 
 const Homepage = () => {
+  const handleChange = () => {
+    console.log("ReCaptcha");
+  };
   return (
     <>
       <div className="bg-green-800">
@@ -191,8 +194,8 @@ const Homepage = () => {
             <div className="grid justify-center items-center max-lg:justify-items-center  lg:justify-items-start">
               <div>
                 <blockquote className=" text-4xl font-serif italic mb-8">
-                  “When you want to create a business bigger than yourself,
-                  you need a lot of help. thats what Global legals does”
+                  “When you want to create a business bigger than yourself, you
+                  need a lot of help. thats what Global legals does”
                 </blockquote>
                 <span className=" text-lg text-gray-500 dark:text-gray-400 font-normal ">
                   Terry John Paul, Founder{" "}
@@ -210,12 +213,20 @@ const Homepage = () => {
           <div className="grid grid-cols-2 gap-8 max-lg:grid-cols-1">
             <div className="sm:grid ">
               <div className="relative">
-                <img src={RoadMapImg1} alt="business" className="w-[821px] max-h-[548px]" />
+                <img
+                  src={RoadMapImg1}
+                  alt="business"
+                  className="w-[821px] max-h-[548px]"
+                />
                 <div className="absolute bottom-[26px] w-full">
                   <div className="flex align-center  mx-[20px] px-[32px] py-[20px] justify-between rounded-full bg-[#f5f5f5]">
                     <div>
-                      <p className="font-bold text-[24px]">Explore the legal Labyrinth</p>
-                      <p className="font-normal text-[18px] text-[#5F5F5F]">Finding the Right Lawyer for your Needs</p>
+                      <p className="font-bold text-[24px]">
+                        Explore the legal Labyrinth
+                      </p>
+                      <p className="font-normal text-[18px] text-[#5F5F5F]">
+                        Finding the Right Lawyer for your Needs
+                      </p>
                     </div>
                     <img src={ArrowCircleRight} alt="" />
                   </div>
@@ -224,12 +235,20 @@ const Homepage = () => {
             </div>
             <div className="sm:grid ">
               <div className="relative ">
-                <img src={RoadMapImg2} alt="business" className="w-[821px] max-h-[548px]" />
+                <img
+                  src={RoadMapImg2}
+                  alt="business"
+                  className="w-[821px] max-h-[548px]"
+                />
                 <div className="absolute bottom-[26px] w-full">
                   <div className="flex align-center  mx-[20px] px-[32px] py-[20px] justify-between rounded-full bg-[#f5f5f5]">
                     <div>
-                      <p className="font-bold text-[24px]">From Incarceration to Liberation</p>
-                      <p className="font-normal text-[18px] text-[#5F5F5F]">How Bail Bonds Make Freedom Possible</p>
+                      <p className="font-bold text-[24px]">
+                        From Incarceration to Liberation
+                      </p>
+                      <p className="font-normal text-[18px] text-[#5F5F5F]">
+                        How Bail Bonds Make Freedom Possible
+                      </p>
                     </div>
                     <img src={ArrowCircleRight} alt="" />
                   </div>
@@ -333,7 +352,10 @@ const Homepage = () => {
                 </div>
                 <div className=" grid grid-cols-2 justify-between  mt-5 max-md:grid-cols-1  gap-3">
                   <div className="grid justify-start items-center  ">
-                    <ReCAPTCHA sitekey="Your client site key" onChange={""} />
+                    <ReCAPTCHA
+                      sitekey="6LfAUjgpAAAAABQcBX1BtSezxeoNoBDoZk9XPS7T"
+                      onChange={handleChange}
+                    />
                   </div>
                   <div className="grid sm:justify-end items-center">
                     <button className="bg-indigo-600 text-white px-10 p-2 rounded-md">

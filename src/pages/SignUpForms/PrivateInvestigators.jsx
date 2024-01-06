@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
 import { useForm, Controller } from "react-hook-form";
-import DatePicker from 'react-datepicker';
-import { useSelector, useDispatch } from 'react-redux'
+import DatePicker from "react-datepicker";
+import { useSelector, useDispatch } from "react-redux";
 
 import GoogleImage from "../../assets/Google-image.png";
 import ReCAPTCHA from "react-google-recaptcha";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 
 import {
   usePostFileMutation,
@@ -17,8 +19,6 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useUpdateMemberMutation, useGetMemberFromSuperIdQuery } from "../../services/userAPI";
 
 const baseUrl = import.meta.env.VITE_API_URL;
-
-
 
 const PrivateInvestigators = ({ handleStepClick }) => {
 
@@ -52,7 +52,7 @@ const PrivateInvestigators = ({ handleStepClick }) => {
     await postFile(formFileData)
       .unwrap()
       .then((res) => {
-        const data = { ...formDatas, idProof: res.filename }
+        const data = { ...formDatas, idProof: res.filename };
         dispatch(formData(data));
         setSingleFile(res.filename);
         setValue("idProof", res.filename);
@@ -65,7 +65,7 @@ const PrivateInvestigators = ({ handleStepClick }) => {
       .then(() => {
         setSingleFile("");
         setValue("idProof", "");
-        const data = { ...formDatas, idProof: "" }
+        const data = { ...formDatas, idProof: "" };
         dispatch(formData(data));
       })
       .catch((err) => console.log(err));
@@ -83,6 +83,7 @@ const PrivateInvestigators = ({ handleStepClick }) => {
   }
 
   const onSubmit = (data) => {
+
     const datas = { ...data, idProof: formDatas.idProof || "" }
     if (!memberId) {
       dispatch(formData(datas));
@@ -91,6 +92,7 @@ const PrivateInvestigators = ({ handleStepClick }) => {
       submitMembers(data)
     }
   }
+
 
   const { data: member, isLoading: fetchingData }
     = useGetMemberFromSuperIdQuery(memberId, {
@@ -160,7 +162,7 @@ const PrivateInvestigators = ({ handleStepClick }) => {
                       className="block w-full p-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm  text-xs ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-xs sm:leading-6"
                       placeholder="Enter your full name"
                       {...register("clientName", {
-                        required: "Please enter the name"
+                        required: "Please enter the name",
                       })}
                     />
                     {errors.clientName && (
@@ -179,13 +181,11 @@ const PrivateInvestigators = ({ handleStepClick }) => {
                       className="block w-full p-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       placeholder="Enter Email Address"
                       {...register("email", {
-                        required: "Please enter the name"
+                        required: "Please enter the name",
                       })}
                     />
                     {errors.email && (
-                      <p className="text-red-500">
-                        {errors.email.message}
-                      </p>
+                      <p className="text-red-500">{errors.email.message}</p>
                     )}
                   </div>
                 </div>
@@ -222,9 +222,7 @@ const PrivateInvestigators = ({ handleStepClick }) => {
             <div className="rounded-lg border border-dashed border-gray-900/25">
               <div className="flex justify-center">
                 <div className="text-center mb-2 ">
-
                   {singleFile.length > 0 && (
-
                     <div className="img-block bg-gray">
                       <img
                         className="img-fluid2"
@@ -247,9 +245,10 @@ const PrivateInvestigators = ({ handleStepClick }) => {
                         </p>
                       </div>
                       <div className="upload-btn-wrapper-one">
-                        <button
-                          className="rounded-md bg-white px-3.5 mt-2 py-2.5 text-sm font-semibold text-indigo-700 shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 border border-solid border-blue-500"
-                        > Browse & Upload </button>
+                        <button className="rounded-md bg-white px-3.5 mt-2 py-2.5 text-sm font-semibold text-indigo-700 shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 border border-solid border-blue-500">
+                          {" "}
+                          Browse & Upload{" "}
+                        </button>
                         <input
                           type="file"
                           {...register("idProof")}
@@ -261,19 +260,20 @@ const PrivateInvestigators = ({ handleStepClick }) => {
                 </div>
               </div>
             </div>
-
           </div>
           <div className="mt-2">
             <h5 className="font-normal leading-[17.16px] text-[12px]">
               Write a professional Bio
             </h5>
             <div className="mt-2">
-              <textarea
-                rows={4}
-                className="block w-full  p-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                placeholder="Write a professional Bio"
-                {...register("professionalBio")}
+              <ReactQuill
+                theme="snow"
+                {...register("content", { required: "Content is required" })}
+                onChange={(val) => setValue("content", val)}
               />
+              {errors.content && (
+                <p className="text-red-500">{errors.content.message}</p>
+              )}
             </div>
           </div>
         </div>
@@ -756,8 +756,10 @@ const PrivateInvestigators = ({ handleStepClick }) => {
           <div>
             <button
               type="submit"
+
               disabled={isLoading || updatingMember}
               className="rounded-md mt-2 text-white bg-blue-800 border-blue-800 px-20 py-2 text-sm font-semibol shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 border border-solid ">
+
               Save & Submit
             </button>
           </div>
