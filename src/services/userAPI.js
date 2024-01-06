@@ -54,7 +54,7 @@ export const userApi = createApi({
     }),
     getMember: builder.query({
         query: (id) => ({
-          url: `/members/${id}`,
+          url: `/authentication/search-members/${id}`,
           method: "GET",
       }),
       providesTags: ["Member"],
@@ -75,7 +75,7 @@ export const userApi = createApi({
     }),
     searchMembers: builder.query({
      query: (data) => ({
-        url: `/members/search-members?location=${data?.location}&people=${data?.people}&ratings=${data?.ratings}`,
+        url: `/authentication/search-members?location=${data?.location}&people=${data?.people}&ratings=${data?.ratings}`,
         method: "GET",
       }),
     }),

@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import { useSearchMembersQuery } from "../../services/userAPI";
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import LawyerCard from "../../components/LawyerCard";
 import cupImage from "../../assets/image25.svg";
 import Select from "../../components/Select";
 import { IoIosCloseCircleOutline } from "react-icons/io";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import { setPeople } from "../../reducers/searchSlice";
 
 const badgeData = [
   {
@@ -41,14 +42,11 @@ const ratings = [
 ]
 
 function SearchProfile() {
+  const { searchKeys } = useParams();
+  const dispatch = useDispatch();
 
-  const [memberId, setMemberId] = useState();
-  const navigate = useNavigate();
   const searchData = useSelector((state) => state.search);
   const [searchParams, setSearchParams] = useState();
-
-  // console.log(searchData);
-  // const { data: members, isLoading: fetchingMembers } = useGetMembersQuery();
 
   const { data: members, isLoading: fetchingMembers } = useSearchMembersQuery(searchParams, {
     skip: searchParams === undefined,
@@ -57,6 +55,10 @@ function SearchProfile() {
   useEffect(() => {
     setSearchParams(searchData)
   }, [searchData]);
+
+  useEffect(() => {
+    dispatch(setPeople(searchKeys));
+  }, [searchKeys]);
 
   return (
     <div className="mx-auto container max-sm:px-6 lg:px-[120px] pb-3">
