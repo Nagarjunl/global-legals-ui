@@ -14,7 +14,8 @@ import "../../styles.css";
 import { useUpdateMemberMutation, useGetMemberFromSuperIdQuery } from "../../services/userAPI";
 
 
-const baseUrl = import.meta.env.VITE_API_URL;
+// const baseUrl = import.meta.env.VITE_API_URL;
+const baseUrl = "https://api.chitmanager.com/";
 
 const LawyerEnterDetails = ({ handleStepClick }) => {
   const { memberId } = useParams();

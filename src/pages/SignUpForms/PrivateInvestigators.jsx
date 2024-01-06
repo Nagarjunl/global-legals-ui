@@ -18,7 +18,8 @@ import "../../styles.css";
 import { useNavigate, useParams } from "react-router-dom";
 import { useUpdateMemberMutation, useGetMemberFromSuperIdQuery } from "../../services/userAPI";
 
-const baseUrl = import.meta.env.VITE_API_URL;
+// const baseUrl = import.meta.env.VITE_API_URL;
+const baseUrl = "https://api.chitmanager.com/";
 
 const PrivateInvestigators = ({ handleStepClick }) => {
 
