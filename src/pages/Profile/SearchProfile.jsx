@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { useGetMembersQuery } from "../../services/userAPI";
+import { useGetMembersQuery, useSearchMembersQuery } from "../../services/userAPI";
+import { useSelector, useDispatch } from 'react-redux';
 
 import LawyerCard from "../../components/LawyerCard";
 import cupImage from "../../assets/image25.svg";
@@ -17,54 +18,58 @@ const badgeData = [
 ];
 
 const people = [
-  { id: 1, name: 'Areas of Practice' },
-  { id: 2, name: 'Locations' },
-  { id: 3, name: 'Features' },
-  { id: 4, name: 'Peer / Client Reviews' },
-  { id: 5, name: 'Law School' },
-
+  { id: 1, type: "people", value: 'Lawyers' },
+  { id: 2, type: "people", value: 'BondBailsman' },
+  { id: 3, type: "people", value: 'Security' },
+  { id: 4, type: "people", value: 'PrivateInvestigators' },
 ]
 
 const states = [
-  { id: 0, name: "Alabama" },
-  { id: 1, name: "Alaska" },
-  { id: 2, name: "Arizona" },
-  { id: 3, name: "Arkansas" },
-  { id: 4, name: "California" },
-  { id: 4, name: "Colorado" },
+  { id: 1, type: "location", value: "Alaska" },
+  { id: 2, type: "location", value: "Arizona" },
+  { id: 3, type: "location", value: "Arkansas" },
+  { id: 4, type: "location", value: "California" },
+  { id: 5, type: "location", value: "Colorado" },
 ]
 
 const ratings = [
-  { id: 0, name: 1 },
-  { id: 1, name: 2 },
-  { id: 2, name: 3 },
-  { id: 3, name: 4 },
-  { id: 4, name: 5 },
+  { id: 1, type: "ratings", value: 1 },
+  { id: 2, type: "ratings", value: 2 },
+  { id: 3, type: "ratings", value: 3 },
+  { id: 4, type: "ratings", value: 4 },
+  { id: 5, type: "ratings", value: 5 },
 ]
 
 function SearchProfile() {
 
   const [memberId, setMemberId] = useState();
   const navigate = useNavigate();
+  const searchData = useSelector((state) => state.search);
+  const [searchParams, setSearchParams] = useState();
 
-  const { data: members, isLoading: fetchingMembers } = useGetMembersQuery("Lawyers");
+  // console.log(searchData);
+  // const { data: members, isLoading: fetchingMembers } = useGetMembersQuery();
 
+  const { data: members, isLoading: fetchingMembers } = useSearchMembersQuery(searchParams, {
+    skip: searchParams === undefined,
+  });
 
   useEffect(() => {
+    setSearchParams(searchData)
+  }, [searchData]);
 
-  }, []);
   return (
     <div className="mx-auto container max-sm:px-6 lg:px-[120px] pb-3">
       <div>
         <div className="mt-10 grid xs:grid-cols-1 lg:grid-cols-3 gap-4">
           <div>
-            <Select selectData={people} fName={{ id: 1, name: 'Areas of Practice' }} />
+            <Select selectData={people} />
           </div>
           <div>
-            <Select selectData={states} fName={{ id: 2, name: 'Location' }} />
+            <Select selectData={states} />
           </div>
           <div>
-            <Select selectData={ratings} fName={{ id: 4, name: 'Peer / Client Reviews' }} />
+            <Select selectData={ratings} />
           </div>
 
         </div>
@@ -99,7 +104,7 @@ function SearchProfile() {
         </div>
         <div>
           {!fetchingMembers ?
-            members.map((data, index) =>
+            members?.map((data, index) =>
             (
               <Link key={index}
                 to={{

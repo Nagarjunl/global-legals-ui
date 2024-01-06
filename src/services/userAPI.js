@@ -52,13 +52,6 @@ export const userApi = createApi({
       }),
       invalidatesTags: ["Member"],
     }),
-    getMembers: builder.query({
-        query: (data) => ({
-          url: `/members/?id=${data}&limit=12&offset=5`,
-          method: "GET",
-      }),
-      providesTags: ["Member"],
-    }),
     getMember: builder.query({
         query: (id) => ({
           url: `/members/${id}`,
@@ -73,13 +66,20 @@ export const userApi = createApi({
       }),
       providesTags: ["Member"],
     }),
+     getMembers: builder.query({
+        query: () => ({
+          url: `/members`,
+          method: "GET",
+      }),
+      providesTags: ["Member"],
+    }),
     searchMembers: builder.query({
-     query: ({ location, people, ratings }) => ({
-        url: `/chits?location=${location}&people=${people}&ratings=${ratings}`,
+     query: (data) => ({
+        url: `/members/search-members?location=${data?.location}&people=${data?.people}&ratings=${data?.ratings}`,
         method: "GET",
         }),
     }),
-
+      invalidatesTags: ["Member"],
   })
 })
 
@@ -95,4 +95,5 @@ export const {
   useGetMembersQuery,
   useGetMemberQuery,
   useGetMemberFromSuperIdQuery,
+  useSearchMembersQuery,
 } = userApi;
