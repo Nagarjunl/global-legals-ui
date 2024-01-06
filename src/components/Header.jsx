@@ -18,10 +18,11 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-const Example = ({ hideHeaderAvator }) => {
 const clientId =
   "1088488217067-p3bcsi9hbqg9v5befpfir4ak29dfd28i.apps.googleusercontent.com";
-export default function Example() {
+
+
+const Example = ({ hideHeaderAvator }) => {
   const navigate = useNavigate();
 
   const onSuccess = () => {
@@ -134,30 +135,21 @@ export default function Example() {
                               </a>
                             )}
                           </Menu.Item>
+                          <Menu.Item>
+                            {({ active }) => (
+                              <GoogleLogout
+                                clientId={clientId}
+                                buttonText={"Logout"}
+                                onLogoutSuccess={onSuccess}
+                              />
+                            )}
+                          </Menu.Item>
                         </Menu.Items>
                       </Transition>
                     </Menu>
                   </div>
                 ) : ""
               }
-                          >
-                            Settings
-                          </a>
-                        )}
-                      </Menu.Item>
-                      <Menu.Item>
-                        {({ active }) => (
-                          <GoogleLogout
-                            clientId={clientId}
-                            buttonText={"Logout"}
-                            onLogoutSuccess={onSuccess}
-                          />
-                        )}
-                      </Menu.Item>
-                    </Menu.Items>
-                  </Transition>
-                </Menu>
-              </div>
             </div>
           </div>
 
@@ -195,8 +187,9 @@ export default function Example() {
             </div>
           </Disclosure.Panel>
         </>
-      )}
-    </Disclosure>
+      )
+      }
+    </Disclosure >
   );
 }
 

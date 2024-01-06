@@ -16,6 +16,32 @@ const badgeData = [
   },
 ];
 
+const people = [
+  { id: 1, name: 'Areas of Practice' },
+  { id: 2, name: 'Locations' },
+  { id: 3, name: 'Features' },
+  { id: 4, name: 'Peer / Client Reviews' },
+  { id: 5, name: 'Law School' },
+
+]
+
+const states = [
+  { id: 0, name: "Alabama" },
+  { id: 1, name: "Alaska" },
+  { id: 2, name: "Arizona" },
+  { id: 3, name: "Arkansas" },
+  { id: 4, name: "California" },
+  { id: 4, name: "Colorado" },
+]
+
+const ratings = [
+  { id: 0, name: 1 },
+  { id: 1, name: 2 },
+  { id: 2, name: 3 },
+  { id: 3, name: 4 },
+  { id: 4, name: 5 },
+]
+
 function SearchProfile() {
 
   const [memberId, setMemberId] = useState();
@@ -30,22 +56,17 @@ function SearchProfile() {
   return (
     <div className="mx-auto container max-sm:px-6 lg:px-[120px] pb-3">
       <div>
-        <div className="mt-10 flex flex-wrap gap-5">
+        <div className="mt-10 grid xs:grid-cols-1 lg:grid-cols-3 gap-4">
           <div>
-            <Select fName={{ id: 1, name: 'Areas of Practice' }} />
+            <Select selectData={people} fName={{ id: 1, name: 'Areas of Practice' }} />
           </div>
           <div>
-            <Select fName={{ id: 2, name: 'Location' }} />
+            <Select selectData={states} fName={{ id: 2, name: 'Location' }} />
           </div>
           <div>
-            <Select fName={{ id: 3, name: 'Features' }} />
+            <Select selectData={ratings} fName={{ id: 4, name: 'Peer / Client Reviews' }} />
           </div>
-          <div>
-            <Select fName={{ id: 4, name: 'Peer / Client Reviews' }} />
-          </div>
-          <div>
-            <Select fName={{ id: 5, name: 'Law School' }} />
-          </div>
+
         </div>
         <div className=" flex flex-wrap mt-4 gap-4 align-text-center">
           <h2 className=" sm:text-lg"> Applied Filters</h2>

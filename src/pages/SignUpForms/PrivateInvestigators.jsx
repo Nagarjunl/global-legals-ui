@@ -268,11 +268,11 @@ const PrivateInvestigators = ({ handleStepClick }) => {
             <div className="mt-2">
               <ReactQuill
                 theme="snow"
-                {...register("content", { required: "Content is required" })}
-                onChange={(val) => setValue("content", val)}
+                {...register("professional")}
+                onChange={(val) => setValue("professional", val)}
               />
-              {errors.content && (
-                <p className="text-red-500">{errors.content.message}</p>
+              {errors.professional && (
+                <p className="text-red-500">{errors.professional.message}</p>
               )}
             </div>
           </div>

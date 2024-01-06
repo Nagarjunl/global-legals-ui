@@ -71,10 +71,8 @@ const ProfileDetails = ({ hideSchedule }) => {
               Indiana USA Labor and Employment Attorney
             </h2>
             <p className="pt-2">
-              From our law office in Knoxville, Tennessee, attorney Seth oakes,
-              founder and owner of the Oakes Law Firm, provides outstanding
-              representation and support to a diverse range of cilents across
-              our region who have legal needs involves
+              {data.professional}
+
             </p>
             <div className=" grid grid-rows-2 ">
               <div className=" flex gap-2 mt-2">
