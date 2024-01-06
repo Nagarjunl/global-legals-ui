@@ -16,6 +16,7 @@ const people = [
       "Once verified, your profile will be activated, and you can start connecting with clients",
   },
 ];
+
 const Verification = () => {
   return (
     <div className="container mx-auto">

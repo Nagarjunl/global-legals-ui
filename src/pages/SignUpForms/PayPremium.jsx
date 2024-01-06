@@ -2,6 +2,7 @@ import Asset from "../../assets/pay.jpg";
 import { useCreateMembersMutation } from "../../services/userAPI";
 import { useSelector, useDispatch } from 'react-redux';
 import { currentUser } from "../../reducers/userSlice";
+import { formSubmited, formData } from "../../reducers/formTypeSlice";
 
 const people = [
   {
@@ -33,7 +34,6 @@ const PayPremium = ({ handleStepClick }) => {
   const currentUserId = useSelector((state) => state.user.id)
   const formType = useSelector((state) => state.formType.formType);
   const formDatas = useSelector((state) => state.formType.formData);
-  // const formSubmited = useSelector((state) => state.formType.formSubmited);
 
   const submitMembers = async (data) => {
     const datas = { ...data, userId: currentUserId, type: formType }
@@ -43,10 +43,10 @@ const PayPremium = ({ handleStepClick }) => {
         .unwrap()
         .then((res) => {
           const { result3, ...rest } = res;
-          console.log(res);
-          // dispatch(formSubmited(false));
+          dispatch(formSubmited(true));
+          dispatch(formData(""));
           dispatch(currentUser(result3));
-          console.log("ndfksfjkshfkjshfkjh")
+          handleStepClick(2);
         });
     } catch (error) {
       console.log("error");
