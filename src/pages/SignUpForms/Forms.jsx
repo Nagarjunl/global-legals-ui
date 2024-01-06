@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import LawyerEnterDetails from "./LawyerEnterDetails";
 import BondBailsman from "./BondBailsman";
 import SecurityDetails from "./SecurityDetails";
@@ -6,7 +5,6 @@ import PrivateInvestigators from "./PrivateInvestigators";
 import { useSelector, useDispatch } from 'react-redux';
 import { formType, formData } from "../../reducers/formTypeSlice";
 import { useForm, Controller } from "react-hook-form";
-import { useSelector } from 'react-redux'
 
 const SelectForm = ({ handleStepClick }) => {
 

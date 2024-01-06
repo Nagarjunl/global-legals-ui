@@ -5,21 +5,15 @@ import { CheckIcon, ChevronDownIcon } from '@heroicons/react/20/solid'
 import PropTypes from 'prop-types';
 
 
-const people = [
-  { id: 1, name: 'Areas of Practice' },
-  { id: 2, name: 'Locations' },
-  { id: 3, name: 'Features' },
-  { id: 4, name: 'Peer / Client Reviews' },
-  { id: 5, name: 'Law School' },
-
-]
 
 function classNames(...classes) {
   return classes.filter(Boolean).join('')
 }
 
-const Select = ({ fName }) => {
-  const [selected, setSelected] = useState(fName);
+const Select = ({ selectData, fName }) => {
+  const [selected, setSelected] = useState();
+
+  console.log(selected);
 
   return (
     <Listbox value={selected} onChange={setSelected}>
@@ -42,7 +36,7 @@ const Select = ({ fName }) => {
               leaveTo="opacity-0"
             >
               <Listbox.Options className="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
-                {people.map((person) => (
+                {selectData.map((person) => (
                   <Listbox.Option
                     key={person.id}
                     className={({ active }) =>
@@ -87,4 +81,5 @@ export default Select;
 
 Select.propTypes = {
   fName: PropTypes.object,
+  selectData: PropTypes.array,
 }

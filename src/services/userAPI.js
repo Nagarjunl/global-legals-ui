@@ -73,12 +73,12 @@ export const userApi = createApi({
       }),
       providesTags: ["Member"],
     }),
-    // getMembers: builder.query({
-    //  query: ({ limit, offset }) => ({
-    //     url: `/chits?limit=${limit}&offset=${offset}`,
-    //     method: "GET",
-    //     }),
-    // }),
+    searchMembers: builder.query({
+     query: ({ location, people, ratings }) => ({
+        url: `/chits?location=${location}&people=${people}&ratings=${ratings}`,
+        method: "GET",
+        }),
+    }),
 
   })
 })
