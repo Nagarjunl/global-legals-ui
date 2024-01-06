@@ -1,30 +1,70 @@
-const Table = () => {
-  return (
-    <div className="container mx-auto p-4">
-      <h2 className="pb-3">User Data</h2>
+import { useUnverifiedUserQuery, useVerifyUserMutation } from "../../services/userAPI";
 
-      <div className="flex items-center">
-        <table className="w-3/4 bg-white border border-gray-200">
-          <thead>
-            <tr>
-              <th className="py-2 px-4 border-b text-left">Name</th>
-              <th className="py-2 px-4 border-b text-left">Age</th>
-              <th className="py-2 px-4 border-b text-left">City</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td className="py-2 px-4 border-b">John Doe</td>
-              <td className="py-2 px-4 border-b">25</td>
-              <td className="py-2 px-4 border-b">New York</td>
-            </tr>
-            <tr>
-              <td className="py-2 px-4 border-b">Jane Doe</td>
-              <td className="py-2 px-4 border-b">30</td>
-              <td className="py-2 px-4 border-b">Los Angeles</td>
-            </tr>
-          </tbody>
-        </table>
+
+const Table = () => {
+
+  const { data, isLoading } = useUnverifiedUserQuery();
+  const [verifyMember, { isLoading: verifyingmember }] = useVerifyUserMutation();
+
+  // console.log(data[0].email);
+
+  const submitMember = async (data) => {
+    try {
+      await verifyMember(data)
+        .unwrap()
+        .then((res) => {
+          console.log(res);
+        });
+    } catch (error) {
+      console.log("error");
+    }
+  }
+
+  return (
+    <div className="container mx-auto sm:px-6 lg:px-12">
+      <div className="mt-10">
+        <div className="grid xs:grid-cols-1 lg:grid-cols-1 gap-4">
+          <div className="flex items-center">
+            <h3 className="lg:col-span-3 font-medium leading-[34.32px] text-[24px]">
+              Unverified Users
+            </h3>
+          </div>
+
+          <div className="flex items-center">
+            <table className="w-3/4 bg-white border border-gray-200">
+              <thead>
+                <tr>
+                  <th className="py-2 px-4 border-b text-left">Email</th>
+                  <th className="py-2 px-4 border-b text-left">Payment Status</th>
+                  <th className="py-2 px-4 border-b text-left">Verified</th>
+                  <th className="py-2 px-4 border-b text-left">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {!isLoading &&
+                  data?.map((data) => (
+                    <tr key={data.id}>
+                      <td className="py-2 px-4 border-b">{data?.email}</td>
+                      <td className="py-2 px-4 border-b">Success</td>
+                      <td className="py-2 px-4 border-b">{data?.verify}</td>
+                      <div>
+                        <button type="submit"
+                          disabled={verifyingmember}
+                          className="rounded-md mt-2 text-white bg-blue-800 border-blue-800 px-20 py-2 text-sm font-semibol shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 border border-solid "
+                          onClick={() => submitMember(data)}
+                        >
+                          Submit
+                        </button>
+                      </div>
+                    </tr>
+
+                  ))
+                }
+
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
     </div>
   );

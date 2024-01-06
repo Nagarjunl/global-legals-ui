@@ -58,9 +58,15 @@ function App() {
               )
             }
           />
-          <Route path="/home" element={<Homepage />} />
+
+
+          <Route path="/table"
+            element={
+              <Table />}
+          />
           <Route path="/superUser" element={<SuperUserLogin />} />
-          <Route path="/table" element={<Table />} />
+
+          <Route path="/home" element={<Homepage />} />
 
           <Route
             path="profileDetails/:memberId"
