@@ -41,20 +41,20 @@ function App() {
           <Route
             path="*"
             element={
-              // !isAuthenticated ? (
-              <AuthLayout>
-                <Routes>
-                  <Route index element={<Login />} />
-                  <Route path="register" element={<Register />} />
-                  <Route path="newPassword" element={<NewPassword />} />
-                  <Route path="forgetPassword" element={<ForgetPassword />} />
-                  <Route path="createPassword" element={<CreatePassword />} />
-                  <Route path="enterOTP" element={<EnterOtp />} />
-                </Routes>
-              </AuthLayout>
-              // )
-              // :
-              // <Navigate to="/home" />
+              !isAuthenticated ? (
+                <AuthLayout>
+                  <Routes>
+                    <Route index element={<Login />} />
+                    <Route path="register" element={<Register />} />
+                    <Route path="newPassword" element={<NewPassword />} />
+                    <Route path="forgetPassword" element={<ForgetPassword />} />
+                    <Route path="createPassword" element={<CreatePassword />} />
+                    <Route path="enterOTP" element={<EnterOtp />} />
+                  </Routes>
+                </AuthLayout>
+              ) : (
+                <Navigate to="/home" />
+              )
             }
           />
           <Route path="/home" element={<Homepage />} />
@@ -80,53 +80,56 @@ function App() {
           <Route
             path="dashboard/*"
             element={
-              // isAuthenticated ? (
-              <DashboardLayout>
-                <Routes>
-                  <Route index element={<MultiStepper />} />
-                  <Route
-                    path="lawyerDetails"
-                    element={<LawyerEnterDetails />}
-                  />
-                  <Route
-                    path="lawyerDetails/:memberId"
-                    element={<LawyerEnterDetails />}
-                  />
-                  <Route path="bondBailsman" element={<BondBailsman />} />
-                  <Route
-                    path="bondBailsman/:memberId"
-                    element={<BondBailsman />}
-                  />
-                  <Route path="securityDetails" element={<SecurityDetails />} />
-                  <Route
-                    path="securityDetails/:memberId"
-                    element={<SecurityDetails />}
-                  />
-                  <Route
-                    path="privateInvestigators"
-                    element={<PrivateInvestigators />}
-                  />
-                  <Route
-                    path="privateInvestigators/:memberId"
-                    element={<PrivateInvestigators />}
-                  />
-                  <Route path="verification" element={<Verification />} />
-                  <Route path="payPremium" element={<PayPremium />} />
-                  <Route path="appointments" element={<Appointments />} />
-                  <Route path="clientView" element={<ClientView />} />
-                  <Route path="noResultFound" element={<NoResultFound />} />
-                  <Route
-                    path="profileDetails/:mainId"
-                    element={<ProfileDetails hideSchedule={true} />}
-                  />
-                  <Route path="404" element={<Error404 />} />
-                  <Route path="500" element={<Error500 />} />
-                  <Route path="*" element={<Error404 />} />
-                </Routes>
-              </DashboardLayout>
-              // )
-              // :
-              // <Navigate to="/" />
+              isAuthenticated ? (
+                <DashboardLayout>
+                  <Routes>
+                    <Route index element={<MultiStepper />} />
+                    <Route
+                      path="lawyerDetails"
+                      element={<LawyerEnterDetails />}
+                    />
+                    <Route
+                      path="lawyerDetails/:memberId"
+                      element={<LawyerEnterDetails />}
+                    />
+                    <Route path="bondBailsman" element={<BondBailsman />} />
+                    <Route
+                      path="bondBailsman/:memberId"
+                      element={<BondBailsman />}
+                    />
+                    <Route
+                      path="securityDetails"
+                      element={<SecurityDetails />}
+                    />
+                    <Route
+                      path="securityDetails/:memberId"
+                      element={<SecurityDetails />}
+                    />
+                    <Route
+                      path="privateInvestigators"
+                      element={<PrivateInvestigators />}
+                    />
+                    <Route
+                      path="privateInvestigators/:memberId"
+                      element={<PrivateInvestigators />}
+                    />
+                    <Route path="verification" element={<Verification />} />
+                    <Route path="payPremium" element={<PayPremium />} />
+                    <Route path="appointments" element={<Appointments />} />
+                    <Route path="clientView" element={<ClientView />} />
+                    <Route path="noResultFound" element={<NoResultFound />} />
+                    <Route
+                      path="profileDetails/:mainId"
+                      element={<ProfileDetails hideSchedule={true} />}
+                    />
+                    <Route path="404" element={<Error404 />} />
+                    <Route path="500" element={<Error500 />} />
+                    <Route path="*" element={<Error404 />} />
+                  </Routes>
+                </DashboardLayout>
+              ) : (
+                <Navigate to="/" />
+              )
             }
           />
         </Routes>
