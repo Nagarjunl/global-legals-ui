@@ -16,28 +16,35 @@ import { formData } from "../../reducers/formTypeSlice";
 
 import "../../styles.css";
 import { useNavigate, useParams } from "react-router-dom";
-import { useUpdateMemberMutation, useGetMemberFromSuperIdQuery } from "../../services/userAPI";
+import {
+  useUpdateMemberMutation,
+  useGetMemberFromSuperIdQuery,
+} from "../../services/userAPI";
 
 // const baseUrl = import.meta.env.VITE_API_URL;
 const baseUrl = "https://api.chitmanager.com/";
 
 const PrivateInvestigators = ({ handleStepClick }) => {
-
   const { memberId } = useParams();
   const navigate = useNavigate();
-
   const dispatch = useDispatch();
   const formDatas = useSelector((state) => state.formType.formData);
   const [postFile, { isLoading }] = usePostFileMutation();
   const [deleteFile] = useDeleteFileMutation();
   const [singleFile, setSingleFile] = useState("");
-
-  const [updateMember, { isLoading: updatingMember }] = useUpdateMemberMutation();
-
+  const [updateMember, { isLoading: updatingMember }] =
+    useUpdateMemberMutation();
 
   const handleChange = () => {
     console.log("ReCaptcha");
   };
+
+  const getData = useSelector((state) => state.formType.formData);
+  console.log(getData.professional);
+
+  const parser = new DOMParser();
+  const doc = parser.parseFromString(getData.professional, "text/html");
+  const plainText = doc.body.textContent || "";
 
   const {
     register,
@@ -74,29 +81,29 @@ const PrivateInvestigators = ({ handleStepClick }) => {
 
   const submitMembers = async (data) => {
     try {
-      await updateMember(data).unwrap()
+      await updateMember(data)
+        .unwrap()
         .then(() => {
-          navigate(`/dashboard/profileDetails/${data.userId}`)
+          navigate(`/dashboard/profileDetails/${data.userId}`);
         });
     } catch (error) {
       console.log("error");
     }
-  }
+  };
 
   const onSubmit = (data) => {
-
-    const datas = { ...data, idProof: formDatas.idProof || "" }
+    console.log(data);
+    const datas = { ...data, idProof: formDatas.idProof || "" };
     if (!memberId) {
       dispatch(formData(datas));
       handleStepClick(1);
     } else {
-      submitMembers(data)
+      submitMembers(data);
     }
-  }
+  };
 
-
-  const { data: member, isLoading: fetchingData }
-    = useGetMemberFromSuperIdQuery(memberId, {
+  const { data: member, isLoading: fetchingData } =
+    useGetMemberFromSuperIdQuery(memberId, {
       skip: memberId === undefined,
     });
 
@@ -151,7 +158,7 @@ const PrivateInvestigators = ({ handleStepClick }) => {
             <h3 className="lg:col-span-3 font-medium leading-[34.32px] text-[24px] w-full">
               Personal Information
             </h3>
-
+            {plainText}
             <div className="sm:col-span-2">
               <div className="grid xs:grid-cols-1 lg:grid-cols-2 gap-4">
                 <div>
@@ -319,7 +326,9 @@ const PrivateInvestigators = ({ handleStepClick }) => {
                 }}
               />
               {errors.licenseExpiryDate && (
-                <p className="text-red-500">{errors.licenseExpiryDate.message}</p>
+                <p className="text-red-500">
+                  {errors.licenseExpiryDate.message}
+                </p>
               )}
             </div>
           </div>
@@ -574,7 +583,9 @@ const PrivateInvestigators = ({ handleStepClick }) => {
                 }}
               />
               {errors.expirationDateOfInsurance && (
-                <p className="text-red-500">{errors.expirationDateOfInsurance.message}</p>
+                <p className="text-red-500">
+                  {errors.expirationDateOfInsurance.message}
+                </p>
               )}
             </div>
           </div>
@@ -757,10 +768,9 @@ const PrivateInvestigators = ({ handleStepClick }) => {
           <div>
             <button
               type="submit"
-
               disabled={isLoading || updatingMember}
-              className="rounded-md mt-2 text-white bg-blue-800 border-blue-800 px-20 py-2 text-sm font-semibol shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 border border-solid ">
-
+              className="rounded-md mt-2 text-white bg-blue-800 border-blue-800 px-20 py-2 text-sm font-semibol shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 border border-solid "
+            >
               Save & Submit
             </button>
           </div>
