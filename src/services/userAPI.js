@@ -66,7 +66,7 @@ export const userApi = createApi({
       }),
       providesTags: ["Member"],
     }),
-     getMembers: builder.query({
+    getMembers: builder.query({
         query: () => ({
           url: `/members`,
           method: "GET",
@@ -77,15 +77,30 @@ export const userApi = createApi({
      query: (data) => ({
         url: `/members/search-members?location=${data?.location}&people=${data?.people}&ratings=${data?.ratings}`,
         method: "GET",
-        }),
+      }),
     }),
+    unverifiedUser: builder.query({
+        query: () => ({
+          url: `/authentication/unverified`,
+          method: "GET",
+      }),
+      providesTags: ["Member"],
+    }),
+    verifyUser: builder.mutation({
+        query: (data) => ({
+          url: `/authentication/verifyUser/${data.id}`,
+          method: "PATCH",
+          body: data,
+      }),
       invalidatesTags: ["Member"],
+    }),
   })
 })
 
 // Export hooks for usage in functional components, which are
 // auto-generated based on the defined endpoints
 export const {
+  useVerifyUserMutation,
   useCreateLawyerMutation,
   useCreateBondBailsManMutation,
   useCreatePrivateInvestigatorsMutation,
@@ -96,4 +111,5 @@ export const {
   useGetMemberQuery,
   useGetMemberFromSuperIdQuery,
   useSearchMembersQuery,
+  useUnverifiedUserQuery,
 } = userApi;

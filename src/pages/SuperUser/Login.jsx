@@ -14,20 +14,20 @@ const Login = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    const staticEmail = "test@gmail.com";
-    const staticPassword = "password123";
+    const staticEmail = "superadmin";
+    const staticPassword = "superadmin";
 
     if (data.email === staticEmail && data.password === staticPassword) {
       navigate("/table");
     } else {
-      setError("email", {
-        type: "manual",
-        message: "Invalid email or password",
-      });
-      setError("password", {
-        type: "manual",
-        message: "Invalid email or password",
-      });
+      // setError("email", {
+      //   type: "manual",
+      //   message: "Invalid email or password",
+      // });
+      // setError("password", {
+      //   type: "manual",
+      //   message: "Invalid email or password",
+      // });
     }
   };
 
@@ -54,17 +54,16 @@ const Login = () => {
                 <>
                   <label
                     htmlFor="email"
-                    className={`block text-sm font-medium leading-6 ${
-                      errors?.email ? "text-red-700" : "text-gray-900"
-                    }`}
+                    className={`block text-sm font-medium leading-6 ${errors?.email ? "text-red-700" : "text-gray-900"
+                      }`}
                   >
                     Email address
                   </label>
                   <div className="mt-2">
                     <input
-                      type="email"
-                      defaultValue={"test@gmail.com"}
-                      placeholder="name@gmail.com"
+                      type="text"
+                      // defaultValue={"test@gmail.com"}
+                      placeholder="Enter user name"
                       className="block w-full rounded-md border-0 p-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400  focus:ring-blue-600 sm:text-sm sm:leading-6"
                       {...register("email", { required: "Email is required" })}
                     />
@@ -72,24 +71,22 @@ const Login = () => {
 
                   {errors?.email && (
                     <p className="mt-2 text-sm text-red-600 dark:text-red-500">
-                      {" "}
                       {errors?.email?.message}{" "}
                     </p>
                   )}
                 </>
                 <>
                   <label
-                    htmlFor="password"
-                    className={`block text-sm font-medium leading-6 ${
-                      errors?.password ? "text-red-700" : "text-gray-900"
-                    }`}
+                    htmlFor="text"
+                    className={`block text-sm font-medium leading-6 ${errors?.password ? "text-red-700" : "text-gray-900"
+                      }`}
                   >
                     Password
                   </label>
                   <div className="mt-2">
                     <input
-                      type="password"
-                      defaultValue={"password123"}
+                      type="text"
+                      // defaultValue={"password123"}
                       placeholder="***********"
                       className="block w-full rounded-md border-0 p-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400  focus:ring-blue-600 sm:text-sm sm:leading-6"
                       {...register("password", {
@@ -99,7 +96,6 @@ const Login = () => {
                   </div>
                   {errors?.password && (
                     <p className="mt-2 text-sm text-red-600 dark:text-red-500">
-                      {" "}
                       {errors?.password?.message}{" "}
                     </p>
                   )}
