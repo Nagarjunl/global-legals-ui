@@ -4,6 +4,7 @@ import { authApi } from '../services/authAPI'
 import { userApi } from '../services/userAPI'
 import authReducer from "../reducers/auth/authSlice";
 import formTypeReducer from "../reducers/formTypeSlice";
+import searchReducer from "../reducers/searchSlice";
 import userReducer from "./userSlice";
 import { fileUploadApi } from '../services/fileUploadAPI';
 
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
     user: userReducer,
     auth: authReducer,
     formType: formTypeReducer,
+    search: searchReducer,
     [authApi.reducerPath]: authApi.reducer,
     [userApi.reducerPath]: userApi.reducer,
     [fileUploadApi.reducerPath]: fileUploadApi.reducer,

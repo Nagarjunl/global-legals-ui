@@ -21,6 +21,9 @@ import { useSelector } from "react-redux";
 // }
 const ProfileDetails = ({ hideSchedule }) => {
 
+  const parser = new DOMParser();
+
+
   const formType = useSelector((state) => state.formType.formType);
   console.log("formType", formType)
 
@@ -36,7 +39,6 @@ const ProfileDetails = ({ hideSchedule }) => {
   });
 
   const data = member ? member : supermember;
-
 
   const pathSwitch = () => {
     if (data.type === "Lawyers") {
@@ -57,6 +59,9 @@ const ProfileDetails = ({ hideSchedule }) => {
     }
   }
 
+  const doc = parser.parseFromString(data?.professional, "text/html");
+  const plainText = doc.body.textContent || "";
+
   return (
     <>
       <main>
@@ -71,7 +76,7 @@ const ProfileDetails = ({ hideSchedule }) => {
               Indiana USA Labor and Employment Attorney
             </h2>
             <p className="pt-2">
-              {data.professional}
+              {plainText}
 
             </p>
             <div className=" grid grid-rows-2 ">

@@ -1,19 +1,29 @@
-
-import { Fragment, useState } from 'react'
+import { Fragment, useState, useEffect } from "react";
 import { Listbox, Transition } from '@headlessui/react'
 import { CheckIcon, ChevronDownIcon } from '@heroicons/react/20/solid'
 import PropTypes from 'prop-types';
-
-
+import { useSelector, useDispatch } from 'react-redux';
+import { setPeople, setLocation, setRatings } from "../reducers/searchSlice";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join('')
 }
 
-const Select = ({ selectData, fName }) => {
+const Select = ({ selectData }) => {
   const [selected, setSelected] = useState();
+  const dispatch = useDispatch();
 
-  console.log(selected);
+  useEffect(() => {
+    if (selected?.type === "people")
+      dispatch(setPeople(selected?.value));
+
+    if (selected?.type === "location")
+      dispatch(setLocation(selected?.value));
+
+    if (selected?.type === "ratings")
+      dispatch(setRatings(selected?.value));
+  }, [selected]);
+
 
   return (
     <Listbox value={selected} onChange={setSelected}>
@@ -22,7 +32,7 @@ const Select = ({ selectData, fName }) => {
           {/* <Listbox.Label className="block text-sm font-medium leading-6 text-gray-900">Assigned to</Listbox.Label> */}
           <div className="relative mt-2">
             <Listbox.Button className="relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300  focus:ring-2  sm:text-sm sm:leading-6">
-              <span className="block truncate">{selected.name}</span>
+              <span className="block truncate">{selected?.value || "Select Data"}</span>
               <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
                 <ChevronDownIcon className="h-5 w-5 text-gray-400" aria-hidden="true" />
               </span>
@@ -50,7 +60,7 @@ const Select = ({ selectData, fName }) => {
                     {({ selected, active }) => (
                       <>
                         <span className={classNames(selected ? 'font-semibold' : 'font-normal', 'block truncate')}>
-                          {person.name}
+                          {person.value}
                         </span>
 
                         {selected ? (
