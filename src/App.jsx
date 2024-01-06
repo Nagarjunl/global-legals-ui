@@ -28,8 +28,9 @@ import SecurityDetails from "./pages/SignUpForms/SecurityDetails";
 import PrivateInvestigators from "./pages/SignUpForms/PrivateInvestigators";
 import Verification from "./pages/SignUpForms/Verification";
 import PayPremium from "./pages/SignUpForms/PayPremium";
-
+import SuperUserLogin from "./pages/SuperUser/Login";
 import { useSelector } from "react-redux";
+import Table from "./pages/SuperUser/Table";
 
 function App() {
   const isAuthenticated = useSelector((state) => state.auth.access_token);
@@ -58,6 +59,8 @@ function App() {
             }
           />
           <Route path="/home" element={<Homepage />} />
+          <Route path="/superUser" element={<SuperUserLogin />} />
+          <Route path="/table" element={<Table />} />
 
           <Route
             path="profileDetails/:memberId"
