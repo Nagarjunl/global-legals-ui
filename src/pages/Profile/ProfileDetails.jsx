@@ -15,12 +15,6 @@ import {
 import { useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 
-// const pathName = {
-//   `/dashboard/lawyerDetails/${id}`
-//   `/dashboard/bondBailsman/${id}`
-//   `/dashboard/securityDetails/${id}`
-//   `/dashboard/privateInvestigators/${id}`
-// }
 const ProfileDetails = ({ hideSchedule }) => {
   const parser = new DOMParser();
 
@@ -86,7 +80,12 @@ const ProfileDetails = ({ hideSchedule }) => {
             <h2 className="mt-4  font-bold text-2xl">
               Indiana USA Labor and Employment Attorney
             </h2>
-            <p className="pt-2">{plainText}</p>
+            <p className="pt-2">
+              The Underwood Law Office, P.C., in Knoxville, Tennessee, is a
+              law firm that emphasizes protecting clients and providing them
+              justice when faced with a strenuous ordeal that arises in the
+              workplace.
+            </p>
             <div className=" grid grid-rows-2 ">
               <div className=" flex gap-2 mt-2">
                 <PrimeryBadge badgeText="Probate and estate administration" />
@@ -101,6 +100,10 @@ const ProfileDetails = ({ hideSchedule }) => {
             </div>
             <div>
               <p className="pt-5">
+                {data?.professional}
+              </p>
+
+              {/* <p className="pt-5">
                 The Underwood Law Office, P.C., in Knoxville, Tennessee, is a
                 law firm that emphasizes protecting clients and providing them
                 justice when faced with a strenuous ordeal that arises in the
@@ -126,9 +129,10 @@ const ProfileDetails = ({ hideSchedule }) => {
               <p className="pt-3">
                 Licensed to practice in Tennessee since 2013, attorney Oakes has
                 nearly 10 years of total legal experience
-              </p>
+              </p> */}
             </div>
-            <div>
+
+            {/* <div>
               <h2 className="pt-5 font-bold">Articles Published</h2>
               <p className="pt-3">
                 Perspectives on capital Punishment in America, Create Space,
@@ -150,7 +154,8 @@ const ProfileDetails = ({ hideSchedule }) => {
                   WATSON .V 2023 Tenn., App Lexis 170 ( Reg No 38948340)
                 </li>
               </ul>
-            </div>
+            </div> */}
+
           </div>
           {/* Meeting card */}
 
@@ -197,8 +202,8 @@ const ProfileDetails = ({ hideSchedule }) => {
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 mt-6 max-md:grid-cols-1">
-                <div className=" max-md:mb-8 ">
+              <div className="grid xs:grid-cols-1 lg:grid-cols-3 gap-4 mt-6">
+                <div className="grid xs:grid-cols-1 lg:grid-cols-1 gap-4 max-md:mb-8">
                   <div>
                     <h2 className=" font-bold">Law Firm Address</h2>
                     <p className="py-2">
@@ -222,163 +227,167 @@ const ProfileDetails = ({ hideSchedule }) => {
                     </div>
                   </div>
                 </div>
-                <div className=" border-solid border-2 gap-x-px	 rounded-lg px-6 py-4 ">
-                  <form onSubmit={handleSubmit(onSubmit)}>
-                    <h2 className=" font-bold text-2xl mb-[-20px]">
-                      {" "}
-                      Contact Form
-                    </h2>
-                    <div className="mt-10 grid grid-cols-1 gap-x-4 gap-y-4 sm:grid-cols-6">
-                      <div className="sm:col-span-3">
-                        <label className="block text-sm font-medium leading-6 text-gray-900">
-                          Enter your full name
-                        </label>
-                        <div className="mt-2">
-                          <input
-                            type="text"
-                            placeholder="Full Name"
-                            className="block w-full rounded-md border-0 p-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400  focus:ring-blue-600 sm:text-sm sm:leading-6"
-                            {...register("fullName", {
-                              required: "Full Name is required",
-                            })}
-                          />
+                <div className="sm:col-span-2">
+                  <div className="grid xs:grid-cols-1 lg:grid-cols-1 gap-4 border-solid border-2 rounded-lg  px-4 py-4">
+                    <div>
+                      <form onSubmit={handleSubmit(onSubmit)}>
+                        <h2 className=" font-bold text-2xl mb-[-20px]">
+                          {" "}
+                          Contact Form
+                        </h2>
+                        <div className="mt-10 grid grid-cols-1 gap-x-4 gap-y-4 sm:grid-cols-6">
+                          <div className="sm:col-span-3">
+                            <label className="block text-sm font-medium leading-6 text-gray-900">
+                              Enter your full name
+                            </label>
+                            <div className="mt-2">
+                              <input
+                                type="text"
+                                placeholder="Full Name"
+                                className="block w-full rounded-md border-0 p-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400  focus:ring-blue-600 sm:text-sm sm:leading-6"
+                                {...register("fullName", {
+                                  required: "Full Name is required",
+                                })}
+                              />
 
-                          {errors?.fullName && (
-                            <p className="mt-2 text-sm text-red-600 dark:text-red-500">
-                              {" "}
-                              {errors?.fullName?.message}{" "}
-                            </p>
-                          )}
-                        </div>
-                      </div>
+                              {errors?.fullName && (
+                                <p className="mt-2 text-sm text-red-600 dark:text-red-500">
+                                  {" "}
+                                  {errors?.fullName?.message}{" "}
+                                </p>
+                              )}
+                            </div>
+                          </div>
 
-                      <div className="sm:col-span-3">
-                        <label className="block text-sm font-medium leading-6 text-gray-900">
-                          Enter Email Address
-                        </label>
-                        <div className="mt-2">
-                          <input
-                            type="email"
-                            placeholder="Email Address"
-                            className="block w-full rounded-md border-0 p-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400  focus:ring-blue-600 sm:text-sm sm:leading-6"
-                            {...register("email", {
-                              required: "Email is required",
-                            })}
-                          />
+                          <div className="sm:col-span-3">
+                            <label className="block text-sm font-medium leading-6 text-gray-900">
+                              Enter Email Address
+                            </label>
+                            <div className="mt-2">
+                              <input
+                                type="email"
+                                placeholder="Email Address"
+                                className="block w-full rounded-md border-0 p-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400  focus:ring-blue-600 sm:text-sm sm:leading-6"
+                                {...register("email", {
+                                  required: "Email is required",
+                                })}
+                              />
 
-                          {errors?.email && (
-                            <p className="mt-2 text-sm text-red-600 dark:text-red-500">
-                              {" "}
-                              {errors?.email?.message}{" "}
-                            </p>
-                          )}
-                        </div>
-                      </div>
-                      <div className="sm:col-span-3">
-                        <label className="block text-sm font-medium leading-6 text-gray-900">
-                          Contact number
-                        </label>
-                        <div className="mt-2">
-                          <input
-                            type="text"
-                            placeholder="Contact Number"
-                            className="block w-full rounded-md border-0 p-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400  focus:ring-blue-600 sm:text-sm sm:leading-6"
-                            {...register("contactNumber", {
-                              required: "Contact is required",
-                            })}
-                          />
-                          {errors?.contactNumber && (
-                            <p className="mt-2 text-sm text-red-600 dark:text-red-500">
-                              {" "}
-                              {errors?.contactNumber?.message}{" "}
-                            </p>
-                          )}
-                        </div>
-                      </div>
+                              {errors?.email && (
+                                <p className="mt-2 text-sm text-red-600 dark:text-red-500">
+                                  {" "}
+                                  {errors?.email?.message}{" "}
+                                </p>
+                              )}
+                            </div>
+                          </div>
+                          <div className="sm:col-span-3">
+                            <label className="block text-sm font-medium leading-6 text-gray-900">
+                              Contact number
+                            </label>
+                            <div className="mt-2">
+                              <input
+                                type="text"
+                                placeholder="Contact Number"
+                                className="block w-full rounded-md border-0 p-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400  focus:ring-blue-600 sm:text-sm sm:leading-6"
+                                {...register("contactNumber", {
+                                  required: "Contact is required",
+                                })}
+                              />
+                              {errors?.contactNumber && (
+                                <p className="mt-2 text-sm text-red-600 dark:text-red-500">
+                                  {" "}
+                                  {errors?.contactNumber?.message}{" "}
+                                </p>
+                              )}
+                            </div>
+                          </div>
 
-                      <div className="sm:col-span-3">
-                        <label
-                          htmlFor="last-name"
-                          className="block text-sm font-medium leading-6 text-gray-900"
-                        >
-                          Location / Zipcode
-                        </label>
-                        <div className="mt-2">
-                          <input
-                            type="text"
-                            placeholder="Location"
-                            className="block w-full rounded-md border-0 p-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400  focus:ring-blue-600 sm:text-sm sm:leading-6"
-                            {...register("location", {
-                              required: "Location is required",
-                            })}
-                          />
-                          {errors?.location && (
-                            <p className="mt-2 text-sm text-red-600 dark:text-red-500">
-                              {" "}
-                              {errors?.location?.message}{" "}
+                          <div className="sm:col-span-3">
+                            <label
+                              htmlFor="last-name"
+                              className="block text-sm font-medium leading-6 text-gray-900"
+                            >
+                              Location / Zipcode
+                            </label>
+                            <div className="mt-2">
+                              <input
+                                type="text"
+                                placeholder="Location"
+                                className="block w-full rounded-md border-0 p-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400  focus:ring-blue-600 sm:text-sm sm:leading-6"
+                                {...register("location", {
+                                  required: "Location is required",
+                                })}
+                              />
+                              {errors?.location && (
+                                <p className="mt-2 text-sm text-red-600 dark:text-red-500">
+                                  {" "}
+                                  {errors?.location?.message}{" "}
+                                </p>
+                              )}
+                            </div>
+                          </div>
+                          <div className="col-span-full">
+                            <label
+                              htmlFor="about"
+                              className="block text-sm font-medium leading-6 text-gray-900"
+                            >
+                              Tell us more about your legal need
+                            </label>
+                            <div className="mt-2">
+                              <textarea
+                                id="about"
+                                name="about"
+                                rows={3}
+                                placeholder="Short profile description"
+                                className="block w-full rounded-md border-0 p-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                defaultValue={""}
+                                {...register("about", {
+                                  required: "About is required",
+                                })}
+                              />
+                              {errors?.about && (
+                                <p className="mt-2 text-sm text-red-600 dark:text-red-500">
+                                  {" "}
+                                  {errors?.about?.message}{" "}
+                                </p>
+                              )}
+                            </div>
+                            <div className="flex items-center pt-4 ">
+                              <input
+                                id="remember-me"
+                                name="remember-me"
+                                type="checkbox"
+                                className="h-4 w-4 rounded bg-gray-00 border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                              />
+                              <label
+                                htmlFor="remember-me"
+                                className="ml-3 block font-medium text-sm leading-6 text-black"
+                              >
+                                Send me a copy of this mail
+                              </label>
+                            </div>
+                            <p className=" pt-4 ">
+                              The information contained on this website is intended
+                              to convey general information. It should not be
+                              construed as legal advice or opinion. It is not an
+                              offer to represent you, nor is it intended to create
+                              an attorney-client relationship. The use of the
+                              internet or this contact form for communication is not
+                              necessarily a secure environment. Contacting a lawyer
+                              or law firm via email through this service will not
+                              create an attorney-client relationship, and
+                              information will not necessarily be treated as
+                              privileged or confidential.
                             </p>
-                          )}
+                          </div>
                         </div>
-                      </div>
-                      <div className="col-span-full">
-                        <label
-                          htmlFor="about"
-                          className="block text-sm font-medium leading-6 text-gray-900"
-                        >
-                          Tell us more about your legal need
-                        </label>
-                        <div className="mt-2">
-                          <textarea
-                            id="about"
-                            name="about"
-                            rows={3}
-                            placeholder="Short profile description"
-                            className="block w-full rounded-md border-0 p-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                            defaultValue={""}
-                            {...register("about", {
-                              required: "About is required",
-                            })}
-                          />
-                          {errors?.about && (
-                            <p className="mt-2 text-sm text-red-600 dark:text-red-500">
-                              {" "}
-                              {errors?.about?.message}{" "}
-                            </p>
-                          )}
+                        <div className=" w-60 pt-5">
+                          <PrimaryButton type="submit" buttonText="Send Mail" />
                         </div>
-                        <div className="flex items-center pt-4 ">
-                          <input
-                            id="remember-me"
-                            name="remember-me"
-                            type="checkbox"
-                            className="h-4 w-4 rounded bg-gray-00 border-gray-300 text-indigo-600 focus:ring-indigo-600"
-                          />
-                          <label
-                            htmlFor="remember-me"
-                            className="ml-3 block font-medium text-sm leading-6 text-black"
-                          >
-                            Send me a copy of this mail
-                          </label>
-                        </div>
-                        <p className=" pt-4 ">
-                          The information contained on this website is intended
-                          to convey general information. It should not be
-                          construed as legal advice or opinion. It is not an
-                          offer to represent you, nor is it intended to create
-                          an attorney-client relationship. The use of the
-                          internet or this contact form for communication is not
-                          necessarily a secure environment. Contacting a lawyer
-                          or law firm via email through this service will not
-                          create an attorney-client relationship, and
-                          information will not necessarily be treated as
-                          privileged or confidential.
-                        </p>
-                      </div>
+                      </form>
                     </div>
-                    <div className=" w-60 pt-5">
-                      <PrimaryButton type="submit" buttonText="Send Mail" />
-                    </div>
-                  </form>
+                  </div>
                 </div>
               </div>
             </>

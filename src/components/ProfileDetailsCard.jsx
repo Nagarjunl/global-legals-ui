@@ -37,7 +37,7 @@ const ProfileCard = ({ data, hideSchedule }) => {
                   <img src={telephone} alt="Phone" className="w-auto px-2" />
                   {" Practioning at "}
                   <a href="#" className="text-blue-700 px-2">
-                    {data?.professional}
+                    {data?.email}
                   </a>
                 </span>
               </div>
@@ -48,7 +48,7 @@ const ProfileCard = ({ data, hideSchedule }) => {
                     alt="Phone"
                     className=" px-2 w-10 h-6   sm:w-auto"
                   />
-                  {data?.legalSpecialization}
+                  Indiana USA Labor and Employment Attorney
                 </span>
               </div>
 
@@ -62,15 +62,23 @@ const ProfileCard = ({ data, hideSchedule }) => {
 
             {!hideSchedule ?
               (<div className="mt-auto pb-5 ">
-                <button
+                <a
                   type="button"
                   className="rounded-md  w-full bg-white px-3 py-2 text-sm font-semibold text-blue-600 shadow-sm ring-1 ring-inset ring-blue-600 hover:bg-gray-50"
+                  href="callto:+04166783"
                 >
-                  Call via Phone
-                </button>
+                  Contact via Phone
+                </a>
+
                 <br />
 
-                <PrimaryButton buttonText="Call via mail" />
+                <a
+                  type="button"
+                  className="flex w-full justify-center mt-3 rounded-md bg-blue-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                  href="mailto:global-legals@gmal.com"
+                >
+                  Contact via Mail
+                </a>
               </div>
               ) : ""
             }

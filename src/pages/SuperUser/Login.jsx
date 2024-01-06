@@ -57,7 +57,7 @@ const Login = () => {
                     className={`block text-sm font-medium leading-6 ${errors?.email ? "text-red-700" : "text-gray-900"
                       }`}
                   >
-                    Email address
+                    User Name
                   </label>
                   <div className="mt-2">
                     <input
@@ -78,14 +78,14 @@ const Login = () => {
                 <>
                   <label
                     htmlFor="text"
-                    className={`block text-sm font-medium leading-6 ${errors?.password ? "text-red-700" : "text-gray-900"
+                    className={`block text-sm font-medium leading-6 mt-2 ${errors?.password ? "text-red-700" : "text-gray-900"
                       }`}
                   >
                     Password
                   </label>
                   <div className="mt-2">
                     <input
-                      type="text"
+                      type="password"
                       // defaultValue={"password123"}
                       placeholder="***********"
                       className="block w-full rounded-md border-0 p-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400  focus:ring-blue-600 sm:text-sm sm:leading-6"

@@ -87,6 +87,15 @@ function App() {
           />
 
           <Route
+            path="searchProfile/:searchKeys"
+            element={
+              <DashboardLayout hideHeaderAvator={true}>
+                <SearchProfile />
+              </DashboardLayout>
+            }
+          />
+
+          <Route
             path="dashboard/*"
             element={
               isAuthenticated ? (

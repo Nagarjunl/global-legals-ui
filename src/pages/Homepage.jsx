@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Nav from "../components/home/Nav";
 import { IoSearchOutline } from "react-icons/io5";
 import RemovalImg from "../assets/New_folder/removal.svg";
@@ -16,11 +16,17 @@ import ArrowCircleRight from "../assets/New_folder/arrow-circle-right.svg";
 import ReCAPTCHA from "react-google-recaptcha";
 import BanerPerson from "../assets/New_folder/banner_person_img.svg";
 import Footer from "../components/footer/Footer";
+import { useState } from "react";
+
 
 const Homepage = () => {
   const handleChange = () => {
     console.log("ReCaptcha");
   };
+
+  const [searchKeys, setSearchKeys] = useState();
+  const navigate = useNavigate();
+
   return (
     <>
       <div className="bg-green-800">
@@ -37,43 +43,53 @@ const Homepage = () => {
               <form>
                 <div className="flex">
                   <input
-                    type="search"
+                    type="text"
                     id="search"
+                    value={searchKeys}
                     className=" w-full text-sm  p-3 items-center text-gray-900 border border-gray-300  bg-gray-50 "
                     placeholder="Search for any service in your county"
-                    required
+                    onChange={(e) => setSearchKeys(e.target.value)}
                   />
                   <button
-                    type="submit"
+                    type="button"
                     className="text-white inline-flex h-12 px-5 py-0 sm:py-3 items-center flex-shrink-0 bg-[#00C26B]"
+                    onClick={() => navigate(`/searchProfile/${searchKeys}`)}
                   >
-                    <Link to="/dashboard/searchProfile">
-                      <IoSearchOutline className="h-6 w-6" />
-                    </Link>
-                  </button>
+                    {/* <Link to={`/searchProfile/${searchKeys}`}> */}
+                    <IoSearchOutline className="h-6 w-6" />
+                    {/* </Link> */}
+                  </button>``
                 </div>
               </form>
               <div className="inline-flex flex-wrap mt-5 gap-3 mb-0 sm:mb-0">
-                <span className=" text-white  font-circular-std text-sm font-medium  justify-center  py-1 px-2 items-center   rounded-full border border-white ">
+                <Link className="text-white  font-circular-std text-sm font-medium  justify-center  py-1 px-2 items-center   rounded-full border border-white "
+                  onClick={() => setSearchKeys("Lawyers")}
+                >
                   Lawyers
-                </span>
-                <span className=" text-white  font-circular-std text-sm font-medium  justify-center  py-1 px-2 items-center   rounded-full border border-white ">
+                </Link>
+                <Link className=" text-white  font-circular-std text-sm font-medium  justify-center  py-1 px-2 items-center   rounded-full border border-white "
+                  onClick={() => setSearchKeys("PrivateInvestigators")}
+                >
                   Private Investigators
-                </span>
-                <span className=" text-white  font-circular-std text-sm font-medium  justify-center  py-1 px-2 items-center   rounded-full border border-white ">
+                </Link>
+                <Link className=" text-white  font-circular-std text-sm font-medium  justify-center  py-1 px-2 items-center   rounded-full border border-white "
+                  onClick={() => setSearchKeys("BondBailsman")}
+                >
                   Bail Bondsman
-                </span>
-                <span className=" text-white  font-circular-std text-sm font-medium  justify-center  py-1 px-2 items-center   rounded-full border border-white ">
+                </Link>
+                <Link className=" text-white  font-circular-std text-sm font-medium  justify-center  py-1 px-2 items-center   rounded-full border border-white "
+                  onClick={() => setSearchKeys("Security")}
+                >
                   Security
-                </span>
+                </Link>
               </div>
             </div>
           </div>
           <div className="grid items-end justify-center">
             <img src={RemovalImg} />
           </div>
-        </div>
-      </div>
+        </div >
+      </div >
       <div className="mx-auto container max-sm:px-6 p-[120px]">
         <div className="grid grid-flow-row gap-5">
           <div className="max-sm:grid justify-center">
@@ -91,22 +107,22 @@ const Homepage = () => {
               <div>
                 <ServiceCard
                   image={CardTwo}
-                  content={"Your Advocate Professionals"}
-                  contentBold={"Legal Excellence"}
+                  content={"Sleath uncover"}
+                  contentBold={"Truth, Find clues"}
                 />
               </div>
               <div>
                 <ServiceCard
                   image={CardThree}
-                  content={"Your Advocate Professionals"}
-                  contentBold={"Legal Excellence"}
+                  content={"Freedom bonded, Swift"}
+                  contentBold={"Release, Trusted"}
                 />
               </div>
               <div>
                 <ServiceCard
                   image={CardFour}
-                  content={"Your Advocate Professionals"}
-                  contentBold={"Legal Excellence"}
+                  content={"Protection, Peace of"}
+                  contentBold={"Mind, Safety"}
                 />
               </div>
             </div>
