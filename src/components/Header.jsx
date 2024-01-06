@@ -8,27 +8,26 @@ import { useDispatch } from "react-redux";
 import { removeUser } from "../reducers/userSlice";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import { formData } from "../reducers/formTypeSlice";
 
-import { GoogleLogout } from "react-google-login";
-import { useNavigate } from "react-router-dom";
+// import { GoogleLogout } from "react-google-login";
+// import { useNavigate } from "react-router-dom";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-const clientId =
-  "1088488217067-p3bcsi9hbqg9v5befpfir4ak29dfd28i.apps.googleusercontent.com";
-
+// const clientId =
+//   "1088488217067-p3bcsi9hbqg9v5befpfir4ak29dfd28i.apps.googleusercontent.com";
 
 const Example = ({ hideHeaderAvator }) => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
-  const onSuccess = () => {
-    console.log("Log out Successfully");
-    navigate("/");
-  };
+  // const onSuccess = () => {
+  //   console.log("Log out Successfully");
+  //   navigate("/");
+  // };
   const dispatch = useDispatch();
   const id = useSelector((state) => state.user.id);
 
@@ -38,7 +37,6 @@ const Example = ({ hideHeaderAvator }) => {
         <>
           <div className="mx-auto max-w-full px-2 sm:px-6 lg:px-8">
             <div className="relative flex h-16 justify-between">
-
               <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
                 {/* Mobile menu button */}
                 <Disclosure.Button className="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
@@ -60,82 +58,79 @@ const Example = ({ hideHeaderAvator }) => {
                   />
                 </div>
               </div>
-              {!hideHeaderAvator
-                ? (
-                  <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                    <Menu as="div" className="relative ml-3">
-                      <div>
-                        <Menu.Button className="relative flex rounded-full bg-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
-                          <span className="absolute -inset-1.5" />
-                          <span className="sr-only">Open user menu</span>
-                          <img
-                            className="h-8 w-8 rounded-full"
-                            src={UserIcon}
-                            alt=""
-                          />
-                        </Menu.Button>
-                      </div>
-                      <Transition
-                        as={Fragment}
-                        enter="transition ease-out duration-200"
-                        enterFrom="transform opacity-0 scale-95"
-                        enterTo="transform opacity-100 scale-100"
-                        leave="transition ease-in duration-75"
-                        leaveFrom="transform opacity-100 scale-100"
-                        leaveTo="transform opacity-0 scale-95"
-                      >
-                        <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                          <Menu.Item>
-                            {({ active }) => (
-                              <Link
-                                to={{
-                                  pathname: `/dashboard/profileDetails/${id}`,
-                                }}
-                                className={classNames(
-                                  active ? "bg-gray-100" : "",
-                                  "block px-4 py-2 text-sm text-gray-700"
-                                )}
-                                onClick={() => {
-                                  dispatch(formData(""));
-                                }}
-                              >
-                                Your Profile
-                              </Link>
-                            )}
-                          </Menu.Item>
-                          <Menu.Item>
-                            {({ active }) => (
-                              <a
-                                href="#"
-                                className={classNames(
-                                  active ? "bg-gray-100" : "",
-                                  "block px-4 py-2 text-sm text-gray-700"
-                                )}
-                              >
-                                Settings
-                              </a>
-                            )}
-                          </Menu.Item>
-                          <Menu.Item>
-                            {({ active }) => (
-                              <a
-                                href="#"
-                                className={classNames(
-                                  active ? "bg-gray-100" : "",
-                                  "block px-4 py-2 text-sm text-gray-700"
-                                )}
-                                onClick={() => {
-                                  dispatch(removeTokens());
-                                  dispatch(removeUser());
-                                }
-                                }
-
-                              >
-                                Sign out
-                              </a>
-                            )}
-                          </Menu.Item>
-                          <Menu.Item>
+              {!hideHeaderAvator ? (
+                <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+                  <Menu as="div" className="relative ml-3">
+                    <div>
+                      <Menu.Button className="relative flex rounded-full bg-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                        <span className="absolute -inset-1.5" />
+                        <span className="sr-only">Open user menu</span>
+                        <img
+                          className="h-8 w-8 rounded-full"
+                          src={UserIcon}
+                          alt=""
+                        />
+                      </Menu.Button>
+                    </div>
+                    <Transition
+                      as={Fragment}
+                      enter="transition ease-out duration-200"
+                      enterFrom="transform opacity-0 scale-95"
+                      enterTo="transform opacity-100 scale-100"
+                      leave="transition ease-in duration-75"
+                      leaveFrom="transform opacity-100 scale-100"
+                      leaveTo="transform opacity-0 scale-95"
+                    >
+                      <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                        <Menu.Item>
+                          {({ active }) => (
+                            <Link
+                              to={{
+                                pathname: `/dashboard/profileDetails/${id}`,
+                              }}
+                              className={classNames(
+                                active ? "bg-gray-100" : "",
+                                "block px-4 py-2 text-sm text-gray-700"
+                              )}
+                              onClick={() => {
+                                dispatch(formData(""));
+                              }}
+                            >
+                              Your Profile
+                            </Link>
+                          )}
+                        </Menu.Item>
+                        <Menu.Item>
+                          {({ active }) => (
+                            <a
+                              href="#"
+                              className={classNames(
+                                active ? "bg-gray-100" : "",
+                                "block px-4 py-2 text-sm text-gray-700"
+                              )}
+                            >
+                              Settings
+                            </a>
+                          )}
+                        </Menu.Item>
+                        <Menu.Item>
+                          {({ active }) => (
+                            <a
+                              href="#"
+                              className={classNames(
+                                active ? "bg-gray-100" : "",
+                                "block px-4 py-2 text-sm text-gray-700"
+                              )}
+                              onClick={() => {
+                                dispatch(removeTokens());
+                                dispatch(removeUser());
+                              }}
+                            >
+                              Sign out
+                            </a>
+                          )}
+                        </Menu.Item>
+                        {/* <Menu.Item>
                             {({ active }) => (
                               <GoogleLogout
                                 clientId={clientId}
@@ -143,13 +138,14 @@ const Example = ({ hideHeaderAvator }) => {
                                 onLogoutSuccess={onSuccess}
                               />
                             )}
-                          </Menu.Item>
-                        </Menu.Items>
-                      </Transition>
-                    </Menu>
-                  </div>
-                ) : ""
-              }
+                          </Menu.Item> */}
+                      </Menu.Items>
+                    </Transition>
+                  </Menu>
+                </div>
+              ) : (
+                ""
+              )}
             </div>
           </div>
 
@@ -187,14 +183,13 @@ const Example = ({ hideHeaderAvator }) => {
             </div>
           </Disclosure.Panel>
         </>
-      )
-      }
-    </Disclosure >
+      )}
+    </Disclosure>
   );
-}
+};
 
 export default Example;
 
 Example.propTypes = {
   hideHeaderAvator: PropTypes.bool,
-}
+};

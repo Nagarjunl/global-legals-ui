@@ -9,27 +9,27 @@ import { useDispatch } from "react-redux";
 import { addTokens } from "../../reducers/auth/authSlice";
 import { currentUser } from "../../reducers/userSlice";
 import { useSignInMutation } from "../../services/authAPI";
-import { GoogleLogin } from "react-google-login";
-import { useEffect } from "react";
-import { gapi } from "gapi-script";
+// import { GoogleLogin } from "react-google-login";
+// import { useEffect } from "react";
+// import { gapi } from "gapi-script";
 
-const clientId =
-  "1088488217067-p3bcsi9hbqg9v5befpfir4ak29dfd28i.apps.googleusercontent.com";
+// const clientId =
+//   "1088488217067-p3bcsi9hbqg9v5befpfir4ak29dfd28i.apps.googleusercontent.com";
 
 const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [signIn, { isLoading }] = useSignInMutation();
 
-  useEffect(() => {
-    function start() {
-      gapi.client.init({
-        clientId: clientId,
-        scope: "",
-      });
-    }
-    gapi.load("client:auth2", start);
-  });
+  // useEffect(() => {
+  //   function start() {
+  //     gapi.client.init({
+  //       clientId: clientId,
+  //       scope: "",
+  //     });
+  //   }
+  //   gapi.load("client:auth2", start);
+  // });
 
   // var accessToken = gapi.auth.getToken().accessToken;
 
@@ -202,14 +202,14 @@ const Login = () => {
               </div>
 
               <div className="mt-5 grid grid-row-2 gap-4">
-                <GoogleLogin
+                {/* <GoogleLogin
                   clientId={clientId}
                   buttonText="Sign in with Google"
                   onSuccess={onSuccess}
                   onFailure={onFailure}
                   cookiePolicy={""}
                   isSignedIn={true}
-                />
+                /> */}
                 <a
                   href="#"
                   className="flex w-full items-center justify-center gap-3 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 mb-3.5"
