@@ -1,13 +1,11 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useGetMembersQuery } from "../../services/userAPI";
 
 import LawyerCard from "../../components/LawyerCard";
-import profileImg2 from "../../assets/Frame22.svg";
-import profileImg from "../../assets/Frame20.svg";
 import cupImage from "../../assets/image25.svg";
 import Select from "../../components/Select";
 import { IoIosCloseCircleOutline } from "react-icons/io";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const badgeData = [
   {
@@ -20,8 +18,11 @@ const badgeData = [
 
 function SearchProfile() {
 
-  const { data: members, isLoading: fetchingMembers } = useGetMembersQuery("BondBailsman");
-  console.log(members)
+  const [memberId, setMemberId] = useState();
+  const navigate = useNavigate();
+
+  const { data: members, isLoading: fetchingMembers } = useGetMembersQuery("Lawyers");
+
 
   useEffect(() => {
 
@@ -31,19 +32,19 @@ function SearchProfile() {
       <div>
         <div className="mt-10 flex flex-wrap gap-5">
           <div>
-            <Select fName={"Areas of Practice"} />
+            <Select fName={{ id: 1, name: 'Areas of Practice' }} />
           </div>
           <div>
-            <Select fName={"Locations"} />
+            <Select fName={{ id: 2, name: 'Location' }} />
           </div>
           <div>
-            <Select fName={"Features"} />
+            <Select fName={{ id: 3, name: 'Features' }} />
           </div>
           <div>
-            <Select fName={"Peer/Client Reviews"} />
+            <Select fName={{ id: 4, name: 'Peer / Client Reviews' }} />
           </div>
           <div>
-            <Select fName={"Law School"} />
+            <Select fName={{ id: 5, name: 'Law School' }} />
           </div>
         </div>
         <div className=" flex flex-wrap mt-4 gap-4 align-text-center">
@@ -76,32 +77,31 @@ function SearchProfile() {
           </h2>
         </div>
         <div>
-          <Link to="/dashboard/profileDetails">
-            <LawyerCard
-              image={profileImg}
-              fName="Bill Thompson Moreira "
-              cups={cupImage}
-              topRated="Top Rated  Attorney"
-              selfIntro="Myseld Bill thompson, served as a trusted adviser, valued legal representative and respected legal counsel... "
-              pratcingAt="Densborn Blachly LLP"
-              designation="Indiana USA Labor and Employment Attorney"
-            />
-          </Link>
-        </div>
-        <div>
-          <Link to="/dashboard/profileDetails">
-            <LawyerCard
-              image={profileImg2}
-              cups={cupImage}
-              fName="Skyler Walter White"
-              pratcingAt="Harmony Legal Associates"
-              designation="Personal Injury Attorney and Estate agency Attorney"
-              selfIntro="With Attorney, tirelessly championing the rights of those who have suffered harm due to the negligence of others"
-            />
-          </Link>
+          {!fetchingMembers ?
+            members.map((data, index) =>
+            (
+              <Link key={index}
+                to={{
+                  pathname: `/profileDetails/${data.id}`,
+                }}
+              >
+                <LawyerCard
+                  image={data.idProof}
+                  fName={data.clientName}
+                  cups={cupImage}
+                  topRated="Top Rated  Attorney"
+                  selfIntro={data.professional}
+                  pratcingAt={data.practicingLaw}
+                  designation={data.legalSpecialization}
+                />
+              </Link>
+            )
+            )
+            : null
+          }
         </div>
       </div>
-    </div>
+    </div >
   );
 }
 

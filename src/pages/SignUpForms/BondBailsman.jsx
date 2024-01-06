@@ -15,10 +15,15 @@ import ReCAPTCHA from "react-google-recaptcha";
 
 import { useSelector, useDispatch } from 'react-redux'
 import { formData } from "../../reducers/formTypeSlice";
+import { useUpdateMemberMutation, useGetMemberFromSuperIdQuery } from "../../services/userAPI";
+import { useNavigate, useParams } from "react-router-dom";
 
 const baseUrl = import.meta.env.VITE_API_URL;
 
 function BondBailsman({ handleStepClick }) {
+  const { memberId } = useParams();
+  const navigate = useNavigate();
+
 
   const [postFile, { isLoading }] = usePostFileMutation();
   const [deleteFile] = useDeleteFileMutation();
@@ -26,6 +31,8 @@ function BondBailsman({ handleStepClick }) {
   const dispatch = useDispatch();
 
   const formDatas = useSelector((state) => state.formType.formData);
+
+  const [updateMember, { isLoading: updatingMember }] = useUpdateMemberMutation();
 
   const handleChange = () => {
     console.log("ReCaptcha");
@@ -64,16 +71,38 @@ function BondBailsman({ handleStepClick }) {
       .catch((err) => console.log(err));
   };
 
-  const onSubmit = (data) => {
-    console.log(formDatas);
-    const datas = {
-      ...data,
-      idProof: formDatas.idProof || "",
+  const submitMembers = async (data) => {
+    try {
+      await updateMember(data).unwrap()
+        .then(() => {
+          navigate(`/dashboard/profileDetails/${data.userId}`)
+        });
+    } catch (error) {
+      console.log("error");
     }
-    dispatch(formData(datas));
-    // dispatch(formSubmited(true));
-    handleStepClick(1);
   }
+
+  const onSubmit = (data) => {
+    const datas = { ...data, idProof: formDatas.idProof || "" }
+    if (!memberId) {
+      dispatch(formData(datas));
+      handleStepClick(1);
+    } else {
+      submitMembers(data)
+    }
+  }
+
+  const { data: member, isLoading: fetchingData }
+    = useGetMemberFromSuperIdQuery(memberId, {
+      skip: memberId === undefined,
+    });
+
+
+  useEffect(() => {
+    if (!fetchingData && memberId !== undefined) {
+      dispatch(formData(member));
+    }
+  }, [member, fetchingData]);
 
   useEffect(() => {
     if (formDatas.idProof !== "" && formDatas.idProof !== undefined) {
@@ -95,8 +124,16 @@ function BondBailsman({ handleStepClick }) {
           setValue(`${key}`, new Date(`${formDatas[key]}`));
           return false;
         }
+        if (`${key}` === "licenseExpiryDate") {
+          setValue(`${key}`, new Date(`${formDatas[key]}`));
+          return false;
+        }
         if (`${key}` === "expirationDateOfInsurance") {
           setValue(`${key}`, new Date(`${formDatas[key]}`));
+          return false;
+        }
+        if (`${formDatas[key]}` === null || `${formDatas[key]}` === "null") {
+          setValue(`${key}`, "");
           return false;
         }
         setValue(`${key}`, `${formDatas[key]}`);
@@ -122,13 +159,13 @@ function BondBailsman({ handleStepClick }) {
                     </h5>
                     <div className="mt-2">
                       <input
-                        {...register("businessName", { required: "Business Name Is Required" })}
+                        {...register("clientName", { required: "Business Name Is Required" })}
                         className="block w-full p-3  rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                         placeholder="Enter Business Name"
                       />
-                      {errors.businessName && (
+                      {errors.clientName && (
                         <p className="text-red-500">
-                          {errors.businessName.message}
+                          {errors.clientName.message}
                         </p>
                       )}
                     </div>
@@ -301,10 +338,10 @@ function BondBailsman({ handleStepClick }) {
                 <Controller
                   name="dateOfLicenceing"
                   control={control}
-                  // rules={{
-                  //   required: "Date is required",
-                  //   max: { value: new Date(), message: "Date cannot be in the future" }
-                  // }}
+                  rules={{
+                    required: "Date is required",
+                    // max: { value: new Date(), message: "Date cannot be in the future" }
+                  }}
                   render={({ field: { onChange, value } }) => {
                     return (
                       <DatePicker
@@ -424,10 +461,10 @@ function BondBailsman({ handleStepClick }) {
                 <Controller
                   name="expirationDateOfInsurance"
                   control={control}
-                  // rules={{
-                  //   required: "Date is required",
-                  //   max: { value: new Date(), message: "Date cannot be in the future" }
-                  // }}
+                  rules={{
+                    required: "Date is required",
+                    // max: { value: new Date(), message: "Date cannot be in the future" }
+                  }}
                   render={({ field: { onChange, value } }) => {
                     return (
                       <DatePicker
@@ -671,7 +708,7 @@ function BondBailsman({ handleStepClick }) {
               />
             </div>
             <div>
-              <button type="submit" disabled={isLoading} className="rounded-md mt-2 text-white bg-blue-800 border-blue-800 px-20 py-2 text-sm font-semibol shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 border border-solid ">
+              <button type="submit" disabled={isLoading || updatingMember} className="rounded-md mt-2 text-white bg-blue-800 border-blue-800 px-20 py-2 text-sm font-semibol shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 border border-solid ">
                 Save & Submit
               </button>
             </div>

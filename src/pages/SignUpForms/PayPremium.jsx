@@ -1,6 +1,7 @@
 import Asset from "../../assets/pay.jpg";
 import { useCreateMembersMutation } from "../../services/userAPI";
 import { useSelector, useDispatch } from 'react-redux';
+import { currentUser } from "../../reducers/userSlice";
 
 const people = [
   {
@@ -29,17 +30,22 @@ const PayPremium = ({ handleStepClick }) => {
   const [createMembers, { isLoading }] = useCreateMembersMutation();
   const dispatch = useDispatch();
 
-  const currentUser = useSelector((state) => state.user.id)
+  const currentUserId = useSelector((state) => state.user.id)
   const formType = useSelector((state) => state.formType.formType);
   const formDatas = useSelector((state) => state.formType.formData);
-  const formSubmited = useSelector((state) => state.formType.formSubmited);
+  // const formSubmited = useSelector((state) => state.formType.formSubmited);
 
   const submitMembers = async (data) => {
-    const datas = { ...data, userId: currentUser, type: formType }
+    const datas = { ...data, userId: currentUserId, type: formType }
     try {
-      await createMembers(datas).unwrap()
-        .then(() => {
-          dispatch(formSubmited(false));
+      await createMembers(datas)
+        .unwrap()
+        .then((res) => {
+          const { result3, ...rest } = res;
+          console.log(res);
+          // dispatch(formSubmited(false));
+          dispatch(currentUser(result3));
+          console.log("ndfksfjkshfkjshfkjh")
         });
     } catch (error) {
       console.log("error");

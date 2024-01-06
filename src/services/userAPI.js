@@ -6,6 +6,7 @@ import customFetchBase from './customFetchBase'
 export const userApi = createApi({
   reducerPath: 'userApi',
   baseQuery: customFetchBase,
+  tagTypes: ["Member"],
   endpoints: (builder) => ({
     createLawyer: builder.mutation({
       query: (data) => ({
@@ -40,13 +41,37 @@ export const userApi = createApi({
           url: `/members`,
           method: "POST",
           body: data,
-        }),
+      }),
+      invalidatesTags: ["Member"],
+    }),
+    updateMember: builder.mutation({
+        query: (data) => ({
+          url: `/members/${data.id}`,
+          method: "PATCH",
+          body: data,
+      }),
+      invalidatesTags: ["Member"],
     }),
     getMembers: builder.query({
         query: (data) => ({
-          url: `/members/?type=${data}`,
+          url: `/members/?id=${data}&limit=12&offset=5`,
           method: "GET",
-        }),
+      }),
+      providesTags: ["Member"],
+    }),
+    getMember: builder.query({
+        query: (id) => ({
+          url: `/members/${id}`,
+          method: "GET",
+      }),
+      providesTags: ["Member"],
+    }),
+    getMemberFromSuperId: builder.query({
+        query: (id) => ({
+          url: `/members/findUsingSuperId/${id}`,
+          method: "GET",
+      }),
+      providesTags: ["Member"],
     }),
     // getMembers: builder.query({
     //  query: ({ limit, offset }) => ({
@@ -65,6 +90,9 @@ export const {
   useCreateBondBailsManMutation,
   useCreatePrivateInvestigatorsMutation,
   useCreateSecurityMutation,
+  useUpdateMemberMutation,
   useCreateMembersMutation,
   useGetMembersQuery,
+  useGetMemberQuery,
+  useGetMemberFromSuperIdQuery,
 } = userApi;

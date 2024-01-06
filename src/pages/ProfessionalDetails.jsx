@@ -2,8 +2,11 @@
 import LawyerCard from "../components/LawyerCard";
 import Frame from "../assets/Frame20.svg";
 import cupImage from "../assets/image25.svg";
-
 import Layer from "../assets/Layer.svg";
+
+import { useParams } from "react-router-dom";
+import { useGetMemberQuery } from "../../services/userAPI";
+
 const data = [
   {
     name: "Probate and estate administration",
@@ -26,18 +29,33 @@ const data = [
 ];
 
 const ProfessionalDetails = () => {
+  const { memberId } = useParams();
+
+  const { data, isLoading: fetchingMember } = useGetMemberQuery(memberId);
+
+  // const { data: member, isLoading: fetchingMember } = useGetMemberQuery(memberId, {
+  //   skip: memberId === undefined,
+  // });
+
+  console.log(memberId);
+  console.log(data);
+
+  const getMember = (id) => {
+    setMemberId(id)
+  }
+
   return (
     <>
       <div className="container mx-auto">
         <div className="mx-auto flex justify-center ">
           <LawyerCard
-            image={Frame}
-            fName="Bill Thompson Moreira "
-            Cups={cupImage}
+            image={data.idProof}
+            fName={data.clientName}
+            cups={cupImage}
             topRated="Top Rated  Attorney"
-            selfIntro="Myseld Bill thompson, served as a trusted adviser, valued legal representative and respected legal counsel..."
-            pratcingAt="Densborn Blachly LLP"
-            designation="Indiana USA Labor and Employment Attorney"
+            selfIntro={data.professional}
+            pratcingAt={data.practicingLaw}
+            designation={data.legalSpecialization}
           />
         </div>
         <div className="container mx-auto">

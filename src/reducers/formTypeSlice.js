@@ -22,6 +22,6 @@ export const formTypeSlice = createSlice({
     },
 });
 
-export const { formData,formType,formSubmited } = formTypeSlice.actions;
+export const { formData, formType, formSubmited } = formTypeSlice.actions;
 
 export default formTypeSlice.reducer;

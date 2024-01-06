@@ -2,21 +2,24 @@
 import { Fragment, useState } from 'react'
 import { Listbox, Transition } from '@headlessui/react'
 import { CheckIcon, ChevronDownIcon } from '@heroicons/react/20/solid'
+import PropTypes from 'prop-types';
+
 
 const people = [
   { id: 1, name: 'Areas of Practice' },
   { id: 2, name: 'Locations' },
   { id: 3, name: 'Features' },
   { id: 4, name: 'Peer / Client Reviews' },
-  
+  { id: 5, name: 'Law School' },
+
 ]
 
 function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
+  return classes.filter(Boolean).join('')
 }
 
-export default function Select({}) {
-  const [selected, setSelected] = useState(people[3])
+const Select = ({ fName }) => {
+  const [selected, setSelected] = useState(fName);
 
   return (
     <Listbox value={selected} onChange={setSelected}>
@@ -59,8 +62,8 @@ export default function Select({}) {
                         {selected ? (
                           <span
                             className={classNames(
-                              active ? 'text-black' : 
-                              'absolute inset-y-0 right-0 flex items-center pr-4'
+                              active ? 'text-black' :
+                                'absolute inset-y-0 right-0 flex items-center pr-4'
                             )}
                           >
                             <CheckIcon className="h-5 w-5" aria-hidden="true" />
@@ -77,4 +80,11 @@ export default function Select({}) {
       )}
     </Listbox>
   )
+}
+
+export default Select;
+
+
+Select.propTypes = {
+  fName: PropTypes.object,
 }
