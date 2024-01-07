@@ -56,7 +56,6 @@ const Login = () => {
         .unwrap()
         .then((res) => {
           if (res) {
-            console.log("sfsfsfsfs")
             const { user, ...rest } = res;
             dispatch(addTokens(rest));
             dispatch(currentUser(user));

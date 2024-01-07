@@ -8,34 +8,6 @@ export const userApi = createApi({
   baseQuery: customFetchBase,
   tagTypes: ["Member"],
   endpoints: (builder) => ({
-    createLawyer: builder.mutation({
-      query: (data) => ({
-        url: `/lawyers`,
-        method: "POST",
-        body: data,
-      }),
-    }),
-    createBondBailsMan: builder.mutation({
-      query: (data) => ({
-        url: `/bondbailsmans`,
-        method: "POST",
-        body: data,
-      }),
-    }),
-    createSecurity: builder.mutation({
-        query: (data) => ({
-          url: `/securities`,
-          method: "POST",
-          body: data,
-        }),
-    }),
-    createPrivateInvestigators: builder.mutation({
-        query: (data) => ({
-          url: `/privateinvestigators`,
-          method: "POST",
-          body: data,
-        }),
-    }),
     createMembers: builder.mutation({
         query: (data) => ({
           url: `/members`,
@@ -54,7 +26,7 @@ export const userApi = createApi({
     }),
     getMember: builder.query({
         query: (id) => ({
-          url: `/authentication/search-members/${id}`,
+          url: `/frontends/search-members/${id}`,
           method: "GET",
       }),
       providesTags: ["Member"],
@@ -75,24 +47,29 @@ export const userApi = createApi({
     }),
     searchMembers: builder.query({
      query: (data) => ({
-        url: `/authentication/search-members?location=${data?.location}&people=${data?.people}&ratings=${data?.ratings}`,
+        url: `/frontends/search-members?location=${data?.location}&people=${data?.people}&ratings=${data?.ratings}`,
         method: "GET",
       }),
     }),
     unverifiedUser: builder.query({
         query: () => ({
-          url: `/authentication/unverified`,
+          url: `/frontends/unverified`,
           method: "GET",
       }),
-      providesTags: ["Member"],
     }),
     verifyUser: builder.mutation({
         query: (data) => ({
-          url: `/authentication/verifyUser/${data.id}`,
+          url: `/frontends/verifyUser/${data.id}`,
           method: "PATCH",
           body: data,
       }),
-      invalidatesTags: ["Member"],
+    }),
+    profileEmail: builder.mutation({
+        query: (data) => ({
+          url: `/frontends/profileEmail`,
+          method: "POST",
+          body: data,
+      }),
     }),
   })
 })
@@ -101,12 +78,10 @@ export const userApi = createApi({
 // auto-generated based on the defined endpoints
 export const {
   useVerifyUserMutation,
-  useCreateLawyerMutation,
-  useCreateBondBailsManMutation,
-  useCreatePrivateInvestigatorsMutation,
-  useCreateSecurityMutation,
   useUpdateMemberMutation,
   useCreateMembersMutation,
+  useProfileEmailMutation,
+
   useGetMembersQuery,
   useGetMemberQuery,
   useGetMemberFromSuperIdQuery,

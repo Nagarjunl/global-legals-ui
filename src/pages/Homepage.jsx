@@ -17,6 +17,7 @@ import ReCAPTCHA from "react-google-recaptcha";
 import BanerPerson from "../assets/New_folder/banner_person_img.svg";
 import Footer from "../components/footer/Footer";
 import { useState } from "react";
+import { useForm } from "react-hook-form";
 
 
 const Homepage = () => {
@@ -26,6 +27,17 @@ const Homepage = () => {
 
   const [searchKeys, setSearchKeys] = useState();
   const navigate = useNavigate();
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = (data) => {
+    // Handle form submission logic here
+    console.log(data);
+  };
 
   return (
     <>
@@ -291,95 +303,106 @@ const Homepage = () => {
               </div>
             </div>
             <div className="col-span-3 ">
-              <div className="p-6 bg-[#eff6ff] rounded-lg">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 ">
-                  <div>
+              <form onSubmit={handleSubmit(onSubmit)}>
+                <div className="p-6 bg-[#eff6ff] rounded-lg">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 ">
+                    <div>
+                      <label
+                        htmlFor="input1"
+                        className="block font-normal text-gray text-xs mb-2"
+                      >
+                        Full Name
+                      </label>
+                      <input
+                        type="text"
+                        className="mt-1 p-3 border rounded-md w-full"
+                        {...register("fullName", {
+                          required: "Full Name is required",
+                        })}
+                      />
+                      {errors?.fullName && (
+                        <p className="mt-2 text-sm text-red-600 dark:text-red-500">
+                          {errors?.fullName?.message}{" "}
+                        </p>
+                      )}
+                    </div>
+                    <div>
+                      <label
+                        htmlFor="input2"
+                        className="block font-normal text-gray text-xs mb-2"
+                      >
+                        Email Address
+                      </label>
+                      <input
+                        type="email"
+                        className="mt-1 p-2 border rounded-md w-full"
+                        {...register("email", {
+                          required: "Email is required",
+                        })}
+                      />
+                      {errors?.email && (
+                        <p className="mt-2 text-sm text-red-600 dark:text-red-500">
+                          {errors?.email?.message}{" "}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-3">
+                    <div>
+                      <label
+                        htmlFor="input1"
+                        className="block font-normal text-gray text-xs mb-2"
+                      >
+                        Phone Number
+                      </label>
+                      <input
+                        type="text"
+                        className="mt-1 p-2 border rounded-md w-full"
+                        {...register("contactNumber")}
+                      />
+                    </div>
+                    <div>
+                      <label
+                        htmlFor="input2"
+                        className="block font-normal text-gray text-xs mb-2"
+                      >
+                        Preferred Contact method
+                      </label>
+                      <input
+                        type="text"
+                        className="mt-1 p-2 border rounded-md w-full"
+                        {...register("preferredContactMethod")}
+                      />
+                    </div>
+                  </div>
+                  <div className="grid mt-3 w-full">
                     <label
-                      htmlFor="input1"
+                      htmlFor="textarea"
                       className="block font-normal text-gray text-xs mb-2"
                     >
-                      Full Name
+                      Inquiry details
                     </label>
-                    <input
-                      type="text"
-                      id="input1"
-                      name="input1"
-                      className="mt-1 p-3 border rounded-md w-full"
-                    />
+                    <textarea
+                      rows="4"
+                      className="w-full p-2 border rounded-md"
+                      {...register("about")}
+                    ></textarea>
                   </div>
-                  <div>
-                    <label
-                      htmlFor="input2"
-                      className="block font-normal text-gray text-xs mb-2"
-                    >
-                      Email Address
-                    </label>
-                    <input
-                      type="text"
-                      id="input2"
-                      name="input2"
-                      className="mt-1 p-2 border rounded-md w-full"
-                    />
+                  <div className=" grid grid-cols-2 justify-between  mt-5 max-md:grid-cols-1  gap-3">
+                    <div className="grid justify-start items-center  ">
+                      <ReCAPTCHA
+                        sitekey="6LfAUjgpAAAAABQcBX1BtSezxeoNoBDoZk9XPS7T"
+                        onChange={handleChange}
+                      />
+                    </div>
+                    <div className="grid sm:justify-end items-center">
+                      <button className="bg-indigo-600 text-white px-10 p-2 rounded-md">
+                        Submit
+                      </button>
+                    </div>
                   </div>
                 </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-3">
-                  <div>
-                    <label
-                      htmlFor="input1"
-                      className="block font-normal text-gray text-xs mb-2"
-                    >
-                      Phone Number
-                    </label>
-                    <input
-                      type="text"
-                      id="input1"
-                      name="input1"
-                      className="mt-1 p-2 border rounded-md w-full"
-                    />
-                  </div>
-                  <div>
-                    <label
-                      htmlFor="input2"
-                      className="block font-normal text-gray text-xs mb-2"
-                    >
-                      Preferred Contact method
-                    </label>
-                    <input
-                      type="text"
-                      id="input2"
-                      name="input2"
-                      className="mt-1 p-2 border rounded-md w-full"
-                    />
-                  </div>
-                </div>
-                <div className="grid mt-3 w-full">
-                  <label
-                    htmlFor="textarea"
-                    className="block font-normal text-gray text-xs mb-2"
-                  >
-                    Inquiry details
-                  </label>
-                  <textarea
-                    id="textarea"
-                    name="textarea"
-                    rows="4"
-                    className="w-full p-2 border rounded-md"
-                  ></textarea>
-                </div>
-                <div className=" grid grid-cols-2 justify-between  mt-5 max-md:grid-cols-1  gap-3">
-                  <div className="grid justify-start items-center  ">
-                    <ReCAPTCHA
-                      sitekey="6LfAUjgpAAAAABQcBX1BtSezxeoNoBDoZk9XPS7T"
-                      onChange={handleChange}
-                    />
-                  </div>
-                  <div className="grid sm:justify-end items-center">
-                    <button className="bg-indigo-600 text-white px-10 p-2 rounded-md">
-                      Submit
-                    </button>
-                  </div>
-                </div>
-              </div>
+              </form>
             </div>
           </div>
         </div>

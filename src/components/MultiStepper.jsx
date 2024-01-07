@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ChevronRightIcon, CheckIcon } from "@heroicons/react/20/solid";
 import PayPremium from "../pages/SignUpForms/PayPremium";
 import Verification from "../pages/SignUpForms/Verification";
@@ -14,12 +14,14 @@ const steps = [
 
 export default function Example() {
   const [currentStep, setCurrentStep] = useState(0);
-  const formSubmited = useSelector((state) => state.formType.formSubmited);
+  const formSubmited = useSelector((state) => state.formType.formSubmit);
 
   const handleStepClick = (index) => {
-    // if (formSubmited)
-    setCurrentStep(index);
+    if (!formSubmited)
+      setCurrentStep(index);
   };
+
+  // useEffect(() => { if (formSubmited) setCurrentStep(2) }, [formSubmited]);
 
   return (
     <>
