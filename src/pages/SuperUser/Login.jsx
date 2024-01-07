@@ -20,14 +20,14 @@ const Login = () => {
     if (data.email === staticEmail && data.password === staticPassword) {
       navigate("/table");
     } else {
-      // setError("email", {
-      //   type: "manual",
-      //   message: "Invalid email or password",
-      // });
-      // setError("password", {
-      //   type: "manual",
-      //   message: "Invalid email or password",
-      // });
+      setError("email", {
+        type: "manual",
+        message: "Invalid email or password",
+      });
+      setError("password", {
+        type: "manual",
+        message: "Invalid email or password",
+      });
     }
   };
 

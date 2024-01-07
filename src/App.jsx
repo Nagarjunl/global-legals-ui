@@ -45,7 +45,8 @@ function App() {
               !isAuthenticated ? (
                 <AuthLayout>
                   <Routes>
-                    <Route index element={<Login />} />
+                    <Route index element={<Homepage />} />
+                    <Route path="login" element={<Login />} />
                     <Route path="register" element={<Register />} />
                     <Route path="newPassword" element={<NewPassword />} />
                     <Route path="forgetPassword" element={<ForgetPassword />} />
@@ -54,7 +55,7 @@ function App() {
                   </Routes>
                 </AuthLayout>
               ) : (
-                <Navigate to="/home" />
+                <Navigate to="/dashboard" />
               )
             }
           />

@@ -56,6 +56,7 @@ const Login = () => {
         .unwrap()
         .then((res) => {
           if (res) {
+            console.log("sfsfsfsfs")
             const { user, ...rest } = res;
             dispatch(addTokens(rest));
             dispatch(currentUser(user));
@@ -109,9 +110,8 @@ const Login = () => {
                 <>
                   <label
                     htmlFor="email"
-                    className={`block text-sm font-medium leading-6 ${
-                      errors?.email ? "text-red-700" : "text-gray-900"
-                    }`}
+                    className={`block text-sm font-medium leading-6 ${errors?.email ? "text-red-700" : "text-gray-900"
+                      }`}
                   >
                     Email address
                   </label>
@@ -134,9 +134,8 @@ const Login = () => {
                 <>
                   <label
                     htmlFor="password"
-                    className={`block text-sm font-medium leading-6 ${
-                      errors?.password ? "text-red-700" : "text-gray-900"
-                    }`}
+                    className={`block text-sm font-medium leading-6 ${errors?.password ? "text-red-700" : "text-gray-900"
+                      }`}
                   >
                     Password
                   </label>
