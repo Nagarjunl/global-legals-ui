@@ -3,9 +3,12 @@ import PrimaryButton from "../../components/PrimaryButton";
 import LeftsideBar from "../../components/Leftside-Bar";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { setSuperUser } from "../../reducers/superUserSlice";
+import { useDispatch } from "react-redux";
 
 const Login = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const {
     register,
     handleSubmit,
@@ -18,6 +21,7 @@ const Login = () => {
     const staticPassword = "superadmin";
 
     if (data.email === staticEmail && data.password === staticPassword) {
+      dispatch(setSuperUser(true))
       navigate("/table");
     } else {
       setError("email", {

@@ -17,10 +17,6 @@ const SelectForm = ({ handleStepClick }) => {
   const quota = useSelector((state) => state.user.quota);
   const verify = useSelector((state) => state.user.verify);
 
-
-  console.log(quota)
-  console.log(verify)
-
   const {
     control
   } = useForm({
@@ -48,10 +44,16 @@ const SelectForm = ({ handleStepClick }) => {
   };
 
   useEffect(() => {
-    if (verify === false) {
+    if (verify === true) {
       navigate('/dashboard/verification')
     }
-    if (quota) {
+    // if (quota === true && verify === true) {
+    //   navigate('/dashboard/appointments')
+    // } else {
+    //   navigate('/dashboard/verification')
+    // }
+
+    if (quota === true) {
       navigate('/dashboard/appointments')
     }
 

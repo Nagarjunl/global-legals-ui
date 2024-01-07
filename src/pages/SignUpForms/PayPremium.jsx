@@ -37,7 +37,6 @@ const PayPremium = ({ handleStepClick }) => {
 
   const submitMembers = async (data) => {
     const datas = { ...data, userId: currentUserId, type: formType }
-    console.log(datas)
     try {
       await createMembers(datas)
         .unwrap()

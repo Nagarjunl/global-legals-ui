@@ -46,16 +46,23 @@ const Table = () => {
                     <tr key={data.id}>
                       <td className="py-2 px-4 border-b">{data?.email}</td>
                       <td className="py-2 px-4 border-b">Success</td>
-                      <td className="py-2 px-4 border-b">{data?.verify}</td>
-                      <div>
+                      <td className="py-2 px-4 border-b">{data?.verify === true ? "true" : "false"}</td>
+                      <td>
                         <button type="submit"
                           disabled={verifyingmember}
-                          className="rounded-md mt-2 text-white bg-blue-800 border-blue-800 px-20 py-2 text-sm font-semibol shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 border border-solid "
+                          className="rounded-md my-1 mr-1 text-white bg-blue-800 border-blue-800 px-20 py-2 text-sm font-semibol shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 border border-solid "
                           onClick={() => submitMember(data)}
                         >
                           Submit
                         </button>
-                      </div>
+                        <button type="submit"
+                          disabled={verifyingmember}
+                          className="rounded-md my-1 text-white bg-blue-800 border-blue-800 px-20 py-2 text-sm font-semibol shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 border border-solid "
+                          onClick={() => submitMember(data)}
+                        >
+                          Undo
+                        </button>
+                      </td>
                     </tr>
 
                   ))

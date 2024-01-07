@@ -60,14 +60,16 @@ function App() {
             }
           />
 
-
           <Route path="/table"
             element={
-              <Table />}
+              <DashboardLayout>
+                <Table />
+              </DashboardLayout>
+            }
           />
           <Route path="/superUser" element={<SuperUserLogin />} />
 
-          <Route path="/home" element={<Homepage />} />
+          <Route path="/" element={<Homepage />} />
 
           <Route
             path="profileDetails/:memberId"

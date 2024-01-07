@@ -1,7 +1,6 @@
 import trophy from "../assets/tropy.png";
 import telephone from "../assets/telephone.png";
 import circle from "../assets/circle.png";
-import PrimaryButton from "./PrimaryButton";
 import PropTypes from 'prop-types';
 
 import profileImg from "../assets/avator.png";

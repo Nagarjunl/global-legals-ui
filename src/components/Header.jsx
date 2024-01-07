@@ -9,10 +9,11 @@ import { removeUser } from "../reducers/userSlice";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import PropTypes from "prop-types";
-import { formData } from "../reducers/formTypeSlice";
+import { formData, formSubmited, formType } from "../reducers/formTypeSlice";
+import { setSuperUser } from "../reducers/superUserSlice";
 
 // import { GoogleLogout } from "react-google-login";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -22,15 +23,12 @@ function classNames(...classes) {
 //   "1088488217067-p3bcsi9hbqg9v5befpfir4ak29dfd28i.apps.googleusercontent.com";
 
 const Example = ({ hideHeaderAvator }) => {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
-  // const onSuccess = () => {
-  //   console.log("Log out Successfully");
-  //   navigate("/");
-  // };
   const dispatch = useDispatch();
   const id = useSelector((state) => state.user.id);
   const verify = useSelector((state) => state.user.verify);
+  const superUser = useSelector((state) => state.superUser.superUser);
 
   return (
     <Disclosure as="nav" className="bg-white shadow">
@@ -106,23 +104,48 @@ const Example = ({ hideHeaderAvator }) => {
                           </Menu.Item> : ""
                         }
 
-                        <Menu.Item>
-                          {({ active }) => (
-                            <a
-                              href="#"
-                              className={classNames(
-                                active ? "bg-gray-100" : "",
-                                "block px-4 py-2 text-sm text-gray-700"
+                        {
+                          superUser ?
+                            <Menu.Item>
+                              {({ active }) => (
+                                <a
+                                  href="#"
+                                  className={classNames(
+                                    active ? "bg-gray-100" : "",
+                                    "block px-4 py-2 text-sm text-gray-700"
+                                  )}
+                                  onClick={() => {
+                                    dispatch(setSuperUser(false));
+                                    navigate("/");
+                                  }}
+                                >
+                                  Super Sign Out
+                                </a>
                               )}
-                              onClick={() => {
-                                dispatch(removeTokens());
-                                dispatch(removeUser());
-                              }}
-                            >
-                              Sign out
-                            </a>
-                          )}
-                        </Menu.Item>
+                            </Menu.Item>
+                            :
+                            <Menu.Item>
+                              {({ active }) => (
+                                <a
+                                  href="#"
+                                  className={classNames(
+                                    active ? "bg-gray-100" : "",
+                                    "block px-4 py-2 text-sm text-gray-700"
+                                  )}
+                                  onClick={() => {
+                                    dispatch(removeTokens());
+                                    dispatch(removeUser());
+                                    dispatch(formData(""));
+                                    dispatch(formSubmited(""));
+                                    dispatch(formType(""));
+                                  }}
+                                >
+                                  Sign out
+                                </a>
+                              )}
+                            </Menu.Item>
+
+                        }
                         {/* <Menu.Item>
                             {({ active }) => (
                               <GoogleLogout

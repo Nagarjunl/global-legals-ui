@@ -51,12 +51,7 @@ const Nav = () => {
                 </Link>
               </li>
               <li>
-                <a
-                  href="#"
-                  className="block py-2 px-3 text-white rounded hover:bg-transparent md:hover:bg-transparent md:border-0 md:hover:text-white md:p-0"
-                >
-                  <Link to="/login">Business Signup</Link>
-                </a>
+                <Link to="/login">Business Signup</Link>
               </li>
               <li>
                 <a
