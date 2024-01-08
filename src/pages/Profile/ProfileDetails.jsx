@@ -16,6 +16,10 @@ import { useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 
+import "../../../src/styles.css";
+
+import ReactHtmlParser from 'react-html-parser';
+
 const ProfileDetails = ({ hideSchedule }) => {
   const parser = new DOMParser();
 
@@ -36,30 +40,26 @@ const ProfileDetails = ({ hideSchedule }) => {
 
   const [profileEmail, { isLoading: submitingEmailForm }] = useProfileEmailMutation();
 
-
   const searchData = member ? member : supermember;
 
   const pathSwitch = () => {
-    if (data.type === "Lawyers") {
+    if (searchData.type === "Lawyers") {
       console.log("Lwyers");
-      navigate(`/dashboard/lawyerDetails/${data.userId}`);
+      navigate(`/dashboard/lawyerDetails/${searchData.userId}`);
     }
-    if (data.type === "BondBailsman") {
+    if (searchData.type === "BondBailsman") {
       console.log("bondBailsman");
-      navigate(`/dashboard/bondBailsman/${data.userId}`);
+      navigate(`/dashboard/bondBailsman/${searchData.userId}`);
     }
-    if (data.type === "Security") {
+    if (searchData.type === "Security") {
       console.log("securityDetails");
-      navigate(`/dashboard/securityDetails/${data.userId}`);
+      navigate(`/dashboard/securityDetails/${searchData.userId}`);
     }
 
-    if (data.type === "PrivateInvestigators") {
-      navigate(`/dashboard/privateInvestigators/${data.userId}`);
+    if (searchData.type === "PrivateInvestigators") {
+      navigate(`/dashboard/privateInvestigators/${searchData.userId}`);
     }
   };
-
-  const doc = parser.parseFromString(searchData?.professional, "text/html");
-  const plainText = doc.body.textContent || "";
 
   const {
     register,
@@ -79,7 +79,7 @@ const ProfileDetails = ({ hideSchedule }) => {
   }
 
   const onSubmit = (formData) => {
-    const result = { ...formData, email: searchData?.email }
+    const result = { ...formData, profileMail: searchData?.email, mailFrom: "profile" }
     submitMailForm(result);
   };
 
@@ -87,19 +87,14 @@ const ProfileDetails = ({ hideSchedule }) => {
     <>
       <main>
         <div className="mx-auto container max-sm:px-6 lg:px-[120px] pb-3">
-          {/* Profilecard */}
           <div className="mt-5">
             <ProfileCard data={searchData} hideSchedule={hideSchedule} />
           </div>
-          {/* ProfileDetails */}
           <div className=" max-md:px-2">
-            <div>
-              <p className="pt-5">
-                {searchData?.professional}
-              </p>
+            <div className="pt-2 professional_data">
+              {ReactHtmlParser(searchData?.professional)}
             </div>
           </div>
-          {/* Meeting card */}
 
           {!hideSchedule ? (
             <>
@@ -173,7 +168,6 @@ const ProfileDetails = ({ hideSchedule }) => {
                         <h2 className=" font-bold text-2xl mb-[-20px]">
                           Contact Form
                         </h2>
-                        <h2 className=" font-bold text-2xl mb-[-20px] mt-4">{ack}</h2>
                         <div className="mt-10 grid grid-cols-1 gap-x-4 gap-y-4 sm:grid-cols-6">
                           <div className="sm:col-span-3">
                             <label className="block text-sm font-medium leading-6 text-gray-900">
@@ -296,7 +290,9 @@ const ProfileDetails = ({ hideSchedule }) => {
                         <div className=" w-60 pt-5">
                           {
                             !submitingEmailForm ?
-                              <PrimaryButton type="submit" disabled={submitingEmailForm} buttonText="Send OTP" />
+                              <>
+                                <PrimaryButton type="submit" disabled={submitingEmailForm} buttonText="Send OTP" />
+                              </>
                               :
                               <div>
                                 <button
@@ -311,6 +307,7 @@ const ProfileDetails = ({ hideSchedule }) => {
                               </div>
                           }
                         </div>
+                        <h2 className=" font-bold text-2xl mb-[-20px] mt-6 text-green-600 dark:text-green-500 pb-3">{ack}</h2>
                       </form>
                     </div>
                   </div>

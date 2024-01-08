@@ -26,11 +26,57 @@ const people = [
 ]
 
 const states = [
-  { id: 1, type: "location", value: "Alaska" },
-  { id: 2, type: "location", value: "Arizona" },
-  { id: 3, type: "location", value: "Arkansas" },
-  { id: 4, type: "location", value: "California" },
-  { id: 5, type: "location", value: "Colorado" },
+  { id: 1, type: "location", value: "Alabama" },
+  { id: 2, type: "location", value: "Alaska" },
+  { id: 3, type: "location", value: "Arizona" },
+  { id: 4, type: "location", value: "Arkansas" },
+  { id: 5, type: "location", value: "California" },
+  { id: 6, type: "location", value: "Colorado" },
+  { id: 7, type: "location", value: "Connecticut" },
+  { id: 8, type: "location", value: "Delaware" },
+  { id: 9, type: "location", value: "District Of Columbia" },
+  { id: 10, type: "location", value: "Florida" },
+  { id: 11, type: "location", value: "Georgia" },
+  { id: 12, type: "location", value: "Hawaii" },
+  { id: 13, type: "location", value: "Idaho" },
+  { id: 14, type: "location", value: "Illinois" },
+  { id: 15, type: "location", value: "Indiana" },
+  { id: 16, type: "location", value: "Iowa" },
+  { id: 17, type: "location", value: "Kansas" },
+  { id: 18, type: "location", value: "Kentucky" },
+  { id: 19, type: "location", value: "Louisiana" },
+  { id: 20, type: "location", value: "Maine" },
+  { id: 21, type: "location", value: "Maryland" },
+  { id: 22, type: "location", value: "Massachusetts" },
+  { id: 23, type: "location", value: "Michigan" },
+  { id: 24, type: "location", value: "Minnesota" },
+  { id: 25, type: "location", value: "Mississippi" },
+  { id: 26, type: "location", value: "Missouri" },
+  { id: 27, type: "location", value: "Montana" },
+  { id: 28, type: "location", value: "Nebraska" },
+  { id: 29, type: "location", value: "Nevada" },
+  { id: 30, type: "location", value: "New Hampshire" },
+  { id: 31, type: "location", value: "New Jersey" },
+  { id: 32, type: "location", value: "New Mexico" },
+  { id: 33, type: "location", value: "New York" },
+  { id: 34, type: "location", value: "North Carolina" },
+  { id: 35, type: "location", value: "North Dakota" },
+  { id: 36, type: "location", value: "Ohio" },
+  { id: 37, type: "location", value: "Oklahoma" },
+  { id: 38, type: "location", value: "Oregon" },
+  { id: 39, type: "location", value: "Pennsylvania" },
+  { id: 40, type: "location", value: "Rhode Island" },
+  { id: 41, type: "location", value: "South Carolina" },
+  { id: 42, type: "location", value: "South Dakota" },
+  { id: 43, type: "location", value: "Tennessee" },
+  { id: 44, type: "location", value: "Texas" },
+  { id: 45, type: "location", value: "Utah" },
+  { id: 46, type: "location", value: "Vermont" },
+  { id: 47, type: "location", value: "Virginia" },
+  { id: 48, type: "location", value: "Washington" },
+  { id: 49, type: "location", value: "West Virginia" },
+  { id: 50, type: "location", value: "Wisconsin" },
+  { id: 51, type: "location", value: "Wyoming" },
 ]
 
 const ratings = [
@@ -63,16 +109,16 @@ function SearchProfile() {
   return (
     <div className="mx-auto container max-sm:px-6 lg:px-[120px] pb-3">
       <div>
-        <div className="mt-10 grid xs:grid-cols-1 lg:grid-cols-3 gap-4">
+        <div className="mt-10 grid xs:grid-cols-1 lg:grid-cols-2 gap-4">
           <div>
             <Select selectData={people} />
           </div>
           <div>
             <Select selectData={states} />
           </div>
-          <div>
+          {/* <div>
             <Select selectData={ratings} />
-          </div>
+          </div> */}
 
         </div>
         <div className=" flex flex-wrap mt-4 gap-4 align-text-center">
@@ -116,11 +162,16 @@ function SearchProfile() {
                 <LawyerCard
                   image={data.idProof}
                   fName={data.clientName}
+                  email={data.email}
+                  type={data.type}
                   cups={cupImage}
-                  topRated="Top Rated  Attorney"
+                  topRated="Top Rated Attorney"
+                  designation={
+                    data.type === "Lawyers" ? data.practicingLaw :
+                      data.type === "BondBailsman" ? data.licenseNumber :
+                        data.type === "PrivateInvestigators" ? data.licenseNumber : data.licenseNumber
+                  }
                   selfIntro={data.professional}
-                  pratcingAt={data.practicingLaw}
-                  designation={data.legalSpecialization}
                 />
               </Link>
             )

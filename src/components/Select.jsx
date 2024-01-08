@@ -24,7 +24,6 @@ const Select = ({ selectData }) => {
       dispatch(setRatings(selected?.value));
   }, [selected]);
 
-
   return (
     <Listbox value={selected} onChange={setSelected}>
       {({ open }) => (

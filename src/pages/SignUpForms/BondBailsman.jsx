@@ -18,6 +18,9 @@ import { formData } from "../../reducers/formTypeSlice";
 import { useUpdateMemberMutation, useGetMemberFromSuperIdQuery } from "../../services/userAPI";
 import { useNavigate, useParams } from "react-router-dom";
 
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
+
 // const baseUrl = import.meta.env.VITE_API_URL;
 const baseUrl = "https://api.chitmanager.com/";
 
@@ -121,18 +124,18 @@ function BondBailsman({ handleStepClick }) {
           setValue(`${key}`, false);
           return false;
         }
-        if (`${key}` === "dateOfLicenceing") {
-          setValue(`${key}`, new Date(`${formDatas[key]}`));
-          return false;
-        }
-        if (`${key}` === "licenseExpiryDate") {
-          setValue(`${key}`, new Date(`${formDatas[key]}`));
-          return false;
-        }
-        if (`${key}` === "expirationDateOfInsurance") {
-          setValue(`${key}`, new Date(`${formDatas[key]}`));
-          return false;
-        }
+        // if (`${key}` === "dateOfLicenceing") {
+        //   setValue(`${key}`, new Date(`${formDatas[key]}`));
+        //   return false;
+        // }
+        // if (`${key}` === "licenseExpiryDate") {
+        //   setValue(`${key}`, new Date(`${formDatas[key]}`));
+        //   return false;
+        // }
+        // if (`${key}` === "expirationDateOfInsurance") {
+        //   setValue(`${key}`, new Date(`${formDatas[key]}`));
+        //   return false;
+        // }
         if (`${formDatas[key]}` === null || `${formDatas[key]}` === "null") {
           setValue(`${key}`, "");
           return false;
@@ -307,7 +310,27 @@ function BondBailsman({ handleStepClick }) {
                   </div>
                 </div>
               </div>
-
+            </div>
+            <div className="mt-2">
+              <h5 className="font-normal leading-[17.16px] text-[12px]">
+                Write a professional Bio
+              </h5>
+              <div className="mt-2">
+                <Controller
+                  name="professional"
+                  control={control}
+                  render={({ field: { value, onChange } }) =>
+                    <ReactQuill
+                      theme="snow"
+                      value={value}
+                      onChange={onChange}
+                    />
+                  }
+                />
+                {errors.professional && (
+                  <p className="text-red-500">{errors.professional.message}</p>
+                )}
+              </div>
             </div>
           </div>
 
@@ -336,7 +359,7 @@ function BondBailsman({ handleStepClick }) {
                 Date of Licensing
               </h5>
               <div className="mt-2">
-                <Controller
+                {/* <Controller
                   name="dateOfLicenceing"
                   control={control}
                   rules={{
@@ -356,7 +379,13 @@ function BondBailsman({ handleStepClick }) {
                 />
                 {errors.dateOfLicenceing && (
                   <p className="text-red-500">{errors.dateOfLicenceing.message}</p>
-                )}
+                )} */}
+                <input
+                  type="text"
+                  {...register("dateOfLicenceing")}
+                  placeholder="Enter date of licensing"
+                  className="block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                />
               </div>
             </div>
             <div className="sm:col-span-3">
@@ -459,7 +488,7 @@ function BondBailsman({ handleStepClick }) {
                 Experience Date of Insurance
               </h5>
               <div className="mt-2">
-                <Controller
+                {/* <Controller
                   name="expirationDateOfInsurance"
                   control={control}
                   rules={{
@@ -479,7 +508,14 @@ function BondBailsman({ handleStepClick }) {
                 />
                 {errors.expirationDateOfInsurance && (
                   <p className="text-red-500">{errors.expirationDateOfInsurance.message}</p>
-                )}
+                )} */}
+
+                <input
+                  type="text"
+                  {...register("expirationDateOfInsurance")}
+                  placeholder="Enter exipiration date of insurance"
+                  className="block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                />
               </div>
             </div>
           </div>
@@ -569,7 +605,7 @@ function BondBailsman({ handleStepClick }) {
                 showcase your expertise. Click below to
                 <br /> elevate your professional reputation on Global legals
               </p>
-              <button className="mt-2 flex items-center justify-center px-4 py-2 border border-gray-300 rounded-md bg-white text-gray-700 hover:bg-gray-100 focus:outline-none focus:border-blue-300 focus:ring focus:ring-blue-200 w-72">
+              {/* <button className="mt-2 flex items-center justify-center px-4 py-2 border border-gray-300 rounded-md bg-white text-gray-700 hover:bg-gray-100 focus:outline-none focus:border-blue-300 focus:ring focus:ring-blue-200 w-72">
                 <div className="flex justify-center">
                   <img
                     src={GoogleImage}
@@ -578,7 +614,7 @@ function BondBailsman({ handleStepClick }) {
                   />
                   <p className="ml-3">Connect with Google</p>
                 </div>
-              </button>
+              </button> */}
             </div>
           </div>
 

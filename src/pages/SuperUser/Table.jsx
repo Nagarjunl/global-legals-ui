@@ -6,8 +6,6 @@ const Table = () => {
   const { data, isLoading } = useUnverifiedUserQuery();
   const [verifyMember, { isLoading: verifyingmember }] = useVerifyUserMutation();
 
-  // console.log(data[0].email);
-
   const submitMember = async (data) => {
     try {
       await verifyMember(data)
@@ -55,13 +53,13 @@ const Table = () => {
                         >
                           Submit
                         </button>
-                        <button type="submit"
+                        {/* <button type="submit"
                           disabled={verifyingmember}
                           className="rounded-md my-1 text-white bg-blue-800 border-blue-800 px-20 py-2 text-sm font-semibol shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 border border-solid "
-                          onClick={() => submitMember(data)}
+                          onClick={ }
                         >
                           Undo
-                        </button>
+                        </button> */}
                       </td>
                     </tr>
 

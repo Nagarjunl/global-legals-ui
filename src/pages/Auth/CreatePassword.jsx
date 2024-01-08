@@ -42,7 +42,7 @@ const CreatePassword = () => {
             dispatch(addTokens(rest));
             dispatch(currentUser(user));
             dispatch(clearEmail());
-            navigate("/");
+            navigate("/dashboard");
           }
         });
     } catch (error) {

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import GoogleImage from "../../assets/Google-image.png";
 import ReCAPTCHA from "react-google-recaptcha";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import { useSelector, useDispatch } from 'react-redux';
 import { formData } from "../../reducers/formTypeSlice";
 
@@ -13,6 +13,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import "../../styles.css";
 import { useUpdateMemberMutation, useGetMemberFromSuperIdQuery } from "../../services/userAPI";
 
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 
 // const baseUrl = import.meta.env.VITE_API_URL;
 const baseUrl = "https://api.chitmanager.com/";
@@ -35,6 +37,7 @@ const LawyerEnterDetails = ({ handleStepClick }) => {
     register,
     handleSubmit,
     setValue,
+    control,
     formState: { errors },
   } = useForm();
 
@@ -269,13 +272,16 @@ const LawyerEnterDetails = ({ handleStepClick }) => {
                 Write a professional Bio
               </h5>
               <div className="mt-2">
-                <textarea
-                  rows={4}
-                  {...register("professional")}
-                  id="comment"
-                  className="block w-full  p-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                  defaultValue={""}
-                  placeholder="Write a professional Bio"
+                <Controller
+                  name="professional"
+                  control={control}
+                  render={({ field: { value, onChange } }) =>
+                    <ReactQuill
+                      theme="snow"
+                      value={value}
+                      onChange={onChange}
+                    />
+                  }
                 />
                 {errors.professional && (
                   <p className="text-red-500">{errors.professional.message}</p>
@@ -449,7 +455,7 @@ const LawyerEnterDetails = ({ handleStepClick }) => {
                 showcase your expertise. Click below to
                 <br /> elevate your professional reputation on Global legals
               </p>
-              <button className="mt-2 flex items-center justify-center px-4 py-2 border border-gray-300 rounded-md bg-white text-gray-700 hover:bg-gray-100 focus:outline-none focus:border-blue-300 focus:ring focus:ring-blue-200 w-72">
+              {/* <button className="mt-2 flex items-center justify-center px-4 py-2 border border-gray-300 rounded-md bg-white text-gray-700 hover:bg-gray-100 focus:outline-none focus:border-blue-300 focus:ring focus:ring-blue-200 w-72">
                 <div className="flex justify-center">
                   <img
                     src={GoogleImage}
@@ -458,7 +464,7 @@ const LawyerEnterDetails = ({ handleStepClick }) => {
                   />
                   <p className="ml-3">Connect with Google</p>
                 </div>
-              </button>
+              </button> */}
             </div>
           </div>
           <div className="flex-1 border-t border-gray-300 mt-3"></div>

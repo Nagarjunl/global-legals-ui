@@ -51,8 +51,6 @@
     font-size: 25px !important;
 }
 
-
-
 .remove_img {
     background-color: bisque;
     border-radius: 69%;
@@ -63,4 +61,33 @@
     padding: 4px 8px;
     font-size: 11px;
     cursor: pointer;
+}
+
+.professional_data h1 {
+    font-size: 30px;
+    font-weight: 500;
+}
+
+.professional_data h2 {
+    font-size: 27px;
+    font-weight: 500;
+}
+
+.professional_data h3 {
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.professional_data ol {
+    list-style: auto;
+    margin-left: 30px;
+}
+
+.professional_data ul {
+    list-style: disc;
+    margin-left: 30px;
+}
+
+.professional_data a {
+    color: #3366CC;
 }

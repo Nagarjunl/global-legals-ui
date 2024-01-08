@@ -44,22 +44,25 @@ const Nav = () => {
               <li>
                 <Link
                   href="#"
-                  className="block py-2 px-3 text-white hover:bg-transparent   rounded md:bg-transparent md:text-white-700 md:p-0 "
+                  className="block py-2 px-3 text-white md:p-0 "
                   aria-current="page"
                 >
                   Home
                 </Link>
               </li>
               <li>
-                <Link to="/login">Business Signup</Link>
-              </li>
-              <li>
                 <a
                   href="#"
-                  className="block py-2 px-3 text-white rounded hover:bg-transparent md:hover:bg-transparent md:border-0 md:hover:text-white md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                  className="block py-2 px-3 text-white  md:p-0"
                 >
                   FAQ
                 </a>
+              </li>
+              <li>
+                <Link
+                  to="/login"
+                  className="font-bold text-green-900  bg-white  hover:bg-green-900 hover:text-white hover:font-semibold focus:ring-4 focus:outline-none  rounded-full text-sm px-6 py-3"
+                >Business Signup</Link>
               </li>
             </ul>
           </div>

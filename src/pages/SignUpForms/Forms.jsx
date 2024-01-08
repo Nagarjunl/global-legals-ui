@@ -44,19 +44,13 @@ const SelectForm = ({ handleStepClick }) => {
   };
 
   useEffect(() => {
-    if (verify === true) {
-      navigate('/dashboard/verification')
-    }
-    // if (quota === true && verify === true) {
-    //   navigate('/dashboard/appointments')
-    // } else {
-    //   navigate('/dashboard/verification')
-    // }
-
-    if (quota === true) {
+    if (quota === true && verify === true) {
       navigate('/dashboard/appointments')
+    } else if (quota === true) {
+      navigate('/dashboard/verification')
+    } else {
+      navigate('/dashboard')
     }
-
   }, [verify, quota, navigate])
 
   return (

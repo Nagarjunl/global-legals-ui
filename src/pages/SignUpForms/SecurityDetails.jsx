@@ -7,7 +7,8 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { useDispatch, useSelector } from 'react-redux'
 import { formData } from "../../reducers/formTypeSlice";
-
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 
 import {
   usePostFileMutation,
@@ -123,18 +124,18 @@ const SecurityDetails = ({ handleStepClick }) => {
           setValue(`${key}`, false);
           return false;
         }
-        if (`${key}` === "dateOfLicenceing") {
-          setValue(`${key}`, new Date(`${formDatas[key]}`));
-          return false;
-        }
-        if (`${key}` === "licenseExpiryDate") {
-          setValue(`${key}`, new Date(`${formDatas[key]}`));
-          return false;
-        }
-        if (`${key}` === "expirationDateOfInsurance") {
-          setValue(`${key}`, new Date(`${formDatas[key]}`));
-          return false;
-        }
+        // if (`${key}` === "dateOfLicenceing") {
+        //   setValue(`${key}`, new Date(`${formDatas[key]}`));
+        //   return false;
+        // }
+        // if (`${key}` === "licenseExpiryDate") {
+        //   setValue(`${key}`, new Date(`${formDatas[key]}`));
+        //   return false;
+        // }
+        // if (`${key}` === "expirationDateOfInsurance") {
+        //   setValue(`${key}`, new Date(`${formDatas[key]}`));
+        //   return false;
+        // }
         if (`${formDatas[key]}` === null || `${formDatas[key]}` === "null") {
           setValue(`${key}`, "");
           return false;
@@ -270,13 +271,20 @@ const SecurityDetails = ({ handleStepClick }) => {
               Write a professional Bio
             </h5>
             <div className="mt-2">
-              <textarea
-                rows={4}
-                className="block w-full  p-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                defaultValue={""}
-                placeholder="Write a professional Bio"
-                {...register("professionalBio")}
+              <Controller
+                name="professional"
+                control={control}
+                render={({ field: { value, onChange } }) =>
+                  <ReactQuill
+                    theme="snow"
+                    value={value}
+                    onChange={onChange}
+                  />
+                }
               />
+              {errors.professional && (
+                <p className="text-red-500">{errors.professional.message}</p>
+              )}
             </div>
           </div>
         </div>
@@ -302,7 +310,7 @@ const SecurityDetails = ({ handleStepClick }) => {
               License Expiry Date
             </h5>
             <div className="mt-2">
-              <Controller
+              {/* <Controller
                 name="licenseExpiryDate"
                 control={control}
                 rules={{
@@ -324,7 +332,13 @@ const SecurityDetails = ({ handleStepClick }) => {
                 errors.licenseExpiryDate && (
                   <p className="text-red-500">{errors.licenseExpiryDate.message}</p>
                 )
-              }
+              } */}
+              <input
+                type="text"
+                {...register("licenseExpiryDate")}
+                placeholder="Enter exipiration date of license"
+                className="block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              />
             </div>
           </div>
           <div className="sm:col-span-3 ">
@@ -557,7 +571,7 @@ const SecurityDetails = ({ handleStepClick }) => {
               Expiration date of Insurance ( if-applicable)
             </h5>
             <div className="mt-2">
-              <Controller
+              {/* <Controller
                 name="expirationDateOfInsurance"
                 control={control}
                 rules={{
@@ -578,7 +592,14 @@ const SecurityDetails = ({ handleStepClick }) => {
                 errors.expirationDateOfInsurance && (
                   <p className="text-red-500">{errors.expirationDateOfInsurance.message}</p>
                 )
-              }
+              } */}
+
+              <input
+                type="text"
+                {...register("expirationDateOfInsurance")}
+                placeholder="Enter exipiration date of insurance"
+                className="block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              />
             </div>
 
           </div>
@@ -692,7 +713,7 @@ const SecurityDetails = ({ handleStepClick }) => {
               showcase your expertise. Click below to
               <br /> elevate your professional reputation on Global legals
             </p>
-            <button className="mt-2 flex items-center justify-center px-4 py-2 border border-gray-300 rounded-md bg-white text-gray-700 hover:bg-gray-100 focus:outline-none focus:border-blue-300 focus:ring focus:ring-blue-200 w-72">
+            {/* <button className="mt-2 flex items-center justify-center px-4 py-2 border border-gray-300 rounded-md bg-white text-gray-700 hover:bg-gray-100 focus:outline-none focus:border-blue-300 focus:ring focus:ring-blue-200 w-72">
               <div className="flex justify-center">
                 <img
                   src={GoogleImage}
@@ -701,7 +722,7 @@ const SecurityDetails = ({ handleStepClick }) => {
                 />
                 <p className="ml-3">Connect with Google</p>
               </div>
-            </button>
+            </button> */}
           </div>
         </div>
         <div className="flex-1 border-t border-gray-300 mt-3"></div>

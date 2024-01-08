@@ -11,9 +11,10 @@ const LawyerCard = ({
   fName,
   cups,
   topRated,
-  pratcingAt,
   designation,
   selfIntro,
+  type,
+  email,
 }) => {
   return (
     <>
@@ -49,8 +50,8 @@ const LawyerCard = ({
               <div className=" flex text-lg text-gray-600 ">
                 <span className="inline-flex  py-2  text-sm font-medium ">
                   <img src={Phone} alt="Phone" className="w-10 px-2" />
-                  {" Practioning at "}
-                  <span className="text-blue-700 px-2">{pratcingAt}</span>
+                  {type === "Lawyers" ? "Practicing at " : "Licence Number "}
+                  <span className="text-blue-700 px-2">{designation}</span>
                 </span>
               </div>
               <div className=" flex text-lg text-gray-600 ">
@@ -60,10 +61,10 @@ const LawyerCard = ({
                     alt="Phone"
                     className=" px-2 w-auto h-6   sm:w-auto"
                   />
-                  {designation}
+                  {email}
                 </span>
               </div>
-              <div className=" flex text-lg text-gray-600 ">
+              {/* <div className=" flex text-lg text-gray-600 ">
                 <span className="inline-flex  px-2 py-1 text-sm font-medium ">
                   {selfIntro}
                 </span>
@@ -73,7 +74,7 @@ const LawyerCard = ({
                   {"Client / Peer Review"}
                 </span>
               </div>
-              <div className="text-lg px-2">{"4.2 / 5.0"}</div>
+              <div className="text-lg px-2">{"4.2 / 5.0"}</div> */}
             </div>
             <div className="mt-auto pb-5 ">
               <button
