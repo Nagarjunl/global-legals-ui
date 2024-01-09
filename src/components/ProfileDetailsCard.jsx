@@ -3,9 +3,6 @@ import circle from "../assets/circle.png";
 import PropTypes from 'prop-types';
 import CircleImg from "../assets/circle.png";
 import Phone from "../assets/image 24.png";
-
-
-
 import profileImg from "../assets/avator.png";
 
 const baseUrl = import.meta.env.VITE_API_URL;
