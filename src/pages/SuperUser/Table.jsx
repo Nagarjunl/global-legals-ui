@@ -4,11 +4,11 @@ import { useUnverifiedUserQuery, useVerifyUserMutation } from "../../services/us
 const Table = () => {
 
   const { data, isLoading } = useUnverifiedUserQuery();
-  const [verifyMember, { isLoading: verifyingmember }] = useVerifyUserMutation();
+  const [verifyUser, { isLoading: verifyingmember }] = useVerifyUserMutation();
 
   const submitMember = async (data) => {
     try {
-      await verifyMember(data)
+      await verifyUser(data)
         .unwrap()
         .then((res) => {
           console.log(res);

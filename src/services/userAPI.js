@@ -6,7 +6,7 @@ import customFetchBase from './customFetchBase'
 export const userApi = createApi({
   reducerPath: 'userApi',
   baseQuery: customFetchBase,
-  tagTypes: ["Member"],
+  tagTypes: ["Member","Verify"],
   endpoints: (builder) => ({
     createMembers: builder.mutation({
         query: (data) => ({
@@ -56,6 +56,7 @@ export const userApi = createApi({
           url: `/frontends/unverified`,
           method: "GET",
       }),
+      providesTags: ["Verify"],
     }),
     verifyUser: builder.mutation({
         query: (data) => ({
@@ -63,6 +64,7 @@ export const userApi = createApi({
           method: "PATCH",
           body: data,
       }),
+      invalidatesTags: ["Verify"],
     }),
     profileEmail: builder.mutation({
         query: (data) => ({
