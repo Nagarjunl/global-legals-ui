@@ -18,10 +18,8 @@ import { useState } from "react";
 
 import "../../../src/styles.css";
 
-import ReactHtmlParser from 'react-html-parser';
 
 const ProfileDetails = ({ hideSchedule }) => {
-  const parser = new DOMParser();
 
   const [ack, setAck] = useState();
 
@@ -92,7 +90,7 @@ const ProfileDetails = ({ hideSchedule }) => {
           </div>
           <div className=" max-md:px-2">
             <div className="pt-2 professional_data">
-              {ReactHtmlParser(searchData?.professional)}
+              <div dangerouslySetInnerHTML={{ __html: searchData?.professional }} />
             </div>
           </div>
 
