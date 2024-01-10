@@ -7,16 +7,8 @@ import cupImage from "../../assets/image25.svg";
 import Select from "../../components/Select";
 import { IoIosCloseCircleOutline } from "react-icons/io";
 import { Link, useParams } from "react-router-dom";
-import { setPeople } from "../../reducers/searchSlice";
+import { setPeople, setLocation } from "../../reducers/searchSlice";
 
-const badgeData = [
-  {
-    badge: "Labour and Employment",
-  },
-  {
-    badge: "India, USA",
-  },
-];
 
 const people = [
   { id: 1, type: "people", value: 'Lawyers' },
@@ -98,65 +90,110 @@ function SearchProfile() {
     skip: searchParams === undefined,
   });
 
-  useEffect(() => {
-    setSearchParams(searchData)
-  }, [searchData]);
+  const [searchTag, setsearchTag] = useState();
 
   useEffect(() => {
-    dispatch(setPeople(searchKeys));
+    const people = searchData?.people?.value === undefined ? "" : searchData?.people?.value;
+    const location = searchData?.location?.value === undefined ? "" : searchData?.location?.value;
+    const searchParam = `${people} ${location}`;
+
+    if (searchData?.people?.value === undefined && searchData?.location?.value === undefined) {
+      console.log("true");
+      setSearchParams("true");
+    } else {
+      console.log("false");
+      setSearchParams(searchParam);
+    }
+  }, [searchData, setSearchParams]);
+
+  useEffect(() => {
+    if (searchKeys === undefined) {
+      setSearchParams("true");
+    } else {
+      setSearchParams(searchKeys);
+    }
   }, [searchKeys]);
+
+  useEffect(() => {
+    setsearchTag(searchData);
+  }, [searchTag, searchData, setsearchTag]);
+
 
   return (
     <div className="mx-auto container max-sm:px-6 lg:px-[120px] pb-3">
       <div>
         <div className="mt-10 grid xs:grid-cols-1 lg:grid-cols-2 gap-4">
           <div>
-            <Select selectData={people} />
+            <Select selectData={people} initialValue={searchData?.people} />
           </div>
           <div>
-            <Select selectData={states} />
+            <Select selectData={states} initialValue={searchData?.location} />
           </div>
-          {/* <div>
-            <Select selectData={ratings} />
-          </div> */}
 
         </div>
         <div className=" flex flex-wrap mt-4 gap-4 align-text-center">
           <h2 className=" sm:text-lg"> Applied Filters</h2>
-          {badgeData.map((badges, index) => (
+          {searchTag?.people !== "" &&
             <span
               className="inline-flex items-center gap-x-0.5 rounded-full bg-gray-100 px-2 py-1 text-xs font-medium text-blue-600  ring-gray-500/10"
-              key={index}
             >
-              {badges.badge}
+              {searchTag?.people?.value}
               <button
                 type="button"
                 className="group relative -mr-1 h-3.5 w-3.5 rounded-sm hover:bg-gray-500/20"
+                onClick={() => dispatch(setPeople(""))}
+
               >
                 <span className="sr-only">Remove</span>
                 <svg
                   viewBox="0 0 14 14"
                   className="h-4 w-4.5 stroke-gray-600/50 group-hover:stroke-gray-600/75"
                 >
-                  <IoIosCloseCircleOutline className="text-gray-500" />
+                  <IoIosCloseCircleOutline
+                    className="text-gray-500"
+                  />                </svg>
+                <span className="absolute -inset-1" />
+              </button>
+            </span>
+          }
+          {searchTag?.location !== "" &&
+            <span
+              className="inline-flex items-center gap-x-0.5 rounded-full bg-gray-100 px-2 py-1 text-xs font-medium text-blue-600  ring-gray-500/10"
+            >
+              {searchTag?.location?.value}
+              <button
+                type="button"
+                className="group relative -mr-1 h-3.5 w-3.5 rounded-sm hover:bg-gray-500/20"
+                onClick={() => dispatch(setLocation(""))}
+              >
+                <span className="sr-only">Remove</span>
+                <svg
+                  viewBox="0 0 14 14"
+                  className="h-4 w-4.5 stroke-gray-600/50 group-hover:stroke-gray-600/75"
+                >
+                  <IoIosCloseCircleOutline
+                    className="text-gray-500"
+
+                  />
                 </svg>
                 <span className="absolute -inset-1" />
               </button>
             </span>
-          ))}
+          }
         </div>
         <div className="w-full  mt-10">
           <h2 className=" text-[30px]">
-            There are 13 Attorneys in Indiana, USA
+            Search Result
           </h2>
         </div>
         <div>
           {!fetchingMembers ?
-            members?.map((data, index) =>
-            (
+            members?.map((data, index) => (
               <Link key={index}
                 to={{
-                  pathname: `/profileDetails/${data.id}`,
+                  pathname: data.id !== undefined ?
+                    `/profileDetails/${data?.id}` :
+                    `/profileDetails/${data?._id.$oid}`,
                 }}
               >
                 <LawyerCard

@@ -122,18 +122,18 @@ const LawyerEnterDetails = ({ handleStepClick }) => {
             setValue(`${key}`, false);
             return false;
           }
-          if (`${key}` === "dateOfLicenceing") {
-            setValue(`${key}`, new Date(`${formDatas[key]}`));
-            return false;
-          }
-          if (`${key}` === "licenseExpiryDate") {
-            setValue(`${key}`, new Date(`${formDatas[key]}`));
-            return false;
-          }
-          if (`${key}` === "expirationDateOfInsurance") {
-            setValue(`${key}`, new Date(`${formDatas[key]}`));
-            return false;
-          }
+          // if (`${key}` === "dateOfLicenceing") {
+          //   setValue(`${key}`, new Date(`${formDatas[key]}`));
+          //   return false;
+          // }
+          // if (`${key}` === "licenseExpiryDate") {
+          //   setValue(`${key}`, new Date(`${formDatas[key]}`));
+          //   return false;
+          // }
+          // if (`${key}` === "expirationDateOfInsurance") {
+          //   setValue(`${key}`, new Date(`${formDatas[key]}`));
+          //   return false;
+          // }
           // if (`${formDatas[key]}` === null || `${formDatas[key]}` === "null") {
           //   setValue(`${key}`, null);
           //   return false;
@@ -211,12 +211,12 @@ const LawyerEnterDetails = ({ handleStepClick }) => {
                     </h5>
                     <div className="mt-2">
                       <input
-                        {...register("address")}
+                        {...register("businessAddress")}
                         className="block w-full p-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                         placeholder="Enter your location "
                       />
-                      {errors.address && (
-                        <p className="text-red-500">{errors.address.message}</p>
+                      {errors.businessAddress && (
+                        <p className="text-red-500">{errors.businessAddress.message}</p>
                       )}
                     </div>
                   </div>

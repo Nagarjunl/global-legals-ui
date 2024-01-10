@@ -40,12 +40,12 @@ const LawyerCard = ({
                 <span className="inline-flex  rounded-full items-center  bg-blue-50 px-3 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10">
                   {" Accepting Clients"}
                 </span>
-                {topRated && (
+                {/* {topRated && (
                   <span className="inline-flex items-center rounded-full bg-yellow-50 px-2 py-1 text-xs font-medium text-yellow-800 ring-1 ring-inset ring-yellow-600/20">
                     <img src={cups} alt="no image found" />
                     {topRated}
                   </span>
-                )}
+                )} */}
               </div>
               <div className=" flex text-lg text-gray-600 ">
                 <span className="inline-flex  py-2  text-sm font-medium ">
