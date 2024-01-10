@@ -9,20 +9,25 @@ function classNames(...classes) {
   return classes.filter(Boolean).join('')
 }
 
-const Select = ({ selectData }) => {
+const Select = ({ selectData, initialValue }) => {
+
   const [selected, setSelected] = useState();
   const dispatch = useDispatch();
 
   useEffect(() => {
     if (selected?.type === "people")
-      dispatch(setPeople(selected?.value));
+      dispatch(setPeople(selected));
 
     if (selected?.type === "location")
-      dispatch(setLocation(selected?.value));
+      dispatch(setLocation(selected));
 
     if (selected?.type === "ratings")
-      dispatch(setRatings(selected?.value));
+      dispatch(setRatings(selected));
   }, [selected]);
+
+  useEffect(() => {
+    setSelected(initialValue);
+  }, [initialValue]);
 
   return (
     <Listbox value={selected} onChange={setSelected}>
@@ -91,4 +96,5 @@ export default Select;
 Select.propTypes = {
   fName: PropTypes.object,
   selectData: PropTypes.array,
+  initialValue: PropTypes.object,
 }

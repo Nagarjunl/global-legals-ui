@@ -26,7 +26,7 @@ export const userApi = createApi({
     }),
     getMember: builder.query({
         query: (id) => ({
-          url: `/frontends/search-members/${id}`,
+          url: `/frontends/find-member/${id}`,
           method: "GET",
       }),
       providesTags: ["Member"],
@@ -46,8 +46,8 @@ export const userApi = createApi({
       providesTags: ["Member"],
     }),
     searchMembers: builder.query({
-     query: (data) => ({
-        url: `/frontends/search-members?location=${data?.location}&people=${data?.people}&ratings=${data?.ratings}`,
+     query: (id) => ({
+        url: `/frontends/search-members/${id}`,
         method: "GET",
       }),
     }),

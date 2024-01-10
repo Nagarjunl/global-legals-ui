@@ -40,7 +40,7 @@ const ProfileCard = ({ data, hideSchedule }) => {
               <div className=" flex text-lg text-gray-600 ">
                 <span className="inline-flex  py-2  text-sm font-medium ">
                   <img src={Phone} alt="Phone" className="w-10 px-2" />
-                  {data?.type === "Lawyers" ? "Practicing at " : "Licence Number "}
+                  {data?.type}
                   <span className="text-blue-700 px-2">
                     {
                       data?.type === "Lawyers" ? data?.practicingLaw :
