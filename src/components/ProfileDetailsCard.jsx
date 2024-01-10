@@ -5,7 +5,8 @@ import CircleImg from "../assets/circle.png";
 import Phone from "../assets/image 24.png";
 import profileImg from "../assets/avator.png";
 
-const baseUrl = import.meta.env.VITE_API_URL;
+// const baseUrl = import.meta.env.VITE_API_URL;
+const baseUrl = "https://api.chitmanager.com/";
 
 const ProfileCard = ({ data, hideSchedule }) => {
   return (
