@@ -58,7 +58,7 @@ const ProfileCard = ({ data, hideSchedule }) => {
                     alt="Phone"
                     className=" px-2 w-auto h-6   sm:w-auto"
                   />
-                  {data?.email}
+                  {data?.businessMail}
                 </span>
               </div>
               <div className=" flex text-lg text-gray-600 ">
@@ -89,7 +89,7 @@ const ProfileCard = ({ data, hideSchedule }) => {
                 <a
                   type="button"
                   className="flex w-full justify-center mt-3 rounded-md bg-blue-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                  href={`mailto:${data?.email}`}
+                  href={`mailto:${data?.businessMail}`}
                 >
                   Contact via Mail
                 </a>

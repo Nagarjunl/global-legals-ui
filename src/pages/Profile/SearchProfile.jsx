@@ -199,15 +199,16 @@ function SearchProfile() {
                 <LawyerCard
                   image={data.idProof}
                   fName={data.clientName}
-                  email={data.email}
+                  businessMail={data.businessMail}
                   type={data.type}
                   cups={cupImage}
                   topRated="Top Rated Attorney"
-                  designation={
-                    data.type === "Lawyers" ? data.practicingLaw :
-                      data.type === "BondBailsman" ? data.licenseNumber :
-                        data.type === "PrivateInvestigators" ? data.licenseNumber : data.licenseNumber
-                  }
+                  // designation={
+                  //   data.type === "Lawyers" ? data.practicingLaw :
+                  //     data.type === "BondBailsman" ? data.licenseNumber :
+                  //       data.type === "PrivateInvestigators" ? data.licenseNumber : data.licenseNumber
+                  // }
+                  designation={data.businessAddress}
                   selfIntro={data.professional}
                 />
               </Link>
