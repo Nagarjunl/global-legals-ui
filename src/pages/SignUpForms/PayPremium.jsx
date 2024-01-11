@@ -1,8 +1,10 @@
 import Asset from "../../assets/pay.jpg";
-import { useCreateMembersMutation } from "../../services/userAPI";
+import { useCreateMembersMutation, useMakePaymentMutation } from "../../services/userAPI";
 import { useSelector, useDispatch } from 'react-redux';
 import { currentUser } from "../../reducers/userSlice";
 import { formSubmited, formData } from "../../reducers/formTypeSlice";
+import { loadStripe } from '@stripe/stripe-js';
+
 
 const people = [
   {
@@ -27,8 +29,9 @@ const people = [
   },
 ];
 const PayPremium = ({ handleStepClick }) => {
-
   const [createMembers, { isLoading }] = useCreateMembersMutation();
+  const [makePayment, { isLoading: fetchigData }] = useMakePaymentMutation();
+
   const dispatch = useDispatch();
 
   const currentUserId = useSelector((state) => state.user.id)
@@ -42,11 +45,31 @@ const PayPremium = ({ handleStepClick }) => {
         .unwrap()
         .then((res) => {
           const { result3, ...rest } = res;
+
           dispatch(formSubmited(true));
           dispatch(formData(""));
           dispatch(currentUser(result3));
           handleStepClick(2);
+          // stripe.redirectToCheckout();
+
         });
+    } catch (error) {
+      console.log("error");
+    }
+  }
+
+  const makePaymentMethod = async (datas) => {
+    const stripe = await loadStripe('pk_test_51OWvGSSDcWKAz6oIiMvnjQToKrOu7Pp4aHIKugWHpMTx4K19CajJQDPkx9RnQutL2QxS7cTPIL2yPfRrDefNZig600U6nDGFWZ');
+    try {
+      await makePayment(datas)
+        .unwrap()
+        .then((res) => {
+          stripe.redirectToCheckout({
+            sessionId: res.id,
+          })
+          submitMembers(datas);
+        })
+
     } catch (error) {
       console.log("error");
     }
@@ -92,7 +115,7 @@ const PayPremium = ({ handleStepClick }) => {
         <button
           type="button"
           className="rounded bg-blue-600 w-96 h-10  px-2 py-1 text-xs font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-          onClick={() => submitMembers(formDatas)}
+          onClick={() => makePaymentMethod(formDatas)}
           disabled={isLoading}
         >
           Proceed to pay $10
