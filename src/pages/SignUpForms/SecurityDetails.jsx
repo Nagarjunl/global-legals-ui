@@ -6,7 +6,7 @@ import { useForm, Controller } from "react-hook-form";
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { useDispatch, useSelector } from 'react-redux'
-import { formData } from "../../reducers/formTypeSlice";
+import { formData, formDataIdProof } from "../../reducers/formTypeSlice";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 
@@ -34,10 +34,10 @@ const SecurityDetails = ({ handleStepClick }) => {
   const [deleteFile] = useDeleteFileMutation();
   const [singleFile, setSingleFile] = useState("");
 
-  const [updateMember, { isLoading: updatingMember }] = useUpdateMemberMutation();
-
-
   const formDatas = useSelector((state) => state.formType.formData);
+  const formIdProof = useSelector((state) => state.formType.formDataIdProof);
+
+  const [updateMember, { isLoading: updatingMember }] = useUpdateMemberMutation();
 
   const handleChange = () => {
     console.log("ReCaptcha");
@@ -57,8 +57,7 @@ const SecurityDetails = ({ handleStepClick }) => {
     await postFile(formFileData)
       .unwrap()
       .then((res) => {
-        const data = { ...formDatas, idProof: res.filename }
-        dispatch(formData(data));
+        dispatch(formDataIdProof(res.filename));
         setSingleFile(res.filename);
         setValue("idProof", res.filename);
       });
@@ -70,8 +69,7 @@ const SecurityDetails = ({ handleStepClick }) => {
       .then(() => {
         setSingleFile("");
         setValue("idProof", "");
-        const data = { ...formDatas, idProof: "" }
-        dispatch(formData(data));
+        dispatch(formDataIdProof(""));
       })
       .catch((err) => console.log(err));
   };
@@ -80,6 +78,7 @@ const SecurityDetails = ({ handleStepClick }) => {
     try {
       await updateMember(data).unwrap()
         .then(() => {
+          // dispatch(formSubmited(false));
           navigate(`/dashboard/profileDetails/${data.userId}`)
         });
     } catch (error) {
@@ -88,13 +87,14 @@ const SecurityDetails = ({ handleStepClick }) => {
   }
 
   const onSubmit = (data) => {
-    const datas = { ...data, idProof: formDatas.idProof || "" }
+    const datas = { ...data, idProof: formIdProof || "" }
     if (!memberId) {
       dispatch(formData(datas));
       handleStepClick(1);
     } else {
-      submitMembers(data)
+      submitMembers(datas)
     }
+
   }
 
   const { data: member, isLoading: fetchingData }
@@ -102,48 +102,60 @@ const SecurityDetails = ({ handleStepClick }) => {
       skip: memberId === undefined,
     });
 
+
   useEffect(() => {
     if (!fetchingData && memberId !== undefined) {
       dispatch(formData(member));
+      dispatch(formDataIdProof(member.idProof));
     }
   }, [member, fetchingData]);
 
   useEffect(() => {
-    if (formDatas.idProof !== "" && formDatas.idProof !== undefined) {
-      setSingleFile(formDatas.idProof);
+    if (formDatas) {
+      const keys = Object.keys(formDatas);
+      keys.forEach((key) => {
+        if (formDatas[key] !== undefined) {
+          if (`${formDatas[key]}` === true || `${formDatas[key]}` === "true") {
+            setValue(`${key}`, true);
+            return false;
+          }
+          if (`${formDatas[key]}` === false || `${formDatas[key]}` === "false") {
+            setValue(`${key}`, false);
+            return false;
+          }
+          // if (`${key}` === "dateOfLicenceing") {
+          //   setValue(`${key}`, new Date(`${formDatas[key]}`));
+          //   return false;
+          // }
+          // if (`${key}` === "licenseExpiryDate") {
+          //   setValue(`${key}`, new Date(`${formDatas[key]}`));
+          //   return false;
+          // }
+          // if (`${key}` === "expirationDateOfInsurance") {
+          //   setValue(`${key}`, new Date(`${formDatas[key]}`));
+          //   return false;
+          // }
+          // if (`${formDatas[key]}` === null || `${formDatas[key]}` === "null") {
+          //   setValue(`${key}`, null);
+          //   return false;
+          // }
+          setValue(`${key}`, `${formDatas[key]}`);
+        }
+      });
     }
-    const keys = Object.keys(formDatas);
+  }, [formDatas, setValue]);
 
-    keys.forEach((key) => {
-      if (formDatas[key] !== undefined) {
-        if (`${formDatas[key]}` === true || `${formDatas[key]}` === "true") {
-          setValue(`${key}`, true);
-          return false;
-        }
-        if (`${formDatas[key]}` === false || `${formDatas[key]}` === "false") {
-          setValue(`${key}`, false);
-          return false;
-        }
-        // if (`${key}` === "dateOfLicenceing") {
-        //   setValue(`${key}`, new Date(`${formDatas[key]}`));
-        //   return false;
-        // }
-        // if (`${key}` === "licenseExpiryDate") {
-        //   setValue(`${key}`, new Date(`${formDatas[key]}`));
-        //   return false;
-        // }
-        // if (`${key}` === "expirationDateOfInsurance") {
-        //   setValue(`${key}`, new Date(`${formDatas[key]}`));
-        //   return false;
-        // }
-        if (`${formDatas[key]}` === null || `${formDatas[key]}` === "null") {
-          setValue(`${key}`, "");
-          return false;
-        }
-        setValue(`${key}`, `${formDatas[key]}`);
+  useEffect(() => {
+    if (formIdProof) {
+      if (formIdProof !== "" || formIdProof !== undefined || formIdProof !== null || formIdProof !== "null") {
+        setSingleFile(formIdProof);
       }
-    });
-  }, [formDatas, setValue, setSingleFile]);
+    }
+    setValue("idProof", `${formIdProof}`);
+  }, [formIdProof, setValue, setSingleFile]);
+
+
+
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
 
@@ -274,6 +286,7 @@ const SecurityDetails = ({ handleStepClick }) => {
               <Controller
                 name="professional"
                 control={control}
+                defaultValue=""
                 render={({ field: { value, onChange } }) =>
                   <ReactQuill
                     theme="snow"

@@ -31,7 +31,7 @@ const Appointments = () => {
             </select>
           </div>
         </div>
-        <div className="flex flex-wrap gap-3">
+        {/* <div className="flex flex-wrap gap-3">
           {AppointmentData.map((data, index) => (
             <div
               className="w-full sm:w-72 bg-white rounded-lg overflow-hidden border border-gray-300 mb-4"
@@ -68,7 +68,7 @@ const Appointments = () => {
               </div>
             </div>
           ))}
-        </div>
+        </div> */}
       </div>
     </div>
   );
