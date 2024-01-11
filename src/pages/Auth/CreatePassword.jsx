@@ -115,7 +115,7 @@ const CreatePassword = () => {
                   required: "Password Is Required",
                   pattern: {
                     value: REGEX,
-                    message: "Password should be 8 characters and include at least 1 letter, 1 number and 1 special character!"
+                    message: "Password should be 8 characters and include at least 1 uppercase letter, 1 lowercase letter, 1 number and 1 special character!"
                   }
                 })}
               />
