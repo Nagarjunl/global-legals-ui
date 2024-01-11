@@ -73,6 +73,13 @@ export const userApi = createApi({
           body: data,
       }),
     }),
+    makePayment: builder.mutation({
+        query: (data) => ({
+          url: `/frontends/makePayment`,
+          method: "POST",
+          body: data,
+      }),
+    }),
   })
 })
 
@@ -83,6 +90,7 @@ export const {
   useUpdateMemberMutation,
   useCreateMembersMutation,
   useProfileEmailMutation,
+  useMakePaymentMutation,
 
   useGetMembersQuery,
   useGetMemberQuery,

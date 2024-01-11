@@ -88,7 +88,7 @@ const ForgetPassword = () => {
             </form>
           </div>
 
-          <div className="mt-10">
+          {/* <div className="mt-10">
             <span className="inline-flex items-center rounded-xl bg-blue-50 px-2 py-1 text-xs font-medium text-black ring-1 ring-inset ring-blue-700/10">
               <img src={Paperplane} className="pb-10 pr-2.5 pl-5" />
               We&apos;ve just sent a password reset link to your registered
@@ -96,7 +96,7 @@ const ForgetPassword = () => {
               to create a new password. If you don&#39;t receive the email
               within a few minutes, please check your spam folder.
             </span>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

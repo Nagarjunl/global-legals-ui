@@ -1,6 +1,6 @@
 import ProfileCard from "../../components/ProfileDetailsCard";
 import meeting from "../../assets/meeting.png";
-import GoogleMeetIcon from "../../assets/googlemeet.svg";
+import Calendly from "../../assets/calendly.png";
 import { BiLogoZoom } from "react-icons/bi";
 import { FaSkype } from "react-icons/fa6";
 import "../../App.css";
@@ -115,10 +115,10 @@ const ProfileDetails = ({ hideSchedule }) => {
                         type="button"
                         className="inline-flex items-center  gap-x-1.5 rounded-md bg-white mr-2 px-4 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
                       >
-                        <img src={GoogleMeetIcon} width={22} />
-                        Schedule with google Meet
+                        <img src={Calendly} width={22} />
+                        Connect with Calendly
                       </button>
-                      <button
+                      {/* <button
                         type="button"
                         className="inline-flex items-center max-md:mt-2  gap-x-1.5 rounded-md bg-blue-50 mr-2 px-4 py-1.5 text-sm font-semibold text-blue-500 shadow-sm ring-1 ring-inset ring-blue-500 hover:bg-gray-50"
                       >
@@ -131,7 +131,7 @@ const ProfileDetails = ({ hideSchedule }) => {
                       >
                         <FaSkype size={20} />
                         Schedule with Skype
-                      </button>
+                      </button> */}
                     </div>
                   </div>
                 </div>
