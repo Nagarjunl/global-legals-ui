@@ -289,7 +289,7 @@ const ProfileDetails = ({ hideSchedule }) => {
                           {
                             !submitingEmailForm ?
                               <>
-                                <PrimaryButton type="submit" disabled={submitingEmailForm} buttonText="Send OTP" />
+                                <PrimaryButton type="submit" disabled={submitingEmailForm} buttonText="Submit" />
                               </>
                               :
                               <div>

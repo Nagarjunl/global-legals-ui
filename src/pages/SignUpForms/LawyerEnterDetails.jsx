@@ -3,7 +3,7 @@ import GoogleImage from "../../assets/Google-image.png";
 import ReCAPTCHA from "react-google-recaptcha";
 import { useForm, Controller } from "react-hook-form";
 import { useSelector, useDispatch } from 'react-redux';
-import { formData } from "../../reducers/formTypeSlice";
+import { formData, formDataIdProof } from "../../reducers/formTypeSlice";
 
 import {
   usePostFileMutation,
@@ -29,6 +29,7 @@ const LawyerEnterDetails = ({ handleStepClick }) => {
   const dispatch = useDispatch();
 
   const formDatas = useSelector((state) => state.formType.formData);
+  const formIdProof = useSelector((state) => state.formType.formDataIdProof);
   const formSubmited = useSelector((state) => state.formType.formSubmited);
 
   const [updateMember, { isLoading: updatingMember }] = useUpdateMemberMutation();
@@ -41,7 +42,7 @@ const LawyerEnterDetails = ({ handleStepClick }) => {
     formState: { errors },
   } = useForm();
 
-  const handleChange = () => {
+  const handleCaptchaChange = () => {
     console.log("ReCaptcha");
   };
 
@@ -51,8 +52,7 @@ const LawyerEnterDetails = ({ handleStepClick }) => {
     await postFile(formFileData)
       .unwrap()
       .then((res) => {
-        const data = { ...formDatas, idProof: res.filename }
-        dispatch(formData(data));
+        dispatch(formDataIdProof(res.filename));
         setSingleFile(res.filename);
         setValue("idProof", res.filename);
       });
@@ -64,8 +64,7 @@ const LawyerEnterDetails = ({ handleStepClick }) => {
       .then(() => {
         setSingleFile("");
         setValue("idProof", "");
-        const data = { ...formDatas, idProof: "" }
-        dispatch(formData(data));
+        dispatch(formDataIdProof(""));
       })
       .catch((err) => console.log(err));
   };
@@ -74,7 +73,6 @@ const LawyerEnterDetails = ({ handleStepClick }) => {
     try {
       await updateMember(data).unwrap()
         .then(() => {
-          console.log("sdfjsdfjhsjhfkjsjfjshfks");
           // dispatch(formSubmited(false));
           navigate(`/dashboard/profileDetails/${data.userId}`)
         });
@@ -84,12 +82,12 @@ const LawyerEnterDetails = ({ handleStepClick }) => {
   }
 
   const onSubmit = (data) => {
-    const datas = { ...data, idProof: formDatas.idProof || "" }
+    const datas = { ...data, idProof: formIdProof || "" }
     if (!memberId) {
       dispatch(formData(datas));
       handleStepClick(1);
     } else {
-      submitMembers(data)
+      submitMembers(datas)
     }
 
   }
@@ -103,14 +101,12 @@ const LawyerEnterDetails = ({ handleStepClick }) => {
   useEffect(() => {
     if (!fetchingData && memberId !== undefined) {
       dispatch(formData(member));
+      dispatch(formDataIdProof(member.idProof));
     }
   }, [member, fetchingData]);
 
   useEffect(() => {
     if (formDatas) {
-      if (formDatas.idProof !== "" && formDatas?.idProof !== undefined) {
-        setSingleFile(formDatas.idProof);
-      }
       const keys = Object.keys(formDatas);
       keys.forEach((key) => {
         if (formDatas[key] !== undefined) {
@@ -142,7 +138,16 @@ const LawyerEnterDetails = ({ handleStepClick }) => {
         }
       });
     }
-  }, [formDatas, setValue, setSingleFile]);
+  }, [formDatas, setValue]);
+
+  useEffect(() => {
+    if (formIdProof) {
+      if (formIdProof !== "" || formIdProof !== undefined || formIdProof !== null || formIdProof !== "null") {
+        setSingleFile(formIdProof);
+      }
+    }
+    setValue("idProof", `${formIdProof}`);
+  }, [formIdProof, setValue, setSingleFile]);
 
   return (
     <>
@@ -177,12 +182,12 @@ const LawyerEnterDetails = ({ handleStepClick }) => {
                     </h5>
                     <div className="mt-2">
                       <input
-                        {...register("email", { required: "This Field Is Required" })}
+                        {...register("businessMail", { required: "This Field Is Required" })}
                         className="block w-full p-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                         placeholder="Enter Email Address"
                       />
-                      {errors.email && (
-                        <p className="text-red-500">{errors.email.message}</p>
+                      {errors.businessMail && (
+                        <p className="text-red-500">{errors.businessMail.message}</p>
                       )}
                     </div>
                   </div>
@@ -275,6 +280,7 @@ const LawyerEnterDetails = ({ handleStepClick }) => {
                 <Controller
                   name="professional"
                   control={control}
+                  defaultValue=""
                   render={({ field: { value, onChange } }) =>
                     <ReactQuill
                       theme="snow"
@@ -539,7 +545,7 @@ const LawyerEnterDetails = ({ handleStepClick }) => {
             <div>
               <ReCAPTCHA
                 sitekey="6LfAUjgpAAAAABQcBX1BtSezxeoNoBDoZk9XPS7T"
-                onChange={handleChange}
+                onChange={handleCaptchaChange}
               />
             </div>
             <div>

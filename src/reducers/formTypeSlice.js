@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     formData:"",
+    formDataIdProof:"",
     formSubmit: false,
     formType:"",
 };
@@ -19,9 +20,12 @@ export const formTypeSlice = createSlice({
         formSubmited: (state, { payload }) => {
             return { ...state, formSubmit:payload }
         },
+        formDataIdProof: (state, { payload }) => {
+            return { ...state, formDataIdProof:payload }
+        },
     },
 });
 
-export const { formData, formType, formSubmited } = formTypeSlice.actions;
+export const { formData, formType, formSubmited, formDataIdProof } = formTypeSlice.actions;
 
 export default formTypeSlice.reducer;

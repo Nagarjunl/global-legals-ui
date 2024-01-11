@@ -12,7 +12,7 @@ import {
   usePostFileMutation,
   useDeleteFileMutation,
 } from "../../services/fileUploadAPI";
-import { formData } from "../../reducers/formTypeSlice";
+import { formData, formDataIdProof } from "../../reducers/formTypeSlice";
 
 import "../../styles.css";
 import { useNavigate, useParams } from "react-router-dom";
@@ -28,7 +28,10 @@ const PrivateInvestigators = ({ handleStepClick }) => {
   const { memberId } = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
   const formDatas = useSelector((state) => state.formType.formData);
+  const formIdProof = useSelector((state) => state.formType.formDataIdProof);
+
   const [postFile, { isLoading }] = usePostFileMutation();
   const [deleteFile] = useDeleteFileMutation();
   const [singleFile, setSingleFile] = useState("");
@@ -38,13 +41,6 @@ const PrivateInvestigators = ({ handleStepClick }) => {
   const handleChange = () => {
     console.log("ReCaptcha");
   };
-
-  const getData = useSelector((state) => state.formType.formData);
-  console.log(getData.professional);
-
-  const parser = new DOMParser();
-  const doc = parser.parseFromString(getData.professional, "text/html");
-  const plainText = doc.body.textContent || "";
 
   const {
     register,
@@ -60,8 +56,7 @@ const PrivateInvestigators = ({ handleStepClick }) => {
     await postFile(formFileData)
       .unwrap()
       .then((res) => {
-        const data = { ...formDatas, idProof: res.filename };
-        dispatch(formData(data));
+        dispatch(formDataIdProof(res.filename));
         setSingleFile(res.filename);
         setValue("idProof", res.filename);
       });
@@ -73,82 +68,90 @@ const PrivateInvestigators = ({ handleStepClick }) => {
       .then(() => {
         setSingleFile("");
         setValue("idProof", "");
-        const data = { ...formDatas, idProof: "" };
-        dispatch(formData(data));
+        dispatch(formDataIdProof(""));
       })
       .catch((err) => console.log(err));
   };
 
   const submitMembers = async (data) => {
     try {
-      await updateMember(data)
-        .unwrap()
+      await updateMember(data).unwrap()
         .then(() => {
-          navigate(`/dashboard/profileDetails/${data.userId}`);
+          // dispatch(formSubmited(false));
+          navigate(`/dashboard/profileDetails/${data.userId}`)
         });
     } catch (error) {
       console.log("error");
     }
-  };
+  }
 
   const onSubmit = (data) => {
-    console.log(data);
-    const datas = { ...data, idProof: formDatas.idProof || "" };
+    const datas = { ...data, idProof: formIdProof || "" }
     if (!memberId) {
       dispatch(formData(datas));
       handleStepClick(1);
     } else {
-      submitMembers(data);
+      submitMembers(datas)
     }
-  };
 
-  const { data: member, isLoading: fetchingData } =
-    useGetMemberFromSuperIdQuery(memberId, {
+  }
+
+  const { data: member, isLoading: fetchingData }
+    = useGetMemberFromSuperIdQuery(memberId, {
       skip: memberId === undefined,
     });
+
 
   useEffect(() => {
     if (!fetchingData && memberId !== undefined) {
       dispatch(formData(member));
+      dispatch(formDataIdProof(member.idProof));
     }
   }, [member, fetchingData]);
 
   useEffect(() => {
-    if (formDatas.idProof !== "" && formDatas.idProof !== undefined) {
-      setSingleFile(formDatas.idProof);
+    if (formDatas) {
+      const keys = Object.keys(formDatas);
+      keys.forEach((key) => {
+        if (formDatas[key] !== undefined) {
+          if (`${formDatas[key]}` === true || `${formDatas[key]}` === "true") {
+            setValue(`${key}`, true);
+            return false;
+          }
+          if (`${formDatas[key]}` === false || `${formDatas[key]}` === "false") {
+            setValue(`${key}`, false);
+            return false;
+          }
+          // if (`${key}` === "dateOfLicenceing") {
+          //   setValue(`${key}`, new Date(`${formDatas[key]}`));
+          //   return false;
+          // }
+          // if (`${key}` === "licenseExpiryDate") {
+          //   setValue(`${key}`, new Date(`${formDatas[key]}`));
+          //   return false;
+          // }
+          // if (`${key}` === "expirationDateOfInsurance") {
+          //   setValue(`${key}`, new Date(`${formDatas[key]}`));
+          //   return false;
+          // }
+          // if (`${formDatas[key]}` === null || `${formDatas[key]}` === "null") {
+          //   setValue(`${key}`, null);
+          //   return false;
+          // }
+          setValue(`${key}`, `${formDatas[key]}`);
+        }
+      });
     }
-    const keys = Object.keys(formDatas);
+  }, [formDatas, setValue]);
 
-    keys.forEach((key) => {
-      if (formDatas[key] !== undefined) {
-        if (`${formDatas[key]}` === true || `${formDatas[key]}` === "true") {
-          setValue(`${key}`, true);
-          return false;
-        }
-        if (`${formDatas[key]}` === false || `${formDatas[key]}` === "false") {
-          setValue(`${key}`, false);
-          return false;
-        }
-        // if (`${key}` === "dateOfLicenceing") {
-        //   setValue(`${key}`, new Date(`${formDatas[key]}`));
-        //   return false;
-        // }
-        // if (`${key}` === "licenseExpiryDate") {
-        //   setValue(`${key}`, new Date(`${formDatas[key]}`));
-        //   return false;
-        // }
-        // if (`${key}` === "expirationDateOfInsurance") {
-        //   setValue(`${key}`, new Date(`${formDatas[key]}`));
-        //   return false;
-        // }
-        if (`${formDatas[key]}` === null || `${formDatas[key]}` === "null") {
-          setValue(`${key}`, "");
-          return false;
-        }
-        setValue(`${key}`, `${formDatas[key]}`);
+  useEffect(() => {
+    if (formIdProof) {
+      if (formIdProof !== "" || formIdProof !== undefined || formIdProof !== null || formIdProof !== "null") {
+        setSingleFile(formIdProof);
       }
-    });
-  }, [formDatas, setValue, setSingleFile]);
+    }
+    setValue("idProof", `${formIdProof}`);
+  }, [formIdProof, setValue, setSingleFile]);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -276,6 +279,7 @@ const PrivateInvestigators = ({ handleStepClick }) => {
               <Controller
                 name="professional"
                 control={control}
+                defaultValue=""
                 render={({ field: { value, onChange } }) =>
                   <ReactQuill
                     theme="snow"
