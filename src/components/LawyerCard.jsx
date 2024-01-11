@@ -11,12 +11,9 @@ const baseUrl = "https://api.chitmanager.com/";
 const LawyerCard = ({
   image,
   fName,
-  cups,
-  topRated,
   designation,
-  selfIntro,
   type,
-  email,
+  businessMail,
 }) => {
   return (
     <>
@@ -52,8 +49,9 @@ const LawyerCard = ({
               <div className=" flex text-lg text-gray-600 ">
                 <span className="inline-flex  py-2  text-sm font-medium ">
                   <img src={Phone} alt="Phone" className="w-10 px-2" />
-                  {type === "Lawyers" ? "Practicing at " : "Licence Number "}
-                  <span className="text-blue-700 px-2">{designation}</span>
+                  {/* {type === "Lawyers" ? "Practicing at " : "Licence Number "} */}
+                  State
+                  <span className="text-blue-700 px-2">  {designation}</span>
                 </span>
               </div>
               <div className=" flex text-lg text-gray-600 ">
@@ -63,7 +61,7 @@ const LawyerCard = ({
                     alt="Phone"
                     className=" px-2 w-auto h-6   sm:w-auto"
                   />
-                  {email}
+                  {businessMail}
                 </span>
               </div>
               {/* <div className=" flex text-lg text-gray-600 ">
