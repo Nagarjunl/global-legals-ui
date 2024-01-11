@@ -59,22 +59,24 @@ const PayPremium = ({ handleStepClick }) => {
     }
   }
 
-  // const makePaymentMethod = async (data) => {
-  //   const datas = { ...data, userId: currentUserId, type: formType }
-  //   const stripe = await loadStripe('pk_test_51OWvGSSDcWKAz6oIiMvnjQToKrOu7Pp4aHIKugWHpMTx4K19CajJQDPkx9RnQutL2QxS7cTPIL2yPfRrDefNZig600U6nDGFWZ');
-  //   try {
-  //     await makePayment(datas)
-  //       .unwrap()
-  //       .then((res) => {
-  //         const sessionId = res.id;
-  //         stripe.redirectToCheckout({
-  //           sessionId: sessionId,
-  //         })
-  //       })
-  //   } catch (error) {
-  //     console.log("error");
-  //   }
-  // }
+  const makePaymentMethod = async (data) => {
+    const datas = { ...data, userId: currentUserId, type: formType }
+    const stripe = await loadStripe('pk_test_51OWvGSSDcWKAz6oIiMvnjQToKrOu7Pp4aHIKugWHpMTx4K19CajJQDPkx9RnQutL2QxS7cTPIL2yPfRrDefNZig600U6nDGFWZ');
+    try {
+      await makePayment(datas)
+        .unwrap()
+        .then((res) => {
+          const sessionId = res.id;
+          stripe.redirectToCheckout({
+            sessionId: sessionId,
+          })
+          submitMembers(datas);
+
+        })
+    } catch (error) {
+      console.log("error");
+    }
+  }
 
   return (
     <div className="container mx-auto">
@@ -118,7 +120,7 @@ const PayPremium = ({ handleStepClick }) => {
             <button
               type="button"
               className="rounded bg-blue-600 w-96 h-10  px-2 py-1 text-xs font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-              onClick={() => submitMembers(formDatas)}
+              onClick={() => makePaymentMethod(formDatas)}
               disabled={isLoading}
             >
               Proceed to pay $10
