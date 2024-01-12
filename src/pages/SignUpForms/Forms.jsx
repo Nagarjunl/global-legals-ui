@@ -3,7 +3,7 @@ import BondBailsman from "./BondBailsman";
 import SecurityDetails from "./SecurityDetails";
 import PrivateInvestigators from "./PrivateInvestigators";
 import { useSelector, useDispatch } from 'react-redux';
-import { formType, formData, formDataIdProof } from "../../reducers/formTypeSlice";
+import { formType, formData, formDataIdProof, formImgStatus } from "../../reducers/formTypeSlice";
 import { useForm, Controller } from "react-hook-form";
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect } from "react";
@@ -26,6 +26,7 @@ const SelectForm = ({ handleStepClick }) => {
     dispatch(formType(event.target.value));
     dispatch(formData(""));
     dispatch(formDataIdProof(""));
+    dispatch(formImgStatus(false));
     renderComponent();
   };
 

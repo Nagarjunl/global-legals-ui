@@ -2,7 +2,7 @@ import Asset from "../../assets/pay.jpg";
 import { useCreateMembersMutation, useMakePaymentMutation } from "../../services/userAPI";
 import { useSelector, useDispatch } from 'react-redux';
 import { currentUser } from "../../reducers/userSlice";
-import { formSubmited, formData, formDataIdProof } from "../../reducers/formTypeSlice";
+import { formSubmited, formData, formDataIdProof, formImgStatus } from "../../reducers/formTypeSlice";
 import { loadStripe } from '@stripe/stripe-js';
 
 
@@ -45,14 +45,12 @@ const PayPremium = ({ handleStepClick }) => {
         .unwrap()
         .then((res) => {
           const { result3, ...rest } = res;
-
           dispatch(formSubmited(true));
           dispatch(formData(""));
           dispatch(formDataIdProof(""));
+          dispatch(formImgStatus(false));
           dispatch(currentUser(result3));
           handleStepClick(2);
-          // stripe.redirectToCheckout();
-
         });
     } catch (error) {
       console.log("error");
@@ -71,7 +69,6 @@ const PayPremium = ({ handleStepClick }) => {
             sessionId: sessionId,
           })
           submitMembers(datas);
-
         })
     } catch (error) {
       console.log("error");

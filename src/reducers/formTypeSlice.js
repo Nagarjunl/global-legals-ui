@@ -5,6 +5,7 @@ const initialState = {
     formDataIdProof:"",
     formSubmit: false,
     formType:"",
+    formImgStatus:false,
 };
 
 export const formTypeSlice = createSlice({
@@ -23,9 +24,12 @@ export const formTypeSlice = createSlice({
         formDataIdProof: (state, { payload }) => {
             return { ...state, formDataIdProof:payload }
         },
+        formImgStatus: (state, { payload }) => {
+            return { ...state, formImgStatus:payload }
+        },
     },
 });
 
-export const { formData, formType, formSubmited, formDataIdProof } = formTypeSlice.actions;
+export const { formData, formType, formSubmited, formDataIdProof, formImgStatus} = formTypeSlice.actions;
 
 export default formTypeSlice.reducer;

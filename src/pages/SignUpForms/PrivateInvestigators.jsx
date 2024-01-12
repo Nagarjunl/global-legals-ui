@@ -12,7 +12,7 @@ import {
   usePostFileMutation,
   useDeleteFileMutation,
 } from "../../services/fileUploadAPI";
-import { formData, formDataIdProof } from "../../reducers/formTypeSlice";
+import { formData, formDataIdProof, formImgStatus } from "../../reducers/formTypeSlice";
 
 import "../../styles.css";
 import { useNavigate, useParams } from "react-router-dom";
@@ -31,6 +31,7 @@ const PrivateInvestigators = ({ handleStepClick }) => {
 
   const formDatas = useSelector((state) => state.formType.formData);
   const formIdProof = useSelector((state) => state.formType.formDataIdProof);
+  const imgStatus = useSelector((state) => state.formType.formImgStatus);
 
   const [postFile, { isLoading }] = usePostFileMutation();
   const [deleteFile] = useDeleteFileMutation();
@@ -50,6 +51,9 @@ const PrivateInvestigators = ({ handleStepClick }) => {
     formState: { errors },
   } = useForm();
 
+
+
+
   const uploadFileAPI = async (e) => {
     const formFileData = new FormData();
     formFileData.append("idProof", e.target.files[0]);
@@ -65,7 +69,7 @@ const PrivateInvestigators = ({ handleStepClick }) => {
   const removeImage = async (filename) => {
     await deleteFile(filename)
       .unwrap()
-      .then(() => {
+      .then(async () => {
         setSingleFile("");
         setValue("idProof", "");
         dispatch(formDataIdProof(""));
@@ -79,6 +83,7 @@ const PrivateInvestigators = ({ handleStepClick }) => {
         .then(() => {
           dispatch(formData(""));
           dispatch(formDataIdProof(""));
+          dispatch(formImgStatus(false));
           navigate(`/dashboard/profileDetails/${data.userId}`)
         });
     } catch (error) {
@@ -94,7 +99,6 @@ const PrivateInvestigators = ({ handleStepClick }) => {
     } else {
       submitMembers(datas)
     }
-
   }
 
   const { data: member, isLoading: fetchingData }
@@ -106,7 +110,12 @@ const PrivateInvestigators = ({ handleStepClick }) => {
   useEffect(() => {
     if (!fetchingData && memberId !== undefined) {
       dispatch(formData(member));
-      dispatch(formDataIdProof(member.idProof));
+      if (member.idProof !== "" && imgStatus === false) {
+        dispatch(formImgStatus(true));
+        dispatch(formDataIdProof(member.idProof));
+      } else {
+        dispatch(formDataIdProof(formIdProof));
+      }
     }
   }, [member, fetchingData]);
 
@@ -121,6 +130,9 @@ const PrivateInvestigators = ({ handleStepClick }) => {
           }
           if (`${formDatas[key]}` === false || `${formDatas[key]}` === "false") {
             setValue(`${key}`, false);
+            return false;
+          }
+          if (`${key}` === "idProof") {
             return false;
           }
           // if (`${key}` === "dateOfLicenceing") {
@@ -146,13 +158,13 @@ const PrivateInvestigators = ({ handleStepClick }) => {
   }, [formDatas, setValue]);
 
   useEffect(() => {
-    if (formIdProof) {
-      if (formIdProof !== "" || formIdProof !== undefined || formIdProof !== null || formIdProof !== "null") {
-        setSingleFile(formIdProof);
-      }
+    if (formIdProof !== "" || formIdProof !== undefined || formIdProof !== null || formIdProof !== "null") {
+      setSingleFile(formIdProof);
     }
     setValue("idProof", `${formIdProof}`);
   }, [formIdProof, setValue, setSingleFile]);
+
+
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
