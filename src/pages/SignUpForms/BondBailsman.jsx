@@ -79,7 +79,8 @@ function BondBailsman({ handleStepClick }) {
     try {
       await updateMember(data).unwrap()
         .then(() => {
-          // dispatch(formSubmited(false));
+          dispatch(formData(""));
+          dispatch(formDataIdProof(""));
           navigate(`/dashboard/profileDetails/${data.userId}`)
         });
     } catch (error) {
