@@ -73,7 +73,8 @@ const LawyerEnterDetails = ({ handleStepClick }) => {
     try {
       await updateMember(data).unwrap()
         .then(() => {
-          // dispatch(formSubmited(false));
+          dispatch(formData(""));
+          dispatch(formDataIdProof(""));
           navigate(`/dashboard/profileDetails/${data.userId}`)
         });
     } catch (error) {
@@ -89,7 +90,6 @@ const LawyerEnterDetails = ({ handleStepClick }) => {
     } else {
       submitMembers(datas)
     }
-
   }
 
   const { data: member, isLoading: fetchingData }
