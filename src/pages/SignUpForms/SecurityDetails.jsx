@@ -6,7 +6,7 @@ import { useForm, Controller } from "react-hook-form";
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { useDispatch, useSelector } from 'react-redux'
-import { formData, formDataIdProof } from "../../reducers/formTypeSlice";
+import { formData, formDataIdProof, formImgStatus } from "../../reducers/formTypeSlice";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 
@@ -36,6 +36,7 @@ const SecurityDetails = ({ handleStepClick }) => {
 
   const formDatas = useSelector((state) => state.formType.formData);
   const formIdProof = useSelector((state) => state.formType.formDataIdProof);
+  const imgStatus = useSelector((state) => state.formType.formImgStatus);
 
   const [updateMember, { isLoading: updatingMember }] = useUpdateMemberMutation();
 
@@ -66,7 +67,7 @@ const SecurityDetails = ({ handleStepClick }) => {
   const removeImage = async (filename) => {
     await deleteFile(filename)
       .unwrap()
-      .then(() => {
+      .then(async () => {
         setSingleFile("");
         setValue("idProof", "");
         dispatch(formDataIdProof(""));
@@ -80,6 +81,7 @@ const SecurityDetails = ({ handleStepClick }) => {
         .then(() => {
           dispatch(formData(""));
           dispatch(formDataIdProof(""));
+          dispatch(formImgStatus(false));
           navigate(`/dashboard/profileDetails/${data.userId}`)
         });
     } catch (error) {
@@ -95,7 +97,6 @@ const SecurityDetails = ({ handleStepClick }) => {
     } else {
       submitMembers(datas)
     }
-
   }
 
   const { data: member, isLoading: fetchingData }
@@ -107,7 +108,12 @@ const SecurityDetails = ({ handleStepClick }) => {
   useEffect(() => {
     if (!fetchingData && memberId !== undefined) {
       dispatch(formData(member));
-      dispatch(formDataIdProof(member.idProof));
+      if (member.idProof !== "" && imgStatus === false) {
+        dispatch(formImgStatus(true));
+        dispatch(formDataIdProof(member.idProof));
+      } else {
+        dispatch(formDataIdProof(formIdProof));
+      }
     }
   }, [member, fetchingData]);
 
@@ -124,22 +130,9 @@ const SecurityDetails = ({ handleStepClick }) => {
             setValue(`${key}`, false);
             return false;
           }
-          // if (`${key}` === "dateOfLicenceing") {
-          //   setValue(`${key}`, new Date(`${formDatas[key]}`));
-          //   return false;
-          // }
-          // if (`${key}` === "licenseExpiryDate") {
-          //   setValue(`${key}`, new Date(`${formDatas[key]}`));
-          //   return false;
-          // }
-          // if (`${key}` === "expirationDateOfInsurance") {
-          //   setValue(`${key}`, new Date(`${formDatas[key]}`));
-          //   return false;
-          // }
-          // if (`${formDatas[key]}` === null || `${formDatas[key]}` === "null") {
-          //   setValue(`${key}`, null);
-          //   return false;
-          // }
+          if (`${key}` === "idProof") {
+            return false;
+          }
           setValue(`${key}`, `${formDatas[key]}`);
         }
       });
@@ -147,10 +140,8 @@ const SecurityDetails = ({ handleStepClick }) => {
   }, [formDatas, setValue]);
 
   useEffect(() => {
-    if (formIdProof) {
-      if (formIdProof !== "" || formIdProof !== undefined || formIdProof !== null || formIdProof !== "null") {
-        setSingleFile(formIdProof);
-      }
+    if (formIdProof !== "" || formIdProof !== undefined || formIdProof !== null || formIdProof !== "null") {
+      setSingleFile(formIdProof);
     }
     setValue("idProof", `${formIdProof}`);
   }, [formIdProof, setValue, setSingleFile]);

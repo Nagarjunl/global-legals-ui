@@ -1,18 +1,15 @@
 import ProfileCard from "../../components/ProfileDetailsCard";
 import meeting from "../../assets/meeting.png";
 import Calendly from "../../assets/calendly.png";
-import { BiLogoZoom } from "react-icons/bi";
-import { FaSkype } from "react-icons/fa6";
 import "../../App.css";
 import PrimaryButton from "../../components/PrimaryButton";
-
+import PropTypes from 'prop-types';
 import { useNavigate, useParams } from "react-router-dom";
 import {
   useGetMemberQuery,
   useGetMemberFromSuperIdQuery,
   useProfileEmailMutation,
 } from "../../services/userAPI";
-import { useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 
@@ -20,13 +17,9 @@ import "../../../src/styles.css";
 
 
 const ProfileDetails = ({ hideSchedule }) => {
-
-  const [ack, setAck] = useState();
-
-  const formType = useSelector((state) => state.formType.formType);
-
   const { memberId, mainId } = useParams();
   const navigate = useNavigate();
+  const [ack, setAck] = useState();
 
   const { data: supermember } = useGetMemberFromSuperIdQuery(mainId, {
     skip: mainId === undefined,
@@ -335,3 +328,8 @@ const ProfileDetails = ({ hideSchedule }) => {
 };
 
 export default ProfileDetails;
+
+
+ProfileDetails.propTypes = {
+  hideSchedule: PropTypes.bool,
+}

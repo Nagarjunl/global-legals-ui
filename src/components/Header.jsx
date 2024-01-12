@@ -9,7 +9,7 @@ import { removeUser } from "../reducers/userSlice";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import PropTypes from "prop-types";
-import { formData, formDataIdProof, formSubmited, formType } from "../reducers/formTypeSlice";
+import { formData, formDataIdProof, formSubmited, formType, formImgStatus } from "../reducers/formTypeSlice";
 import { setSuperUser } from "../reducers/superUserSlice";
 
 // import { GoogleLogout } from "react-google-login";
@@ -97,6 +97,7 @@ const Example = ({ hideHeaderAvator }) => {
                                 onClick={() => {
                                   dispatch(formData(""));
                                   dispatch(formDataIdProof(""));
+                                  dispatch(formImgStatus(false));
                                 }}
                               >
                                 Your Profile
@@ -138,6 +139,7 @@ const Example = ({ hideHeaderAvator }) => {
                                     dispatch(removeUser());
                                     dispatch(formData(""));
                                     dispatch(formDataIdProof(""));
+                                    dispatch(formImgStatus(false));
                                     dispatch(formSubmited(""));
                                     dispatch(formType(""));
                                   }}

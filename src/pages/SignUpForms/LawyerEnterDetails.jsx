@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
-import GoogleImage from "../../assets/Google-image.png";
 import ReCAPTCHA from "react-google-recaptcha";
 import { useForm, Controller } from "react-hook-form";
 import { useSelector, useDispatch } from 'react-redux';
-import { formData, formDataIdProof } from "../../reducers/formTypeSlice";
+import { formData, formDataIdProof, formImgStatus } from "../../reducers/formTypeSlice";
 
 import {
   usePostFileMutation,
@@ -30,7 +29,7 @@ const LawyerEnterDetails = ({ handleStepClick }) => {
 
   const formDatas = useSelector((state) => state.formType.formData);
   const formIdProof = useSelector((state) => state.formType.formDataIdProof);
-  const formSubmited = useSelector((state) => state.formType.formSubmited);
+  const imgStatus = useSelector((state) => state.formType.formImgStatus);
 
   const [updateMember, { isLoading: updatingMember }] = useUpdateMemberMutation();
 
@@ -61,7 +60,7 @@ const LawyerEnterDetails = ({ handleStepClick }) => {
   const removeImage = async (filename) => {
     await deleteFile(filename)
       .unwrap()
-      .then(() => {
+      .then(async () => {
         setSingleFile("");
         setValue("idProof", "");
         dispatch(formDataIdProof(""));
@@ -75,6 +74,7 @@ const LawyerEnterDetails = ({ handleStepClick }) => {
         .then(() => {
           dispatch(formData(""));
           dispatch(formDataIdProof(""));
+          dispatch(formImgStatus(false));
           navigate(`/dashboard/profileDetails/${data.userId}`)
         });
     } catch (error) {
@@ -101,7 +101,12 @@ const LawyerEnterDetails = ({ handleStepClick }) => {
   useEffect(() => {
     if (!fetchingData && memberId !== undefined) {
       dispatch(formData(member));
-      dispatch(formDataIdProof(member.idProof));
+      if (member.idProof !== "" && imgStatus === false) {
+        dispatch(formImgStatus(true));
+        dispatch(formDataIdProof(member.idProof));
+      } else {
+        dispatch(formDataIdProof(formIdProof));
+      }
     }
   }, [member, fetchingData]);
 
@@ -118,22 +123,9 @@ const LawyerEnterDetails = ({ handleStepClick }) => {
             setValue(`${key}`, false);
             return false;
           }
-          // if (`${key}` === "dateOfLicenceing") {
-          //   setValue(`${key}`, new Date(`${formDatas[key]}`));
-          //   return false;
-          // }
-          // if (`${key}` === "licenseExpiryDate") {
-          //   setValue(`${key}`, new Date(`${formDatas[key]}`));
-          //   return false;
-          // }
-          // if (`${key}` === "expirationDateOfInsurance") {
-          //   setValue(`${key}`, new Date(`${formDatas[key]}`));
-          //   return false;
-          // }
-          // if (`${formDatas[key]}` === null || `${formDatas[key]}` === "null") {
-          //   setValue(`${key}`, null);
-          //   return false;
-          // }
+          if (`${key}` === "idProof") {
+            return false;
+          }
           setValue(`${key}`, `${formDatas[key]}`);
         }
       });
@@ -141,10 +133,8 @@ const LawyerEnterDetails = ({ handleStepClick }) => {
   }, [formDatas, setValue]);
 
   useEffect(() => {
-    if (formIdProof) {
-      if (formIdProof !== "" || formIdProof !== undefined || formIdProof !== null || formIdProof !== "null") {
-        setSingleFile(formIdProof);
-      }
+    if (formIdProof !== "" || formIdProof !== undefined || formIdProof !== null || formIdProof !== "null") {
+      setSingleFile(formIdProof);
     }
     setValue("idProof", `${formIdProof}`);
   }, [formIdProof, setValue, setSingleFile]);
