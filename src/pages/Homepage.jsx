@@ -60,7 +60,7 @@ const Homepage = () => {
   return (
     <>
       <div className="bg-green-800">
-        <Nav />
+        <Nav page={"home"} />
         <div className="grid grid-cols-2 max-md:grid-cols-1 min-h-[500px] px-[15px]">
           <div className="grid items-center justify-center my-7">
             <div>
@@ -77,7 +77,7 @@ const Homepage = () => {
                     id="search"
                     value={searchKeys}
                     className=" w-full text-sm  p-3 items-center text-gray-900 border border-gray-300  bg-gray-50 "
-                    placeholder="Search for any service in your county"
+                    placeholder="search by state or legal profession"
                     onChange={(e) => setSearchKeys(e.target.value)}
                   />
                   <button
@@ -85,10 +85,8 @@ const Homepage = () => {
                     className="text-white inline-flex h-12 px-5 py-0 sm:py-3 items-center flex-shrink-0 bg-[#00C26B]"
                     onClick={() => navigate(`/searchProfile/${searchKeys}`)}
                   >
-                    {/* <Link to={`/searchProfile/${searchKeys}`}> */}
                     <IoSearchOutline className="h-6 w-6" />
-                    {/* </Link> */}
-                  </button>``
+                  </button>
                 </div>
               </form>
               <div className="inline-flex flex-wrap mt-5 gap-3 mb-0 sm:mb-0">
