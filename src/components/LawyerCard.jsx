@@ -12,7 +12,6 @@ const LawyerCard = ({
   image,
   fName,
   designation,
-  type,
   businessMail,
 }) => {
   return (
@@ -27,8 +26,6 @@ const LawyerCard = ({
                   :
                   <img className="max-w-[150px]" src={profileImg} alt="frame" />
               }
-              {/* <img src={image} alt="frame" /> */}
-
             </div>
             {/*  */}
             <div className="flex sm:flex-1 flex-col justify-end gap-2 p-1">

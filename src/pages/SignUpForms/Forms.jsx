@@ -34,11 +34,11 @@ const SelectForm = ({ handleStepClick }) => {
     switch (currentFormValue) {
       case "Lawyers":
         return <LawyerEnterDetails handleStepClick={handleStepClick} />;
-      case "BondBailsman":
+      case "Bailbondsman":
         return <BondBailsman handleStepClick={handleStepClick} />;
       case "Security":
         return <SecurityDetails handleStepClick={handleStepClick} />;
-      case "PrivateInvestigators":
+      case "Private Investigators":
         return <PrivateInvestigators handleStepClick={handleStepClick} />;
       default:
         return null;
@@ -86,9 +86,9 @@ const SelectForm = ({ handleStepClick }) => {
                       Select from dropdown
                     </option>
                     <option>Lawyers</option>
-                    <option>BondBailsman</option>
+                    <option>Bailbondsman</option>
                     <option>Security</option>
-                    <option>PrivateInvestigators</option>
+                    <option>Private Investigators</option>
                   </select>
                 )}
               />

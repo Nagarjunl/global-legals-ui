@@ -80,6 +80,12 @@ export const userApi = createApi({
           body: data,
       }),
     }),
+    captchaVerify: builder.mutation({
+        query: (data) => ({
+          url: `/frontends/captchaVerify/${data}`,
+          method: "POST",
+      }),
+    }),
   })
 })
 
@@ -91,6 +97,7 @@ export const {
   useCreateMembersMutation,
   useProfileEmailMutation,
   useMakePaymentMutation,
+  useCaptchaVerifyMutation,
 
   useGetMembersQuery,
   useGetMemberQuery,

@@ -4,7 +4,7 @@ import Calendly from "../../assets/calendly.png";
 import "../../App.css";
 import PrimaryButton from "../../components/PrimaryButton";
 import PropTypes from 'prop-types';
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import {
   useGetMemberQuery,
   useGetMemberFromSuperIdQuery,
@@ -33,21 +33,18 @@ const ProfileDetails = ({ hideSchedule }) => {
 
   const searchData = member ? member : supermember;
 
+
   const pathSwitch = () => {
     if (searchData.type === "Lawyers") {
-      console.log("Lwyers");
       navigate(`/dashboard/lawyerDetails/${searchData.userId}`);
     }
-    if (searchData.type === "BondBailsman") {
-      console.log("bondBailsman");
+    if (searchData.type === "Bailbondsman") {
       navigate(`/dashboard/bondBailsman/${searchData.userId}`);
     }
     if (searchData.type === "Security") {
-      console.log("securityDetails");
       navigate(`/dashboard/securityDetails/${searchData.userId}`);
     }
-
-    if (searchData.type === "PrivateInvestigators") {
+    if (searchData.type === "Private Investigators") {
       navigate(`/dashboard/privateInvestigators/${searchData.userId}`);
     }
   };
@@ -104,13 +101,15 @@ const ProfileDetails = ({ hideSchedule }) => {
                   </p>
                   <div className="flex justify-center items-center  py-3">
                     <div className="flex-wrap max-lg:flex justify-center items-center gap-1 ">
-                      <button
-                        type="button"
-                        className="inline-flex items-center  gap-x-1.5 rounded-md bg-white mr-2 px-4 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
-                      >
-                        <img src={Calendly} width={22} />
-                        Connect with Calendly
-                      </button>
+                      <Link to={`${searchData?.calendlyUrl}`} target="_blank">
+                        <button
+                          type="button"
+                          className="inline-flex items-center  gap-x-1.5 rounded-md bg-white mr-2 px-4 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+                        >
+                          <img src={Calendly} width={22} />
+                          Connect with Calendly
+                        </button>
+                      </Link>
                       {/* <button
                         type="button"
                         className="inline-flex items-center max-md:mt-2  gap-x-1.5 rounded-md bg-blue-50 mr-2 px-4 py-1.5 text-sm font-semibold text-blue-500 shadow-sm ring-1 ring-inset ring-blue-500 hover:bg-gray-50"

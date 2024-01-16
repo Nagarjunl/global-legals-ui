@@ -45,8 +45,8 @@ const ProfileCard = ({ data, hideSchedule }) => {
                   <span className="text-blue-700 px-2">
                     {
                       data?.type === "Lawyers" ? data?.practicingLaw :
-                        data?.type === "BondBailsman" ? data?.licenseNumber :
-                          data?.type === "PrivateInvestigators" ? data?.licenseNumber : data?.licenseNumber
+                        data?.type === "Bailbondsman" ? data?.licenseNumber :
+                          data?.type === "Private Investigators" ? data?.licenseNumber : data?.licenseNumber
                     }
                   </span>
                 </span>
