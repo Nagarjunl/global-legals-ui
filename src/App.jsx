@@ -74,27 +74,21 @@ function App() {
           <Route
             path="profileDetails/:memberId"
             element={
-              <DashboardLayout hideHeaderAvator={true}>
-                <ProfileDetails />
-              </DashboardLayout>
+              <ProfileDetails />
             }
           />
 
           <Route
             path="searchProfile"
             element={
-              <DashboardLayout hideHeaderAvator={true}>
-                <SearchProfile />
-              </DashboardLayout>
+              <SearchProfile />
             }
           />
 
           <Route
             path="searchProfile/:searchKeys"
             element={
-              <DashboardLayout hideHeaderAvator={true}>
-                <SearchProfile />
-              </DashboardLayout>
+              <SearchProfile />
             }
           />
 

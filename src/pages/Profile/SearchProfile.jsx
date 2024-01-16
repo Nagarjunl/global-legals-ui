@@ -8,6 +8,8 @@ import Select from "../../components/Select";
 import { IoIosCloseCircleOutline } from "react-icons/io";
 import { Link, useParams } from "react-router-dom";
 import { setPeople, setLocation } from "../../reducers/searchSlice";
+import Nav from "../../components/home/Nav";
+import Footer from "../../components/Footer";
 
 
 const people = [
@@ -71,14 +73,6 @@ const states = [
   { id: 51, type: "location", value: "Wyoming" },
 ]
 
-const ratings = [
-  { id: 1, type: "ratings", value: 1 },
-  { id: 2, type: "ratings", value: 2 },
-  { id: 3, type: "ratings", value: 3 },
-  { id: 4, type: "ratings", value: 4 },
-  { id: 5, type: "ratings", value: 5 },
-]
-
 function SearchProfile() {
   const { searchKeys } = useParams();
   const dispatch = useDispatch();
@@ -118,105 +112,111 @@ function SearchProfile() {
 
 
   return (
-    <div className="mx-auto container max-sm:px-6 lg:px-[120px] pb-3">
-      <div>
-        <div className="mt-10 grid xs:grid-cols-1 lg:grid-cols-2 gap-4">
-          <div>
-            <Select selectData={people} initialValue={searchData?.people} />
-          </div>
-          <div>
-            <Select selectData={states} initialValue={searchData?.location} />
-          </div>
-
-        </div>
-        <div className=" flex flex-wrap mt-4 gap-4 align-text-center">
-          <h2 className=" sm:text-lg"> Applied Filters</h2>
-          {searchTag?.people !== "" &&
-            <span
-              className="inline-flex items-center gap-x-0.5 rounded-full bg-gray-100 px-2 py-1 text-xs font-medium text-blue-600  ring-gray-500/10"
-            >
-              {searchTag?.people?.value}
-              <button
-                type="button"
-                className="group relative -mr-1 h-3.5 w-3.5 rounded-sm hover:bg-gray-500/20"
-                onClick={() => dispatch(setPeople(""))}
-
-              >
-                <span className="sr-only">Remove</span>
-                <svg
-                  viewBox="0 0 14 14"
-                  className="h-4 w-4.5 stroke-gray-600/50 group-hover:stroke-gray-600/75"
-                >
-                  <IoIosCloseCircleOutline
-                    className="text-gray-500"
-                  />                </svg>
-                <span className="absolute -inset-1" />
-              </button>
-            </span>
-          }
-          {searchTag?.location !== "" &&
-            <span
-              className="inline-flex items-center gap-x-0.5 rounded-full bg-gray-100 px-2 py-1 text-xs font-medium text-blue-600  ring-gray-500/10"
-            >
-              {searchTag?.location?.value}
-              <button
-                type="button"
-                className="group relative -mr-1 h-3.5 w-3.5 rounded-sm hover:bg-gray-500/20"
-                onClick={() => dispatch(setLocation(""))}
-              >
-                <span className="sr-only">Remove</span>
-                <svg
-                  viewBox="0 0 14 14"
-                  className="h-4 w-4.5 stroke-gray-600/50 group-hover:stroke-gray-600/75"
-                >
-                  <IoIosCloseCircleOutline
-                    className="text-gray-500"
-
-                  />
-                </svg>
-                <span className="absolute -inset-1" />
-              </button>
-            </span>
-          }
-        </div>
-        <div className="w-full  mt-10">
-          <h2 className=" text-[30px]">
-            Search Result
-          </h2>
-        </div>
+    <div>
+      <Nav page={"profile"} />
+      <div className="mx-auto container max-sm:px-6 lg:px-[120px] pb-3">
         <div>
-          {!fetchingMembers ?
-            members?.map((data, index) => (
-              <Link key={index}
-                to={{
-                  pathname: data.id !== undefined ?
-                    `/profileDetails/${data?.id}` :
-                    `/profileDetails/${data?._id.$oid}`,
-                }}
+          <div className="mt-10 grid xs:grid-cols-1 lg:grid-cols-2 gap-4">
+            <div>
+              <Select selectData={people} initialValue={searchData?.people} />
+            </div>
+            <div>
+              <Select selectData={states} initialValue={searchData?.location} />
+            </div>
+
+          </div>
+          <div className=" flex flex-wrap mt-4 gap-4 align-text-center">
+            <h2 className=" sm:text-lg"> Applied Filters</h2>
+            {searchTag?.people !== "" &&
+              <span
+                className="inline-flex items-center gap-x-0.5 rounded-full bg-gray-100 px-2 py-1 text-xs font-medium text-blue-600  ring-gray-500/10"
               >
-                <LawyerCard
-                  image={data.idProof}
-                  fName={data.clientName}
-                  businessMail={data.businessMail}
-                  type={data.type}
-                  cups={cupImage}
-                  topRated="Top Rated Attorney"
-                  // designation={
-                  //   data.type === "Lawyers" ? data.practicingLaw :
-                  //     data.type === "Bailbondsman" ? data.licenseNumber :
-                  //       data.type === "Private Investigators" ? data.licenseNumber : data.licenseNumber
-                  // }
-                  designation={data.businessAddress}
-                  selfIntro={data.professional}
-                />
-              </Link>
-            )
-            )
-            : null
-          }
+                {searchTag?.people?.value}
+                <button
+                  type="button"
+                  className="group relative -mr-1 h-3.5 w-3.5 rounded-sm hover:bg-gray-500/20"
+                  onClick={() => dispatch(setPeople(""))}
+
+                >
+                  <span className="sr-only">Remove</span>
+                  <svg
+                    viewBox="0 0 14 14"
+                    className="h-4 w-4.5 stroke-gray-600/50 group-hover:stroke-gray-600/75"
+                  >
+                    <IoIosCloseCircleOutline
+                      className="text-gray-500"
+                    />                </svg>
+                  <span className="absolute -inset-1" />
+                </button>
+              </span>
+            }
+            {searchTag?.location !== "" &&
+              <span
+                className="inline-flex items-center gap-x-0.5 rounded-full bg-gray-100 px-2 py-1 text-xs font-medium text-blue-600  ring-gray-500/10"
+              >
+                {searchTag?.location?.value}
+                <button
+                  type="button"
+                  className="group relative -mr-1 h-3.5 w-3.5 rounded-sm hover:bg-gray-500/20"
+                  onClick={() => dispatch(setLocation(""))}
+                >
+                  <span className="sr-only">Remove</span>
+                  <svg
+                    viewBox="0 0 14 14"
+                    className="h-4 w-4.5 stroke-gray-600/50 group-hover:stroke-gray-600/75"
+                  >
+                    <IoIosCloseCircleOutline
+                      className="text-gray-500"
+
+                    />
+                  </svg>
+                  <span className="absolute -inset-1" />
+                </button>
+              </span>
+            }
+          </div>
+          <div className="w-full  mt-10">
+            <h2 className=" text-[30px]">
+              Search Result
+            </h2>
+          </div>
+          <div>
+            {!fetchingMembers ?
+              members?.map((data, index) => (
+                <Link key={index}
+                  to={{
+                    pathname: data.id !== undefined ?
+                      `/profileDetails/${data?.id}` :
+                      `/profileDetails/${data?._id.$oid}`,
+                  }}
+                >
+                  <LawyerCard
+                    image={data.idProof}
+                    fName={data.clientName}
+                    businessMail={data.businessMail}
+                    type={data.type}
+                    cups={cupImage}
+                    topRated="Top Rated Attorney"
+                    // designation={
+                    //   data.type === "Lawyers" ? data.practicingLaw :
+                    //     data.type === "Bailbondsman" ? data.licenseNumber :
+                    //       data.type === "Private Investigators" ? data.licenseNumber : data.licenseNumber
+                    // }
+                    designation={data.businessAddress}
+                    selfIntro={data.professional}
+                  />
+                </Link>
+              )
+              )
+              : null
+            }
+          </div>
         </div>
+      </div >
+      <div className="mx-auto container sm:px-6 lg:px-8 mt-[80px]">
+        <Footer />
       </div>
-    </div >
+    </div>
   );
 }
 
