@@ -1,19 +1,20 @@
-import { useState, useEffect } from "react";
-import ReCAPTCHA from "react-google-recaptcha";
+import { useState, useEffect, useRef } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { useSelector, useDispatch } from 'react-redux';
-import { formData, formDataIdProof, formImgStatus } from "../../reducers/formTypeSlice";
-
-import {
-  usePostFileMutation,
-  useDeleteFileMutation,
-} from "../../services/fileUploadAPI";
 import { useNavigate, useParams } from "react-router-dom";
-import "../../styles.css";
-import { useUpdateMemberMutation, useGetMemberFromSuperIdQuery } from "../../services/userAPI";
 
+import ReCAPTCHA from "react-google-recaptcha";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
+// import DatePicker from "react-datepicker";
+// import "react-datepicker/dist/react-datepicker.css";
+
+import { formData, formDataIdProof, formImgStatus } from "../../reducers/formTypeSlice";
+import { usePostFileMutation, useDeleteFileMutation } from "../../services/fileUploadAPI";
+import { useUpdateMemberMutation, useGetMemberFromSuperIdQuery, useCaptchaVerifyMutation } from "../../services/userAPI";
+
+import "../../styles.css";
+
 
 // const baseUrl = import.meta.env.VITE_API_URL;
 const baseUrl = "https://api.chitmanager.com/";
@@ -21,6 +22,8 @@ const baseUrl = "https://api.chitmanager.com/";
 const LawyerEnterDetails = ({ handleStepClick }) => {
   const { memberId } = useParams();
   const navigate = useNavigate();
+  const captchaRef = useRef(null)
+  const [captchaRes] = useCaptchaVerifyMutation();
 
   const [postFile, { isLoading }] = usePostFileMutation();
   const [deleteFile] = useDeleteFileMutation();
@@ -37,12 +40,26 @@ const LawyerEnterDetails = ({ handleStepClick }) => {
     register,
     handleSubmit,
     setValue,
+    setError,
+    clearErrors,
     control,
     formState: { errors },
   } = useForm();
 
-  const handleCaptchaChange = () => {
-    console.log("ReCaptcha");
+  const verifyRecaptcha = async () => {
+    const token = captchaRef.current.getValue();
+    try {
+      await captchaRes(token).unwrap()
+        .then((res) => {
+          console.log(res);
+          if (res.success) {
+            clearErrors("captcha");
+          }
+
+        });
+    } catch (error) {
+      console.log("error");
+    }
   };
 
   const uploadFileAPI = async (e) => {
@@ -139,6 +156,10 @@ const LawyerEnterDetails = ({ handleStepClick }) => {
     setValue("idProof", `${formIdProof}`);
   }, [formIdProof, setValue, setSingleFile]);
 
+  useEffect(() => {
+    setError("captcha", { type: 'custom', message: 'Please Verify Captcha' })
+  }, []);
+
   return (
     <>
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -153,31 +174,31 @@ const LawyerEnterDetails = ({ handleStepClick }) => {
                 <div className="grid xs:grid-cols-1 lg:grid-cols-2 gap-4">
                   <div>
                     <h5 className="font-normal leading-[17.16px] text-[12px]">
-                      Enter your full name
+                      Enter your full name *
                     </h5>
                     <div className="mt-2">
                       <input
-                        {...register("clientName", { required: "This Field Is Required" })}
+                        {...register("clientName", { required: "This field is required" })}
                         className="block w-full p-3  rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                         placeholder="Enter your full name"
                       />
                       {errors.clientName && (
-                        <p className="text-red-500">{errors.clientName.message}</p>
+                        <p className="font-normal leading-[17.16px] text-[12px] text-red-500 mt-2">{errors.clientName.message}</p>
                       )}
                     </div>
                   </div>
                   <div>
                     <h5 className="font-normal leading-[17.16px] text-[12px]">
-                      Enter Email Address
+                      Enter Email Address *
                     </h5>
                     <div className="mt-2">
                       <input
-                        {...register("businessMail", { required: "This Field Is Required" })}
+                        {...register("businessMail", { required: "This field is required" })}
                         className="block w-full p-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                         placeholder="Enter Email Address"
                       />
                       {errors.businessMail && (
-                        <p className="text-red-500">{errors.businessMail.message}</p>
+                        <p className="font-normal leading-[17.16px] text-[12px] text-red-500 mt-2">{errors.businessMail.message}</p>
                       )}
                     </div>
                   </div>
@@ -187,31 +208,31 @@ const LawyerEnterDetails = ({ handleStepClick }) => {
 
                   <div className="mt-2">
                     <h5 className="font-normal leading-[17.16px] text-[12px]">
-                      Contact number
+                      Contact number *
                     </h5>
                     <div className="mt-2">
                       <input
-                        {...register("contactNumber")}
+                        {...register("contactNumber", { required: "This field is required" })}
                         className="block w-full p-3  rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                         placeholder="Enter your Contact number"
                       />
                       {errors.contactNumber && (
-                        <p className="text-red-500">{errors.contactNumber.message}</p>
+                        <p className="font-normal leading-[17.16px] text-[12px] text-red-500 mt-2">{errors.contactNumber.message}</p>
                       )}
                     </div>
                   </div>
                   <div className="mt-2">
                     <h5 className="font-normal leading-[17.16px] text-[12px]">
-                      Location / Address
+                      Location / Address *
                     </h5>
                     <div className="mt-2">
                       <input
-                        {...register("businessAddress")}
+                        {...register("businessAddress", { required: "This field is required" })}
                         className="block w-full p-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                         placeholder="Enter your location "
                       />
                       {errors.businessAddress && (
-                        <p className="text-red-500">{errors.businessAddress.message}</p>
+                        <p className="font-normal leading-[17.16px] text-[12px] text-red-500 mt-2">{errors.businessAddress.message}</p>
                       )}
                     </div>
                   </div>
@@ -464,7 +485,28 @@ const LawyerEnterDetails = ({ handleStepClick }) => {
             </div>
           </div>
           <div className="flex-1 border-t border-gray-300 mt-3"></div>
-          <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+          <div className="mt-10 grid grid-cols-1 gap-x-6 sm:grid-cols-6">
+
+            <div className="sm:col-span-6">
+              <h5 className="font-normal leading-[17.16px] text-[12px]">
+                Calendly Event Link
+              </h5>
+              <div className="mt-2">
+                <input
+                  type="text"
+                  name="first-name"
+                  {...register("calendlyUrl")}
+                  placeholder="Calendly Event Link"
+                  className="block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                />
+                {errors.calendlyUrl && (
+                  <p className="text-red-500">
+                    {errors.calendlyUrl.message}
+                  </p>
+                )}
+              </div>
+            </div>
+
             <div className="sm:col-span-3">
               <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">
                 Linkedin profile
@@ -515,7 +557,7 @@ const LawyerEnterDetails = ({ handleStepClick }) => {
               type="checkbox"
               id="myCheckbox"
               className="form-checkbox h-5 w-5 text-indigo-600"
-              {...register('peCheckbox')}
+              {...register('peCheckbox', { required: "Please tick the box" })}
             />
             <label className="ml-2 text-[12px]">
               By proceeding, you confirm that you&apos;ve read, comprehended,
@@ -527,15 +569,20 @@ const LawyerEnterDetails = ({ handleStepClick }) => {
               understanding of the guidelines governing your use of Global
               Legals
             </label>
-
           </div>
-          {errors.peCheckbox && <p className="text-red-500">{errors.peCheckbox.message}</p>}
+          {errors.peCheckbox && <p className="font-normal leading-[17.16px] text-[12px] text-red-500">{errors.peCheckbox.message}</p>}
           <div className="flex-1 border-t border-gray-300 mt-7"></div>
           <div className="flex justify-between flex-wrap mt-10 my-3">
             <div>
+              {errors?.captcha && (
+                <p className="font-normal leading-[17.16px] text-[12px] text-red-500">
+                  {errors?.captcha.message}
+                </p>
+              )}
               <ReCAPTCHA
                 sitekey="6LfAUjgpAAAAABQcBX1BtSezxeoNoBDoZk9XPS7T"
-                onChange={handleCaptchaChange}
+                onChange={() => verifyRecaptcha()}
+                ref={captchaRef}
               />
             </div>
             <div>

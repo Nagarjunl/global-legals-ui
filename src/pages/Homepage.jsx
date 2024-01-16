@@ -98,14 +98,14 @@ const Homepage = () => {
                   Lawyers
                 </Link>
                 <Link className=" text-white  font-circular-std text-sm font-medium  justify-center  py-1 px-2 items-center   rounded-full border border-white "
-                  onClick={() => setSearchKeys("PrivateInvestigators")}
+                  onClick={() => setSearchKeys("Private Investigators")}
                 >
                   Private Investigators
                 </Link>
                 <Link className=" text-white  font-circular-std text-sm font-medium  justify-center  py-1 px-2 items-center   rounded-full border border-white "
-                  onClick={() => setSearchKeys("BondBailsman")}
+                  onClick={() => setSearchKeys("Bailbondsman")}
                 >
-                  Bail Bondsman
+                  Bailbondsman
                 </Link>
                 <Link className=" text-white  font-circular-std text-sm font-medium  justify-center  py-1 px-2 items-center   rounded-full border border-white "
                   onClick={() => setSearchKeys("Security")}

@@ -12,9 +12,9 @@ import { setPeople, setLocation } from "../../reducers/searchSlice";
 
 const people = [
   { id: 1, type: "people", value: 'Lawyers' },
-  { id: 2, type: "people", value: 'BondBailsman' },
+  { id: 2, type: "people", value: 'Bailbondsman' },
   { id: 3, type: "people", value: 'Security' },
-  { id: 4, type: "people", value: 'PrivateInvestigators' },
+  { id: 4, type: "people", value: 'Private Investigators' },
 ]
 
 const states = [
@@ -98,10 +98,8 @@ function SearchProfile() {
     const searchParam = `${people} ${location}`;
 
     if (searchData?.people?.value === undefined && searchData?.location?.value === undefined) {
-      console.log("true");
       setSearchParams("true");
     } else {
-      console.log("false");
       setSearchParams(searchParam);
     }
   }, [searchData, setSearchParams]);
@@ -205,8 +203,8 @@ function SearchProfile() {
                   topRated="Top Rated Attorney"
                   // designation={
                   //   data.type === "Lawyers" ? data.practicingLaw :
-                  //     data.type === "BondBailsman" ? data.licenseNumber :
-                  //       data.type === "PrivateInvestigators" ? data.licenseNumber : data.licenseNumber
+                  //     data.type === "Bailbondsman" ? data.licenseNumber :
+                  //       data.type === "Private Investigators" ? data.licenseNumber : data.licenseNumber
                   // }
                   designation={data.businessAddress}
                   selfIntro={data.professional}

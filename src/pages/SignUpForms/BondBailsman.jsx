@@ -1,33 +1,30 @@
-import { useState, useEffect } from "react";
-
+import { useState, useEffect, useRef } from "react";
 import { useForm, Controller } from "react-hook-form";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
-
-import {
-  usePostFileMutation,
-  useDeleteFileMutation,
-} from "../../services/fileUploadAPI";
-import "../../styles.css";
-
-import GoogleImage from "../../assets/Google-image.png";
-import ReCAPTCHA from "react-google-recaptcha";
-
 import { useSelector, useDispatch } from 'react-redux'
-import { formData, formDataIdProof, formImgStatus } from "../../reducers/formTypeSlice";
-import { useUpdateMemberMutation, useGetMemberFromSuperIdQuery } from "../../services/userAPI";
 import { useNavigate, useParams } from "react-router-dom";
 
+import ReCAPTCHA from "react-google-recaptcha";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
+// import DatePicker from "react-datepicker";
+// import "react-datepicker/dist/react-datepicker.css";
+// import GoogleImage from "../../assets/Google-image.png";
 
-// const baseUrl = import.meta.env.VITE_API_URL;
-const baseUrl = "https://api.chitmanager.com/";
+import { usePostFileMutation, useDeleteFileMutation } from "../../services/fileUploadAPI";
+import { formData, formDataIdProof, formImgStatus } from "../../reducers/formTypeSlice";
+import { useUpdateMemberMutation, useGetMemberFromSuperIdQuery, useCaptchaVerifyMutation } from "../../services/userAPI";
+
+import "../../styles.css";
+
+
+const baseUrl = import.meta.env.VITE_API_URL;
+// const baseUrl = "https://api.chitmanager.com/";
 
 function BondBailsman({ handleStepClick }) {
   const { memberId } = useParams();
   const navigate = useNavigate();
-
+  const captchaRef = useRef(null)
+  const [captchaRes] = useCaptchaVerifyMutation();
 
   const [postFile, { isLoading }] = usePostFileMutation();
   const [deleteFile] = useDeleteFileMutation();
@@ -48,9 +45,27 @@ function BondBailsman({ handleStepClick }) {
     register,
     handleSubmit,
     control,
+    setError,
+    clearErrors,
     formState: { errors },
     setValue,
   } = useForm();
+
+  const verifyRecaptcha = async () => {
+    const token = captchaRef.current.getValue();
+    try {
+      await captchaRes(token).unwrap()
+        .then((res) => {
+          console.log(res);
+          if (res.success) {
+            clearErrors("captcha");
+          }
+
+        });
+    } catch (error) {
+      console.log("error");
+    }
+  };
 
   const uploadFileAPI = async (e) => {
     const formFileData = new FormData();
@@ -146,6 +161,14 @@ function BondBailsman({ handleStepClick }) {
     setValue("idProof", `${formIdProof}`);
   }, [formIdProof, setValue, setSingleFile]);
 
+  useEffect(() => {
+    setError("captcha", { type: 'custom', message: 'Please Verify Captcha' })
+  }, []);
+
+  useEffect(() => {
+    setError("captcha", { type: 'custom', message: 'Please Verify Captcha' })
+  }, []);
+
   return (
     <>
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -160,16 +183,16 @@ function BondBailsman({ handleStepClick }) {
                 <div className="grid xs:grid-cols-1 lg:grid-cols-2 gap-4">
                   <div className="">
                     <h5 className="font-normal leading-[17.16px] text-[12px]">
-                      Full Legal Business Name
+                      Full Legal Business Name *
                     </h5>
                     <div className="mt-2">
                       <input
-                        {...register("clientName", { required: "Business Name Is Required" })}
+                        {...register("clientName", { required: "This field is required" })}
                         className="block w-full p-3  rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                         placeholder="Enter Business Name"
                       />
                       {errors.clientName && (
-                        <p className="text-red-500">
+                        <p className="font-normal leading-[17.16px] text-[12px] text-red-500 mt-2">
                           {errors.clientName.message}
                         </p>
                       )}
@@ -177,16 +200,16 @@ function BondBailsman({ handleStepClick }) {
                   </div>
                   <div className="">
                     <h5 className="font-normal leading-[17.16px] text-[12px]">
-                      Business Address
+                      Business Address *
                     </h5>
                     <div className="mt-2">
                       <input
-                        {...register("businessAddress")}
+                        {...register("businessAddress", { required: "This field is required" })}
                         className="block w-full p-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                         placeholder="Enter Business Address"
                       />
                       {errors.businessAddress && (
-                        <p className="text-red-500">
+                        <p className="font-normal leading-[17.16px] text-[12px] text-red-500 mt-2">
                           {errors.businessAddress.message}
                         </p>
                       )}
@@ -197,16 +220,16 @@ function BondBailsman({ handleStepClick }) {
                 <div className="grid xs:grid-cols-1 lg:grid-cols-2 gap-4">
                   <div className="mt-2">
                     <h5 className="font-normal leading-[17.16px] text-[12px]">
-                      Business Email Address
+                      Business Email Address *
                     </h5>
                     <div className="mt-2">
                       <input
-                        {...register("businessMail", { required: "Business Email Is Required" })}
+                        {...register("businessMail", { required: "This field is required" })}
                         className="block w-full p-3  rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                         placeholder="Enter Business Email Address"
                       />
                       {errors.businessMail && (
-                        <p className="text-red-500">
+                        <p className="font-normal leading-[17.16px] text-[12px] text-red-500 mt-2">
                           {errors.businessMail.message}
                         </p>
                       )}
@@ -214,16 +237,16 @@ function BondBailsman({ handleStepClick }) {
                   </div>
                   <div className="mt-2">
                     <h5 className="font-normal leading-[17.16px] text-[12px]">
-                      Business Phone number
+                      Business Phone number *
                     </h5>
                     <div className="mt-2">
                       <input
-                        {...register("businessPhoneNumber")}
+                        {...register("businessPhoneNumber", { required: "This field is required" })}
                         className="block w-full p-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                         placeholder="Enter your location "
                       />
                       {errors.businessPhoneNumber && (
-                        <p className="text-red-500">
+                        <p className="font-normal leading-[17.16px] text-[12px] text-red-500 mt-2">
                           {errors.businessPhoneNumber.message}
                         </p>
                       )}
@@ -621,7 +644,26 @@ function BondBailsman({ handleStepClick }) {
           </div>
 
           <div className="flex-1 border-t border-gray-300 mt-3"></div>
-          <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+          <div className="mt-10 grid grid-cols-1 gap-x-6 sm:grid-cols-6">
+            <div className="sm:col-span-6">
+              <h5 className="font-normal leading-[17.16px] text-[12px]">
+                Calendly Event Link
+              </h5>
+              <div className="mt-2">
+                <input
+                  type="text"
+                  name="first-name"
+                  {...register("calendlyUrl")}
+                  placeholder="Calendly Event Link"
+                  className="block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                />
+                {errors.calendlyUrl && (
+                  <p className="text-red-500">
+                    {errors.calendlyUrl.message}
+                  </p>
+                )}
+              </div>
+            </div>
             <div className="sm:col-span-3">
               <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">
                 Linkedin profile
@@ -655,7 +697,7 @@ function BondBailsman({ handleStepClick }) {
               type="checkbox"
               id="myCheckbox"
               className="form-checkbox h-5 w-5 text-indigo-600"
-              {...register('peCheckbox')}
+              {...register('peCheckbox', { required: 'Please tick the box' })}
             />
             <label className="ml-2 text-[12px]">
               By proceeding, you confirm that you&apos;ve read, comprehended,
@@ -668,6 +710,11 @@ function BondBailsman({ handleStepClick }) {
               Legals
             </label>
           </div>
+          {errors.peCheckbox && (
+            <p className="font-normal leading-[17.16px] text-[12px] text-red-500 mt-2">
+              {errors.peCheckbox.message}
+            </p>
+          )}
 
           <div className="mt-10 grid grid-cols-1 gap-x-6  sm:grid-cols-6">
             <h3 className="font-medium leading-[34.32px] text-[24px] sm:col-span-6">
@@ -705,7 +752,7 @@ function BondBailsman({ handleStepClick }) {
               type="checkbox"
               id="myCheckbox"
               className="form-checkbox h-5 w-[46px] text-indigo-600"
-              {...register('rpCheckboxOne')}
+              {...register('rpCheckboxOne', { required: 'Please tick the box' })}
             />
             <label className="ml-2 text-[12px]">
               I hereby authorize Globallegals to conduct a background check for
@@ -720,12 +767,18 @@ function BondBailsman({ handleStepClick }) {
               maintaining the integrity and trustworthiness
             </label>
           </div>
+          {errors.rpCheckboxOne && (
+            <p className="font-normal leading-[17.16px] text-[12px] text-red-500 mt-2">
+              {errors.rpCheckboxOne.message}
+            </p>
+          )}
+
           <div className="flex mt-5">
             <input
               type="checkbox"
               id="myCheckbox"
               className="form-checkbox h-5 w-5 text-indigo-600"
-              {...register('rpCheckboxTwo')}
+              {...register('rpCheckboxTwo', { required: 'Please tick the box' })}
             />
             <label className="ml-2 text-[12px]">
               By proceeding, you confirm that you&apos;ve read, comprehended,
@@ -738,12 +791,24 @@ function BondBailsman({ handleStepClick }) {
               Legals
             </label>
           </div>
+          {errors.rpCheckboxTwo && (
+            <p className="font-normal leading-[17.16px] text-[12px] text-red-500 mt-2">
+              {errors.rpCheckboxTwo.message}
+            </p>
+          )}
+
           <div className="flex-1 border-t border-gray-300 mt-7"></div>
           <div className="flex justify-between  flex-wrap mt-10 my-3">
             <div>
+              {errors?.captcha && (
+                <p className="font-normal leading-[17.16px] text-[12px] text-red-500">
+                  {errors?.captcha.message}
+                </p>
+              )}
               <ReCAPTCHA
                 sitekey="6LfAUjgpAAAAABQcBX1BtSezxeoNoBDoZk9XPS7T"
-                onChange={handleChange}
+                onChange={() => verifyRecaptcha()}
+                ref={captchaRef}
               />
             </div>
             <div>
