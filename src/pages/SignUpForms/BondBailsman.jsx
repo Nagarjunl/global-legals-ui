@@ -17,8 +17,8 @@ import { useUpdateMemberMutation, useGetMemberFromSuperIdQuery, useCaptchaVerify
 import "../../styles.css";
 
 
-const baseUrl = import.meta.env.VITE_API_URL;
-// const baseUrl = "https://api.chitmanager.com/";
+// const baseUrl = import.meta.env.VITE_API_URL;
+const baseUrl = "https://api.chitmanager.com/";
 
 function BondBailsman({ handleStepClick }) {
   const { memberId } = useParams();
