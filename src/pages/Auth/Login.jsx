@@ -2,6 +2,7 @@ import GlobalLegals from "../../assets/GlobalLegals.svg";
 import PrimaryButton from "../../components/PrimaryButton";
 import { Link } from "react-router-dom";
 import LeftsideBar from "../../components/Leftside-Bar";
+import Paperplane from "../../assets/paper-plane.png";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -55,8 +56,8 @@ const Login = () => {
       </div>
 
       <div className="flex flex-col justify-center px-4 gap-10 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
-        <div className="mx-auto w-full max-w-sm lg:w-96 ">
-          <div className="flex  items-center mt-5 ">
+        <div className="mx-auto w-full ">
+          <div className="flex  items-center mt-5 mb-10">
             <Link to="/">
               <img
                 className="h-12 w-auto"
@@ -64,6 +65,7 @@ const Login = () => {
                 alt="Global Legals"
               />
             </Link>
+
           </div>
 
           <div>
@@ -175,6 +177,17 @@ const Login = () => {
                   <div className="w-full border-t border-gray-200" />
                 </div>
               </div>
+
+              <div className="mt-3 mb-10">
+                <span className="inline-flex items-start rounded-xl bg-blue-50 px-5 py-1  text-xs font-medium text-black ring-1 ring-inset ring-blue-700/10 text-justify">
+                  <img src={Paperplane} className=" mt-3 mb-10 mr-2.5" />
+                  This site was built to give everyone a chance to compete with the bigger firms/legal services that are
+                  well-established. It will also allow the smaller/newer legal professionals an opportunity to see how it feels
+                  to not be taken advantage of due to them not spending as much on advertising as the larger firms/legal
+                  services. Global Legals is here to connect you with other legal professionals throughout all 50 states.
+                </span>
+              </div>
+
 
               {/* <div className="mt-5 grid grid-row-2 gap-4">
                 <GoogleLogin
