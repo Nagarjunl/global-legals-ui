@@ -157,9 +157,19 @@ const Homepage = () => {
       <div className="mx-auto container max-sm:px-6 p-[120px]">
         <div className="grid grid-flow-row gap-5">
           <div className="max-sm:grid justify-center">
-            <h2 className="text-[44px] mb-10 leading-[55.66px] font-bold">
+            <h2 className="text-[44px] mb-2 leading-[55.66px] font-bold">
               Services we Offer
             </h2>
+            <p className="font-normal text-[16px] text-[#5F5F5F] mb-10 text-justify">
+              The idea of Global Legals is to help people of all ages find the legal professionals they’re looking for and
+              needing very quickly and efficiently. Legal emergencies don't always occur between the hours of 9 am to 5 pm and our legal professionals are here because they are committed to personal, fast, transparent
+              communication and service. This site contains old and new legal professionals who are very eager to
+              help. Every legal professional is certified and bonded to their home state standards. We assure you that
+              you will be contacted within minutes of contacting the legal professional of your choice. We aim to
+              provide you with the most cost-efficient legal services. Here at Global Legals, we push for our legal
+              professionals to give lower prices than any other website out there. Global Legals caters to the legal
+              professionals that are here on this site pushing them to put the customers first.
+            </p>
             <div className="grid grid-cols-4 gap-5 max-lg:grid-cols-2 max-sm:grid-cols-1 max-sm:justify-items-center">
               <div>
                 <ServiceCard
@@ -324,10 +334,10 @@ const Homepage = () => {
                   <div className="flex align-center  mx-[20px] px-[32px] py-[20px] justify-between rounded-full bg-[#f5f5f5]">
                     <div>
                       <p className="font-bold text-[24px]">
-                        From Incarceration to Liberation
+                        Your Freedom Matters
                       </p>
                       <p className="font-normal text-[18px] text-[#5F5F5F]">
-                        How Bail Bonds Make Freedom Possible
+                        Finding the Perfect Bail Bondsman
                       </p>
                     </div>
                     <img src={ArrowCircleRight} alt="" />
@@ -512,9 +522,7 @@ const Homepage = () => {
         </div>
       </div>
 
-      <div className="mx-auto container sm:px-6 lg:px-8 mt-[80px]">
-        <Footer />
-      </div>
+      <Footer />
     </>
   );
 };
