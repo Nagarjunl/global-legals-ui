@@ -1,5 +1,4 @@
 import trophy from "../assets/tropy.png";
-import circle from "../assets/circle.png";
 import PropTypes from 'prop-types';
 import CircleImg from "../assets/circle.png";
 import Phone from "../assets/image 24.png";

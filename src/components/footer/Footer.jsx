@@ -50,11 +50,10 @@ const Footer = () => {
               <div>
                 <div className="relative w-[310px]">
                   <input
-                    type="search"
-                    id="search"
+                    type="email"
                     className="block w-full rounded-full p-4 ps-10 text-sm text-gray-900 border border-gray-300  bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
                     placeholder="Enter Your Email Address"
-                    {...register("email", { required: "Email is required" })}
+                    {...register("footerEmail", { required: "Email is required" })}
                   />
                   {
                     !submitingEmailForm ?

@@ -1,6 +1,5 @@
 import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
-import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import GlobalLegals from "../assets/GlobalLegals.svg";
 import UserIcon from "../assets/UserIcon.svg";
 import { removeTokens } from "../reducers/auth/authSlice";
@@ -12,15 +11,11 @@ import PropTypes from "prop-types";
 import { formData, formDataIdProof, formSubmited, formType, formImgStatus } from "../reducers/formTypeSlice";
 import { setSuperUser } from "../reducers/superUserSlice";
 
-// import { GoogleLogout } from "react-google-login";
 import { useNavigate } from "react-router-dom";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
-
-// const clientId =
-//   "1088488217067-p3bcsi9hbqg9v5befpfir4ak29dfd28i.apps.googleusercontent.com";
 
 const Example = ({ hideHeaderAvator }) => {
   const navigate = useNavigate();
@@ -36,8 +31,7 @@ const Example = ({ hideHeaderAvator }) => {
         <>
           <div className="mx-auto max-w-full px-2 sm:px-6 lg:px-8">
             <div className="relative flex h-16 justify-between">
-              <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
-                {/* Mobile menu button */}
+              {/* <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
                 <Disclosure.Button className="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
                   <span className="absolute -inset-0.5" />
                   <span className="sr-only">Open main menu</span>
@@ -47,12 +41,12 @@ const Example = ({ hideHeaderAvator }) => {
                     <Bars3Icon className="block h-6 w-6" aria-hidden="true" />
                   )}
                 </Disclosure.Button>
-              </div>
-              <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+              </div> */}
+              <div className="flex flex-1 items-center  sm:items-stretch sm:justify-start">
                 <div className="flex flex-shrink-0 items-center">
                   <Link to="/">
                     <img
-                      className="h-8 w-auto"
+                      className="h-12 w-auto"
                       src={GlobalLegals}
                       alt="Your Company"
                     />

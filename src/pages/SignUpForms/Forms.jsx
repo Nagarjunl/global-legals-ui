@@ -34,7 +34,7 @@ const SelectForm = ({ handleStepClick }) => {
     switch (currentFormValue) {
       case "Lawyers":
         return <LawyerEnterDetails handleStepClick={handleStepClick} />;
-      case "Bailbondsman":
+      case "Bail Bondsman":
         return <BondBailsman handleStepClick={handleStepClick} />;
       case "Security":
         return <SecurityDetails handleStepClick={handleStepClick} />;

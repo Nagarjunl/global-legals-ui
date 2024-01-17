@@ -1,11 +1,11 @@
-import logo from "../../assets/logo.png";
+import GlobalLegals from "../../assets/GlobalLegals.svg";
 import Paperplane from "../../assets/paper-plane.png";
 import PrimaryButton from "../../components/PrimaryButton";
 import "../../App.css";
 import { useForm } from "react-hook-form"
 import LeftsideBar from "../../components/Leftside-Bar";
 import { useSelector } from 'react-redux'
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useChangePasswordMutation } from "../../services/authAPI";
 import { useDispatch } from "react-redux";
 import { clearEmail } from "../../reducers/auth/registerSlice";
@@ -44,7 +44,6 @@ const NewPassword = () => {
   }
 
   const onSubmit = (data) => {
-    console.log(data);
     setPasswordMethod(data);
   }
 
@@ -56,8 +55,13 @@ const NewPassword = () => {
       <div className="flex flex-col justify-center px-4 gap-10 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
         <div className="mx-auto w-full max-w-sm lg:w-96">
           <div className="flex items-center">
-            <img className="h-10 w-auto" src={logo} alt="Company logo" />
-          </div>
+            <Link to="/">
+              <img
+                className="h-12 w-auto"
+                src={GlobalLegals}
+                alt="Global Legals"
+              />
+            </Link>          </div>
 
           <div>
             <h2 className="mt-10 text-2xl font-bold leading-9 tracking-tight text-gray-900">
@@ -71,7 +75,7 @@ const NewPassword = () => {
 
           <div className="mt-10">
             <div>
-              <form className="grid gap-3" onSubmit={handleSubmit(onSubmit)}>
+              <form onSubmit={handleSubmit(onSubmit)}>
                 <div>
                   <label
                     htmlFor="new password"
@@ -88,7 +92,7 @@ const NewPassword = () => {
                         required: "Password is Required",
                         pattern: {
                           value: REGEX,
-                          message: "Password should be 8 characters and include at least 1 letter, 1 number and 1 special character!"
+                          message: "Password should be more than 8 characters and include at least 1 uppercase letter, 1 lowercase letter, 1 number and 1 special character!"
                         }
                       })
                       }
@@ -134,7 +138,11 @@ const NewPassword = () => {
                   </span>
                 </div>
 
-                <PrimaryButton type="submit" buttonText="Submmit" />
+                <PrimaryButton type="submit" buttonText="Submit" />
+
+                <Link to="/login" className="mb-3">
+                  <PrimaryButton type="button" buttonText="Go to Login" />
+                </Link>
 
               </form>
             </div>

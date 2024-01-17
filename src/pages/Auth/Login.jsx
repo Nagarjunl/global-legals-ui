@@ -1,5 +1,4 @@
-import logo from "../../assets/logo.png";
-import { SiApple } from "react-icons/si";
+import GlobalLegals from "../../assets/GlobalLegals.svg";
 import PrimaryButton from "../../components/PrimaryButton";
 import { Link } from "react-router-dom";
 import LeftsideBar from "../../components/Leftside-Bar";
@@ -9,38 +8,11 @@ import { useDispatch } from "react-redux";
 import { addTokens } from "../../reducers/auth/authSlice";
 import { currentUser } from "../../reducers/userSlice";
 import { useSignInMutation } from "../../services/authAPI";
-// import { GoogleLogin } from "react-google-login";
-// import { useEffect } from "react";
-// import { gapi } from "gapi-script";
-
-// const clientId =
-//   "1088488217067-p3bcsi9hbqg9v5befpfir4ak29dfd28i.apps.googleusercontent.com";
 
 const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [signIn, { isLoading }] = useSignInMutation();
-
-  // useEffect(() => {
-  //   function start() {
-  //     gapi.client.init({
-  //       clientId: clientId,
-  //       scope: "",
-  //     });
-  //   }
-  //   gapi.load("client:auth2", start);
-  // });
-
-  // var accessToken = gapi.auth.getToken().accessToken;
-
-  const onSuccess = (res) => {
-    console.log("Login Succes Current User:", res.profileObj);
-    navigate("/dashboard");
-  };
-
-  const onFailure = (res) => {
-    console.log("Login failed: " + res);
-  };
 
   const {
     register,
@@ -85,7 +57,13 @@ const Login = () => {
       <div className="flex flex-col justify-center px-4 gap-10 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
         <div className="mx-auto w-full max-w-sm lg:w-96 ">
           <div className="flex  items-center mt-5 ">
-            <img className="h-10 w-auto" src={logo} alt="Company logo" />
+            <Link to="/">
+              <img
+                className="h-12 w-auto"
+                src={GlobalLegals}
+                alt="Global Legals"
+              />
+            </Link>
           </div>
 
           <div>
@@ -157,7 +135,7 @@ const Login = () => {
 
                 <div className="flex items-center justify-between mt-3">
                   <div className="flex items-center ">
-                    <input
+                    {/* <input
                       id="remember-me"
                       name="remember-me"
                       type="checkbox"
@@ -168,7 +146,7 @@ const Login = () => {
                       className="ml-3 block text-sm leading-6 text-gray-700"
                     >
                       Remember me
-                    </label>
+                    </label> */}
                   </div>
 
                   <div className="text-sm leading-6">

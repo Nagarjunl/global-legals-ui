@@ -14,7 +14,7 @@ import Footer from "../../components/Footer";
 
 const people = [
   { id: 1, type: "people", value: 'Lawyers' },
-  { id: 2, type: "people", value: 'Bailbondsman' },
+  { id: 2, type: "people", value: 'Bail Bondsman' },
   { id: 3, type: "people", value: 'Security' },
   { id: 4, type: "people", value: 'Private Investigators' },
 ]

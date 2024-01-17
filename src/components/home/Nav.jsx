@@ -30,7 +30,7 @@ const Nav = ({ page }) => {
                 <div className="flex flex-shrink-0 items-center">
                   <Link to="/">
                     <img
-                      className="h-8 w-auto"
+                      className="h-12 w-auto"
                       src={GlobalLegals}
                       alt="Global Legals"
                     />
