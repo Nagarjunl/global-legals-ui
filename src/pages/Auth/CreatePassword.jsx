@@ -1,12 +1,12 @@
 import { useEffect } from "react";
-import logo from "../../assets/logo.png";
+import GlobalLegals from "../../assets/GlobalLegals.svg";
 import Paperplane from "../../assets/paper-plane.png";
 import "../../App.css";
 import PrimaryButton from "../../components/PrimaryButton";
 import LeftsideBar from "../../components/Leftside-Bar";
 import { useSelector } from 'react-redux'
 import { useForm } from "react-hook-form"
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useSetPasswordMutation } from "../../services/authAPI";
 import { useDispatch } from "react-redux";
 import { clearEmail } from "../../reducers/auth/registerSlice";
@@ -73,8 +73,13 @@ const CreatePassword = () => {
       <div className="flex flex-col justify-center px-4 py-12 gap-10 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
         <div className="mx-auto w-full max-w-sm lg:w-96">
           <div className="flex items-center">
-            <img className="h-10 w-auto" src={logo} alt="Your Company" />
-          </div>
+            <Link to="/">
+              <img
+                className="h-12 w-auto"
+                src={GlobalLegals}
+                alt="Global Legals"
+              />
+            </Link>          </div>
 
           <div>
             <h2 className="mt-6 text-2xl font-bold leading-9 tracking-tight text-gray-900">
@@ -115,7 +120,7 @@ const CreatePassword = () => {
                   required: "Password Is Required",
                   pattern: {
                     value: REGEX,
-                    message: "Password should be 8 characters and include at least 1 uppercase letter, 1 lowercase letter, 1 number and 1 special character!"
+                    message: "Password should be more than 8 characters and include at least 1 uppercase letter, 1 lowercase letter, 1 number and 1 special character!"
                   }
                 })}
               />
@@ -123,6 +128,10 @@ const CreatePassword = () => {
                 <p className="mt-2 text-sm text-red-600 dark:text-red-500"> {errors?.password?.message} </p>
               }
               <PrimaryButton type="submit" disabled={isLoading} buttonText="Login" />
+
+              <Link to="/login">
+                <PrimaryButton type="button" disabled={isLoading} buttonText="Go to Login" />
+              </Link>
 
             </form>
           </div>

@@ -1,11 +1,11 @@
-import logo from "../../assets/logo.png";
+import GlobalLegals from "../../assets/GlobalLegals.svg";
 import Paperplane from "../../assets/paper-plane.png";
 import "../../App.css";
 import PrimaryButton from "../../components/PrimaryButton";
 import { useForm } from "react-hook-form"
 import LeftsideBar from "../../components/Leftside-Bar";
 import { useForgotPasswordMutation } from "../../services/authAPI";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { getpwResetMail } from '../../reducers/auth/registerSlice'
 import { useDispatch } from 'react-redux'
 
@@ -51,8 +51,13 @@ const ForgetPassword = () => {
       <div className="flex flex-col justify-center px-4 py-12 gap-10 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
         <div className="mx-auto w-full max-w-sm lg:w-96">
           <div className="flex items-center">
-            <img className="h-10 w-auto" src={logo} alt="Company logo" />
-          </div>
+            <Link to="/">
+              <img
+                className="h-12 w-auto"
+                src={GlobalLegals}
+                alt="Global Legals"
+              />
+            </Link>          </div>
 
           <div>
             <h2 className="mt-10 text-2xl font-bold leading-9 tracking-tight text-gray-900">
@@ -87,6 +92,9 @@ const ForgetPassword = () => {
               <PrimaryButton type="submit" buttonText="Reset Password" />
             </form>
           </div>
+          <Link to="/login">
+            <PrimaryButton type="button" buttonText="Go to Login" />
+          </Link>
 
           {/* <div className="mt-10">
             <span className="inline-flex items-center rounded-xl bg-blue-50 px-2 py-1 text-xs font-medium text-black ring-1 ring-inset ring-blue-700/10">

@@ -1,10 +1,10 @@
-import logo from "../../assets/logo.png";
+import GlobalLegals from "../../assets/GlobalLegals.svg";
 import PrimaryButton from "../../components/PrimaryButton";
 import LeftsideBar from "../../components/Leftside-Bar";
 import { useForm } from "react-hook-form"
 import { useDispatch } from 'react-redux'
 import { getEmail } from '../../reducers/auth/registerSlice'
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useSendOtpMutation } from "../../services/authAPI";
 
 const Register = () => {
@@ -55,7 +55,13 @@ const Register = () => {
         <div className="flex flex-col justify-center px-4 gap-10 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
           <div className="mx-auto w-full max-w-sm lg:w-96 ">
             <div className="flex  items-center mt-10 ">
-              <img className="h-10 w-auto" src={logo} alt="Your Company" />
+              <Link to="/">
+                <img
+                  className="h-12 w-auto"
+                  src={GlobalLegals}
+                  alt="Global Legals"
+                />
+              </Link>
             </div>
 
             <div>
@@ -104,6 +110,9 @@ const Register = () => {
                         </button>
                       </div>
                   }
+                  <Link to="/login">
+                    <PrimaryButton type="button" buttonText="Go to Login" />
+                  </Link>
                 </form>
               </div>
             </div>

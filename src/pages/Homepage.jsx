@@ -1,7 +1,12 @@
 import { Link, useNavigate } from "react-router-dom";
 import Nav from "../components/home/Nav";
 import { IoSearchOutline } from "react-icons/io5";
-import RemovalImg from "../assets/New_folder/removal.svg";
+import SecurityImg from "../assets/security.jpg";
+import bondBailsman from "../assets/bond bailsman.jpg";
+import privateInvestigators from "../assets/private investigators.jpg";
+import lawyers from "../assets/lawyers.jpg";
+import bailsMan from "../assets/bbm.jpg";
+
 import ServiceCard from "../components/ServiceCard";
 import CardOne from "../assets/New_folder/image 6.png";
 import CardTwo from "../assets/New_folder/image 7.png";
@@ -11,24 +16,22 @@ import BlockText from "../components/BlockText";
 import containerThree from "../assets/New_folder/usercomputer.svg";
 import usersmile from "../assets/New_folder/usersmile.svg";
 import RoadMapImg1 from "../assets/New_folder/image14.svg";
-import RoadMapImg2 from "../assets/New_folder/image12.svg";
 import ArrowCircleRight from "../assets/New_folder/arrow-circle-right.svg";
 import ReCAPTCHA from "react-google-recaptcha";
 import BanerPerson from "../assets/New_folder/banner_person_img.svg";
 import Footer from "../components/footer/Footer";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import PrimaryButton from "../components/PrimaryButton";
-import { useProfileEmailMutation } from "../services/userAPI";
+import { useProfileEmailMutation, useCaptchaVerifyMutation } from "../services/userAPI";
+import { Carousel } from 'flowbite-react';
+
 
 const Homepage = () => {
-
+  const captchaRef = useRef(null)
   const [ack, setAck] = useState();
   const [profileEmail, { isLoading: submitingEmailForm }] = useProfileEmailMutation();
-
-  const handleChange = () => {
-    console.log("ReCaptcha");
-  };
+  const [captchaRes] = useCaptchaVerifyMutation();
 
   const [searchKeys, setSearchKeys] = useState();
   const navigate = useNavigate();
@@ -36,16 +39,32 @@ const Homepage = () => {
   const {
     register,
     handleSubmit,
+    setError,
+    clearErrors,
+    reset,
     formState: { errors },
   } = useForm();
 
-  console.log("register", { ...register });
-
+  const verifyRecaptcha = async () => {
+    const token = captchaRef.current.getValue();
+    try {
+      await captchaRes(token).unwrap()
+        .then((res) => {
+          if (res.success) {
+            clearErrors("captcha");
+          }
+        });
+    } catch (error) {
+      console.log("error");
+    }
+  };
   const submitMailForm = async (data) => {
     try {
       await profileEmail(data).unwrap()
         .then(() => {
           setAck("We will contact you soon!");
+          reset();
+          captchaRef.current.reset();
         });
     } catch (error) {
       console.log("error");
@@ -57,19 +76,27 @@ const Homepage = () => {
     submitMailForm(result);
   };
 
+  useEffect(() => {
+    setError("captcha", { type: 'custom', message: 'Please Verify Captcha' })
+  }, []);
+
   return (
     <>
       <div className="bg-green-800">
         <Nav page={"home"} />
-        <div className="grid grid-cols-2 max-md:grid-cols-1 min-h-[500px] px-[15px]">
+        <div className="grid grid-cols-2 gap-3 max-md:grid-cols-1 min-h-[500px] px-[15px]">
           <div className="grid items-center justify-center my-7">
             <div>
+              <p className="text-white italic text-[16px] mb-10 flex leading-[17.8px] font-medium mb-2">
+                We're here for all your legal service needs? They are all here in one location
+              </p>
               <h1 className="text-white font-circular-std flex text-[44px] leading-[55.66px] font-bold">
                 Effortlessly Locate the Ideal
               </h1>
               <p className="text-white italic text-[44px] mb-10 leading-[52.8px] font-light mb-5">
                 Professional Services
               </p>
+
               <form>
                 <div className="flex">
                   <input
@@ -91,33 +118,42 @@ const Homepage = () => {
               </form>
               <div className="inline-flex flex-wrap mt-5 gap-3 mb-0 sm:mb-0">
                 <Link className="text-white  font-circular-std text-sm font-medium  justify-center  py-1 px-2 items-center   rounded-full border border-white "
-                  onClick={() => setSearchKeys("Lawyers")}
+                  to={`/searchProfile/Lawyers`}
                 >
                   Lawyers
                 </Link>
                 <Link className=" text-white  font-circular-std text-sm font-medium  justify-center  py-1 px-2 items-center   rounded-full border border-white "
-                  onClick={() => setSearchKeys("Private Investigators")}
+                  to={'/searchProfile/Private Investigators'}
                 >
                   Private Investigators
                 </Link>
                 <Link className=" text-white  font-circular-std text-sm font-medium  justify-center  py-1 px-2 items-center   rounded-full border border-white "
-                  onClick={() => setSearchKeys("Bailbondsman")}
+                  to={'/searchProfile/Bail Bondsman'}
                 >
-                  Bailbondsman
+                  Bail Bondsman
                 </Link>
                 <Link className=" text-white  font-circular-std text-sm font-medium  justify-center  py-1 px-2 items-center   rounded-full border border-white "
-                  onClick={() => setSearchKeys("Security")}
+                  to={'/searchProfile/Security'}
                 >
                   Security
                 </Link>
               </div>
             </div>
           </div>
-          <div className="grid items-end justify-center">
-            <img src={RemovalImg} />
+          <div className="grid items-center">
+            <div className="h-56 sm:h-[450px] md:h-[325px] xl:h-[410px] 2xl:h-[410px]">
+              <Carousel>
+                <img src={lawyers} />
+                <img src={bondBailsman} />
+                <img src={privateInvestigators} />
+                <img src={SecurityImg} />
+              </Carousel>
+            </div>
+
           </div>
         </div >
       </div >
+
       <div className="mx-auto container max-sm:px-6 p-[120px]">
         <div className="grid grid-flow-row gap-5">
           <div className="max-sm:grid justify-center">
@@ -174,7 +210,7 @@ const Homepage = () => {
                     }
                   />
                   <BlockText
-                    heading={"You Trusted Resource"}
+                    heading={"Your Trusted Resource"}
                     content={
                       "Whether you need legal advice, investigative services, bail bonds assistance, or security solutions, we've got you covered"
                     }
@@ -280,7 +316,7 @@ const Homepage = () => {
             <div className="sm:grid ">
               <div className="relative ">
                 <img
-                  src={RoadMapImg2}
+                  src={bailsMan}
                   alt="business"
                   className="w-[821px] max-h-[548px]"
                 />
@@ -333,11 +369,11 @@ const Homepage = () => {
                         type="text"
                         className="mt-1 p-3 border rounded-md w-full"
                         {...register("fullName", {
-                          required: "Full Name is required",
+                          required: "This field is required",
                         })}
                       />
                       {errors?.fullName && (
-                        <p className="mt-2 text-sm text-red-600 dark:text-red-500">
+                        <p className="font-normal leading-[17.16px] text-[12px] text-red-500 mt-2">
                           {errors?.fullName?.message}{" "}
                         </p>
                       )}
@@ -353,11 +389,11 @@ const Homepage = () => {
                         type="email"
                         className="mt-1 p-2 border rounded-md w-full"
                         {...register("email", {
-                          required: "Email is required",
+                          required: "This field is required",
                         })}
                       />
                       {errors?.email && (
-                        <p className="mt-2 text-sm text-red-600 dark:text-red-500">
+                        <p className="font-normal leading-[17.16px] text-[12px] text-red-500 mt-2">
                           {errors?.email?.message}{" "}
                         </p>
                       )}
@@ -405,10 +441,17 @@ const Homepage = () => {
                     ></textarea>
                   </div>
                   <div className=" grid grid-cols-2 justify-between  mt-5 max-md:grid-cols-1  gap-3">
-                    <div className="grid justify-start items-center  ">
+                    {/* <div className="grid justify-start items-center  "> */}
+                    <div>
+                      {errors?.captcha && (
+                        <p className="font-normal leading-[17.16px] text-[12px] text-red-500">
+                          {errors?.captcha.message}
+                        </p>
+                      )}
                       <ReCAPTCHA
                         sitekey="6LfAUjgpAAAAABQcBX1BtSezxeoNoBDoZk9XPS7T"
-                        onChange={handleChange}
+                        onChange={() => verifyRecaptcha()}
+                        ref={captchaRef}
                       />
                     </div>
                     <div className="grid sm:justify-end items-center">
@@ -430,6 +473,7 @@ const Homepage = () => {
                       }
                     </div>
                     <h2 className=" font-bold text-2xl mb-[-20px] mt-6 text-green-600 dark:text-green-500 pb-3">{ack}</h2>
+                    {/* </div> */}
                   </div>
                 </div>
               </form>
@@ -437,7 +481,7 @@ const Homepage = () => {
           </div>
         </div>
       </div>
-      {/*  */}
+
       <div className="bg-white max-sm:px-6 px-[120px] py-[80px]">
         <div className="mx-auto container">
           <div className="relative bg-gradient-to-r from-[#d38b5d] to-[#fea66d] grid grid-cols-2">
