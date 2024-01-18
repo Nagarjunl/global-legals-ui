@@ -39,8 +39,8 @@ const Footer = () => {
     <>
       <div className="bg-white max-sm:px-6 px-[120px] py-[45px] border-b-[color:var(--Border,#D5E3EF)] border-b border-solid">
         <div className="mx-auto container">
-          <div className="grid lg:grid-cols-3 gap-[45px]  max-sm:grid-cols-1">
-            <div className="lg:col-span-2 md:col-span-2">
+          <div className="grid lg:grid-cols-4 gap-[45px]  max-sm:grid-cols-1">
+            {/* <div className="lg:col-span-2 md:col-span-2">
               <p className="text-slate-600 text-lg font-bold leading-7 mb-2">
                 From Founder
               </p>
@@ -49,9 +49,9 @@ const Footer = () => {
                 searching for legal help. “Let us do the leg work in gathering the legal professionals you need
                 throughout the 50 states. You already have enough on your mind.
               </p>
-            </div>
+            </div> */}
 
-            <div>
+            <div className="lg:col-span-2 md:col-span-2">
               <p className="text-slate-600 text-lg font-bold leading-7 mb-2">
                 Exclusive Offers For You
               </p>
@@ -98,19 +98,40 @@ const Footer = () => {
                 </div>
               </form>
             </div>
+
+            <div>
+              <p className="text-black text-lg font-bold"> Privacy Policy </p>
+              <p className="text-zinc-600 text-sm font-[450] whitespace-nowrap mt-2">
+                Terms and Condition
+              </p>
+              <p className="text-zinc-600 text-sm font-[450] whitespace-nowrap mt-2">
+                Private Policy
+              </p>
+            </div>
+
+            <div>
+              <p className="text-black text-lg font-bold whitespace-nowrap">
+                About
+              </p>
+              <p className="text-zinc-600 text-sm font-[450] whitespace-nowrap mt-2">
+                About us
+              </p>
+              <p className="text-zinc-600 text-sm font-[450] whitespace-nowrap mt-2">
+                Global Certified
+              </p>
+            </div>
+
           </div>
 
-          <div>
+          {/* <div>
             <p className="text-[12px]">
               <a href="#" className="text-blue-700"> Terms & Conditions </a>
               |
               <a href="#" className="text-blue-700"> Private Policies</a>
             </p>
-          </div>
+          </div> */}
         </div>
       </div>
-
-
 
       <div className="bg-white container mx-auto  max-sm:px-6 px-[80px] py-[24px]">
         <div className="grid grid-cols-2 max-sm:grid-cols-1 justify-between gap-5">
@@ -121,7 +142,9 @@ const Footer = () => {
             <FaInstagram className="text-zinc-600 aspect-square object-contain object-center w-6 h-6 overflow-hidden shrink-0 max-w-full" />
             <FaFacebook className="text-zinc-600 aspect-square object-contain object-center w-6 h-6 overflow-hidden shrink-0 max-w-full" />
             <FaYoutube className="text-zinc-600 aspect-square object-contain object-center w-6 h-6 overflow-hidden shrink-0 max-w-full" />
-            <FaTwitter className="text-zinc-600 aspect-square object-contain object-center w-6 h-6 overflow-hidden shrink-0 max-w-full" />
+            <a href="https://x.com/Globallegals?t=oSwksbs3jJuYReq5Zo8IrA&s=09)" target="_blank">
+              <FaTwitter className="text-zinc-600 aspect-square object-contain object-center w-6 h-6 overflow-hidden shrink-0 max-w-full" />
+            </a>
             <FaPinterest className="text-zinc-600 aspect-square object-contain object-center w-6 h-6 overflow-hidden shrink-0 max-w-full  " />
             <FaLinkedinIn className="text-zinc-600 aspect-square object-contain object-center w-6 h-6 overflow-hidden shrink-0 max-w-full" />
           </div>

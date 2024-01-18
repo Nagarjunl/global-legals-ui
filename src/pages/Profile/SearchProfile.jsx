@@ -204,6 +204,11 @@ function SearchProfile() {
                     // }
                     designation={data.businessAddress}
                     selfIntro={data.professional}
+                    contactNumber={data.contactNumber}
+                    practicingLaw={data.practicingLaw}
+                    licenseNumber={data.licenseNumber}
+                    businessName={data.businessName}
+
                   />
                 </Link>
               )

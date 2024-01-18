@@ -44,7 +44,7 @@ const Nav = ({ page }) => {
                       <Link
                         to={"/"}
                         className={`block py-2 px-3 md:p-0 
-                        ${currentPage === "profile" ? "text-white-700" : "text-white"}
+                        ${currentPage !== "home" ? "text-white-700" : "text-white"}
                         `}
                         aria-current="page"
                       >
@@ -55,7 +55,7 @@ const Nav = ({ page }) => {
                       <Link
                         to={"/searchProfile"}
                         className={`block py-2 px-3 md:p-0 
-                        ${currentPage === "profile" ? "text-white-700" : "text-white"}
+                        ${currentPage !== "home" ? "text-white-700" : "text-white"}
                         `}
                         aria-current="page"
                       >
@@ -64,9 +64,9 @@ const Nav = ({ page }) => {
                     </li>
                     <li>
                       <Link
-                        to={"*"}
+                        to={"/faq"}
                         className={`block py-2 px-3 md:p-0 
-                        ${currentPage === "profile" ? "text-white-700" : "text-white"}
+                        ${currentPage !== "home" ? "text-white-700" : "text-white"}
                         `}
                         aria-current="page"
                       >
@@ -110,8 +110,11 @@ const Nav = ({ page }) => {
               </Disclosure.Button>
               <Disclosure.Button
                 as="a"
-                href="#"
-                className={`block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700 ${currentPage === "home" ? "text-white" : "text-white-700"}`}
+                href="/faq"
+                className={`block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700 
+                ${currentPage === "home" ? "text-white" : "text-white-700"}
+                ${currentPage === "faq" ? "border-l-4 border-indigo-500 bg-indigo-50" : ""}
+                `}
               >
                 FAQ
               </Disclosure.Button>

@@ -84,187 +84,195 @@ const Homepage = () => {
     <>
       <div className="bg-green-800">
         <Nav page={"home"} />
-        <div className="grid grid-cols-2 gap-3 max-md:grid-cols-1 min-h-[500px] px-[15px]">
-          <div className="grid items-center justify-center my-7">
-            <div>
-              <p className="text-white italic text-[16px] mb-10 flex leading-[17.8px] font-medium mb-2">
-                We're here for all your legal service needs? They are all here in one location
-              </p>
-              <h1 className="text-white font-circular-std flex text-[44px] leading-[55.66px] font-bold">
-                Effortlessly Locate the Ideal
-              </h1>
-              <p className="text-white italic text-[44px] mb-10 leading-[52.8px] font-light mb-5">
-                Professional Services
-              </p>
+        <div className="max-sm:px-6 p-[50px]">
+          <div className="mx-auto container">
+            <div className="grid grid-cols-2 gap-3 max-md:grid-cols-1 min-h-[500px] px-[15px]">
+              <div className="grid items-center max-md:justify-center  justify-start my-7">
+                <div>
+                  <p className="text-white italic text-[16px] mb-10 flex leading-[17.8px] font-medium mb-2">
+                    We're here for all your legal service needs. They are all here in one location!
+                  </p>
+                  <h1 className="text-white font-circular-std flex text-[44px] leading-[55.66px] font-bold">
+                    Effortlessly Locate the Ideal
+                  </h1>
+                  <p className="text-white italic text-[44px] mb-10 leading-[52.8px] font-light mb-5">
+                    Professional Services
+                  </p>
 
-              <form>
-                <div className="flex">
-                  <input
-                    type="text"
-                    id="search"
-                    value={searchKeys}
-                    className=" w-full text-sm  p-3 items-center text-gray-900 border border-gray-300  bg-gray-50 "
-                    placeholder="search by state or legal profession"
-                    onChange={(e) => setSearchKeys(e.target.value)}
-                  />
-                  <button
-                    type="button"
-                    className="text-white inline-flex h-12 px-5 py-0 sm:py-3 items-center flex-shrink-0 bg-[#00C26B]"
-                    onClick={() => navigate(`/searchProfile/${searchKeys}`)}
-                  >
-                    <IoSearchOutline className="h-6 w-6" />
-                  </button>
+                  <form>
+                    <div className="flex w-11/12">
+                      <input
+                        type="text"
+                        id="search"
+                        value={searchKeys}
+                        className=" w-full text-sm  p-3 items-center text-gray-900 border border-gray-300  bg-gray-50 "
+                        placeholder="search by state or legal profession"
+                        onChange={(e) => setSearchKeys(e.target.value)}
+                      />
+                      <button
+                        type="button"
+                        className="text-white inline-flex h-12 px-5 py-0 sm:py-3 items-center flex-shrink-0 bg-[#00C26B]"
+                        onClick={() => navigate(`/searchProfile/${searchKeys}`)}
+                      >
+                        <IoSearchOutline className="h-6 w-6" />
+                      </button>
+                    </div>
+                  </form>
+                  <div className="inline-flex flex-wrap mt-5 gap-3 mb-0 sm:mb-0">
+                    <Link className="text-white  font-circular-std text-sm font-medium  justify-center  py-1 px-2 items-center   rounded-full border border-white "
+                      to={`/searchProfile/Lawyers`}
+                    >
+                      Lawyers
+                    </Link>
+                    <Link className=" text-white  font-circular-std text-sm font-medium  justify-center  py-1 px-2 items-center   rounded-full border border-white "
+                      to={'/searchProfile/Private Investigators'}
+                    >
+                      Private Investigators
+                    </Link>
+                    <Link className=" text-white  font-circular-std text-sm font-medium  justify-center  py-1 px-2 items-center   rounded-full border border-white "
+                      to={'/searchProfile/Bail Bondsman'}
+                    >
+                      Bail Bondsman
+                    </Link>
+                    <Link className=" text-white  font-circular-std text-sm font-medium  justify-center  py-1 px-2 items-center   rounded-full border border-white "
+                      to={'/searchProfile/Security'}
+                    >
+                      Security
+                    </Link>
+                  </div>
                 </div>
-              </form>
-              <div className="inline-flex flex-wrap mt-5 gap-3 mb-0 sm:mb-0">
-                <Link className="text-white  font-circular-std text-sm font-medium  justify-center  py-1 px-2 items-center   rounded-full border border-white "
-                  to={`/searchProfile/Lawyers`}
-                >
-                  Lawyers
-                </Link>
-                <Link className=" text-white  font-circular-std text-sm font-medium  justify-center  py-1 px-2 items-center   rounded-full border border-white "
-                  to={'/searchProfile/Private Investigators'}
-                >
-                  Private Investigators
-                </Link>
-                <Link className=" text-white  font-circular-std text-sm font-medium  justify-center  py-1 px-2 items-center   rounded-full border border-white "
-                  to={'/searchProfile/Bail Bondsman'}
-                >
-                  Bail Bondsman
-                </Link>
-                <Link className=" text-white  font-circular-std text-sm font-medium  justify-center  py-1 px-2 items-center   rounded-full border border-white "
-                  to={'/searchProfile/Security'}
-                >
-                  Security
-                </Link>
               </div>
-            </div>
-          </div>
-          <div className="grid items-center">
-            <div className="h-56 sm:h-[450px] md:h-[325px] xl:h-[410px] 2xl:h-[410px]">
-              <Carousel>
-                <img src={lawyers} />
-                <img src={bondBailsman} />
-                <img src={privateInvestigators} />
-                <img src={SecurityImg} />
-              </Carousel>
-            </div>
+              <div className="grid items-center">
+                <div className="h-[325px] sm:h-[450px] md:h-[325px] xl:h-[410px] 2xl:h-[410px]">
+                  <Carousel>
+                    <img src={lawyers} />
+                    <img src={bondBailsman} />
+                    <img src={privateInvestigators} />
+                    <img src={SecurityImg} />
+                  </Carousel>
+                </div>
 
-          </div>
+              </div>
+            </div >
+          </div >
         </div >
       </div >
 
-      <div className="mx-auto container max-sm:px-6 p-[120px]">
-        <div className="grid grid-flow-row gap-5">
-          <div className="max-sm:grid justify-center">
-            <h2 className="text-[44px] mb-2 leading-[55.66px] font-bold">
-              Services we Offer
-            </h2>
-            <p className="font-normal text-[16px] text-[#5F5F5F] mb-10 text-justify">
-              The idea of Global Legals is to help people of all ages find the legal professionals they’re looking for and
-              needing very quickly and efficiently. Legal emergencies don't always occur between the hours of 9 am to 5 pm and our legal professionals are here because they are committed to personal, fast, transparent
-              communication and service. This site contains old and new legal professionals who are very eager to
-              help. Every legal professional is certified and bonded to their home state standards. We assure you that
-              you will be contacted within minutes of contacting the legal professional of your choice. We aim to
-              provide you with the most cost-efficient legal services. Here at Global Legals, we push for our legal
-              professionals to give lower prices than any other website out there. Global Legals caters to the legal
-              professionals that are here on this site pushing them to put the customers first.
-            </p>
-            <div className="grid grid-cols-4 gap-5 max-lg:grid-cols-2 max-sm:grid-cols-1 max-sm:justify-items-center">
-              <div>
-                <ServiceCard
-                  image={CardOne}
-                  content={"Your Advocate Professionals"}
-                  contentBold={"Legal Excellence"}
-                />
-              </div>
-              <div>
-                <ServiceCard
-                  image={CardTwo}
-                  content={"Sleath uncover"}
-                  contentBold={"Truth, Find clues"}
-                />
-              </div>
-              <div>
-                <ServiceCard
-                  image={CardThree}
-                  content={"Freedom bonded, Swift"}
-                  contentBold={"Release, Trusted"}
-                />
-              </div>
-              <div>
-                <ServiceCard
-                  image={CardFour}
-                  content={"Protection, Peace of"}
-                  contentBold={"Mind, Safety"}
-                />
+      <div className="max-sm:px-6 p-[120px]">
+        <div className="mx-auto container">
+          <div className="grid grid-flow-row gap-5">
+            <div className="max-sm:grid justify-center">
+              <h2 className="text-[44px] mb-2 leading-[55.66px] font-bold">
+                Services we Offer
+              </h2>
+              <p className="font-normal text-[16px] text-[#5F5F5F] mb-10 text-justify">
+                The idea of Global Legals is to help people of all ages find the legal professionals they’re looking for and
+                needing very quickly and efficiently. Legal emergencies don't always occur between the hours of 9 am to 5 pm and our legal professionals are here because they are committed to personal, fast, transparent
+                communication and service. This site contains old and new legal professionals who are very eager to
+                help. Every legal professional is certified and bonded to their home state standards. We assure you that
+                you will be contacted within minutes of contacting the legal professional of your choice. We aim to
+                provide you with the most cost-efficient legal services. Here at Global Legals, we push for our legal
+                professionals to give lower prices than any other website out there. Global Legals caters to the legal
+                professionals that are here on this site pushing them to put the customers first.
+              </p>
+              <div className="grid grid-cols-4 gap-5 max-lg:grid-cols-2 max-sm:grid-cols-1 max-sm:justify-items-center">
+                <div>
+                  <ServiceCard
+                    image={CardOne}
+                    content={"Your Advocate Professionals"}
+                    contentBold={"Legal Excellence"}
+                  />
+                </div>
+                <div>
+                  <ServiceCard
+                    image={CardTwo}
+                    content={"Sleath uncover"}
+                    contentBold={"Truth, Find clues"}
+                  />
+                </div>
+                <div>
+                  <ServiceCard
+                    image={CardThree}
+                    content={"Freedom bonded, Swift"}
+                    contentBold={"Release, Trusted"}
+                  />
+                </div>
+                <div>
+                  <ServiceCard
+                    image={CardFour}
+                    content={"Protection, Peace of"}
+                    contentBold={"Mind, Safety"}
+                  />
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+
+
       <div className="bg-yellow-50 max-sm:px-6 p-[120px]">
         <div className="mx-auto container">
-          {/* <div className="grid grid-flow-row gap-5"> */}
-          <div className="b-yellow-50 ">
-            <div className=" grid grid-cols-2 gap-x-5 max-md:grid-cols-1  max-lg:grid-cols-1 max-xl:grid-cols-2">
-              <div className="grid items-center max-lg:justify-center">
-                <div className="max-w-[481px]">
-                  <p className="self-stretch text-[44px] mb-10 leading-[55.66px] font-bold max-md:text-start">
-                    The best part? Everything.
-                  </p>
-                  <BlockText
-                    heading={"Connect with Skilled Professionals"}
-                    content={
-                      "Discover an array of professional services at your fingertips."
-                    }
-                  />
-                  <BlockText
-                    heading={"Your Trusted Resource"}
-                    content={
-                      "Whether you need legal advice, investigative services, bail bonds assistance, or security solutions, we've got you covered"
-                    }
-                  />
-                  <BlockText
-                    heading={"Tailored Expertise"}
-                    content={
-                      "Find professionals with the specific talents and skills to address your unique needs."
-                    }
-                  />
-                  <BlockText
-                    heading={"Swift and Secure Assistance"}
-                    content={
-                      "Get prompt and reliable assistance from experienced experts in their respective fields."
-                    }
-                  />
+          <div className="grid grid-flow-row gap-5">
+            <div className="b-yellow-50 ">
+              <div className=" grid grid-cols-2 gap-x-5 max-md:grid-cols-1 max-lg:grid-cols-1 max-xl:grid-cols-2">
+                <div className="grid items-center max-lg:justify-center lg:justify-items-end">
+                  <div className="max-w-[481px]">
+                    <p className="self-stretch text-[44px] mb-10 leading-[55.66px] font-bold max-md:text-start">
+                      The best part? Everything.
+                    </p>
+                    <BlockText
+                      heading={"Connect with Skilled Professionals"}
+                      content={
+                        "Discover an array of professional services at your fingertips."
+                      }
+                    />
+                    <BlockText
+                      heading={"Your Trusted Resource"}
+                      content={
+                        "Whether you need legal advice, investigative services, bail bonds assistance, or security solutions, we've got you covered"
+                      }
+                    />
+                    <BlockText
+                      heading={"Tailored Expertise"}
+                      content={
+                        "Find professionals with the specific talents and skills to address your unique needs."
+                      }
+                    />
+                    <BlockText
+                      heading={"Swift and Secure Assistance"}
+                      content={
+                        "Get prompt and reliable assistance from experienced experts in their respective fields."
+                      }
+                    />
+                  </div>
                 </div>
-              </div>
-              <div className="grid justify-center items-end  relative mt-10">
-                <div className="relative justify-center">
-                  <img src={containerThree} alt="user_image" />
-                  <div className="absolute top-[50px] left-[57px] rounded-full bg-white bg-opacity-20 px-5 py-2  backdrop-blur-md backdrop-filter">
-                    <p className=" text-[20px] font-medium text-white">
-                      Services we bring to table
-                    </p>
-                  </div>
-                  <div className="absolute top-[107px] left-[175px] rounded-full bg-white bg-opacity-20 px-5 py-2  backdrop-blur-md backdrop-filter">
-                    <p className=" text-[20px] font-medium text-white">
-                      At Affordable prices
-                    </p>
-                  </div>
-                  <div className="absolute top-[164px] left-[57px] rounded-full bg-white bg-opacity-20 px-5 py-2  backdrop-blur-md backdrop-filter">
-                    <p className=" text-[20px] font-medium text-white">
-                      We Offer much more
-                    </p>
+                <div className="grid  items-end relative mt-10 lg:justify-items-start ">
+                  <div className="relative justify-center">
+                    <img src={containerThree} alt="user_image" />
+                    <div className="absolute top-[50px] left-[57px] rounded-full bg-white bg-opacity-20 px-5 py-2  backdrop-blur-md backdrop-filter">
+                      <p className=" text-[20px] font-medium text-white">
+                        Services we bring to table
+                      </p>
+                    </div>
+                    <div className="absolute top-[107px] left-[175px] rounded-full bg-white bg-opacity-20 px-5 py-2  backdrop-blur-md backdrop-filter">
+                      <p className=" text-[20px] font-medium text-white">
+                        At Affordable prices
+                      </p>
+                    </div>
+                    <div className="absolute top-[164px] left-[57px] rounded-full bg-white bg-opacity-20 px-5 py-2  backdrop-blur-md backdrop-filter">
+                      <p className=" text-[20px] font-medium text-white">
+                        We Offer much more
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          {/* </div> */}
         </div>
       </div>
-      {/*  */}
+
       <div className="bg-white max-sm:px-6 p-[120px]">
         <div className="mx-auto container">
           <div className="grid grid-cols-2 gap-10 max-lg:grid-cols-1">
@@ -283,12 +291,12 @@ const Homepage = () => {
             </div>
             <div className="grid justify-center items-center max-lg:justify-items-center  lg:justify-items-start">
               <div>
-                <blockquote className=" text-4xl font-serif italic mb-8">
-                  “When you want to create a business bigger than yourself, you
-                  need a lot of help. thats what Global legals does”
+                <blockquote className=" text-[22px] font-serif italic mb-8">
+                  “Having a website with only legal professionals makes it one less thing a person must worry about when searching for legal help. “Let us do the leg work in gathering the legal professionals you need throughout the 50 states.
+                  You already have enough on your mind.”
                 </blockquote>
                 <span className=" text-lg text-gray-500 dark:text-gray-400 font-normal ">
-                  Terry John Paul, Founder{" "}
+                  Terrence Griffin
                 </span>
               </div>
             </div>

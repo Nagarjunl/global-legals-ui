@@ -56,7 +56,7 @@ const Login = () => {
       </div>
 
       <div className="flex flex-col justify-center px-4 gap-10 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
-        <div className="mx-auto w-full ">
+        <div className="mx-auto w-full max-w-sm lg:w-96 ">
           <div className="flex  items-center mt-5 mb-10">
             <Link to="/">
               <img

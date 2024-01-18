@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { useSelector, useDispatch } from 'react-redux'
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 import ReCAPTCHA from "react-google-recaptcha";
 import ReactQuill from "react-quill";
@@ -798,8 +798,10 @@ function BondBailsman({ handleStepClick }) {
           )}
 
           <div className="flex-1 border-t border-gray-300 mt-7"></div>
-          <div className="flex justify-between  flex-wrap mt-10 my-3">
-            <div>
+
+
+          <div className="grid  max-sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 mt-10 my-3">
+            <div className="grid items-center max-md:justify-items-center min-md:justify-items-end">
               {errors?.captcha && (
                 <p className="font-normal leading-[17.16px] text-[12px] text-red-500">
                   {errors?.captcha.message}
@@ -811,12 +813,35 @@ function BondBailsman({ handleStepClick }) {
                 ref={captchaRef}
               />
             </div>
-            <div>
-              <button type="submit" disabled={isLoading || updatingMember} className="rounded-md mt-2 text-white bg-blue-800 border-blue-800 px-20 py-2 text-sm font-semibol shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 border border-solid ">
-                Save & Submit
-              </button>
+            <div className="grid">
+              <div className="grid items-center md:justify-items-end max-md:justify-items-center ">
+                <div className="flex">
+                  {member !== undefined &&
+                    <Link
+                      to={{
+                        pathname: `/dashboard/profileDetails/${member?.userId}`
+                      }}
+                    >
+                      <button
+                        type="button"
+                        className="rounded-md bg-white px-3 py-2 mr-2 text-sm font-semibold text-blue-600 shadow-sm ring-1 ring-inset ring-blue-600 hover:bg-gray-50"
+                      >
+                        Cancel
+                      </button>
+                    </Link>
+                  }
+
+                  <button type="submit" disabled={isLoading || updatingMember}
+                    className="rounded-md text-white bg-blue-800 border-blue-800 px-3 py-2 text-sm font-semibol shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 border border-solid ">
+                    Save & Submit
+                  </button>
+
+                </div>
+
+              </div>
             </div>
           </div>
+
         </div>
       </form>
     </>

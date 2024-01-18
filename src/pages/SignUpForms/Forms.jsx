@@ -5,7 +5,7 @@ import PrivateInvestigators from "./PrivateInvestigators";
 import { useSelector, useDispatch } from 'react-redux';
 import { formType, formData, formDataIdProof, formImgStatus } from "../../reducers/formTypeSlice";
 import { useForm, Controller } from "react-hook-form";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
 const SelectForm = ({ handleStepClick }) => {
@@ -86,7 +86,7 @@ const SelectForm = ({ handleStepClick }) => {
                       Select from dropdown
                     </option>
                     <option>Lawyers</option>
-                    <option>Bailbondsman</option>
+                    <option>Bail Bondsman</option>
                     <option>Security</option>
                     <option>Private Investigators</option>
                   </select>

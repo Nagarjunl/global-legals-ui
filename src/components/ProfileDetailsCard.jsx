@@ -13,14 +13,17 @@ const ProfileCard = ({ data, hideSchedule }) => {
       <div className=" rounded-l ">
         <div className="grid-cols-2 ">
           <div className="bg-white p-2 w-80 max-w-auto sm:w-full sm:p-4 h-auto sm:h-auto rounded-2xl shadow-lg flex flex-col sm:flex-row gap-5 select-none">
-            {
-              data?.idProof ?
-                (<img className="max-w-[150px]" src={`${baseUrl}${data?.idProof}`} alt="frame" />)
-                :
-                (<img className="max-w-[150px]" src={profileImg} alt="frame" />)
-            }
+            <div className="flex justify-center p-5">
 
-            <div className="flex sm:flex-1 flex-col justify-end gap-2 p-1">
+              {
+                data?.idProof ?
+                  (<img className="w-auto h-[200px]" src={`${baseUrl}${data?.idProof}`} alt="frame" />)
+                  :
+                  (<img className="w-auto h-[200px]" src={profileImg} alt="frame" />)
+              }
+            </div>
+
+            <div className="flex sm:flex-1 flex-col justify-center gap-2 p-1">
               <h1 className="text-lg sm:text-xl font-semibold  text-black">
                 {data?.clientName}
               </h1>
@@ -39,12 +42,15 @@ const ProfileCard = ({ data, hideSchedule }) => {
               </div>
               <div className=" flex text-lg text-gray-600 ">
                 <span className="inline-flex  py-2  text-sm font-medium ">
-                  <img src={Phone} alt="Phone" className="w-10 px-2" />
+                  <img src={CircleImg}
+                    alt="Phone"
+                    className="pr-2 w-auto h-6 sm:w-auto"
+                  />
                   {data?.type}
                   <span className="text-blue-700 px-2">
                     {
-                      data?.type === "Lawyers" ? data?.practicingLaw :
-                        data?.type === "Bailbondsman" ? data?.licenseNumber :
+                      data?.type === "Lawyers" ? data?.businessName - data?.practicingLaw :
+                        data?.type === "Bail Bondsman" ? data?.licenseNumber :
                           data?.type === "Private Investigators" ? data?.licenseNumber : data?.licenseNumber
                     }
                   </span>
@@ -53,24 +59,40 @@ const ProfileCard = ({ data, hideSchedule }) => {
               <div className=" flex text-lg text-gray-600 ">
                 <span className="inline-flex  py-1 text-sm font-medium ">
                   <img
-                    src={CircleImg}
+                    src={Phone}
                     alt="Phone"
-                    className=" px-2 w-auto h-6   sm:w-auto"
+                    className="pr-2 w-auto h-6 sm:w-auto"
                   />
-                  {data?.businessMail}
+                  Contact Number : {data?.contactNumber}
                 </span>
               </div>
+              <div className=" flex text-lg text-gray-600 ">
+                <span className="inline-flex  py-1 text-sm font-medium ">
+                  <img
+                    src={CircleImg}
+                    alt="Phone"
+                    className="pr-2 w-auto h-6 sm:w-auto"
+                  />
+                  Mail : {data?.businessMail}
+                </span>
+              </div>
+
+              <div className=" flex text-lg text-gray-600 ">
+                <span className="inline-flex  py-1 text-sm font-medium ">
+                  <img
+                    src={CircleImg}
+                    alt="Phone"
+                    className="pr-2 w-auto h-6 sm:w-auto"
+                  />
+                  State : {data?.businessAddress}
+                </span>
+              </div>
+
               <div className=" flex text-lg text-gray-600 ">
                 <span className="inline-flex  px-2 py-1 text-sm font-medium ">
                   {data?.selfIntro}
                 </span>
               </div>
-              <div className=" flex text-lg text-gray-500 ">
-                <span className="inline-flex  px-2 py-1 text-sm font-small ">
-                  {"Client / Peer Review"}
-                </span>
-              </div>
-              <div className="text-lg px-2">{"4.2 / 5.0"}</div>
             </div>
 
             {!hideSchedule ?

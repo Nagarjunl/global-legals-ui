@@ -40,7 +40,7 @@ const ProfileDetails = ({ hideSchedule }) => {
     if (searchData.type === "Lawyers") {
       navigate(`/dashboard/lawyerDetails/${searchData.userId}`);
     }
-    if (searchData.type === "Bailbondsman") {
+    if (searchData.type === "Bail Bondsman") {
       navigate(`/dashboard/bondBailsman/${searchData.userId}`);
     }
     if (searchData.type === "Security") {
@@ -75,7 +75,9 @@ const ProfileDetails = ({ hideSchedule }) => {
 
   return (
     <>
-      <Nav page={"profile"} />
+      {!hideSchedule && (
+        <Nav page={"profile"} />
+      )}
       <div className="mx-auto container max-sm:px-6 lg:px-[120px] pb-3">
         <div className="mt-5">
           <ProfileCard data={searchData} hideSchedule={hideSchedule} />
@@ -106,7 +108,7 @@ const ProfileDetails = ({ hideSchedule }) => {
                     <Link to={`${searchData?.calendlyUrl}`} target="_blank">
                       <button
                         type="button"
-                        className="inline-flex items-center  gap-x-1.5 rounded-md bg-white mr-2 px-4 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+                        className="flex w-full justify-center mt-3 rounded-md bg-blue-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                       >
                         <img src={Calendly} width={22} />
                         Connect with Calendly
@@ -323,9 +325,11 @@ const ProfileDetails = ({ hideSchedule }) => {
           ""
         )}
       </div>
-      <div className="mx-auto container sm:px-6 lg:px-8 mt-[80px]">
-        <Footer />
-      </div>
+      {!hideSchedule && (
+        <div className="mx-auto container sm:px-6 lg:px-8 mt-[80px]">
+          <Footer />
+        </div>
+      )}
     </>
   );
 };

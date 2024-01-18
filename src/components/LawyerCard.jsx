@@ -13,26 +13,30 @@ const LawyerCard = ({
   fName,
   designation,
   businessMail,
+  contactNumber,
+  type,
+  practicingLaw,
+  licenseNumber,
+  businessName
 }) => {
   return (
     <>
       <div>
         <div className="flex-wrap  mt-10">
           <div className="bg-white p-2 border border-blue-Gray-200  sm:p-4 sm:h-auto rounded-xl flex flex-col sm:flex-row gap-5 select-none">
-            <div className="p-5">
+            <div className="flex justify-center p-5">
               {
                 image ?
-                  <img className="max-w-[150px]" src={`${baseUrl}${image}`} alt="frame" />
+                  <img className="w-auto h-[200px]" src={`${baseUrl}${image}`} alt="frame" />
                   :
-                  <img className="max-w-[150px]" src={profileImg} alt="frame" />
+                  <img className="w-auto h-[200px]" src={profileImg} alt="frame" />
               }
             </div>
-            {/*  */}
-            <div className="flex sm:flex-1 flex-col justify-end gap-2 p-1">
+            <div className="flex sm:flex-1 flex-col justify-center gap-2 p-1">
               <h1 className="text-lg sm:text-xl font-semibold  text-black">
                 {fName}
               </h1>
-              <div className=" flex  flex wrap gap-4 ">
+              <div className=" flex flex-wrap gap-4">
                 <span className="inline-flex  rounded-full items-center  bg-blue-50 px-3 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10">
                   {" Accepting Clients"}
                 </span>
@@ -45,10 +49,27 @@ const LawyerCard = ({
               </div>
               <div className=" flex text-lg text-gray-600 ">
                 <span className="inline-flex  py-2  text-sm font-medium ">
-                  <img src={Phone} alt="Phone" className="w-10 px-2" />
-                  {/* {type === "Lawyers" ? "Practicing at " : "Licence Number "} */}
-                  State
-                  <span className="text-blue-700 px-2">  {designation}</span>
+                  <img
+                    src={CircleImg}
+                    alt="Phone"
+                    className="pr-2 w-auto h-6 sm:w-auto"
+                  />                  {type}
+                  <span className="text-blue-700 px-2">
+                    {
+                      type === "Lawyers" ? businessName - practicingLaw :
+                        type === "Bail Bondsman" ? licenseNumber :
+                          type === "Private Investigators" ? licenseNumber : licenseNumber
+                    }
+                  </span>
+                </span>
+              </div>
+              <div className=" flex text-lg text-gray-600 ">
+                <span className="inline-flex  py-2  text-sm font-medium ">
+                  <img src={Phone}
+                    alt="Phone"
+                    className="pr-2 w-auto h-6 sm:w-auto"
+                  />
+                  Contact Number : {contactNumber}
                 </span>
               </div>
               <div className=" flex text-lg text-gray-600 ">
@@ -56,22 +77,22 @@ const LawyerCard = ({
                   <img
                     src={CircleImg}
                     alt="Phone"
-                    className=" px-2 w-auto h-6   sm:w-auto"
+                    className="pr-2 w-auto h-6 sm:w-auto"
                   />
-                  {businessMail}
+                  Mail : {businessMail}
                 </span>
               </div>
-              {/* <div className=" flex text-lg text-gray-600 ">
-                <span className="inline-flex  px-2 py-1 text-sm font-medium ">
-                  {selfIntro}
+              <div className=" flex text-lg text-gray-600 ">
+                <span className="inline-flex  py-1 text-sm font-medium ">
+                  <img
+                    src={CircleImg}
+                    alt="Phone"
+                    className="pr-2 w-auto h-6 sm:w-auto"
+                  />
+                  State
+                  <span className="text-blue-700 px-2">  {designation}</span>
                 </span>
               </div>
-              <div className=" flex text-lg text-gray-500 ">
-                <span className="inline-flex  px-2 py-1 text-sm font-small ">
-                  {"Client / Peer Review"}
-                </span>
-              </div>
-              <div className="text-lg px-2">{"4.2 / 5.0"}</div> */}
             </div>
             <div className="mt-auto pb-5 ">
               <button
