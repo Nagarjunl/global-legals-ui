@@ -4,8 +4,8 @@ import CircleImg from "../assets/circle.png";
 import PrimaryButton from "./PrimaryButton";
 import profileImg from "../assets/avator.png";
 
-// const baseUrl = import.meta.env.VITE_API_URL;
-const baseUrl = "https://api.chitmanager.com/";
+const baseUrl = import.meta.env.VITE_API_URL;
+// const baseUrl = "https://api.chitmanager.com/";
 
 
 const LawyerCard = ({
@@ -53,14 +53,15 @@ const LawyerCard = ({
                     src={CircleImg}
                     alt="Phone"
                     className="pr-2 w-auto h-6 sm:w-auto"
-                  />                  {type}
-                  <span className="text-blue-700 px-2">
+                  />
+                  {type}
+                  {/* <span className="text-blue-700 px-2">
                     {
                       type === "Lawyers" ? businessName - practicingLaw :
                         type === "Bail Bondsman" ? licenseNumber :
                           type === "Private Investigators" ? licenseNumber : licenseNumber
                     }
-                  </span>
+                  </span> */}
                 </span>
               </div>
               <div className=" flex text-lg text-gray-600 ">
