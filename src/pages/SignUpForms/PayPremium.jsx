@@ -44,12 +44,12 @@ const PayPremium = ({ handleStepClick }) => {
       await createMembers(datas)
         .unwrap()
         .then((res) => {
-          const { result3, ...rest } = res;
+          const { user, ...rest } = res;
           dispatch(formSubmited(true));
           dispatch(formData(""));
           dispatch(formDataIdProof(""));
           dispatch(formImgStatus(false));
-          dispatch(currentUser(result3));
+          dispatch(currentUser(user));
           handleStepClick(2);
         });
     } catch (error) {
