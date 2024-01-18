@@ -10,7 +10,6 @@ const Faq = () => {
                     <h2 className=" text-[30px]">
                         FAQ
                     </h2>
-                    jhdfjkshjfakjfhkjahfajkhk
                 </div>
             </div >
             <div className="mx-auto container sm:px-6 lg:px-8 mt-[80px]">
