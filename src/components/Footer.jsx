@@ -11,7 +11,7 @@ const Footer = () => {
             <Link
               to="mailto:support@globallegals.com"
               className="text-blue-500 hover:underline"
-            >
+            >{" "}
               support@globallegals.com
             </Link>
           </p>

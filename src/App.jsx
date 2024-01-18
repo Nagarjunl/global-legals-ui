@@ -31,6 +31,7 @@ import PayPremium from "./pages/SignUpForms/PayPremium";
 import SuperUserLogin from "./pages/SuperUser/Login";
 import { useSelector } from "react-redux";
 import Table from "./pages/SuperUser/Table";
+import Faq from "./pages/faq";
 
 function App() {
   const isAuthenticated = useSelector((state) => state.auth.access_token);
@@ -89,6 +90,12 @@ function App() {
             path="searchProfile/:searchKeys"
             element={
               <SearchProfile />
+            }
+          />
+          <Route
+            path="faq"
+            element={
+              <Faq />
             }
           />
 
