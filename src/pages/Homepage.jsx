@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Nav from "../components/home/Nav";
 import { IoSearchOutline } from "react-icons/io5";
 import SecurityImg from "../assets/security.jpg";
-import bondBailsman from "../assets/bond bailsman.jpg";
+import bondBailsman from "../assets/bail bondsman.jpg";
 import privateInvestigators from "../assets/private investigators.jpg";
 import lawyers from "../assets/lawyers.jpg";
 import bailsMan from "../assets/bbm.jpg";
@@ -92,12 +92,12 @@ const Homepage = () => {
                   <p className="text-white italic text-[16px] mb-10 flex leading-[17.8px] font-medium mb-2">
                     We're here for all your legal service needs. They are all here in one location!
                   </p>
-                  <h1 className="text-white font-circular-std flex text-[44px] leading-[55.66px] font-bold">
-                    Effortlessly Locate the Ideal
+                  <h1 className="text-white font-circular-std flex text-[40px] leading-[55.66px] font-bold mb-5">
+                    Effortlessly Locate the Ideal Legal Professional Services
                   </h1>
-                  <p className="text-white italic text-[44px] mb-10 leading-[52.8px] font-light mb-5">
+                  {/* <p className="text-white italic text-[44px] mb-10 leading-[52.8px] font-light mb-5">
                     Professional Services
-                  </p>
+                  </p> */}
 
                   <form>
                     <div className="flex w-11/12">
@@ -166,14 +166,7 @@ const Homepage = () => {
                 Services we Offer
               </h2>
               <p className="font-normal text-[16px] text-[#5F5F5F] mb-10 text-justify">
-                The idea of Global Legals is to help people of all ages find the legal professionals they’re looking for and
-                needing very quickly and efficiently. Legal emergencies don't always occur between the hours of 9 am to 5 pm and our legal professionals are here because they are committed to personal, fast, transparent
-                communication and service. This site contains old and new legal professionals who are very eager to
-                help. Every legal professional is certified and bonded to their home state standards. We assure you that
-                you will be contacted within minutes of contacting the legal professional of your choice. We aim to
-                provide you with the most cost-efficient legal services. Here at Global Legals, we push for our legal
-                professionals to give lower prices than any other website out there. Global Legals caters to the legal
-                professionals that are here on this site pushing them to put the customers first.
+                The idea of Global Legals is to help people of all ages find the legal professionals they’re looking for and need very quickly and efficiently. Legal emergencies don't always occur between the hours of 9 am to 5 pm and our legal professionals are here because they are committed to personal, fast, transparent communication and service. This site contains new legal professionals as well as well-established legal professionals who are very knowledgeable in their field and are eager to help. Every legal professional here on Global Legals is licensed, bonded, and insured by the state in which they conduct their work. We assure you that you will be contacted within minutes of contacting the legal professional of your choice. Global Legals aim to provide you with the most cost-efficient legal services. Here at Global Legals, we push for our legal professionals to give lower prices than any other website out there. Global Legals caters to the legal professionals here on this site and pushes them to always put our customers first.
               </p>
               <div className="grid grid-cols-4 gap-5 max-lg:grid-cols-2 max-sm:grid-cols-1 max-sm:justify-items-center">
                 <div>
@@ -209,7 +202,6 @@ const Homepage = () => {
           </div>
         </div>
       </div>
-
 
       <div className="bg-yellow-50 max-sm:px-6 p-[120px]">
         <div className="mx-auto container">
@@ -303,6 +295,7 @@ const Homepage = () => {
           </div>
         </div>
       </div>
+
       <div className="bg-blue-50 max-sm:px-6 p-[120px]">
         <div className="mx-auto container">
           <h1 className="text-black font-bold text-[44px] mb-10 leading-[55.66px] text-start font-circular-std">
@@ -459,7 +452,6 @@ const Homepage = () => {
                     ></textarea>
                   </div>
                   <div className=" grid grid-cols-2 justify-between  mt-5 max-md:grid-cols-1  gap-3">
-                    {/* <div className="grid justify-start items-center  "> */}
                     <div>
                       {errors?.captcha && (
                         <p className="font-normal leading-[17.16px] text-[12px] text-red-500">
@@ -491,7 +483,6 @@ const Homepage = () => {
                       }
                     </div>
                     <h2 className=" font-bold text-2xl mb-[-20px] mt-6 text-green-600 dark:text-green-500 pb-3">{ack}</h2>
-                    {/* </div> */}
                   </div>
                 </div>
               </form>
