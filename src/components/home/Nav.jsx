@@ -3,11 +3,13 @@ import { Link } from "react-router-dom";
 import { Disclosure } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import GlobalLegals from "../../assets/GlobalLegals.svg";
+import GlobalWhite from "../../assets/GlobalLegalsWhite.png";
 import PropTypes from "prop-types";
 
 const Nav = ({ page }) => {
 
   const currentPage = page;
+  console.log(currentPage);
   return (
     <Disclosure as="nav" className="shadow">
       {({ open }) => (
@@ -28,13 +30,24 @@ const Nav = ({ page }) => {
               </div>
               <div className="flex flex-1 sm:items-stretch sm:justify-start">
                 <div className="flex flex-shrink-0 items-center">
-                  <Link to="/">
-                    <img
-                      className="h-12 w-auto"
-                      src={GlobalLegals}
-                      alt="Global Legals"
-                    />
-                  </Link>
+                  {
+                    currentPage === "home" ?
+                      <Link to="/">
+                        <img
+                          className="h-12 w-auto"
+                          src={GlobalWhite}
+                          alt="Global Legals"
+                        />
+                      </Link>
+                      :
+                      <Link to="/">
+                        <img
+                          className="h-12 w-auto"
+                          src={GlobalLegals}
+                          alt="Global Legals"
+                        />
+                      </Link>
+                  }
                 </div>
               </div>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
