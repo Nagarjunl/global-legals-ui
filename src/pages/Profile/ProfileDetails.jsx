@@ -1,6 +1,6 @@
 import ProfileCard from "../../components/ProfileDetailsCard";
 import meeting from "../../assets/meeting.png";
-import Calendly from "../../assets/calendly.png";
+import CalendlyIcon from "../../assets/calendly icon.png";
 import "../../App.css";
 import PrimaryButton from "../../components/PrimaryButton";
 import PropTypes from 'prop-types';
@@ -16,6 +16,9 @@ import { useState } from "react";
 import "../../../src/styles.css";
 import Nav from "../../components/home/Nav";
 import Footer from "../../components/Footer";
+
+import { FaTwitter } from "react-icons/fa";
+import { FaLinkedinIn } from "react-icons/fa6";
 
 
 const ProfileDetails = ({ hideSchedule }) => {
@@ -34,7 +37,6 @@ const ProfileDetails = ({ hideSchedule }) => {
   const [profileEmail, { isLoading: submitingEmailForm }] = useProfileEmailMutation();
 
   const searchData = member ? member : supermember;
-
 
   const pathSwitch = () => {
     if (searchData.type === "Lawyers") {
@@ -104,30 +106,55 @@ const ProfileDetails = ({ hideSchedule }) => {
                   with one of our experienced lawyers
                 </p>
                 <div className="flex justify-center items-center  py-3">
-                  <div className="flex-wrap max-lg:flex justify-center items-center gap-1 ">
-                    <Link to={`${searchData?.calendlyUrl}`} target="_blank">
-                      <button
-                        type="button"
-                        className="flex w-full justify-center mt-3 rounded-md bg-blue-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                      >
-                        <img src={Calendly} width={22} />
-                        Connect with Calendly
-                      </button>
-                    </Link>
-                    {/* <button
-                        type="button"
-                        className="inline-flex items-center max-md:mt-2  gap-x-1.5 rounded-md bg-blue-50 mr-2 px-4 py-1.5 text-sm font-semibold text-blue-500 shadow-sm ring-1 ring-inset ring-blue-500 hover:bg-gray-50"
-                      >
-                        <BiLogoZoom size={22} />
-                        Schedule with Zoom
-                      </button>
-                      <button
-                        type="button"
-                        className="inline-flex items-center max-md:mt-2 max gap-x-1.5 rounded-md bg-sky-50 mr-2 px-4 py-1.5 text-sm font-semibold text-sky-500 shadow-sm ring-1 ring-inset ring-sky-500 hover:bg-gray-50"
-                      >
-                        <FaSkype size={20} />
-                        Schedule with Skype
-                      </button> */}
+                  <div className="flex max-sm:flex-wrap justify-center items-center gap-5">
+                    {searchData?.twitterProfile &&
+                      <Link to={`${searchData?.calendlyUrl}`} target="_blank">
+                        <button
+                          type="button"
+                          className="flex w-full gap-2 items-center justify-center mt-3 rounded-md bg-blue-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                        >
+                          <img src={CalendlyIcon} width={22} />
+                          Connect with Calendly
+                        </button>
+                      </Link>
+                    }
+                    {searchData?.twitterProfile &&
+                      <Link to={`${searchData?.twitterProfile}`} target="_blank">
+                        <button
+                          type="button"
+                          className="flex  gap-2 w-full items-center justify-center mt-3 rounded-md bg-blue-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                        >
+                          <FaTwitter className="text-white aspect-square object-contain object-center w-6 h-6 overflow-hidden shrink-0 max-w-full" />
+                          Follow On Twitter
+                        </button>
+                      </Link>
+                    }
+
+                    {searchData?.linkedInProfile &&
+                      <Link to={`${searchData?.linkedInProfile}`} target="_blank">
+                        <button
+                          type="button"
+                          className="flex gap-2 w-full items-center justify-center mt-3 rounded-md bg-blue-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                        >
+                          <FaLinkedinIn className="text-white aspect-square object-contain object-center w-6 h-6 overflow-hidden shrink-0 max-w-full" />
+                          Follow On Linkedin
+                        </button>
+                      </Link>
+                    }
+
+                    {
+                      searchData?.linkedInProfile === ""
+                      && searchData?.linkedInProfile === ""
+                      && searchData?.calendlyUrl === "" &&
+                      <Link to={`${searchData?.linkedInProfile}`} target="_blank">
+                        <button
+                          type="button"
+                          className="flex gap-2 w-full items-center justify-center mt-3 rounded-md bg-blue-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                        >
+                          No Social Media Profile
+                        </button>
+                      </Link>
+                    }
                   </div>
                 </div>
               </div>
