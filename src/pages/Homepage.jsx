@@ -276,7 +276,7 @@ const Homepage = () => {
                     Global Legals
                   </p>
                   <p className="text-[12px] font-normal text-white">
-                    Founder, CTO
+                    Founder
                   </p>
                 </div>
               </div>
@@ -288,7 +288,7 @@ const Homepage = () => {
                   You already have enough on your mind.”
                 </blockquote>
                 <span className=" text-lg text-gray-500 dark:text-gray-400 font-normal ">
-                  Terrence Griffin
+                  Terrence Griffin, Founder - Global Legals
                 </span>
               </div>
             </div>
