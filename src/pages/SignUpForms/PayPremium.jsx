@@ -30,7 +30,7 @@ const people = [
 ];
 const PayPremium = ({ handleStepClick }) => {
   const [createMembers, { isLoading }] = useCreateMembersMutation();
-  const [makePayment, { isLoading: fetchigData }] = useMakePaymentMutation();
+  const [makePayment] = useMakePaymentMutation();
 
   const dispatch = useDispatch();
 

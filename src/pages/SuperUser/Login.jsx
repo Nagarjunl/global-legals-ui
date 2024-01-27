@@ -22,7 +22,7 @@ const Login = () => {
 
     if (data.email === staticEmail && data.password === staticPassword) {
       dispatch(setSuperUser(true))
-      navigate("/table");
+      navigate("/professionalList");
     } else {
       setError("email", {
         type: "manual",

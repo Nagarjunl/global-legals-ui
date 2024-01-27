@@ -8,8 +8,8 @@ import Select from "../../components/Select";
 import { IoIosCloseCircleOutline } from "react-icons/io";
 import { Link, useParams } from "react-router-dom";
 import { setPeople, setLocation } from "../../reducers/searchSlice";
-import Nav from "../../components/home/Nav";
-import Footer from "../../components/Footer";
+import Nav from "../../components/Nav";
+import Footer from "../../components/FooterProfessional";
 
 
 const people = [

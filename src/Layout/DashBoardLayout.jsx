@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 // DashboardLayout.js
-import Footer from "../components/Footer";
+import Footer from "../components/FooterProfessional";
 import Header from "../components/Header";
 const DashboardLayout = ({ children, hideHeaderAvator }) => {
   return (

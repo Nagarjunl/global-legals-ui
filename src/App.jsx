@@ -30,8 +30,17 @@ import Verification from "./pages/SignUpForms/Verification";
 import PayPremium from "./pages/SignUpForms/PayPremium";
 import SuperUserLogin from "./pages/SuperUser/Login";
 import { useSelector } from "react-redux";
-import Table from "./pages/SuperUser/Table";
+import ProfessionalList from "./pages/SuperUser/ProfessionalList";
 import Faq from "./pages/faq";
+import PaymentIntent from "./pages/paymentIntent";
+import { Elements } from "@stripe/react-stripe-js";
+
+
+import { loadStripe } from '@stripe/stripe-js';
+import SuperUserLayout from "./Layout/superuser/SuperUserLayout";
+import IndProfessional from "./pages/SuperUser/IndProfessional";
+const stripePromise = await loadStripe('pk_test_51OWvGSSDcWKAz6oIiMvnjQToKrOu7Pp4aHIKugWHpMTx4K19CajJQDPkx9RnQutL2QxS7cTPIL2yPfRrDefNZig600U6nDGFWZ');
+
 
 function App() {
   const isAuthenticated = useSelector((state) => state.auth.access_token);
@@ -61,13 +70,16 @@ function App() {
             }
           />
 
-          <Route path="/table"
-            element={
-              <DashboardLayout>
-                <Table />
-              </DashboardLayout>
-            }
-          />
+          <Route element={<SuperUserLayout />}>
+            <Route path="/professionalList" element={<ProfessionalList />} />
+          </Route>
+
+          <Route element={<SuperUserLayout />}>
+            <Route path="/indProfessional" element={<IndProfessional />} />
+          </Route>
+
+
+
           <Route path="/superUser" element={<SuperUserLogin />} />
 
           <Route path="/" element={<Homepage />} />
@@ -83,6 +95,14 @@ function App() {
             path="searchProfile"
             element={
               <SearchProfile />
+            }
+          />
+          <Route
+            path="paymentIntent"
+            element={
+              <Elements stripe={stripePromise}>
+                <PaymentIntent />
+              </Elements>
             }
           />
 

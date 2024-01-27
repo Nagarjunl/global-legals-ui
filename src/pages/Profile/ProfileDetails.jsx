@@ -14,8 +14,8 @@ import { useForm } from "react-hook-form";
 import { useState } from "react";
 
 import "../../../src/styles.css";
-import Nav from "../../components/home/Nav";
-import Footer from "../../components/Footer";
+import Nav from "../../components/Nav";
+import Footer from "../../components/FooterProfessional";
 
 import { FaTwitter } from "react-icons/fa";
 import { FaLinkedinIn } from "react-icons/fa6";

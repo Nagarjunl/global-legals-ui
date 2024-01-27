@@ -4,11 +4,14 @@ import SecurityDetails from "./SecurityDetails";
 import PrivateInvestigators from "./PrivateInvestigators";
 import { useSelector, useDispatch } from 'react-redux';
 import { formType, formData, formDataIdProof, formImgStatus } from "../../reducers/formTypeSlice";
-import { useForm, Controller } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { LAWYERS, BAIL_BONDSMAN, SECURITY, PRIVATE_INVESTIGATORS, professionals } from "../../constants/constants";
+import Select from 'react-select';
+
 
 const SelectForm = ({ handleStepClick }) => {
+  const [selectedOption, setSelectedOption] = useState(null);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -17,13 +20,8 @@ const SelectForm = ({ handleStepClick }) => {
   const quota = useSelector((state) => state.user.quota);
   const verify = useSelector((state) => state.user.verify);
 
-  const {
-    control
-  } = useForm({
-  });
-
-  const handleSelectChange = (event) => {
-    dispatch(formType(event.target.value));
+  const handleSelectChange = () => {
+    dispatch(formType(selectedOption?.value || ""));
     dispatch(formData(""));
     dispatch(formDataIdProof(""));
     dispatch(formImgStatus(false));
@@ -32,13 +30,13 @@ const SelectForm = ({ handleStepClick }) => {
 
   const renderComponent = () => {
     switch (currentFormValue) {
-      case "Lawyers":
+      case LAWYERS:
         return <LawyerEnterDetails handleStepClick={handleStepClick} />;
-      case "Bail Bondsman":
+      case BAIL_BONDSMAN:
         return <BondBailsman handleStepClick={handleStepClick} />;
-      case "Security":
+      case SECURITY:
         return <SecurityDetails handleStepClick={handleStepClick} />;
-      case "Private Investigators":
+      case PRIVATE_INVESTIGATORS:
         return <PrivateInvestigators handleStepClick={handleStepClick} />;
       default:
         return null;
@@ -54,6 +52,10 @@ const SelectForm = ({ handleStepClick }) => {
       navigate('/dashboard')
     }
   }, [verify, quota, navigate])
+
+  useEffect(() => {
+    handleSelectChange();
+  }, [selectedOption, handleSelectChange]);
 
   return (
     <>
@@ -73,24 +75,12 @@ const SelectForm = ({ handleStepClick }) => {
           </div>
           <div className="w-full sm:w-1/3 ">
             <div className="text-right pt-4">
-              <Controller
-                name="formName"
-                control={control}
-                render={({ field: { value } }) => (
-                  <select
-                    className="w-full sm:w-52 mt-8 rounded-md border-0 py-3  text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                    value={value || currentFormValue}
-                    onChange={handleSelectChange}
-                  >
-                    <option value="" hidden>
-                      Select from dropdown
-                    </option>
-                    <option>Lawyers</option>
-                    <option>Bail Bondsman</option>
-                    <option>Security</option>
-                    <option>Private Investigators</option>
-                  </select>
-                )}
+              <Select
+                defaultValue={selectedOption}
+                onChange={setSelectedOption}
+                options={professionals}
+                className="border rounded-md"
+                isClearable={true}
               />
             </div>
           </div>

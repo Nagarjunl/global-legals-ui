@@ -2,14 +2,14 @@ import { Link } from "react-router-dom";
 
 import { Disclosure } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import GlobalLegals from "../../assets/GlobalLegals.svg";
-import GlobalWhite from "../../assets/GlobalLegalsWhite.png";
+import GlobalLegals from "../assets/GlobalLegals.svg";
+import GlobalWhite from "../assets/GlobalLegalsWhite.png";
 import PropTypes from "prop-types";
 
 const Nav = ({ page }) => {
 
   const currentPage = page;
-  console.log(currentPage);
+
   return (
     <Disclosure as="nav" className="shadow">
       {({ open }) => (
