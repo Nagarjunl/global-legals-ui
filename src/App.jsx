@@ -38,6 +38,8 @@ import Faq from "./pages/faq";
 // import { loadStripe } from '@stripe/stripe-js';
 import SuperUserLayout from "./Layout/superuser/SuperUserLayout";
 import IndProfessional from "./pages/SuperUser/IndProfessional";
+import SearchKeyword from "./pages/SuperUser/SearchKeyword";
+import NewEnrolls from "./pages/SuperUser/NewEnrolls";
 // const stripePromise = await loadStripe('pk_test_51OWvGSSDcWKAz6oIiMvnjQToKrOu7Pp4aHIKugWHpMTx4K19CajJQDPkx9RnQutL2QxS7cTPIL2yPfRrDefNZig600U6nDGFWZ');
 
 function App() {
@@ -76,6 +78,14 @@ function App() {
             <Route path="/indProfessional" element={<IndProfessional />} />
           </Route>
 
+          <Route element={<SuperUserLayout />}>
+            <Route path="/searchKeywords" element={<SearchKeyword />} />
+          </Route>
+
+          <Route element={<SuperUserLayout />}>
+            <Route path="/newEnrolls" element={<NewEnrolls />} />
+          </Route>
+
           <Route path="/superUser" element={<SuperUserLogin />} />
 
           <Route path="/" element={<Homepage />} />
@@ -93,6 +103,7 @@ function App() {
               <SearchProfile />
             }
           />
+
           {/* <Route
             path="paymentIntent"
             element={
