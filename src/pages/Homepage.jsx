@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import Nav from "../components/home/Nav";
+import Nav from "../components/Nav";
 import { IoSearchOutline } from "react-icons/io5";
 import SecurityImg from "../assets/security.jpg";
 import bondBailsman from "../assets/bail bondsman.jpg";
@@ -19,12 +19,13 @@ import RoadMapImg1 from "../assets/New_folder/image14.svg";
 import ArrowCircleRight from "../assets/New_folder/arrow-circle-right.svg";
 import ReCAPTCHA from "react-google-recaptcha";
 import BanerPerson from "../assets/New_folder/banner_person_img.svg";
-import Footer from "../components/footer/Footer";
+import Footer from "../components/Footer";
 import { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import PrimaryButton from "../components/PrimaryButton";
 import { useProfileEmailMutation, useCaptchaVerifyMutation } from "../services/userAPI";
 import { Carousel } from 'flowbite-react';
+import { LAWYERS, BAIL_BONDSMAN, SECURITY, PRIVATE_INVESTIGATORS } from "../constants/constants";
 
 
 const Homepage = () => {
@@ -120,22 +121,22 @@ const Homepage = () => {
                   </form>
                   <div className="inline-flex flex-wrap mt-5 gap-3 mb-0 sm:mb-0">
                     <Link className="text-white  font-circular-std text-sm font-medium  justify-center  py-1 px-2 items-center   rounded-full border border-white "
-                      to={`/searchProfile/Lawyers`}
+                      to={`/searchProfile/${LAWYERS}`}
                     >
                       Lawyers
                     </Link>
                     <Link className=" text-white  font-circular-std text-sm font-medium  justify-center  py-1 px-2 items-center   rounded-full border border-white "
-                      to={'/searchProfile/Private Investigators'}
+                      to={`/searchProfile/${PRIVATE_INVESTIGATORS}`}
                     >
                       Private Investigators
                     </Link>
                     <Link className=" text-white  font-circular-std text-sm font-medium  justify-center  py-1 px-2 items-center   rounded-full border border-white "
-                      to={'/searchProfile/Bail Bondsman'}
+                      to={`/searchProfile/${BAIL_BONDSMAN}`}
                     >
                       Bail Bondsman
                     </Link>
                     <Link className=" text-white  font-circular-std text-sm font-medium  justify-center  py-1 px-2 items-center   rounded-full border border-white "
-                      to={'/searchProfile/Security'}
+                      to={`/searchProfile/${SECURITY}`}
                     >
                       Security
                     </Link>

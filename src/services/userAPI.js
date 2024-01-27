@@ -86,6 +86,13 @@ export const userApi = createApi({
           method: "POST",
       }),
     }),
+    paymentIntentApi: builder.mutation({
+        query: (data) => ({
+          url: '/frontends/paymentIntent',
+          method: "POST",
+          body: {amount: data},
+      }),
+    }),
   })
 })
 
@@ -98,6 +105,7 @@ export const {
   useProfileEmailMutation,
   useMakePaymentMutation,
   useCaptchaVerifyMutation,
+  usePaymentIntentApiMutation,
 
   useGetMembersQuery,
   useGetMemberQuery,

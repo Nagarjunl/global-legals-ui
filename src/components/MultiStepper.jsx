@@ -21,8 +21,6 @@ export default function Example() {
       setCurrentStep(index);
   };
 
-  // useEffect(() => { if (formSubmited) setCurrentStep(2) }, [formSubmited]);
-
   return (
     <>
       <div className="max-w-full p-2">
