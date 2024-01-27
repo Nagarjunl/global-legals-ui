@@ -17,9 +17,7 @@ function classNames(...classes) {
 
 export default function DetailCard() {
     return (
-        <div>
-
-
+        <div className='mb-10'>
             <div className="grid grid-cols-10 gap-4 md:gap-6 2xl:gap-7.5">
                 <ChartThree />
                 <ChartTwo />
