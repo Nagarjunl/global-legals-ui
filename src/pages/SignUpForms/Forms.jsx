@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { LAWYERS, BAIL_BONDSMAN, SECURITY, PRIVATE_INVESTIGATORS, professionals } from "../../constants/constants";
 import Select from 'react-select';
-
+import PropTypes from 'prop-types';
 
 const SelectForm = ({ handleStepClick }) => {
   const [selectedOption, setSelectedOption] = useState(null);
@@ -17,8 +17,10 @@ const SelectForm = ({ handleStepClick }) => {
   const navigate = useNavigate();
 
   const currentFormValue = useSelector((state) => state.formType.formType);
-  const quota = useSelector((state) => state.user.quota);
-  const verify = useSelector((state) => state.user.verify);
+  const quota = useSelector((state) => state.user.current_user.quota);
+  const verify = useSelector((state) => state.user.current_user.verify);
+
+  console.log(quota);
 
   const handleSelectChange = () => {
     dispatch(formType(selectedOption?.value || ""));
@@ -45,11 +47,11 @@ const SelectForm = ({ handleStepClick }) => {
 
   useEffect(() => {
     if (quota === true && verify === true) {
-      navigate('/dashboard/appointments')
+      navigate('/professional/appointments')
     } else if (quota === true) {
-      navigate('/dashboard/verification')
+      navigate('/professional/verification')
     } else {
-      navigate('/dashboard')
+      navigate('/professional')
     }
   }, [verify, quota, navigate])
 
@@ -74,7 +76,7 @@ const SelectForm = ({ handleStepClick }) => {
             </div>
           </div>
           <div className="w-full sm:w-1/3 ">
-            <div className="text-right pt-4">
+            <div className="pt-4">
               <Select
                 defaultValue={selectedOption}
                 onChange={setSelectedOption}
@@ -94,3 +96,7 @@ const SelectForm = ({ handleStepClick }) => {
 };
 
 export default SelectForm;
+
+SelectForm.propTypes = {
+  handleStepClick: PropTypes.func,
+}

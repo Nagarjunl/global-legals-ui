@@ -1,14 +1,19 @@
-import logo from "../../assets/logo.png";
+import logo from "../../assets/GlobalLegals.svg";
 import PrimaryButton from "../../components/PrimaryButton";
 import LeftsideBar from "../../components/Leftside-Bar";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
-import { setSuperUser } from "../../reducers/superUserSlice";
+import { Link, useNavigate } from "react-router-dom";
+// import { setSuperUser } from "../../reducers/superUserSlice";
+import { addTokens } from "../../reducers/auth/authSlice";
+import { currentUser } from "../../reducers/userSlice";
 import { useDispatch } from "react-redux";
+import { useAdminSignInMutation } from "../../services/authAPI";
 
 const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [signIn, { isLoading }] = useAdminSignInMutation();
+
   const {
     register,
     handleSubmit,
@@ -16,23 +21,31 @@ const Login = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
-    const staticEmail = "superadmin";
-    const staticPassword = "superadmin";
-
-    if (data.email === staticEmail && data.password === staticPassword) {
-      dispatch(setSuperUser(true))
-      navigate("/professionalList");
-    } else {
+  const signInMethod = async (data) => {
+    const { email, password } = data;
+    try {
+      await signIn({ email, password })
+        .unwrap()
+        .then((res) => {
+          if (res) {
+            const { user, ...rest } = res;
+            dispatch(addTokens(rest));
+            dispatch(currentUser(user));
+            navigate("/admin");
+          }
+        });
+    } catch (error) {
+      console.log(error);
       setError("email", {
+        shouldFocus: true,
         type: "manual",
-        message: "Invalid email or password",
-      });
-      setError("password", {
-        type: "manual",
-        message: "Invalid email or password",
+        message: "Username or password is incorrect",
       });
     }
+  };
+
+  const onSubmit = (data) => {
+    signInMethod(data);
   };
 
   return (
@@ -44,7 +57,13 @@ const Login = () => {
       <div className="flex flex-col justify-center px-4 gap-10 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
         <div className="mx-auto w-full max-w-sm lg:w-96 ">
           <div className="flex  items-center mt-5 ">
-            <img className="h-10 w-auto" src={logo} alt="Company logo" />
+            <Link to="/">
+              <img
+                className="h-12 w-auto"
+                src={logo}
+                alt="Global Legals"
+              />
+            </Link>
           </div>
 
           <div>
@@ -104,7 +123,7 @@ const Login = () => {
                     </p>
                   )}
                 </>
-                <PrimaryButton type="submit" buttonText="Login" />
+                <PrimaryButton type="submit" buttonText="Login" disabled={isLoading} />
               </form>
             </div>
           </div>

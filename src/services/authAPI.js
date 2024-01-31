@@ -23,7 +23,7 @@ export const authApi = createApi({
     }),
     setPassword: builder.mutation({
       query: (payload) => ({
-        url: 'authentication/set-password',
+        url: 'authentication/profession-sign-up',
         method: "POST",
         body: payload,
       }),
@@ -42,9 +42,16 @@ export const authApi = createApi({
         body: payload,
       }),
     }),
-    signIn: builder.mutation({
+    professionSignIn: builder.mutation({
       query: (payload) => ({
-        url: 'authentication/sign-in',
+        url: 'authentication/profession-sign-in',
+        method: "POST",
+        body: payload,
+      }),
+    }),
+    adminSignIn: builder.mutation({
+      query: (payload) => ({
+        url: 'authentication/admin-sign-in',
         method: "POST",
         body: payload,
       }),
@@ -60,5 +67,6 @@ export const {
   useSetPasswordMutation,
   useForgotPasswordMutation,
   useChangePasswordMutation,
-  useSignInMutation,
+  useProfessionSignInMutation,
+  useAdminSignInMutation,
 } = authApi

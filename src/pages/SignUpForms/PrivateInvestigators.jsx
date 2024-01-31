@@ -92,7 +92,7 @@ const PrivateInvestigators = ({ handleStepClick }) => {
           dispatch(formData(""));
           dispatch(formDataIdProof(""));
           dispatch(formImgStatus(false));
-          navigate(`/dashboard/profileDetails/${data.userId}`)
+          navigate(`/professional/profileDetails/${data.userId}`)
         });
     } catch (error) {
       console.log("error");
@@ -874,7 +874,7 @@ const PrivateInvestigators = ({ handleStepClick }) => {
                 {member !== undefined &&
                   <Link
                     to={{
-                      pathname: `/dashboard/profileDetails/${member?.userId}`
+                      pathname: `/professional/profileDetails/${member?.userId}`
                     }}
                   >
                     <button

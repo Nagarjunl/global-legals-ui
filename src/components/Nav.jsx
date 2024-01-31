@@ -88,7 +88,7 @@ const Nav = ({ page }) => {
                     </li>
                     <li>
                       <Link
-                        to="/login"
+                        to="/auth/login"
                         className={`font-bold hover:bg-green-900 hover:text-white hover:font-semibold focus:ring-4 focus:outline-none  rounded-full text-sm px-6 py-3 ${currentPage === "home" ? "bg-white text-green-900" : "bg-green-900 text-white"}`}
                       >Business Signup</Link>
                     </li>
@@ -133,7 +133,7 @@ const Nav = ({ page }) => {
               </Disclosure.Button>
               <Disclosure.Button
                 as="a"
-                href="/login"
+                href="/auth/login"
                 className={`block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700 ${currentPage === "home" ? "text-white" : "text-white-700"}`}
               >
                 Business Signup

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { ChevronRightIcon, CheckIcon } from "@heroicons/react/20/solid";
 import PayPremium from "../pages/SignUpForms/PayPremium";
 import Verification from "../pages/SignUpForms/Verification";
@@ -12,12 +12,13 @@ const steps = [
   { id: "3", name: "Verification", href: "#", status: "upcoming" },
 ];
 
-export default function Example() {
+export default function MultiStepper() {
   const [currentStep, setCurrentStep] = useState(0);
   const formSubmited = useSelector((state) => state.formType.formSubmit);
+  const quota = useSelector((state) => state.user.current_user.quota);
 
   const handleStepClick = (index) => {
-    if (!formSubmited)
+    if (quota || formSubmited === true)
       setCurrentStep(index);
   };
 

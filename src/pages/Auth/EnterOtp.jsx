@@ -32,8 +32,10 @@ const EnterOtp = () => {
       await verifyOtp({ email, otp })
         .unwrap()
         .then((res) => {
-          if (res.status === true)
-            navigate("/createPassword");
+          if (res.status === true) {
+            dispatch(getOtp(true));
+            navigate("/auth/createPassword");
+          }
         });
     } catch (error) {
       setError("otp", {
@@ -45,7 +47,6 @@ const EnterOtp = () => {
   }
 
   const onSubmit = (data) => {
-    dispatch(getOtp(true));
     validateOtpMethod(data);
   }
 
@@ -54,7 +55,7 @@ const EnterOtp = () => {
       navigate("/");
     }
     if (otpFromStore) {
-      navigate("/createPassword");
+      navigate("/auth/createPassword");
     }
   }, [registeredMail, navigate, otpFromStore]);
 

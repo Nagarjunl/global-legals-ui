@@ -32,7 +32,7 @@ const ForgetPassword = () => {
           message: response.data.message,
         });
       } else {
-        navigate("/newPassword")
+        navigate("/auth/newPassword")
       }
     } catch (error) {
       console.log("error");
@@ -57,7 +57,8 @@ const ForgetPassword = () => {
                 src={GlobalLegals}
                 alt="Global Legals"
               />
-            </Link>          </div>
+            </Link>
+          </div>
 
           <div>
             <h2 className="mt-10 text-2xl font-bold leading-9 tracking-tight text-gray-900">
@@ -92,7 +93,7 @@ const ForgetPassword = () => {
               <PrimaryButton type="submit" buttonText="Reset Password" />
             </form>
           </div>
-          <Link to="/login">
+          <Link to="/auth/login">
             <PrimaryButton type="button" buttonText="Go to Login" />
           </Link>
 

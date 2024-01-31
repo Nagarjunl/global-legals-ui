@@ -34,7 +34,7 @@ const PayPremium = ({ handleStepClick }) => {
 
   const dispatch = useDispatch();
 
-  const currentUserId = useSelector((state) => state.user.id)
+  const currentUserId = useSelector((state) => state.user.current_user.id)
   const formType = useSelector((state) => state.formType.formType);
   const formDatas = useSelector((state) => state.formType.formData);
 

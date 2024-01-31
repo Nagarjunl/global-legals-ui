@@ -3,7 +3,7 @@ import GlobalLegals from '../../assets/GlobalLegals.png';
 import DropdownUser from './DropdownUser';
 import React from 'react';
 
-const Header = (props: {
+const AdminHeader = (props: {
   sidebarOpen: string | boolean | undefined;
   setSidebarOpen: (arg0: boolean) => void;
 }) => {
@@ -68,4 +68,4 @@ const Header = (props: {
   );
 };
 
-export default Header;
+export default AdminHeader;
