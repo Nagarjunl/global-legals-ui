@@ -12,7 +12,6 @@ const Register = () => {
   const dispatch = useDispatch();
   const [sendOtp, { isLoading }] = useSendOtpMutation();
   const navigate = useNavigate();
-
   const {
     register,
     handleSubmit,
@@ -33,7 +32,7 @@ const Register = () => {
           message: response.data.message,
         });
       } else {
-        navigate("/enterOTP")
+        navigate("/auth/enterOTP")
       }
     } catch (error) {
       console.log("error");
@@ -110,7 +109,7 @@ const Register = () => {
                         </button>
                       </div>
                   }
-                  <Link to="/login">
+                  <Link to="/auth/login">
                     <PrimaryButton type="button" buttonText="Go to Login" />
                   </Link>
                 </form>

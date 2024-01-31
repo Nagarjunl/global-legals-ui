@@ -1,8 +1,7 @@
 /* eslint-disable react/prop-types */
-// DashboardLayout.js
 import Footer from "../components/FooterProfessional";
 import Header from "../components/Header";
-const DashboardLayout = ({ children, hideHeaderAvator }) => {
+const ProfessionalLayout = ({ children, hideHeaderAvator }) => {
   return (
     <>
       <div className="flex flex-col min-h-screen">
@@ -18,4 +17,4 @@ const DashboardLayout = ({ children, hideHeaderAvator }) => {
   );
 };
 
-export default DashboardLayout;
+export default ProfessionalLayout;

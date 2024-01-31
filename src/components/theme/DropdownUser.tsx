@@ -1,14 +1,26 @@
 import { useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { removeUser } from "../../reducers/userSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 import UserOne from '../../assets/user/user-01.png';
 import React from 'react';
 
 const DropdownUser = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const currentUser = useSelector((state) => state.user.current_user);
+
+
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const trigger = useRef<any>(null);
   const dropdown = useRef<any>(null);
+
+  const logout = () => {
+    dispatch(removeUser());
+    navigate("/");
+  }
 
   // close on click outside
   useEffect(() => {
@@ -46,9 +58,9 @@ const DropdownUser = () => {
       >
         <span className="hidden text-right lg:block">
           <span className="block text-sm font-medium text-black dark:text-white">
-            Thomas Anree
+            {currentUser.name}
           </span>
-          <span className="block text-xs">UX Designer</span>
+          <span className="block text-xs">{currentUser.role}</span>
         </span>
 
         <span className="h-12 w-12 rounded-full">
@@ -110,7 +122,9 @@ const DropdownUser = () => {
             </Link>
           </li>
         </ul>
-        <button className="flex items-center gap-3.5 py-4 px-6 text-sm font-notmal duration-300 ease-in-out hover:text-primary lg:text-base">
+        <button className="flex items-center gap-3.5 py-4 px-6 text-sm font-notmal duration-300 ease-in-out hover:text-primary lg:text-base"
+          onClick={logout}
+        >
           <svg
             className="fill-current"
             width="22"

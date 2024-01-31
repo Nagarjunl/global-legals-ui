@@ -47,13 +47,13 @@ const ProfileCard = ({ data, hideSchedule }) => {
                     className="pr-2 w-auto h-6 sm:w-auto"
                   />
                   {data?.type}
-                  <span className="text-blue-700 px-2">
+                  {/* <span className="text-blue-700 px-2">
                     {
                       data?.type === "Lawyers" ? data?.businessName - data?.practicingLaw :
                         data?.type === "Bail Bondsman" ? data?.licenseNumber :
                           data?.type === "Private Investigators" ? data?.licenseNumber : data?.licenseNumber
                     }
-                  </span>
+                  </span> */}
                 </span>
               </div>
               <div className=" flex text-lg text-gray-600 ">

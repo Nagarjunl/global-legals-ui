@@ -42,7 +42,7 @@ const CreatePassword = () => {
             dispatch(addTokens(rest));
             dispatch(currentUser(user));
             dispatch(clearEmail());
-            navigate("/dashboard");
+            navigate("/professional");
           }
         });
     } catch (error) {
@@ -129,7 +129,7 @@ const CreatePassword = () => {
               }
               <PrimaryButton type="submit" disabled={isLoading} buttonText="Login" />
 
-              <Link to="/login">
+              <Link to="/auth/login">
                 <PrimaryButton type="button" disabled={isLoading} buttonText="Go to Login" />
               </Link>
 

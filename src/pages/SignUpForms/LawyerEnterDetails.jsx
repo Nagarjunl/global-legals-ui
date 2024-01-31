@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, useNavigate, useParams } from "react-router-dom";
+import PropTypes from 'prop-types';
 
 import ReCAPTCHA from "react-google-recaptcha";
 import ReactQuill from "react-quill";
@@ -14,16 +15,21 @@ import { usePostFileMutation, useDeleteFileMutation } from "../../services/fileU
 import { useUpdateMemberMutation, useGetMemberFromSuperIdQuery, useCaptchaVerifyMutation } from "../../services/userAPI";
 
 import "../../styles.css";
+import Dialogue from "../../components/Dialogue";
 
 
 // const baseUrl = import.meta.env.VITE_API_URL;
 const baseUrl = "https://api.chitmanager.com/";
 
-const LawyerEnterDetails = ({ handleStepClick }) => {
+const LawyerEnterDetails = ({ handleStepClick, superUser }) => {
   const { memberId } = useParams();
   const navigate = useNavigate();
   const captchaRef = useRef(null)
   const [captchaRes] = useCaptchaVerifyMutation();
+
+  const dialogueProps = {
+    title: "Verify User",
+  }
 
   const [postFile, { isLoading }] = usePostFileMutation();
   const [deleteFile] = useDeleteFileMutation();
@@ -92,7 +98,7 @@ const LawyerEnterDetails = ({ handleStepClick }) => {
           dispatch(formData(""));
           dispatch(formDataIdProof(""));
           dispatch(formImgStatus(false));
-          navigate(`/dashboard/profileDetails/${data.userId}`)
+          navigate(`/professional/profileDetails/${data.userId}`)
         });
     } catch (error) {
       console.log("error");
@@ -113,9 +119,6 @@ const LawyerEnterDetails = ({ handleStepClick }) => {
     = useGetMemberFromSuperIdQuery(memberId, {
       skip: memberId === undefined,
     });
-
-  console.log(member);
-
 
   useEffect(() => {
     if (!fetchingData && memberId !== undefined) {
@@ -165,8 +168,8 @@ const LawyerEnterDetails = ({ handleStepClick }) => {
   return (
     <>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="container mx-auto sm:px-6 lg:px-12">
-          <div className="mt-10">
+        <div className={`container mx-auto ${superUser ? '' : "sm:px-6 lg:px-12"}`}>
+          <div className={`${superUser ? '' : "mt-10"}`}>
             <div className="grid xs:grid-cols-1 lg:grid-cols-3 gap-4">
               <h3 className="lg:col-span-3 font-medium leading-[34.32px] text-[24px]">
                 Personal Information
@@ -573,53 +576,65 @@ const LawyerEnterDetails = ({ handleStepClick }) => {
             </label>
           </div>
           {errors.peCheckbox && <p className="font-normal leading-[17.16px] text-[12px] text-red-500">{errors.peCheckbox.message}</p>}
+
           <div className="flex-1 border-t border-gray-300 mt-7"></div>
 
-          <div className="grid  max-sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 mt-10 my-3">
-            <div className="grid items-center max-md:justify-items-center min-md:justify-items-end">
-              {errors?.captcha && (
-                <p className="font-normal leading-[17.16px] text-[12px] text-red-500">
-                  {errors?.captcha.message}
-                </p>
-              )}
-              <ReCAPTCHA
-                sitekey="6LfAUjgpAAAAABQcBX1BtSezxeoNoBDoZk9XPS7T"
-                onChange={() => verifyRecaptcha()}
-                ref={captchaRef}
-              />
-            </div>
-            <div className="grid">
-              <div className="grid items-center md:justify-items-end max-md:justify-items-center ">
-                <div className="flex">
-                  {member !== undefined &&
-                    <Link
-                      to={{
-                        pathname: `/dashboard/profileDetails/${member?.userId}`
-                      }}
-                    >
-                      <button
-                        type="button"
-                        className="rounded-md bg-white px-3 py-2 mr-2 text-sm font-semibold text-blue-600 shadow-sm ring-1 ring-inset ring-blue-600 hover:bg-gray-50"
+          {!superUser &&
+            <div className="grid  max-sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 mt-10 my-3">
+              <div className="grid items-center max-md:justify-items-center min-md:justify-items-end">
+                {errors?.captcha && (
+                  <p className="font-normal leading-[17.16px] text-[12px] text-red-500">
+                    {errors?.captcha.message}
+                  </p>
+                )}
+                <ReCAPTCHA
+                  sitekey="6LfAUjgpAAAAABQcBX1BtSezxeoNoBDoZk9XPS7T"
+                  onChange={() => verifyRecaptcha()}
+                  ref={captchaRef}
+                />
+              </div>
+              <div className="grid">
+                <div className="grid items-center md:justify-items-end max-md:justify-items-center ">
+                  <div className="flex">
+                    {member !== undefined &&
+                      <Link
+                        to={{
+                          pathname: `/professional/profileDetails/${member?.userId}`
+                        }}
                       >
-                        Cancel
-                      </button>
-                    </Link>
-                  }
+                        <button
+                          type="button"
+                          className="rounded-md bg-white px-3 py-2 mr-2 text-sm font-semibold text-blue-600 shadow-sm ring-1 ring-inset ring-blue-600 hover:bg-gray-50"
+                        >
+                          Cancel
+                        </button>
+                      </Link>
+                    }
 
-                  <button type="submit" disabled={isLoading || updatingMember}
-                    className="rounded-md text-white bg-blue-800 border-blue-800 px-3 py-2 text-sm font-semibol shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 border border-solid ">
-                    Save & Submit
-                  </button>
+                    <button type="submit" disabled={isLoading || updatingMember}
+                      className="rounded-md text-white bg-blue-800 border-blue-800 px-3 py-2 text-sm font-semibol shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 border border-solid ">
+                      Save & Submit
+                    </button>
+
+                  </div>
 
                 </div>
-
               </div>
             </div>
-          </div>
-        </div>
-      </form>
+          }
+        </div >
+      </form >
+
+      {/* <Dialogue props={dialogueProps} /> */}
+
     </>
+
   );
 };
 
 export default LawyerEnterDetails;
+
+LawyerEnterDetails.propTypes = {
+  handleStepClick: PropTypes.func,
+  superUser: PropTypes.bool,
+}

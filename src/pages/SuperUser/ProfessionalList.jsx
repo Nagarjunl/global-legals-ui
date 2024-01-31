@@ -31,7 +31,7 @@ const ProfessionalList = () => {
       <div className="grid xs:grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
         <div >
           <h3 className="font-medium leading-[34.32px] text-[24px]">
-            Unverified Users
+            Professionals
           </h3>
         </div>
 
@@ -90,7 +90,7 @@ const ProfessionalList = () => {
                       </button>
                       <Link
                         className="hover:text-primary"
-                        to={"/indProfessional"}>
+                        to={"/admin/indProfessional"}>
                         <FaEye className="aspect-square object-contain object-center w-5 h-5 overflow-hidden shrink-0 max-w-full"
                         />
                       </Link>

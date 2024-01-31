@@ -8,12 +8,12 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addTokens } from "../../reducers/auth/authSlice";
 import { currentUser } from "../../reducers/userSlice";
-import { useSignInMutation } from "../../services/authAPI";
+import { useProfessionSignInMutation } from "../../services/authAPI";
 
 const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [signIn, { isLoading }] = useSignInMutation();
+  const [signIn, { isLoading }] = useProfessionSignInMutation();
 
   const {
     register,
@@ -32,7 +32,7 @@ const Login = () => {
             const { user, ...rest } = res;
             dispatch(addTokens(rest));
             dispatch(currentUser(user));
-            navigate("/dashboard");
+            navigate("/professional");
           }
         });
     } catch (error) {
@@ -75,7 +75,7 @@ const Login = () => {
             <p className="mt-2 text-sm leading-6 text-gray-500">
               Don&apos;t have an accocunt?&nbsp;
               <Link
-                to="/register"
+                to="/auth/register"
                 className="font-semibold text-blue-600 hover:text-blue-500"
               >
                 Create an account
@@ -153,7 +153,7 @@ const Login = () => {
 
                   <div className="text-sm leading-6">
                     <Link
-                      to="/forgetPassword"
+                      to="/auth/forgetPassword"
                       className="font-semibold text-blue-600 hover:text-blue-500"
                     >
                       Forgot password
@@ -187,28 +187,6 @@ const Login = () => {
                   services. Global Legals is here to connect you with other legal professionals throughout all 50 states.
                 </span>
               </div>
-
-
-              {/* <div className="mt-5 grid grid-row-2 gap-4">
-                <GoogleLogin
-                  clientId={clientId}
-                  buttonText="Sign in with Google"
-                  onSuccess={onSuccess}
-                  onFailure={onFailure}
-                  cookiePolicy={""}
-                  isSignedIn={true}
-                />
-                <a
-                  href="#"
-                  className="flex w-full items-center justify-center gap-3 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 mb-3.5"
-                >
-                  <SiApple size={20} />
-                  <span className="text-sm font-semibold leading-6 ">
-                    Sign in with Apple
-                  </span>
-                </a>
-              </div> */}
-
             </div>
           </div>
         </div>

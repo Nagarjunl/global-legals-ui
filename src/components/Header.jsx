@@ -5,29 +5,36 @@ import UserIcon from "../assets/UserIcon.svg";
 import { removeTokens } from "../reducers/auth/authSlice";
 import { useDispatch } from "react-redux";
 import { removeUser } from "../reducers/userSlice";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import PropTypes from "prop-types";
 import { formData, formDataIdProof, formSubmited, formType, formImgStatus } from "../reducers/formTypeSlice";
-import { setSuperUser } from "../reducers/superUserSlice";
-
-import { useNavigate } from "react-router-dom";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
 const Example = ({ hideHeaderAvator }) => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const dispatch = useDispatch();
-  const id = useSelector((state) => state.user.id);
-  const verify = useSelector((state) => state.user.verify);
-  const superUser = useSelector((state) => state.superUser.superUser);
+  const id = useSelector((state) => state.user.current_user.id);
+  const verify = useSelector((state) => state.user.current_user.verify);
+
+  const logout = () => {
+    dispatch(removeTokens());
+    dispatch(removeUser());
+    dispatch(formData(""));
+    dispatch(formDataIdProof(""));
+    dispatch(formImgStatus(false));
+    dispatch(formSubmited(""));
+    dispatch(formType(""));
+    navigate("/");
+  }
 
   return (
     <Disclosure as="nav" className="bg-white shadow">
-      {({ open }) => (
+      {() => (
         <>
           <div className="mx-auto max-w-full px-2 sm:px-6 lg:px-8">
             <div className="relative flex h-16 justify-between">
@@ -78,81 +85,61 @@ const Example = ({ hideHeaderAvator }) => {
                     >
                       <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                         {
-                          verify ? <Menu.Item>
-                            {({ active }) => (
-                              <Link
-                                to={{
-                                  pathname: `/dashboard/profileDetails/${id}`,
-                                }}
-                                className={classNames(
-                                  active ? "bg-gray-100" : "",
-                                  "block px-4 py-2 text-sm text-gray-700"
+                          verify ?
+                            <>
+                              <Menu.Item>
+                                {({ active }) => (
+                                  <Link
+                                    to={{
+                                      pathname: `/professional/profileDetails/${id}`,
+                                    }}
+                                    className={classNames(
+                                      active ? "bg-gray-100" : "",
+                                      "block px-4 py-2 text-sm text-gray-700"
+                                    )}
+                                    onClick={() => {
+                                      dispatch(formData(""));
+                                      dispatch(formDataIdProof(""));
+                                      dispatch(formImgStatus(false));
+                                    }}
+                                  >
+                                    Your Profile
+                                  </Link>
                                 )}
-                                onClick={() => {
-                                  dispatch(formData(""));
-                                  dispatch(formDataIdProof(""));
-                                  dispatch(formImgStatus(false));
-                                }}
-                              >
-                                Your Profile
-                              </Link>
-                            )}
-                          </Menu.Item> : ""
+                              </Menu.Item>
+                              <Menu.Item>
+                                {({ active }) => (
+                                  <Link
+                                    to={{
+                                      pathname: '/professional/appointments',
+                                    }}
+                                    className={classNames(
+                                      active ? "bg-gray-100" : "",
+                                      "block px-4 py-2 text-sm text-gray-700"
+                                    )}
+                                  >
+                                    Dashboard
+                                  </Link>
+                                )}
+                              </Menu.Item>
+                            </>
+                            : ""
                         }
 
-                        {
-                          superUser ?
-                            <Menu.Item>
-                              {({ active }) => (
-                                <a
-                                  href="#"
-                                  className={classNames(
-                                    active ? "bg-gray-100" : "",
-                                    "block px-4 py-2 text-sm text-gray-700"
-                                  )}
-                                  onClick={() => {
-                                    dispatch(setSuperUser(false));
-                                    navigate("/");
-                                  }}
-                                >
-                                  Super Sign Out
-                                </a>
+                        <Menu.Item>
+                          {({ active }) => (
+                            <a
+                              href="#"
+                              className={classNames(
+                                active ? "bg-gray-100" : "",
+                                "block px-4 py-2 text-sm text-gray-700"
                               )}
-                            </Menu.Item>
-                            :
-                            <Menu.Item>
-                              {({ active }) => (
-                                <a
-                                  href="#"
-                                  className={classNames(
-                                    active ? "bg-gray-100" : "",
-                                    "block px-4 py-2 text-sm text-gray-700"
-                                  )}
-                                  onClick={() => {
-                                    dispatch(removeTokens());
-                                    dispatch(removeUser());
-                                    dispatch(formData(""));
-                                    dispatch(formDataIdProof(""));
-                                    dispatch(formImgStatus(false));
-                                    dispatch(formSubmited(""));
-                                    dispatch(formType(""));
-                                  }}
-                                >
-                                  Sign out
-                                </a>
-                              )}
-                            </Menu.Item>
-
-                        }
-                        {/* <Menu.Item>
-                            {({ active }) => (
-                              <GoogleLogout
-                                clientId={clientId}
-                                buttonText={"Logout"}
-                                onLogoutSuccess={onSuccess}
-                              />
-                            )}
-                          </Menu.Item> */}
+                              onClick={logout}
+                            >
+                              Sign out
+                            </a>
+                          )}
+                        </Menu.Item>
                       </Menu.Items>
                     </Transition>
                   </Menu>

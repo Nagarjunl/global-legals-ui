@@ -140,7 +140,7 @@ const NewPassword = () => {
 
                 <PrimaryButton type="submit" buttonText="Submit" />
 
-                <Link to="/login" className="mb-3">
+                <Link to="/auth/login" className="mb-3">
                   <PrimaryButton type="button" buttonText="Go to Login" />
                 </Link>
 

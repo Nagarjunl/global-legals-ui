@@ -40,16 +40,16 @@ const ProfileDetails = ({ hideSchedule }) => {
 
   const pathSwitch = () => {
     if (searchData.type === "Lawyers") {
-      navigate(`/dashboard/lawyerDetails/${searchData.userId}`);
+      navigate(`/professional/lawyerDetails/${searchData.userId}`);
     }
     if (searchData.type === "Bail Bondsman") {
-      navigate(`/dashboard/bondBailsman/${searchData.userId}`);
+      navigate(`/professional/bondBailsman/${searchData.userId}`);
     }
     if (searchData.type === "Security") {
-      navigate(`/dashboard/securityDetails/${searchData.userId}`);
+      navigate(`/professional/securityDetails/${searchData.userId}`);
     }
     if (searchData.type === "Private Investigators") {
-      navigate(`/dashboard/privateInvestigators/${searchData.userId}`);
+      navigate(`/professional/privateInvestigators/${searchData.userId}`);
     }
   };
 
