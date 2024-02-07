@@ -45,11 +45,9 @@ import Homepage from "./pages/Homepage";
 import Faq from "./pages/faq";
 
 import "./App.css";
-
+// import TableData from "./pages/SUbscription/TableData";
 // import PaymentIntent from "./pages/paymentIntent";
-// import { Elements } from "@stripe/react-stripe-js";
-// import { loadStripe } from '@stripe/stripe-js';
-// const stripePromise = await loadStripe('pk_test_51OWvGSSDcWKAz6oIiMvnjQToKrOu7Pp4aHIKugWHpMTx4K19CajJQDPkx9RnQutL2QxS7cTPIL2yPfRrDefNZig600U6nDGFWZ');
+// import SubscribeToPlan from "./pages/Subscription/SubscribeToPlan";
 
 function App() {
   const isAuthenticated = useSelector((state) => state.user);
@@ -133,7 +131,7 @@ function App() {
                   </Routes>
                 </ProfessionalLayout>
               ) : (
-                <Navigate to={"/admin"} />
+                <Navigate to={"/"} />
               )
             }
           />
@@ -144,6 +142,18 @@ function App() {
           <Route path="searchProfile/:searchKeys" element={<SearchProfile />} />
           <Route path="faq" element={<Faq />} />
           <Route path="*" element={<Error404 />} />
+          <Route path="*" element={<Error404 />} />
+
+
+          {/* <Route
+            path="subscribe"
+            element={
+              <>
+                <TableData />
+                <SubscribeToPlan />
+              </>
+            }
+          /> */}
 
           {/* <Route
             path="paymentIntent"

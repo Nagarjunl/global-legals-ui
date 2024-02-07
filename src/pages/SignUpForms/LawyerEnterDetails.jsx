@@ -10,7 +10,7 @@ import "react-quill/dist/quill.snow.css";
 // import DatePicker from "react-datepicker";
 // import "react-datepicker/dist/react-datepicker.css";
 
-import { formData, formDataIdProof, formImgStatus } from "../../reducers/formTypeSlice";
+import { formData, formDataIdProof, formImgStatus, formSubmited } from "../../reducers/formTypeSlice";
 import { usePostFileMutation, useDeleteFileMutation } from "../../services/fileUploadAPI";
 import { useUpdateMemberMutation, useGetMemberFromSuperIdQuery, useCaptchaVerifyMutation } from "../../services/userAPI";
 
@@ -39,6 +39,7 @@ const LawyerEnterDetails = ({ handleStepClick, superUser }) => {
   const formDatas = useSelector((state) => state.formType.formData);
   const formIdProof = useSelector((state) => state.formType.formDataIdProof);
   const imgStatus = useSelector((state) => state.formType.formImgStatus);
+  // const formSubmit = useSelector((state) => state.formType.formSubmit);
 
   const [updateMember, { isLoading: updatingMember }] = useUpdateMemberMutation();
 
@@ -108,7 +109,9 @@ const LawyerEnterDetails = ({ handleStepClick, superUser }) => {
   const onSubmit = (data) => {
     const datas = { ...data, idProof: formIdProof || "" }
     if (!memberId) {
+      console.log("error");
       dispatch(formData(datas));
+      dispatch(formSubmited(true));
       handleStepClick(1);
     } else {
       submitMembers(datas)

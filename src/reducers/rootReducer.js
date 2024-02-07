@@ -8,6 +8,7 @@ import searchReducer from "../reducers/searchSlice";
 import superUserReducer from "../reducers/superUserSlice";
 import userReducer from "./userSlice";
 import { fileUploadApi } from '../services/fileUploadAPI';
+import { stripeApi } from "../services/stripeAPI";
 
 
 const rootReducer = combineReducers({
@@ -20,6 +21,7 @@ const rootReducer = combineReducers({
     [authApi.reducerPath]: authApi.reducer,
     [userApi.reducerPath]: userApi.reducer,
     [fileUploadApi.reducerPath]: fileUploadApi.reducer,
+    [stripeApi.reducerPath]: stripeApi.reducer,
 });
 
 export default rootReducer;

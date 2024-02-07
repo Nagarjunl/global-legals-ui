@@ -16,6 +16,7 @@ import {
   REGISTER,
 } from "redux-persist";
 import storage from "redux-persist/lib/storage"; // defaults to localStorage for web
+import { stripeApi } from '../services/stripeAPI';
 
 const persistConfig = {
   key: "root",
@@ -36,6 +37,7 @@ export const store = configureStore({
           authApi.middleware,
           userApi.middleware,
           fileUploadApi.middleware,
+          stripeApi.middleware,
         ),
     persistedReducer,
 })
