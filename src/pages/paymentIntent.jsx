@@ -1,4 +1,4 @@
-import { CardElement, useElements, useStripe, Elements } from "@stripe/react-stripe-js"
+import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js"
 import { useState } from "react"
 import { usePaymentIntentApiMutation } from "../services/userAPI";
 

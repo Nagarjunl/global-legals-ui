@@ -5,7 +5,6 @@ import Verification from "../pages/SignUpForms/Verification";
 import SelectForm from "../pages/SignUpForms/Forms";
 import { useSelector } from 'react-redux'
 
-
 const steps = [
   { id: "1", name: "Personal Details", href: "#", status: "current" },
   { id: "2", name: "Pay Premium", href: "#", status: "upcoming" },
@@ -15,10 +14,11 @@ const steps = [
 export default function MultiStepper() {
   const [currentStep, setCurrentStep] = useState(0);
   const formSubmited = useSelector((state) => state.formType.formSubmit);
-  const quota = useSelector((state) => state.user.current_user.quota);
+  // const quota = useSelector((state) => state.user.current_user.quota);
 
   const handleStepClick = (index) => {
-    if (quota || formSubmited === true)
+    // if (quota || formSubmited === true)
+    if (!formSubmited)
       setCurrentStep(index);
   };
 

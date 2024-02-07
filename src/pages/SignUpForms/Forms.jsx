@@ -5,13 +5,12 @@ import PrivateInvestigators from "./PrivateInvestigators";
 import { useSelector, useDispatch } from 'react-redux';
 import { formType, formData, formDataIdProof, formImgStatus } from "../../reducers/formTypeSlice";
 import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { LAWYERS, BAIL_BONDSMAN, SECURITY, PRIVATE_INVESTIGATORS, professionals } from "../../constants/constants";
 import Select from 'react-select';
 import PropTypes from 'prop-types';
 
 const SelectForm = ({ handleStepClick }) => {
-  const [selectedOption, setSelectedOption] = useState(null);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -20,10 +19,8 @@ const SelectForm = ({ handleStepClick }) => {
   const quota = useSelector((state) => state.user.current_user.quota);
   const verify = useSelector((state) => state.user.current_user.verify);
 
-  console.log(quota);
-
-  const handleSelectChange = () => {
-    dispatch(formType(selectedOption?.value || ""));
+  const handleSelectChange = (data) => {
+    dispatch(formType(data || ""));
     dispatch(formData(""));
     dispatch(formDataIdProof(""));
     dispatch(formImgStatus(false));
@@ -31,7 +28,7 @@ const SelectForm = ({ handleStepClick }) => {
   };
 
   const renderComponent = () => {
-    switch (currentFormValue) {
+    switch (currentFormValue.value) {
       case LAWYERS:
         return <LawyerEnterDetails handleStepClick={handleStepClick} />;
       case BAIL_BONDSMAN:
@@ -55,9 +52,6 @@ const SelectForm = ({ handleStepClick }) => {
     }
   }, [verify, quota, navigate])
 
-  useEffect(() => {
-    handleSelectChange();
-  }, [selectedOption, handleSelectChange]);
 
   return (
     <>
@@ -78,8 +72,8 @@ const SelectForm = ({ handleStepClick }) => {
           <div className="w-full sm:w-1/3 ">
             <div className="pt-4">
               <Select
-                defaultValue={selectedOption}
-                onChange={setSelectedOption}
+                defaultValue={currentFormValue}
+                onChange={(data) => { handleSelectChange(data) }}
                 options={professionals}
                 className="border rounded-md"
                 isClearable={true}

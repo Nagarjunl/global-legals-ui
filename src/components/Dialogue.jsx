@@ -3,10 +3,12 @@ import { Dialog, Transition } from '@headlessui/react'
 import { CheckIcon } from '@heroicons/react/24/outline'
 import PropTypes from 'prop-types';
 
-export default function Dialogue({ props }) {
+export default function Dialogue(props) {
 
-    const { title, message, btnText, onClick } = props;
-    const [open, setOpen] = useState()
+    console.log(props)
+
+    const { title, message, btnText, onClick, openStatus } = props;
+    const [open, setOpen] = useState(openStatus)
 
     return (
         <Transition.Root show={open} as={Fragment}>
@@ -76,7 +78,8 @@ export default function Dialogue({ props }) {
 Dialogue.propTypes = {
     props: PropTypes.object,
     title: PropTypes.string,
-    message: PropTypes.string,
+    message: PropTypes.node,
     btnText: PropTypes.string,
     onClick: PropTypes.func,
+    openStatus: PropTypes.bool,
 }
