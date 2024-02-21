@@ -17,7 +17,7 @@ import SECDetails from "./DetailPages/SECDetails";
 import Dialogue from "../../components/Dialogue";
 
 
-
+//jkjkkkjkjkjkkjk
 // const baseUrl = import.meta.env.VITE_API_URL;
 const baseUrl = "https://api.chitmanager.com/";
 
