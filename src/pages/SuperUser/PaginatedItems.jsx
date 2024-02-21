@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import ReactPaginate from 'react-paginate';
-import { useLazyNewEnrollReportQuery } from '../../services/profileAPI';
+import { useLazyGetProfileViewCountQuery } from '../../services/profileAPI';
 
 import Select from 'react-select';
 import { professionals } from "../../constants/constants";
@@ -8,9 +8,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setDateRange, setProfession } from '../../reducers/searchSlice';
 import Datepicker from 'react-tailwindcss-datepicker';
 
-const NewEnrolls = () => {
+const PaginatedItems = () => {
 
     const dispatch = useDispatch();
+    const [userId] = useState();
     const [profession] = useState();
     const startDate = "";
     const endDate = "";
@@ -32,8 +33,8 @@ const NewEnrolls = () => {
     const proState = useSelector((state) => state.search.profession);
     const dateState = useSelector((state) => state.search.dateRange);
 
-    const [trigger, { data, isLoading }] = useLazyNewEnrollReportQuery({ limit, offset, startDate, endDate, profession }, {
-        skip: limit === 0 && offset === 0
+    const [trigger, { data, isLoading }] = useLazyGetProfileViewCountQuery({ userId, limit, offset, startDate, endDate, profession }, {
+        skip: userId === undefined && limit === 0 && offset === 0
     });
 
 
@@ -55,11 +56,12 @@ const NewEnrolls = () => {
 
     useEffect(() => {
         if (user !== null) {
+            const userId = user.id;
             const startDate = dateState === null ? undefined : dateState.startDate;
             const endDate = dateState === null ? undefined : dateState.endDate;
             const profession = proState === null ? undefined : proState.value;
 
-            trigger({ limit, offset, startDate, endDate, profession })
+            trigger({ userId, limit, offset, startDate, endDate, profession })
         }
 
     }, [user, trigger, limit, offset, dateState, proState])
@@ -73,11 +75,11 @@ const NewEnrolls = () => {
     return (
         <>
             {!isLoading &&
-                < div className="container mx-auto">
+                < div className="container mx-auto px-12 py-12">
                     <div className="grid xs:grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
                         <div >
                             <h3 className="font-medium leading-[34.32px] text-[24px]">
-                                New Enrolls
+                                Profile View Count
                             </h3>
                         </div>
 
@@ -108,29 +110,21 @@ const NewEnrolls = () => {
                         <table className="w-full bg-white border border-gray-200">
                             <thead>
                                 <tr>
-                                    <th className="py-2 px-4 border-b text-left">Name</th>
-                                    <th className="py-2 px-4 border-b text-left">Email</th>
-                                    <th className="py-2 px-4 border-b text-left">Payment Status</th>
-                                    <th className="py-2 px-4 border-b text-left">Verification Status</th>
+                                    <th className="py-2 px-4 border-b text-left">Date</th>
+                                    <th className="py-2 px-4 border-b text-left">Count</th>
+                                    <th className="py-2 px-4 border-b text-left">UserId</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {!isLoading && data?.data.length > 0 ?
+                                {!isLoading &&
                                     data?.data.map((data) => (
                                         <tr key={data.id}>
-                                            <td className="py-2 px-4 border-b">{data?.Members[0]?.clientName}</td>
-                                            <td className="py-2 px-4 border-b">{data?.email}</td>
-                                            <td className="py-2 px-4 border-b">Success</td>
-                                            <td className="py-2 px-4 border-b">{data?.verify === true ? "true" : "false"}</td>
+                                            <td className="py-2 px-4 border-b">{data?.date}</td>
+                                            <td className="py-2 px-4 border-b">{data?.count}</td>
+                                            <td className="py-2 px-4 border-b">{data?.userId}</td>
                                         </tr>
+
                                     ))
-
-                                    :
-
-                                    <tr>
-                                        <td className="py-2 px-4 border-b text-center" colSpan={5}> No Records Found </td>
-                                    </tr>
-
                                 }
                             </tbody>
                         </table>
@@ -170,4 +164,4 @@ const NewEnrolls = () => {
     )
 }
 
-export default NewEnrolls;
+export default PaginatedItems;

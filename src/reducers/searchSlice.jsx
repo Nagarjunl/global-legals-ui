@@ -4,6 +4,9 @@ const initialState = {
     people: "",
     location: "",
     ratings: "",
+    dateRange: null,
+    profession: null,
+    keyword: "",
 };
 
 export const searchSlice = createSlice({
@@ -25,15 +28,25 @@ export const searchSlice = createSlice({
                 ...state, ratings: payload
             }
         },
-        // formType: (state, { payload }) => {
-        //     return { ...state, formType: payload }
-        // },
-        // formSubmited: (state, { payload }) => {
-        //     return { ...state, formSubmited: payload }
-        // }
+        setProfession: (state, { payload }) => {
+            console.log(`setProfession`, payload);
+            return {
+                ...state, profession: payload
+            }
+        },
+        setDateRange: (state, { payload }) => {
+            return {
+                ...state, dateRange: payload
+            }
+        },
+        setKeyword: (state, { payload }) => {
+            return {
+                ...state, keyword: payload
+            }
+        },
     },
 });
 
-export const { setPeople, setLocation, setRatings } = searchSlice.actions;
+export const { setPeople, setLocation, setRatings, setDateRange, setProfession, setKeyword } = searchSlice.actions;
 
 export default searchSlice.reducer;

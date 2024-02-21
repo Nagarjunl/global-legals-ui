@@ -15,8 +15,6 @@ import { usePostFileMutation, useDeleteFileMutation } from "../../services/fileU
 import { useUpdateMemberMutation, useGetMemberFromSuperIdQuery, useCaptchaVerifyMutation } from "../../services/userAPI";
 
 import "../../styles.css";
-import Dialogue from "../../components/Dialogue";
-
 
 // const baseUrl = import.meta.env.VITE_API_URL;
 const baseUrl = "https://api.chitmanager.com/";
@@ -27,9 +25,6 @@ const LawyerEnterDetails = ({ handleStepClick, superUser }) => {
   const captchaRef = useRef(null)
   const [captchaRes] = useCaptchaVerifyMutation();
 
-  const dialogueProps = {
-    title: "Verify User",
-  }
 
   const [postFile, { isLoading }] = usePostFileMutation();
   const [deleteFile] = useDeleteFileMutation();
@@ -42,6 +37,11 @@ const LawyerEnterDetails = ({ handleStepClick, superUser }) => {
   // const formSubmit = useSelector((state) => state.formType.formSubmit);
 
   const [updateMember, { isLoading: updatingMember }] = useUpdateMemberMutation();
+
+  const { data: member, isLoading: fetchingData }
+    = useGetMemberFromSuperIdQuery(memberId, {
+      skip: memberId === undefined,
+    });
 
   const {
     register,
@@ -109,19 +109,14 @@ const LawyerEnterDetails = ({ handleStepClick, superUser }) => {
   const onSubmit = (data) => {
     const datas = { ...data, idProof: formIdProof || "" }
     if (!memberId) {
-      console.log("error");
       dispatch(formData(datas));
-      dispatch(formSubmited(true));
+      // dispatch(formSubmited(true));
       handleStepClick(1);
     } else {
       submitMembers(datas)
     }
   }
 
-  const { data: member, isLoading: fetchingData }
-    = useGetMemberFromSuperIdQuery(memberId, {
-      skip: memberId === undefined,
-    });
 
   useEffect(() => {
     if (!fetchingData && memberId !== undefined) {
@@ -620,15 +615,12 @@ const LawyerEnterDetails = ({ handleStepClick, superUser }) => {
                     </button>
 
                   </div>
-
                 </div>
               </div>
             </div>
           }
         </div >
       </form >
-
-      {/* <Dialogue props={dialogueProps} /> */}
 
     </>
 

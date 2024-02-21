@@ -9,9 +9,10 @@ import {
   useGetMemberQuery,
   useGetMemberFromSuperIdQuery,
   useProfileEmailMutation,
+  useProfileViewCountApiMutation,
 } from "../../services/userAPI";
 import { useForm } from "react-hook-form";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import "../../../src/styles.css";
 import Nav from "../../components/Nav";
@@ -19,22 +20,34 @@ import Footer from "../../components/FooterProfessional";
 
 import { FaTwitter } from "react-icons/fa";
 import { FaLinkedinIn } from "react-icons/fa6";
-
+import { useDispatch, useSelector } from "react-redux";
+import { addProfileViewCount } from "../../reducers/profileSlice";
 
 const ProfileDetails = ({ hideSchedule }) => {
-  const { memberId, mainId } = useParams();
+  // const { memberId, mainId, slug } = useParams();
+  const { mainId, slug } = useParams();
   const navigate = useNavigate();
   const [ack, setAck] = useState();
+  const dispatch = useDispatch();
+
+  const profileUser = useSelector(state => state.profile.profileUser);
+  const profileViews = useSelector(state => state.profile.profileViews);
+  // const userId = useSelector(state => state.user.current_user.id);
 
   const { data: supermember } = useGetMemberFromSuperIdQuery(mainId, {
     skip: mainId === undefined,
   });
 
-  const { data: member } = useGetMemberQuery(memberId, {
-    skip: memberId === undefined,
+  // const { data: member } = useGetMemberQuery(memberId, {
+  //   skip: memberId === undefined,
+  // });
+
+  const { data: member } = useGetMemberQuery(slug, {
+    skip: slug === undefined,
   });
 
   const [profileEmail, { isLoading: submitingEmailForm }] = useProfileEmailMutation();
+  const [profileViewCount] = useProfileViewCountApiMutation();
 
   const searchData = member ? member : supermember;
 
@@ -74,6 +87,29 @@ const ProfileDetails = ({ hideSchedule }) => {
     const result = { ...formData, profileMail: searchData?.email, mailFrom: "profile" }
     submitMailForm(result);
   };
+
+  useEffect(() => {
+    const date = new Date().toISOString().slice(0, 10)
+    let profile;
+
+    if (profileViews.length === 0) {
+
+      profile = { date: date, userId: profileUser.userId }
+      dispatch(addProfileViewCount(profile));
+      profileViewCount(profile);
+
+    } else {
+
+      profileViews.map((data) => {
+        if (data.date !== date && data.userId !== profileUser.userId) {
+          profile = { date: date, userId: profileUser.userId }
+          dispatch(addProfileViewCount(profile));
+          profileViewCount(profile);
+        }
+      });
+
+    }
+  }, []);
 
   return (
     <>

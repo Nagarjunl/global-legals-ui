@@ -3,7 +3,7 @@ import { Listbox, Transition } from '@headlessui/react'
 import { CheckIcon, ChevronDownIcon } from '@heroicons/react/20/solid'
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
-import { setPeople, setLocation, setRatings } from "../reducers/searchSlice";
+import { setPeople, setLocation } from "../reducers/searchSlice";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join('')
@@ -20,9 +20,6 @@ const Select = ({ selectData, initialValue }) => {
 
     if (selected?.type === "location")
       dispatch(setLocation(selected));
-
-    if (selected?.type === "ratings")
-      dispatch(setRatings(selected));
   }, [selected]);
 
   useEffect(() => {
@@ -33,7 +30,6 @@ const Select = ({ selectData, initialValue }) => {
     <Listbox value={selected} onChange={setSelected}>
       {({ open }) => (
         <>
-          {/* <Listbox.Label className="block text-sm font-medium leading-6 text-gray-900">Assigned to</Listbox.Label> */}
           <div className="relative mt-2">
             <Listbox.Button className="relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300  focus:ring-2  sm:text-sm sm:leading-6">
               <span className="block truncate">{selected?.value || "Select Data"}</span>

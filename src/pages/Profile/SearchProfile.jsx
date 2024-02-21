@@ -6,10 +6,11 @@ import LawyerCard from "../../components/LawyerCard";
 import cupImage from "../../assets/image25.svg";
 import Select from "../../components/Select";
 import { IoIosCloseCircleOutline } from "react-icons/io";
-import { Link, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { setPeople, setLocation } from "../../reducers/searchSlice";
 import Nav from "../../components/Nav";
 import Footer from "../../components/FooterProfessional";
+import { addProfileUser } from "../../reducers/profileSlice";
 
 
 const people = [
@@ -76,6 +77,7 @@ const states = [
 function SearchProfile() {
   const { searchKeys } = useParams();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const searchData = useSelector((state) => state.search);
   const [searchParams, setSearchParams] = useState();
@@ -85,6 +87,11 @@ function SearchProfile() {
   });
 
   const [searchTag, setsearchTag] = useState();
+
+  const navigateProfile = (data) => {
+    dispatch(addProfileUser(data));
+    data.id !== undefined ? navigate(`/profileDetails/${data?.slug}/`) : navigate(`/profileDetails/${data?._id.$oid}`)
+  }
 
   useEffect(() => {
     const people = searchData?.people?.value === undefined ? "" : searchData?.people?.value;
@@ -123,7 +130,6 @@ function SearchProfile() {
             <div>
               <Select selectData={states} initialValue={searchData?.location} />
             </div>
-
           </div>
           <div className=" flex flex-wrap mt-4 gap-4 align-text-center">
             <h2 className=" sm:text-lg"> Applied Filters</h2>
@@ -167,7 +173,6 @@ function SearchProfile() {
                   >
                     <IoIosCloseCircleOutline
                       className="text-gray-500"
-
                     />
                   </svg>
                   <span className="absolute -inset-1" />
@@ -183,12 +188,10 @@ function SearchProfile() {
           <div>
             {!fetchingMembers ?
               members?.map((data, index) => (
-                <Link key={index}
-                  to={{
-                    pathname: data.id !== undefined ?
-                      `/profileDetails/${data?.id}` :
-                      `/profileDetails/${data?._id.$oid}`,
-                  }}
+                <span
+                  key={index}
+                  className="w-full cursor-pointer"
+                  onClick={() => navigateProfile(data)}
                 >
                   <LawyerCard
                     image={data.idProof}
@@ -210,7 +213,7 @@ function SearchProfile() {
                     businessName={data.businessName}
 
                   />
-                </Link>
+                </span>
               )
               )
               : null

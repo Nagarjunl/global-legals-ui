@@ -391,7 +391,7 @@ const PrivateInvestigators = ({ handleStepClick }) => {
             <div className="mt-2">
               <input
                 type="text"
-                placeholder="company website"
+                placeholder=" Years of Experience"
                 className="block px-2 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 {...register("yearsOfExperience")}
               />
@@ -572,12 +572,12 @@ const PrivateInvestigators = ({ handleStepClick }) => {
           </h3>
           <div className="sm:col-span-3">
             <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">
-              Insurance Pilicy Number
+              Insurance Policy Number
             </h5>
             <div className="mt-2">
               <input
                 type="text"
-                placeholder="Insurance pilicy number"
+                placeholder="Insurance policy number"
                 className="block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 {...register("insurancePolicyNumber")}
               />
@@ -732,6 +732,7 @@ const PrivateInvestigators = ({ handleStepClick }) => {
             <div className="mt-2">
               <input
                 type="text"
+                placeholder="Linkedin Profile"
                 autoComplete="given-name"
                 className="block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 {...register("linkedInProfile")}
@@ -787,7 +788,7 @@ const PrivateInvestigators = ({ handleStepClick }) => {
             <div className="mt-2">
               <input
                 type="text"
-                placeholder="Relevant Certifications"
+                placeholder="Client References"
                 className="block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 {...register("clientReferences")}
               />
@@ -800,7 +801,7 @@ const PrivateInvestigators = ({ handleStepClick }) => {
             <div className="mt-2">
               <input
                 type="text"
-                placeholder="Area of Expertise"
+                placeholder="Contact Number"
                 className="block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 {...register("referenceContactNumber")}
               />

@@ -1,9 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit'
 
 import rootReducer from "../reducers/rootReducer";
+
 import { authApi } from '../services/authAPI';
 import { userApi } from '../services/userAPI';
 import { fileUploadApi } from '../services/fileUploadAPI';
+import { stripeApi } from '../services/stripeAPI';
+import { profileApi } from '../services/profileAPI';
 
 import {
   persistStore,
@@ -16,12 +19,11 @@ import {
   REGISTER,
 } from "redux-persist";
 import storage from "redux-persist/lib/storage"; // defaults to localStorage for web
-import { stripeApi } from '../services/stripeAPI';
 
 const persistConfig = {
   key: "root",
   storage,
-  whitelist: ["auth", "registeredMail", "user", "formType", "superUser"],
+  whitelist: ["auth", "registeredMail", "user", "formType", "superUser", "profile" ],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
@@ -38,6 +40,7 @@ export const store = configureStore({
           userApi.middleware,
           fileUploadApi.middleware,
           stripeApi.middleware,
+          profileApi.middleware,
         ),
     persistedReducer,
 })

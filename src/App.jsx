@@ -39,12 +39,11 @@ import IndProfessional from "./pages/SuperUser/IndProfessional";
 import SearchKeyword from "./pages/SuperUser/SearchKeyword";
 import NewEnrolls from "./pages/SuperUser/NewEnrolls";
 import UnverifiedList from "./pages/SuperUser/UnverifiedList";
-import VerifyProfessional from "./pages/SuperUser/VerifyProfessional";
-
 import Homepage from "./pages/Homepage";
 import Faq from "./pages/faq";
 
 import "./App.css";
+import PaginatedItems from "./pages/SuperUser/PaginatedItems";
 // import TableData from "./pages/SUbscription/TableData";
 // import PaymentIntent from "./pages/paymentIntent";
 // import SubscribeToPlan from "./pages/Subscription/SubscribeToPlan";
@@ -94,7 +93,6 @@ function App() {
                     <Route path="searchKeywords" element={<SearchKeyword />} />
                     <Route path="newEnrolls" element={<NewEnrolls />} />
                     <Route path="unverifiedList" element={<UnverifiedList />} />
-                    <Route path="verifyProfessional/:userId/:type" element={<VerifyProfessional />} />
                     <Route path='*' exact={true} element={<Error404 />} />
                   </Routes>
                 </AdminLayout>
@@ -137,13 +135,15 @@ function App() {
           />
 
           <Route path="/" element={<Homepage />} />
-          <Route path="profileDetails/:memberId" element={<ProfileDetails />} />
+          <Route path="profileDetails/:slug" element={<ProfileDetails />} />
+          {/* <Route path="profileDetails/:memberId" element={<ProfileDetails />} /> */}
           <Route path="searchProfile" element={<SearchProfile />} />
           <Route path="searchProfile/:searchKeys" element={<SearchProfile />} />
           <Route path="faq" element={<Faq />} />
           <Route path="*" element={<Error404 />} />
           <Route path="*" element={<Error404 />} />
 
+          <Route path="pagination" element={<PaginatedItems />} />
 
           {/* <Route
             path="subscribe"

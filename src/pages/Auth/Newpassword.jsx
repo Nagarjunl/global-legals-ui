@@ -9,6 +9,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useChangePasswordMutation } from "../../services/authAPI";
 import { useDispatch } from "react-redux";
 import { clearEmail } from "../../reducers/auth/registerSlice";
+import { useEffect } from "react";
 
 const REGEX = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
 
@@ -46,6 +47,12 @@ const NewPassword = () => {
   const onSubmit = (data) => {
     setPasswordMethod(data);
   }
+
+  useEffect(() => {
+    if (!pwResetMail) {
+      navigate("/auth/forgetPassword");
+    }
+  }, [pwResetMail, navigate]);
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 min-h-screen">
