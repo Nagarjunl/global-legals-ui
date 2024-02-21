@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import GlobalLegals from "../../assets/GlobalLegals.svg";
-import Paperplane from "../../assets/paper-plane.png";
+// import Paperplane from "../../assets/paper-plane.png";
 import "../../App.css";
 import PrimaryButton from "../../components/PrimaryButton";
 import LeftsideBar from "../../components/Leftside-Bar";

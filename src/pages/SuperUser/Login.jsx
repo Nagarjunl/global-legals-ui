@@ -8,6 +8,7 @@ import { addTokens } from "../../reducers/auth/authSlice";
 import { currentUser } from "../../reducers/userSlice";
 import { useDispatch } from "react-redux";
 import { useAdminSignInMutation } from "../../services/authAPI";
+import { removeProfileData } from "../../reducers/profileSlice";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -31,6 +32,7 @@ const Login = () => {
             const { user, ...rest } = res;
             dispatch(addTokens(rest));
             dispatch(currentUser(user));
+            dispatch(removeProfileData());
             navigate("/admin");
           }
         });

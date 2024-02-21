@@ -7,7 +7,6 @@ import profileImg from "../assets/avator.png";
 // const baseUrl = import.meta.env.VITE_API_URL;
 const baseUrl = "https://api.chitmanager.com/";
 
-
 const LawyerCard = ({
   image,
   fName,
@@ -17,7 +16,7 @@ const LawyerCard = ({
   type,
   practicingLaw,
   licenseNumber,
-  businessName
+  businessName,
 }) => {
   return (
     <>
@@ -33,7 +32,7 @@ const LawyerCard = ({
               }
             </div>
             <div className="flex sm:flex-1 flex-col justify-center gap-2 p-1">
-              <h1 className="text-lg sm:text-xl font-semibold  text-black">
+              <h1 className="text-left text-lg sm:text-xl font-semibold  text-black">
                 {fName}
               </h1>
               <div className=" flex flex-wrap gap-4">
@@ -91,7 +90,7 @@ const LawyerCard = ({
                     className="pr-2 w-auto h-6 sm:w-auto"
                   />
                   State
-                  <span className="text-blue-700 px-2">  {designation}</span>
+                  <span className="text-blue-700 px-2">{designation}</span>
                 </span>
               </div>
             </div>

@@ -1,7 +1,4 @@
 import verification from "../../assets/Verification.svg";
-import { useSelector, useDispatch } from 'react-redux';
-import { useEffect } from "react";
-import { useCreateMembersMutation } from "../../services/userAPI";
 
 const people = [
   {
@@ -21,33 +18,6 @@ const people = [
 ];
 
 const Verification = () => {
-
-  // const [createMembers] = useCreateMembersMutation();
-  // const dispatch = useDispatch();
-
-  // const currentUserId = useSelector((state) => state.user.current_user.id)
-  // const formType = useSelector((state) => state.formType.formType);
-  // const formDatas = useSelector((state) => state.formType.formData);
-
-  // const submitMembers = async (data) => {
-  //   const datas = { ...data, userId: currentUserId, type: formType }
-  //   try {
-  //     await createMembers(datas)
-  //       .unwrap()
-  //       .then((res) => {
-  //         const { result3, ...rest } = res;
-  //         dispatch(formSubmited(true));
-  //         dispatch(formData(""));
-  //         dispatch(currentUser(result3));
-  //       });
-  //   } catch (error) {
-  //     console.log("error");
-  //   }
-  // }
-
-  // useEffect(() => {
-  //   submitMembers(formDatas);
-  // }, [])
 
   return (
     <div className="container mx-auto">

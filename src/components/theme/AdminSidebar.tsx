@@ -94,22 +94,19 @@ const AdminSidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
       <div className="no-scrollbar flex flex-col overflow-y-auto duration-300 ease-linear">
         {/* <!-- Sidebar Menu --> */}
         <nav className="mt-2 py-2 px-2 lg:mt-2 lg:px-4">
-          {/* <!-- Menu Group --> */}
           <div>
             <h3 className="mb-4 ml-4 text-sm font-semibold text-bodydark2">
               MENU
             </h3>
 
             <ul className="mb-6 flex flex-col gap-1.5">
-              {/* <!-- Menu Item Calendar --> */}
               <li>
                 <NavLink
                   to="unverifiedList"
                   className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-normal duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
-                    pathname.includes('calendar') &&
-                    'bg-graydark dark:bg-meta-4'
-                  }`}
-                >
+                    pathname.includes('unverifiedList') && 'bg-gray-300'}`}
+                    onClick={() => setSidebarOpen(!sidebarOpen)}
+                  >
                   <svg
                     className="fill-current"
                     width="18"
@@ -130,9 +127,8 @@ const AdminSidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                 <NavLink
                   to="professionalList"
                   className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-normal duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
-                    pathname.includes('calendar') &&
-                    'bg-graydark dark:bg-meta-4'
-                  }`}
+                    pathname.includes('professionalList') && 'bg-gray-300'}`}
+                    onClick={() => setSidebarOpen(!sidebarOpen)}
                 >
                   <svg
                     className="fill-current"
@@ -150,16 +146,13 @@ const AdminSidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                   Professionals
                 </NavLink>
               </li>
-              {/* <!-- Menu Item Calendar --> */}
-
-
-              {/* <!-- Menu Item Tables --> */}
+              
               <li>
                 <NavLink
                   to="searchKeywords"
                   className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-normal duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
-                    pathname.includes('tables') && 'bg-graydark dark:bg-meta-4'
-                  }`}
+                    pathname.includes('searchKeywords') && 'bg-gray-300'}`}
+                    onClick={() => setSidebarOpen(!sidebarOpen)}
                 >
                   <svg
                     className="fill-current"
@@ -189,16 +182,13 @@ const AdminSidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                   Search Keyword
                 </NavLink>
               </li>
-              {/* <!-- Menu Item Tables --> */}
-
-              {/* <!-- Menu Item Settings --> */}
+              
               <li>
                 <NavLink
                   to="newEnrolls"
                   className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-normal duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
-                    pathname.includes('settings') &&
-                    'bg-graydark dark:bg-meta-4'
-                  }`}
+                    pathname.includes('newEnrolls') && 'bg-gray-300'}`}
+                    onClick={() => setSidebarOpen(!sidebarOpen)}
                 >
                    <svg
                     className="fill-current"
@@ -220,11 +210,9 @@ const AdminSidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                   New Enrolls
                 </NavLink>
               </li>
-              {/* <!-- Menu Item Settings --> */}
             </ul>
           </div>
         </nav>
-        {/* <!-- Sidebar Menu --> */}
       </div>
     </aside>
   );

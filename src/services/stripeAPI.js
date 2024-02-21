@@ -9,22 +9,34 @@ export const stripeApi = createApi({
   tagTypes: ["Subscription"],
   endpoints: (builder) => ({
     findFromUser: builder.query({
-        query: (id) => ({
+      query: (id) => ({
           url: `/frontends/find-from-user/${id}`,
           method: "GET",
       }),
     }),
     getSubscriptions: builder.query({
-        query: (userId) => ({
+      query: (userId) => ({
           url: `/frontends/getsubscriptions/${userId}`,
           method: "GET",
       }),
       providesTags: ["Subscription"],
     }),
     getProduct: builder.query({
-        query: () => ({
+      query: () => ({
           url: '/frontends/getproduct',
           method: "GET",
+      }),
+    }), 
+    getInvoices: builder.query({
+      query: ({userId,limit,startingAfter}) => ({
+        url: `/frontends/getinvoices/${userId}/${limit}/${startingAfter}`,
+        method: "GET",
+      }),
+    }), 
+    getInvoicesCount: builder.query({
+      query: (userId) => ({
+        url: `/frontends/getinvoicescount/${userId}`,
+        method: "GET",
       }),
     }), 
     createSubscription: builder.mutation({
@@ -43,6 +55,14 @@ export const stripeApi = createApi({
       }),
       invalidatesTags: ["Subscription"],
     }),
+    resumeSubscription: builder.mutation({
+        query: (data) => ({
+        url: '/frontends/resumesubscription',
+        method: "POST",
+        body: data,
+      }),
+      invalidatesTags: ["Subscription"],
+    }),
   })
 })
 
@@ -51,8 +71,11 @@ export const stripeApi = createApi({
 export const {
   useCreateSubscriptionMutation,
   useCancelSubscriptionMutation,
+  useResumeSubscriptionMutation,
 
   useFindFromUserQuery,
   useGetSubscriptionsQuery,
   useGetProductQuery,
+  useGetInvoicesQuery,
+  useGetInvoicesCountQuery,
 } = stripeApi;

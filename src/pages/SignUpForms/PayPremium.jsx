@@ -1,12 +1,6 @@
 import Asset from "../../assets/pay.jpg";
-import { useCreateMembersMutation, useMakePaymentMutation } from "../../services/userAPI";
-import { useSelector, useDispatch } from 'react-redux';
-import { currentUser } from "../../reducers/userSlice";
-import { formSubmited, formData, formDataIdProof, formImgStatus } from "../../reducers/formTypeSlice";
-import { loadStripe } from '@stripe/stripe-js';
 import { useState } from "react";
-import SubscribeToPlan from "../Subscription/SubscribeToPlan";
-
+import PropTypes from 'prop-types';
 
 import PaymentDialogue from "../Subscription/paymentDialogue";
 
@@ -36,57 +30,7 @@ const people = [
 
 const PayPremium = ({ handleStepClick }) => {
 
-  const [open, setOpen] = useState(false)
-
-  const [createMembers, { isLoading }] = useCreateMembersMutation();
-  const [makePayment] = useMakePaymentMutation();
-
-  const dispatch = useDispatch();
-
-  const currentUserId = useSelector((state) => state.user.current_user.id)
-  const formType = useSelector((state) => state.formType.formType);
-  const formDatas = useSelector((state) => state.formType.formData);
-
-  const submitMembers = async (data) => {
-    const datas = { ...data, userId: currentUserId, type: formType.value }
-    try {
-      await createMembers(datas)
-        .unwrap()
-        .then((res) => {
-          const { user, ...rest } = res;
-          console.log(user);
-          dispatch(formSubmited(true));
-          dispatch(formData(""));
-          dispatch(formDataIdProof(""));
-          dispatch(formImgStatus(false));
-          dispatch(currentUser(user));
-          handleStepClick(2);
-        });
-    } catch (error) {
-      console.log("error");
-    }
-  }
-
-  const makePaymentMethod = async (data) => {
-
-    console.log("hhghghhghghg")
-    const datas = { ...data, userId: currentUserId, type: formType }
-    const stripe = await loadStripe('pk_test_51OWvGSSDcWKAz6oIiMvnjQToKrOu7Pp4aHIKugWHpMTx4K19CajJQDPkx9RnQutL2QxS7cTPIL2yPfRrDefNZig600U6nDGFWZ');
-    try {
-      await makePayment(datas)
-        .unwrap()
-        .then((res) => {
-          const sessionId = res.id;
-          stripe.redirectToCheckout({
-            sessionId: sessionId,
-          })
-          submitMembers(datas);
-        })
-    } catch (error) {
-      console.log("error");
-    }
-  }
-
+  const [open, setOpen] = useState(true)
 
   return (
     <>
@@ -125,14 +69,26 @@ const PayPremium = ({ handleStepClick }) => {
           Complete your payment now to embark on a premium experience tailored
           <br /> for legal professionals.
         </div>
-        {
+        <div className="flex justify-center items-center mt-4 my-3">
+
+          <button
+            type="button"
+            className="rounded bg-blue-600 w-96 h-10  px-2 py-1 text-xs font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            onClick={() => setOpen(true)}
+          >
+            Proceed to pay $10
+          </button>
+        </div>
+
+
+        {/* {
           !isLoading ?
             <div className="flex justify-center items-center mt-4 my-3">
               <button
                 type="button"
                 className="rounded bg-blue-600 w-96 h-10  px-2 py-1 text-xs font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                onClick={() => makePaymentMethod(formDatas)}
-                // onClick={() => setOpen(true)}
+                // onClick={() => makePaymentMethod(formDatas)}
+                onClick={() => setOpen(true)}
                 disabled={isLoading}
               >
                 Proceed to pay $10
@@ -150,11 +106,11 @@ const PayPremium = ({ handleStepClick }) => {
                 </svg>
               </button>
             </div>
-        }
+        } */}
       </div>
 
       {open &&
-        <PaymentDialogue openStatus={open} />
+        <PaymentDialogue openStatus={open} handleStepClick={handleStepClick} fromDashboard={false} />
       }
     </>
 
@@ -162,3 +118,7 @@ const PayPremium = ({ handleStepClick }) => {
 };
 
 export default PayPremium;
+
+PayPremium.propTypes = {
+  handleStepClick: PropTypes.func,
+}

@@ -52,17 +52,23 @@ export const userApi = createApi({
       }),
     }),
     unverifiedUser: builder.query({
-        query: () => ({
-          url: `/frontends/unverified`,
+        query: ({ limit, offset, profession }) => ({
+          url: `/frontends/unverified/${limit}/${offset}/${profession}`,
+          method: "GET",
+      }),
+      providesTags: ["Verify"],
+    }),
+    professionalReport : builder.query({
+        query: ({ limit, offset, profession, keyword }) => ({
+          url: `/frontends/professionalreport/${limit}/${offset}/${profession}/${keyword}`,
           method: "GET",
       }),
       providesTags: ["Verify"],
     }),
     verifyUser: builder.mutation({
-        query: (data) => ({
-          url: `/frontends/verifyUser/${data.id}`,
+        query: (id) => ({
+          url: `/frontends/verifyUser/${id}`,
           method: "PATCH",
-          body: data,
       }),
       invalidatesTags: ["Verify"],
     }),
@@ -93,7 +99,13 @@ export const userApi = createApi({
           body: {amount: data},
       }),
     }),
-        
+    profileViewCountApi: builder.mutation({
+        query: (data) => ({
+          url: '/frontends/profileviewcount',
+          method: "POST",
+          body: data,
+      }),
+    }),
   })
 })
 
@@ -107,10 +119,13 @@ export const {
   useMakePaymentMutation,
   useCaptchaVerifyMutation,
   usePaymentIntentApiMutation,
+  useProfileViewCountApiMutation,
 
   useGetMembersQuery,
   useGetMemberQuery,
   useGetMemberFromSuperIdQuery,
   useSearchMembersQuery,
   useUnverifiedUserQuery,
+  useLazyUnverifiedUserQuery,
+  useLazyProfessionalReportQuery,
 } = userApi;

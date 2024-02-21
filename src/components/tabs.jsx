@@ -67,7 +67,9 @@ const Tabs = ({ tabs }) => {
             <div className="mt-4">
                 {tabs.map((tab, index) => (
                     <TabPanel key={index} isActive={index === activeTab}>
-                        <TabContent>{tab.content}</TabContent>
+                        <TabContent>
+                            {tab.content}
+                        </TabContent>
                     </TabPanel>
                 ))}
             </div>

@@ -101,8 +101,6 @@ const SubscribeToPlan = () => {
         <>
             <div className="mx-auto container max-sm:px-6 pb-3">
                 <pre className="text-center mt-5 p-3">
-
-
                     {!isLoading &&
                         <>
                             <div className="text-center">
@@ -138,7 +136,5 @@ const SubscribeToPlan = () => {
         </>
     )
 }
-
-
 
 export default SubscribeToPlan;

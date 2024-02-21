@@ -1,8 +1,8 @@
 import { BuildingOfficeIcon, UserIcon, UsersIcon } from '@heroicons/react/20/solid'
-import LawyerEnterDetails from '../pages/SignUpForms/LawyerEnterDetails';
 import PaymentReport from '../pages/SuperUser/PaymentReport';
 import DetailCard from '../pages/SuperUser/DetailCard';
 import Plans from '../pages/Profile/plans';
+import ProfessionalDetails from '../pages/SuperUser/ProfessionalDetails';
 
 export const LAWYERS = "Lawyers";
 export const BAIL_BONDSMAN = "Bail Bondsman";
@@ -17,7 +17,7 @@ export const professionals = [
 ];
 
 export const superUserTabs = [
-    { index: 0, value: 'Details', label: 'Details', href: '#', icon: UserIcon, current: true, content: <LawyerEnterDetails /> },
+    { index: 0, value: 'Details', label: 'Details', href: '#', icon: UserIcon, current: true, content: <ProfessionalDetails hideButtons={true} /> },
     { index: 1, value: 'Payment Report', label: 'Payment Report', href: '#', icon: BuildingOfficeIcon, current: false, content: <PaymentReport /> },
     { index: 2, value: 'Analytics', label: 'Analytics', href: '#', icon: UsersIcon, current: false, content: <DetailCard /> },
 ]
