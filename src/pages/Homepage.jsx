@@ -63,7 +63,7 @@ const Homepage = () => {
     try {
       await profileEmail(data).unwrap()
         .then(() => {
-          setAck("We will contact you soon!");
+          setAck("We will contact you soon !");
           reset();
           captchaRef.current.reset();
         });
