@@ -11,8 +11,13 @@ import {
     useCreateSubscriptionMutation,
     useGetProductQuery,
 } from "../../services/stripeAPI";
-import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js"
+import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
+
 import GlobalLegals from "../../assets/GlobalLegals.svg";
+
+
+import GlobalLegals from "../../assets/GlobalLegals.svg";
+
 
 export default function PaymentDialogue(props) {
 
@@ -180,7 +185,8 @@ export default function PaymentDialogue(props) {
                                                     {!isLoading &&
                                                         <div className="text-center mt-5 p-3">
                                                             <div className="flex min-h-full items-end justify-center mb-5">
-                                                                {/* {data?.images.map((img, index) => (
+                                                                {/* {data.images.map((img, index) => (
+
                                                                     <img key={index} src={img} alt="Global Legals" className="text-center" />
                                                                 ))} */}
                                                                 <img src={GlobalLegals} alt="Global Legals" className="text-center" />
