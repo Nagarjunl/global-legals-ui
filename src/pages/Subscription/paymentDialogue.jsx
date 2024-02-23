@@ -16,9 +16,6 @@ import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import GlobalLegals from "../../assets/GlobalLegals.svg";
 
 
-import GlobalLegals from "../../assets/GlobalLegals.svg";
-
-
 export default function PaymentDialogue(props) {
 
     const dispatch = useDispatch();
@@ -185,7 +182,7 @@ export default function PaymentDialogue(props) {
                                                     {!isLoading &&
                                                         <div className="text-center mt-5 p-3">
                                                             <div className="flex min-h-full items-end justify-center mb-5">
-                                                                {/* {data.images.map((img, index) => (
+                                                                {/* {data?.images.map((img, index) => (
 
                                                                     <img key={index} src={img} alt="Global Legals" className="text-center" />
                                                                 ))} */}
@@ -200,7 +197,8 @@ export default function PaymentDialogue(props) {
 
                                                             <div className="pt-4">
                                                                 <CardElement />
-                                                            </div>                  </div>
+                                                            </div>
+                                                        </div>
                                                     }
                                                 </div >
                                             </div>
