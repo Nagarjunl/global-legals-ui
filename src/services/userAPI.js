@@ -72,6 +72,13 @@ export const userApi = createApi({
       }),
       invalidatesTags: ["Verify"],
     }),
+    unverifyUser: builder.mutation({
+        query: (id) => ({
+          url: `/frontends/unverifyuser/${id}`,
+          method: "PATCH",
+      }),
+      invalidatesTags: ["Verify"],
+    }),
     profileEmail: builder.mutation({
         query: (data) => ({
           url: `/frontends/profileEmail`,
@@ -113,6 +120,7 @@ export const userApi = createApi({
 // auto-generated based on the defined endpoints
 export const {
   useVerifyUserMutation,
+  useUnverifyUserMutation,
   useUpdateMemberMutation,
   useCreateMembersMutation,
   useProfileEmailMutation,

@@ -72,8 +72,6 @@ const Homepage = () => {
     }
   }
 
-
-
   const onSubmit = (formData) => {
     const result = { ...formData, superMail: "naga.career.at@gmail.com", mailFrom: "homePage" }
     submitMailForm(result);
@@ -250,7 +248,7 @@ const Homepage = () => {
                         Services we bring to table
                       </p>
                     </div>
-                    <div className="absolute top-[107px] left-[175px] rounded-full bg-white bg-opacity-20 px-5 py-2  backdrop-blur-md backdrop-filter">
+                    <div className="absolute top-[107px] left-[175px] max-sm:left-[57px] rounded-full bg-white bg-opacity-20 px-5 py-2  backdrop-blur-md backdrop-filter">
                       <p className=" text-[20px] font-medium text-white">
                         At Affordable prices
                       </p>

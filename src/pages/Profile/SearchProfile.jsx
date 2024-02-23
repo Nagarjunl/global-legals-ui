@@ -3,7 +3,7 @@ import { useSearchMembersQuery } from "../../services/userAPI";
 import { useDispatch, useSelector } from 'react-redux';
 
 import LawyerCard from "../../components/LawyerCard";
-import cupImage from "../../assets/image25.svg";
+// import cupImage from "../../assets/image25.svg";
 import Select from "../../components/Select";
 import { IoIosCloseCircleOutline } from "react-icons/io";
 import { useNavigate, useParams } from "react-router-dom";
@@ -90,7 +90,7 @@ function SearchProfile() {
 
   const navigateProfile = (data) => {
     dispatch(addProfileUser(data));
-    data.id !== undefined ? navigate(`/profileDetails/${data?.slug}/`) : navigate(`/profileDetails/${data?._id.$oid}`)
+    navigate(`/profileDetails/${data?.slug}/`);
   }
 
   useEffect(() => {
@@ -193,26 +193,7 @@ function SearchProfile() {
                   className="w-full cursor-pointer"
                   onClick={() => navigateProfile(data)}
                 >
-                  <LawyerCard
-                    image={data.idProof}
-                    fName={data.clientName}
-                    businessMail={data.businessMail}
-                    type={data.type}
-                    cups={cupImage}
-                    topRated="Top Rated Attorney"
-                    // designation={
-                    //   data.type === "Lawyers" ? data.practicingLaw :
-                    //     data.type === "Bailbondsman" ? data.licenseNumber :
-                    //       data.type === "Private Investigators" ? data.licenseNumber : data.licenseNumber
-                    // }
-                    designation={data.businessAddress}
-                    selfIntro={data.professional}
-                    contactNumber={data.contactNumber}
-                    practicingLaw={data.practicingLaw}
-                    licenseNumber={data.licenseNumber}
-                    businessName={data.businessName}
-
-                  />
+                  <LawyerCard data={data} />
                 </span>
               )
               )

@@ -3,7 +3,7 @@ import { useRef, useState } from "react";
 import PropTypes from 'prop-types';
 
 import { useSelector } from "react-redux";
-import { useGetMemberQuery, useVerifyUserMutation } from "../../services/userAPI";
+import { useGetMemberQuery, useVerifyUserMutation, useUnverifyUserMutation } from "../../services/userAPI";
 
 import { BAIL_BONDSMAN, LAWYERS, PRIVATE_INVESTIGATORS, SECURITY } from "../../constants/constants";
 
@@ -16,14 +16,12 @@ import SECDetails from "./DetailPages/SECDetails";
 
 import Dialogue from "../../components/Dialogue";
 
-
-//jkjkkkjkjkjkkjk
 // const baseUrl = import.meta.env.VITE_API_URL;
 const baseUrl = "https://api.chitmanager.com/";
 
 const ProfessionalDetails = (props) => {
 
-    const { setOpen, hideButtons } = props;
+    const { setOpen, hideButtons, btnLabel } = props;
 
     const cancelButtonRef = useRef(null)
     const [openStatus, setOpenStatus] = useState(false);
@@ -33,10 +31,25 @@ const ProfessionalDetails = (props) => {
     const { data, isLoading } = useGetMemberQuery(slug, { skip: slug === undefined });
 
     const [verifyUser, { isLoading: verifyingmember }] = useVerifyUserMutation();
+    const [unverifyUser, { isLoading: unverifyingmember }] = useUnverifyUserMutation();
 
     const submitVerify = async (id) => {
         try {
             await verifyUser(id)
+                .unwrap()
+                .then((res) => {
+                    console.log(res);
+                    setOpenStatus(!openStatus);
+                    setOpen(false);
+                });
+        } catch (error) {
+            console.log("error");
+        }
+    }
+
+    const submitUnverify = async (id) => {
+        try {
+            await unverifyUser(id)
                 .unwrap()
                 .then((res) => {
                     console.log(res);
@@ -73,7 +86,7 @@ const ProfessionalDetails = (props) => {
                         className="inline-flex w-full justify-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 sm:ml-3 sm:w-auto"
                         onClick={() => setOpenStatus(true)}
                     >
-                        verify
+                        {btnLabel}
                     </button>
                     <button
                         type="button"
@@ -93,8 +106,8 @@ const ProfessionalDetails = (props) => {
                     btnText="Submit"
                     setOpenStatus={setOpenStatus}
                     openStatus={openStatus}
-                    submitMethod={submitVerify}
-                    loading={verifyingmember}
+                    submitMethod={btnLabel === "Unverify" ? submitUnverify : submitVerify}
+                    loading={btnLabel === "Unverify" ? unverifyingmember : verifyingmember}
                 />
             </div>
 
@@ -107,4 +120,5 @@ export default ProfessionalDetails;
 ProfessionalDetails.propTypes = {
     setOpen: PropTypes.func,
     hideButtons: PropTypes.bool,
+    btnLabel: PropTypes.string,
 }

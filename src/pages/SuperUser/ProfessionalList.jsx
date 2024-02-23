@@ -6,13 +6,15 @@ import Select from 'react-select';
 import ReactPaginate from 'react-paginate';
 
 import { FaEye, FaUndoAlt } from "react-icons/fa";
-import { MagnifyingGlassIcon } from '@heroicons/react/20/solid'
+// import { MagnifyingGlassIcon } from '@heroicons/react/20/solid'
 
 import { useLazyProfessionalReportQuery } from "../../services/userAPI";
 import { setKeyword, setProfession } from '../../reducers/searchSlice';
 import { addProfileUser } from "../../reducers/profileSlice";
 
 import { professionals } from "../../constants/constants";
+import Dialogue from "../../components/Dialogue";
+import ProfessionalDetails from "./ProfessionalDetails";
 
 
 const ProfessionalList = () => {
@@ -27,6 +29,8 @@ const ProfessionalList = () => {
   const [offset, setOffset] = useState(0);
   const [pageCount, setPageCount] = useState(0);
 
+  const [openStatus, setOpenStatus] = useState(false);
+
   const proState = useSelector((state) => state.search.profession);
   const keyState = useSelector((state) => state.search.keyword);
 
@@ -37,6 +41,11 @@ const ProfessionalList = () => {
   const viewIndividual = (data) => {
     dispatch(addProfileUser(data));
     navigate("/admin/indProfessional")
+  }
+
+  const undoVerify = (data) => {
+    dispatch(addProfileUser(data));
+    setOpenStatus(!openStatus)
   }
 
   const handlePageClick = (event) => {
@@ -63,9 +72,17 @@ const ProfessionalList = () => {
 
   useEffect(() => {
     if (!isLoading) {
-      setPageCount(Math.ceil(data?.count / limit));
+      const count = data === undefined ? 0 : data.count;
+
+      // If condition for set offset for when verify last member in last page of pagination
+      if (count > 0 && data?.data?.length === 0) {
+        const newOffset = count - limit
+        setOffset(newOffset);
+      } else {
+        setPageCount(Math.ceil(count / limit));
+      }
     }
-  }, [limit, data, isLoading, proState, keyState])
+  }, [limit, data, isLoading, setPageCount, setOffset])
 
   return (
     <div >
@@ -137,7 +154,9 @@ const ProfessionalList = () => {
                         <FaEye className="aspect-square object-contain object-center w-5 h-5 overflow-hidden shrink-0 max-w-full"
                         />
                       </div>
-                      <button className="hover:text-primary">
+                      <button className="hover:text-primary"
+                        onClick={() => undoVerify(data)}
+                      >
                         <FaUndoAlt className="aspect-square object-contain object-center w-5 h-5 overflow-hidden shrink-0 max-w-full"
                         />
                       </button>
@@ -180,6 +199,19 @@ const ProfessionalList = () => {
           </div>
         </div>
       </div>
+
+
+      <div className="relative">
+        <Dialogue
+          title="Undo Professional Verification Status"
+          message={<ProfessionalDetails open={openStatus} setOpen={setOpenStatus} btnLabel="Unverify" />}
+          btnText="Verify"
+          setOpenStatus={setOpenStatus}
+          openStatus={openStatus}
+          hideButtons={true}
+        />
+      </div >
+
     </div >
   );
 };
