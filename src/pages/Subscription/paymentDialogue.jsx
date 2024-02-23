@@ -12,7 +12,6 @@ import {
     useGetProductQuery,
 } from "../../services/stripeAPI";
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js"
-
 import GlobalLegals from "../../assets/GlobalLegals.svg";
 
 export default function PaymentDialogue(props) {
@@ -20,7 +19,6 @@ export default function PaymentDialogue(props) {
     const dispatch = useDispatch();
 
     const { openStatus, setOpenStatus, handleStepClick, fromDashboard } = props;
-
 
     // Subscribe ------------------
 
