@@ -24,7 +24,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { addProfileViewCount } from "../../reducers/profileSlice";
 
 const ProfileDetails = ({ hideSchedule }) => {
-  // const { memberId, mainId, slug } = useParams();
   const { mainId, slug } = useParams();
   const navigate = useNavigate();
   const [ack, setAck] = useState();
@@ -32,15 +31,10 @@ const ProfileDetails = ({ hideSchedule }) => {
 
   const profileUser = useSelector(state => state.profile.profileUser);
   const profileViews = useSelector(state => state.profile.profileViews);
-  // const userId = useSelector(state => state.user.current_user.id);
 
   const { data: supermember } = useGetMemberFromSuperIdQuery(mainId, {
     skip: mainId === undefined,
   });
-
-  // const { data: member } = useGetMemberQuery(memberId, {
-  //   skip: memberId === undefined,
-  // });
 
   const { data: member } = useGetMemberQuery(slug, {
     skip: slug === undefined,
@@ -120,7 +114,7 @@ const ProfileDetails = ({ hideSchedule }) => {
         <div className="mt-5">
           <ProfileCard data={searchData} hideSchedule={hideSchedule} />
         </div>
-        <div className=" max-md:px-2">
+        <div className="max-md:px-2 mb-7">
           <div className="pt-2 professional_data">
             <div dangerouslySetInnerHTML={{ __html: searchData?.professional }} />
           </div>

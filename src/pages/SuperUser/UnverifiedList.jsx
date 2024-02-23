@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router-dom";
 
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -8,7 +7,7 @@ import ReactPaginate from 'react-paginate';
 
 import { FaEye } from "react-icons/fa";
 
-import { useLazyUnverifiedUserQuery, useVerifyUserMutation } from "../../services/userAPI";
+import { useLazyUnverifiedUserQuery } from "../../services/userAPI";
 import { setProfession } from '../../reducers/searchSlice';
 
 import { professionals } from "../../constants/constants";
@@ -17,11 +16,10 @@ import Dialogue from "../../components/Dialogue";
 import ProfessionalDetails from "../SuperUser/ProfessionalDetails";
 
 const UnverifiedList = () => {
-    // const navigate = useNavigate();
     const dispatch = useDispatch();
     const profession = "";
 
-    const [limit] = useState(2);
+    const [limit] = useState(1);
     const [offset, setOffset] = useState(0);
     const [pageCount, setPageCount] = useState(0);
 
@@ -32,20 +30,6 @@ const UnverifiedList = () => {
     const [trigger, { data, isLoading }] = useLazyUnverifiedUserQuery({ limit, offset, profession }, {
         skip: limit === 0 && offset === 0
     });
-
-    const [verifyUser, { isLoading: verifyingmember }] = useVerifyUserMutation();
-
-    const submitMember = async (id) => {
-        try {
-            await verifyUser(id)
-                .unwrap()
-                .then((res) => {
-                    console.log(res);
-                });
-        } catch (error) {
-            console.log("error");
-        }
-    }
 
     const handlePageClick = (event) => {
         const newOffset = (event.selected * limit) % data?.count;
@@ -60,7 +44,6 @@ const UnverifiedList = () => {
     const handleVerify = (data) => {
         dispatch(addProfileUser(data));
         setOpenStatus(!openStatus)
-        // navigate("/admin/verifyProfessional")
     }
 
     useEffect(() => {
@@ -70,10 +53,17 @@ const UnverifiedList = () => {
 
     useEffect(() => {
         if (!isLoading) {
-            setPageCount(Math.ceil(data?.count / limit));
-        }
-    }, [limit, data, isLoading, proState])
+            const count = data === undefined ? 0 : data.count;
 
+            // If condition for set offset for when verify last member in last page of pagination
+            if (count > 0 && data?.data?.length === 0) {
+                const newOffset = count - limit
+                setOffset(newOffset);
+            } else {
+                setPageCount(Math.ceil(count / limit));
+            }
+        }
+    }, [limit, data, isLoading, setPageCount, setOffset])
 
     return (
         <div className="container mx-auto">
@@ -162,7 +152,7 @@ const UnverifiedList = () => {
             <div className="relative">
                 <Dialogue
                     title="Professional Detail"
-                    message={<ProfessionalDetails open={openStatus} setOpen={setOpenStatus} />}
+                    message={<ProfessionalDetails open={openStatus} setOpen={setOpenStatus} btnLabel="Veriry" />}
                     btnText="Verify"
                     setOpenStatus={setOpenStatus}
                     openStatus={openStatus}

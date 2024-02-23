@@ -7,33 +7,23 @@ import profileImg from "../assets/avator.png";
 // const baseUrl = import.meta.env.VITE_API_URL;
 const baseUrl = "https://api.chitmanager.com/";
 
-const LawyerCard = ({
-  image,
-  fName,
-  designation,
-  businessMail,
-  contactNumber,
-  type,
-  practicingLaw,
-  licenseNumber,
-  businessName,
-}) => {
+const LawyerCard = ({ data }) => {
   return (
     <>
       <div>
         <div className="flex-wrap  mt-10">
-          <div className="bg-white p-2 border border-blue-Gray-200  sm:p-4 sm:h-auto rounded-xl flex flex-col sm:flex-row gap-5 select-none">
+          <div className="bg-white p-2 border border-blue-Gray-200  sm:p-4 sm:h-auto rounded-xl flex flex-col sm:flex-row gap-5 select-none border border-gray-300 shadow-md">
             <div className="flex justify-center p-5">
               {
-                image ?
-                  <img className="w-auto h-[200px]" src={`${baseUrl}${image}`} alt="frame" />
+                data?.image ?
+                  <img className="w-auto h-[200px]" src={`${baseUrl}${data?.image}`} alt="frame" />
                   :
                   <img className="w-auto h-[200px]" src={profileImg} alt="frame" />
               }
             </div>
             <div className="flex sm:flex-1 flex-col justify-center gap-2 p-1">
               <h1 className="text-left text-lg sm:text-xl font-semibold  text-black">
-                {fName}
+                {data?.clientName}
               </h1>
               <div className=" flex flex-wrap gap-4">
                 <span className="inline-flex  rounded-full items-center  bg-blue-50 px-3 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10">
@@ -53,14 +43,7 @@ const LawyerCard = ({
                     alt="Phone"
                     className="pr-2 w-auto h-6 sm:w-auto"
                   />
-                  {type}
-                  {/* <span className="text-blue-700 px-2">
-                    {
-                      type === "Lawyers" ? businessName - practicingLaw :
-                        type === "Bail Bondsman" ? licenseNumber :
-                          type === "Private Investigators" ? licenseNumber : licenseNumber
-                    }
-                  </span> */}
+                  {data?.type}
                 </span>
               </div>
               <div className=" flex text-lg text-gray-600 ">
@@ -69,7 +52,7 @@ const LawyerCard = ({
                     alt="Phone"
                     className="pr-2 w-auto h-6 sm:w-auto"
                   />
-                  Contact Number : {contactNumber}
+                  Contact Number : {data?.contactNumber}
                 </span>
               </div>
               <div className=" flex text-lg text-gray-600 ">
@@ -79,7 +62,7 @@ const LawyerCard = ({
                     alt="Phone"
                     className="pr-2 w-auto h-6 sm:w-auto"
                   />
-                  Mail : {businessMail}
+                  Mail : {data?.businessMail}
                 </span>
               </div>
               <div className=" flex text-lg text-gray-600 ">
@@ -90,7 +73,7 @@ const LawyerCard = ({
                     className="pr-2 w-auto h-6 sm:w-auto"
                   />
                   State
-                  <span className="text-blue-700 px-2">{designation}</span>
+                  <span className="text-blue-700 px-2">{data?.businessAddress}</span>
                 </span>
               </div>
             </div>
