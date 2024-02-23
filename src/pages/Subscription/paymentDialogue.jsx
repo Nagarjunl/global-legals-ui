@@ -18,12 +18,12 @@ import GlobalLegals from "../../assets/GlobalLegals.svg";
 
 import GlobalLegals from "../../assets/GlobalLegals.svg";
 
+
 export default function PaymentDialogue(props) {
 
     const dispatch = useDispatch();
 
     const { openStatus, setOpenStatus, handleStepClick, fromDashboard } = props;
-
 
     // Subscribe ------------------
 
