@@ -17,8 +17,7 @@ export default function PaymentDialogue(props) {
 
     const dispatch = useDispatch();
 
-    const { openStatus, handleStepClick, fromDashboard } = props;
-    const [open, setOpen] = useState(openStatus)
+    const { openStatus, setOpenStatus, handleStepClick, fromDashboard } = props;
 
 
     // Subscribe ------------------
@@ -45,7 +44,7 @@ export default function PaymentDialogue(props) {
 
     const redirect = () => {
         console.log("redirect");
-        setOpen(false);
+        setOpenStatus(false);
     }
 
     const submitMembers = async (data) => {
@@ -147,8 +146,8 @@ export default function PaymentDialogue(props) {
     }
 
     return (
-        <Transition.Root show={open} as={Fragment}>
-            <Dialog as="div" className="relative z-10" onClose={setOpen}>
+        <Transition.Root show={openStatus} as={Fragment}>
+            <Dialog as="div" className="relative z-10" onClose={setOpenStatus}>
                 <Transition.Child
                     as={Fragment}
                     enter="ease-out duration-300"
@@ -225,14 +224,6 @@ export default function PaymentDialogue(props) {
                                             </button>
                                         </div>
                                     }
-
-                                    {/* <button
-                                        type="button"
-                                        className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto"
-                                        onClick={() => setOpen(false)}
-                                    >
-                                        Cancel
-                                    </button> */}
                                 </div>
                             </Dialog.Panel>
                         </Transition.Child>
@@ -243,8 +234,10 @@ export default function PaymentDialogue(props) {
     )
 }
 
+
 PaymentDialogue.propTypes = {
     openStatus: PropTypes.bool,
+    setOpenStatus: PropTypes.func,
     handleStepClick: PropTypes.func,
     fromDashboard: PropTypes.bool,
 }
