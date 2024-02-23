@@ -16,6 +16,8 @@ import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import GlobalLegals from "../../assets/GlobalLegals.svg";
 
 
+import GlobalLegals from "../../assets/GlobalLegals.svg";
+
 export default function PaymentDialogue(props) {
 
     const dispatch = useDispatch();
@@ -184,22 +186,21 @@ export default function PaymentDialogue(props) {
                                                         <div className="text-center mt-5 p-3">
                                                             <div className="flex min-h-full items-end justify-center mb-5">
                                                                 {/* {data.images.map((img, index) => (
+
                                                                     <img key={index} src={img} alt="Global Legals" className="text-center" />
                                                                 ))} */}
                                                                 <img src={GlobalLegals} alt="Global Legals" className="text-center" />
                                                             </div>
 
                                                             <h3 className="lg:col-span-3 font-bold leading-[34.32px] text-[24px] mb-3">
-                                                                {data.name}
+                                                                {data?.name}
                                                             </h3>
 
                                                             <p className="mb-10">  You can cancel your plan anytime on your settings. </p>
 
                                                             <div className="pt-4">
                                                                 <CardElement />
-                                                            </div>
-
-                                                        </div>
+                                                            </div>                  </div>
                                                     }
                                                 </div >
                                             </div>
