@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { removeUser } from "../../reducers/userSlice";
+import { removeTokens } from "../../reducers/auth/authSlice";
+
 import { useDispatch, useSelector } from "react-redux";
 
 import UserOne from '../../assets/user/user-01.png';
@@ -19,6 +21,7 @@ const DropdownUser = () => {
 
   const logout = () => {
     dispatch(removeUser());
+    dispatch(removeTokens());
     navigate("/");
   }
 
