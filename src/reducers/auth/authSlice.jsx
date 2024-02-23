@@ -10,7 +10,13 @@ export const authSlice = createSlice({
     initialState,
     reducers: {
         addTokens: (state, { payload }) => (state = payload),
-        removeTokens: (state) => (state = {}),
+        removeTokens: (state) => {
+            return {
+                ...state,
+                access_token: null,
+                refresh_token: null,
+            }
+        },
     },
 });
 
