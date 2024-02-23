@@ -44,6 +44,7 @@ import Faq from "./pages/faq";
 
 import "./App.css";
 import PaginatedItems from "./pages/SuperUser/PaginatedItems";
+import AdminLogout from "./pages/SuperUser/AdminLogout";
 // import TableData from "./pages/SUbscription/TableData";
 // import PaymentIntent from "./pages/paymentIntent";
 // import SubscribeToPlan from "./pages/Subscription/SubscribeToPlan";
@@ -144,6 +145,7 @@ function App() {
           <Route path="*" element={<Error404 />} />
 
           <Route path="pagination" element={<PaginatedItems />} />
+          <Route path="adminlogout" element={<AdminLogout />} />
 
           {/* <Route
             path="subscribe"
