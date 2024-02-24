@@ -80,13 +80,14 @@ const PayPremium = ({ handleStepClick }) => {
           </button>
         </div>
       </div>
-
-      <PaymentDialogue
-        openStatus={openStatus}
-        setOpenStatus={setOpenStatus}
-        handleStepClick={handleStepClick}
-        fromDashboard={false}
-      />
+      {openStatus &&
+        <PaymentDialogue
+          openStatus={openStatus}
+          setOpenStatus={setOpenStatus}
+          handleStepClick={handleStepClick}
+          fromDashboard={false}
+        />
+      }
     </>
 
   );

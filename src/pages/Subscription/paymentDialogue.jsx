@@ -34,7 +34,7 @@ export default function PaymentDialogue(props) {
     const stripe = useStripe();
     const elements = useElements();
 
-    const plan = 'price_1OgoYMSDcWKAz6oIb7dIBjv1';
+    const plan = 'price_1OnFsGSDcWKAz6oIa3RyemJa';
 
     const [createSubscription] = useCreateSubscriptionMutation();
     const [createMembers] = useCreateMembersMutation();
@@ -45,7 +45,6 @@ export default function PaymentDialogue(props) {
 
 
     const redirect = () => {
-        console.log("redirect");
         setOpenStatus(false);
     }
 
@@ -134,6 +133,7 @@ export default function PaymentDialogue(props) {
                         if (confirmationError) {
                             console.error(confirmationError);
                             alert(" Unable to confirm card");
+                            setOpenStatus(false);
                             return;
                         }
                     }
@@ -183,7 +183,6 @@ export default function PaymentDialogue(props) {
                                                         <div className="text-center mt-5 p-3">
                                                             <div className="flex min-h-full items-end justify-center mb-5">
                                                                 {/* {data?.images.map((img, index) => (
-
                                                                     <img key={index} src={img} alt="Global Legals" className="text-center" />
                                                                 ))} */}
                                                                 <img src={GlobalLegals} alt="Global Legals" className="text-center" />
