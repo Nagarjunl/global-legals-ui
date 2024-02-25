@@ -28,20 +28,32 @@ const Login = () => {
       await signIn({ email, password })
         .unwrap()
         .then((res) => {
-          if (res) {
-            const { user, ...rest } = res;
-            dispatch(addTokens(rest));
-            dispatch(currentUser(user));
-            navigate("/professional");
+
+          if (res.status === 401 && res.message === "User Not Found") {
+            setError("email", {
+              shouldFocus: true,
+              type: "manual",
+              message: "Username Not Found",
+            });
+            return;
           }
+
+          if (res.status === 401 && res.message === "Password Does Not Match") {
+            setError("password", {
+              shouldFocus: true,
+              type: "manual",
+              message: "Password Incorrect",
+            });
+            return;
+          }
+
+          const { user, ...rest } = res;
+          dispatch(addTokens(rest));
+          dispatch(currentUser(user));
+          navigate("/professional");
         });
     } catch (error) {
       console.log(error);
-      setError("email", {
-        shouldFocus: true,
-        type: "manual",
-        message: "Username or password is incorrect",
-      });
     }
   };
 
@@ -89,8 +101,7 @@ const Login = () => {
                 <>
                   <label
                     htmlFor="email"
-                    className={`block text-sm font-medium leading-6 ${errors?.email ? "text-red-700" : "text-gray-900"
-                      }`}
+                    className={"block text-sm font-medium leading-6 text-gray-900"}
                   >
                     Email address
                   </label>
@@ -113,8 +124,7 @@ const Login = () => {
                 <>
                   <label
                     htmlFor="password"
-                    className={`block text-sm font-medium leading-6 ${errors?.password ? "text-red-700" : "text-gray-900"
-                      }`}
+                    className={"block text-sm font-medium leading-6 text-gray-900"}
                   >
                     Password
                   </label>

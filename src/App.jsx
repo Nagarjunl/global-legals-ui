@@ -45,6 +45,7 @@ import Faq from "./pages/faq";
 import "./App.css";
 import PaginatedItems from "./pages/SuperUser/PaginatedItems";
 import AdminLogout from "./pages/SuperUser/AdminLogout";
+import AdminProfile from "./pages/SuperUser/AdminProfile";
 // import TableData from "./pages/SUbscription/TableData";
 // import PaymentIntent from "./pages/paymentIntent";
 // import SubscribeToPlan from "./pages/Subscription/SubscribeToPlan";
@@ -94,6 +95,7 @@ function App() {
                     <Route path="searchKeywords" element={<SearchKeyword />} />
                     <Route path="newEnrolls" element={<NewEnrolls />} />
                     <Route path="unverifiedList" element={<UnverifiedList />} />
+                    <Route path="adminprofile" element={<AdminProfile />} />
                     <Route path='*' exact={true} element={<Error404 />} />
                   </Routes>
                 </AdminLayout>
