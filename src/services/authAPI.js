@@ -56,6 +56,20 @@ export const authApi = createApi({
         body: payload,
       }),
     }),
+    updateAdminPassword: builder.mutation({
+      query: (payload) => ({
+        url: 'admin/update-admin-password',
+        method: "PATCH",
+        body: payload,
+      }),
+    }),
+    updateAdminDetail: builder.mutation({
+      query: ( data) => ({
+        url: `admin/update-admin-detail`,
+        method: "PATCH",
+        body: data,
+      }),
+    }),
   }),
 })
 
@@ -69,4 +83,6 @@ export const {
   useChangePasswordMutation,
   useProfessionSignInMutation,
   useAdminSignInMutation,
+  useUpdateAdminPasswordMutation,
+  useUpdateAdminDetailMutation,
 } = authApi

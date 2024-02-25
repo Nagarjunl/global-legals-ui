@@ -28,21 +28,32 @@ const Login = () => {
       await signIn({ email, password })
         .unwrap()
         .then((res) => {
-          if (res) {
-            const { user, ...rest } = res;
-            dispatch(addTokens(rest));
-            dispatch(currentUser(user));
-            dispatch(removeProfileData());
-            navigate("/admin");
+          if (res.status === 401 && res.message === "User Not Found") {
+            setError("email", {
+              shouldFocus: true,
+              type: "manual",
+              message: "Username Not Found",
+            });
+            return;
           }
+
+          if (res.status === 401 && res.message === "Password Does Not Match") {
+            setError("password", {
+              shouldFocus: true,
+              type: "manual",
+              message: "Password Incorrect",
+            });
+            return;
+          }
+
+          const { user, ...rest } = res;
+          dispatch(addTokens(rest));
+          dispatch(currentUser(user));
+          dispatch(removeProfileData());
+          navigate("/admin");
         });
     } catch (error) {
       console.log(error);
-      setError("email", {
-        shouldFocus: true,
-        type: "manual",
-        message: "Username or password is incorrect",
-      });
     }
   };
 
@@ -79,15 +90,13 @@ const Login = () => {
                 <>
                   <label
                     htmlFor="email"
-                    className={`block text-sm font-medium leading-6 ${errors?.email ? "text-red-700" : "text-gray-900"
-                      }`}
+                    className={"block text-sm font-medium leading-6 text-gray-900"}
                   >
                     User Name
                   </label>
                   <div className="mt-2">
                     <input
                       type="text"
-                      // defaultValue={"test@gmail.com"}
                       placeholder="Enter user name"
                       className="block w-full rounded-md border-0 p-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400  focus:ring-blue-600 sm:text-sm sm:leading-6"
                       {...register("email", { required: "Email is required" })}
@@ -103,8 +112,7 @@ const Login = () => {
                 <>
                   <label
                     htmlFor="text"
-                    className={`block text-sm font-medium leading-6 mt-2 ${errors?.password ? "text-red-700" : "text-gray-900"
-                      }`}
+                    className={"block text-sm font-medium leading-6 mt-2 text-gray-900"}
                   >
                     Password
                   </label>
