@@ -49,6 +49,13 @@ export const profileApi = createApi({
         method: "GET",
       }),
     }),
+    profileViewCountApi: builder.mutation({
+        query: (data) => ({
+          url: '/frontends/profileviewcount',
+          method: "POST",
+          body: data,
+      }),
+    }),
   })
 })
 
@@ -63,4 +70,7 @@ export const {
     useGetProfileViewCountQuery,
     useLazyGetProfileViewCountQuery,
     useLazyNewEnrollReportQuery,
+
+    useProfileViewCountApiMutation,
+    
     } = profileApi;

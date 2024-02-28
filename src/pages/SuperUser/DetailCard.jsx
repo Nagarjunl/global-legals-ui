@@ -19,7 +19,7 @@ export default function DetailCard() {
 
     const userId = useSelector((state) =>
         state.user.current_user.role === "Founder" ?
-            state.profile.profileUser.id : state.user.current_user.id
+            state.profile.profileUser.Members[0].slug : state.user.current_user.Members[0].slug
     );
 
     const { data: dayData } = useGetProfileDayCountQuery(userId, {

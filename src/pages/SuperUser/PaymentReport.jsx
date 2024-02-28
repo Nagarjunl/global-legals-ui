@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
-import Select from 'react-select';
-import { paidStatus } from "../../constants/constants";
 import StripePagination from "../../components/StripePagination";
-import { useGetInvoicesQuery, useGetInvoicesCountQuery } from "../../services/stripeAPI";
+import { useGetInvoicesQuery } from "../../services/stripeAPI";
 import { useSelector } from "react-redux";
 
 const PaymentReport = () => {
@@ -10,38 +8,40 @@ const PaymentReport = () => {
     const [userId, setUserId] = useState();
     const [limit, setLimit] = useState(0);
     const [startingAfter, setStartingAfter] = useState("nouser");
-    const [currentPage] = useState(1);
+    const [endingBefore, setEndingBefore] = useState();
+
+    const [next, setNext] = useState();
+    const [previous, setPrevious] = useState();
+
 
     const user = useSelector((state) =>
         state.user.current_user.role === "Founder" ?
             state.profile.profileUser : state.user.current_user
     );
 
-    const { data: invoiceCount, isLoading: loadingCount } = useGetInvoicesCountQuery(userId, {
-        skip: userId === undefined,
-    });
-
-    const { data, isLoading } = useGetInvoicesQuery({ userId, limit, startingAfter }, {
+    const { data, isLoading } = useGetInvoicesQuery({ userId, limit, startingAfter, endingBefore }, {
         skip: userId === undefined && limit === 0
     });
 
-    const handleSelectChange = (option) => {
-        console.log(option);
-    }
-
     useEffect(() => {
         if (user !== null) {
-            setLimit(3);
+            setLimit(2);
             setUserId(user.id);
         }
     }, [user, setUserId])
 
     const setNextId = () => {
-        setStartingAfter(data.data[data.data.length - 1].id)
+        setNext(true);
+        setPrevious(false);
+        setEndingBefore(undefined);
+        setStartingAfter(data.data[data.data.length - 1].id);
     };
 
     const setPreviousId = () => {
-        setStartingAfter(data.data[0].id)
+        setNext(false);
+        setPrevious(true);
+        setEndingBefore(data.data[0].id)
+        setStartingAfter(undefined);
     };
 
     return (
@@ -91,14 +91,14 @@ const PaymentReport = () => {
                 </table>
             </div>
 
-            {!loadingCount &&
+            {!isLoading &&
                 <div className="mt-6">
                     <StripePagination
-                        limit={limit}
-                        totalRecords={invoiceCount}
-                        currentPage={currentPage}
                         setNextId={setNextId}
                         setPreviousId={setPreviousId}
+                        hasMore={data?.has_more}
+                        next={next}
+                        previous={previous}
                     />
                 </div>
             }

@@ -15,7 +15,7 @@ const REGEX = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
 
 const NewPassword = () => {
 
-  const pwResetMail = useSelector((state) => state.registeredMail.pwResetMail)
+  const resetMail = useSelector((state) => state.registeredMail.resetMail)
   const [changePassword] = useChangePasswordMutation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -28,7 +28,7 @@ const NewPassword = () => {
   } = useForm();
 
   const setPasswordMethod = async (data) => {
-    data.email = pwResetMail;
+    data.email = resetMail;
     const { email, password } = data;
     try {
       await changePassword({ email, password })
@@ -36,7 +36,7 @@ const NewPassword = () => {
         .then((res) => {
           if (res) {
             dispatch(clearEmail());
-            navigate("/");
+            navigate("/auth/login");
           }
         });
     } catch (error) {
@@ -49,10 +49,10 @@ const NewPassword = () => {
   }
 
   useEffect(() => {
-    if (!pwResetMail) {
+    if (resetMail === "") {
       navigate("/auth/forgetPassword");
     }
-  }, [pwResetMail, navigate]);
+  }, []);
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 min-h-screen">

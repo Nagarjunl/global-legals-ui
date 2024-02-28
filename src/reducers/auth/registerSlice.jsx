@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
     email: "",
-    pwResetMail: "",
+    resetMail: "",
     otp: "",
 }
 
@@ -16,14 +16,21 @@ export const registerSlice = createSlice({
         getOtp: (state, action) => {
             state.otp = action.payload
         },
-        getpwResetMail: (state, action) => {
-            state.pwResetMail = action.payload
+        setResetMail: (state, action) => {
+            state.resetMail = action.payload
         },
-        clearEmail: (state) => (state = { email: "", otp: "", pwResetMail: "", })
+        clearEmail: (state) => {
+            return {
+                ...state,
+                email: "",
+                resetMail: "",
+                otp: "",
+            }
+        }
     },
 })
 
 // Action creators are generated for each case reducer function
-export const { getEmail, clearEmail, getOtp, getpwResetMail } = registerSlice.actions
+export const { getEmail, clearEmail, getOtp, setResetMail } = registerSlice.actions
 
 export default registerSlice.reducer

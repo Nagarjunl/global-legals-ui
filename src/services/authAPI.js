@@ -35,6 +35,12 @@ export const authApi = createApi({
         body: payload,
       }),
     }),
+    validateResetLink: builder.query({
+        query: ({email,token}) => ({
+          url: `authentication/validate-link/${email}/${token}`,
+          method: "GET",
+      }),
+    }),
     changePassword: builder.mutation({
       query: (payload) => ({
         url: 'authentication/change-password',
@@ -85,4 +91,6 @@ export const {
   useAdminSignInMutation,
   useUpdateAdminPasswordMutation,
   useUpdateAdminDetailMutation,
+
+  useLazyValidateResetLinkQuery,
 } = authApi

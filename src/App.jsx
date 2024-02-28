@@ -46,6 +46,7 @@ import "./App.css";
 import PaginatedItems from "./pages/SuperUser/PaginatedItems";
 import AdminLogout from "./pages/SuperUser/AdminLogout";
 import AdminProfile from "./pages/SuperUser/AdminProfile";
+import ResetPassword from "./pages/Auth/ResetPassword";
 // import TableData from "./pages/SUbscription/TableData";
 // import PaymentIntent from "./pages/paymentIntent";
 // import SubscribeToPlan from "./pages/Subscription/SubscribeToPlan";
@@ -148,6 +149,7 @@ function App() {
 
           <Route path="pagination" element={<PaginatedItems />} />
           <Route path="adminlogout" element={<AdminLogout />} />
+          <Route path="password-reset-link/:email/:token" element={<ResetPassword />} />
 
           {/* <Route
             path="subscribe"

@@ -28,14 +28,8 @@ export const stripeApi = createApi({
       }),
     }), 
     getInvoices: builder.query({
-      query: ({userId,limit,startingAfter}) => ({
-        url: `/frontends/getinvoices/${userId}/${limit}/${startingAfter}`,
-        method: "GET",
-      }),
-    }), 
-    getInvoicesCount: builder.query({
-      query: (userId) => ({
-        url: `/frontends/getinvoicescount/${userId}`,
+      query: ({userId,limit,startingAfter,endingBefore}) => ({
+        url: `/frontends/getinvoices/${userId}/${limit}/${startingAfter}/${endingBefore}`,
         method: "GET",
       }),
     }), 

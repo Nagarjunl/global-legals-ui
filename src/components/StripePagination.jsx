@@ -1,57 +1,43 @@
 import PropTypes from 'prop-types';
 
 export default function StripePagination({
-    limit,
-    totalRecords,
-    currentPage,
     setNextId,
-    setPreviousId
+    setPreviousId,
+    hasMore,
+    next,
+    previous
 }) {
-    const pageNumbers = [];
 
-    for (let i = 1; i <= Math.ceil(totalRecords / limit); i++) {
-        pageNumbers.push(i);
-    }
-
+    console.log(hasMore);
     return (
         <div className='py-2'>
-            {/* <div>
-                <p className='text-sm text-gray-700'>
-                    Showing
-                    <span className='font-medium'>
-                        {" "}
-                        {currentPage * limit - limit + 1}{" "}
-                    </span>
-                    to
-                    <span className='font-medium'> {currentPage * limit} </span>
-                    of
-                    <span className='font-medium'> {totalRecords} </span>
-                    results
-                </p>
-            </div> */}
             <nav className='block'>
                 <ul className='flex pl-0 rounded list-none flex-wrap'>
                     <li>
-                        <a
+                        <button
+                            type='button'
                             onClick={() => {
                                 setPreviousId();
                             }}
                             href='#'
                             className="bg-white border-gray-300 text-gray-500 hover:bg-blue-200 relative inline-flex items-center px-4 py-2 border text-sm font-medium"
+                            disabled={hasMore === false && previous === true}
                         >
                             Previous
-                        </a>
+                        </button>
                     </li>
                     <li>
-                        <a
+                        <button
+                            type='button'
                             onClick={() => {
                                 setNextId();
                             }}
                             href='#'
                             className="bg-white border-gray-300 text-gray-500 hover:bg-blue-200 relative inline-flex items-center px-4 py-2 border text-sm font-medium"
+                            disabled={hasMore === false && next === true}
                         >
                             Next
-                        </a>
+                        </button>
                     </li>
                 </ul>
             </nav>
@@ -60,9 +46,9 @@ export default function StripePagination({
 }
 
 StripePagination.propTypes = {
-    limit: PropTypes.number,
-    totalRecords: PropTypes.number,
     setNextId: PropTypes.func,
     setPreviousId: PropTypes.func,
-    currentPage: PropTypes.number,
+    hasMore: PropTypes.bool,
+    next: PropTypes.bool,
+    previous: PropTypes.bool,
 }
