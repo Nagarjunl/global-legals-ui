@@ -15,8 +15,8 @@ const LawyerCard = ({ data }) => {
           <div className="bg-white p-2 border border-blue-Gray-200  sm:p-4 sm:h-auto rounded-xl flex flex-col sm:flex-row gap-5 select-none border border-gray-300 shadow-md">
             <div className="flex justify-center p-5">
               {
-                data?.image ?
-                  <img className="w-auto h-[200px]" src={`${baseUrl}${data?.image}`} alt="frame" />
+                data?.idProof ?
+                  <img className="w-auto h-[200px]" src={`${baseUrl}${data?.idProof}`} alt="frame" />
                   :
                   <img className="w-auto h-[200px]" src={profileImg} alt="frame" />
               }

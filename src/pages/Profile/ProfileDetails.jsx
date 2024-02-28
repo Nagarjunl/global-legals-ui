@@ -9,8 +9,10 @@ import {
   useGetMemberQuery,
   useGetMemberFromSuperIdQuery,
   useProfileEmailMutation,
-  useProfileViewCountApiMutation,
 } from "../../services/userAPI";
+import {
+  useProfileViewCountApiMutation,
+} from "../../services/profileAPI";
 import { useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
 
@@ -25,18 +27,18 @@ import { addProfileViewCount } from "../../reducers/profileSlice";
 
 const ProfileDetails = ({ hideSchedule }) => {
   const { mainId, slug } = useParams();
+
   const navigate = useNavigate();
   const [ack, setAck] = useState();
   const dispatch = useDispatch();
 
-  const profileUser = useSelector(state => state.profile.profileUser);
   const profileViews = useSelector(state => state.profile.profileViews);
 
   const { data: supermember } = useGetMemberFromSuperIdQuery(mainId, {
     skip: mainId === undefined,
   });
 
-  const { data: member } = useGetMemberQuery(slug, {
+  const { data: member, isLoading: fetchingMembers } = useGetMemberQuery(slug, {
     skip: slug === undefined,
   });
 
@@ -78,32 +80,34 @@ const ProfileDetails = ({ hideSchedule }) => {
   }
 
   const onSubmit = (formData) => {
-    const result = { ...formData, profileMail: searchData?.email, mailFrom: "profile" }
+    const result = { ...formData, profileMail: searchData?.businessMail, mailFrom: "profile" }
     submitMailForm(result);
   };
 
   useEffect(() => {
-    const date = new Date().toISOString().slice(0, 10)
-    let profile;
+    if (!fetchingMembers && slug !== undefined) {
 
-    if (profileViews.length === 0) {
+      const date = new Date().toISOString().slice(0, 10)
+      let profile;
 
-      profile = { date: date, userId: profileUser.userId }
-      dispatch(addProfileViewCount(profile));
-      profileViewCount(profile);
+      if (profileViews.length === 0) {
 
-    } else {
+        profile = { date: date, slug: searchData.slug }
+        dispatch(addProfileViewCount(profile));
+        profileViewCount(profile);
 
-      profileViews.map((data) => {
-        if (data.date !== date && data.userId !== profileUser.userId) {
-          profile = { date: date, userId: profileUser.userId }
+      } else {
+
+        const index = profileViews.findIndex(object => object.date >= date && object.slug === searchData.slug);
+        console.log(index);
+        if (index === -1) {
+          profile = { date: date, slug: searchData.slug }
           dispatch(addProfileViewCount(profile));
           profileViewCount(profile);
         }
-      });
-
+      }
     }
-  }, []);
+  }, [fetchingMembers, slug]);
 
   return (
     <>
@@ -137,7 +141,7 @@ const ProfileDetails = ({ hideSchedule }) => {
                 </p>
                 <div className="flex justify-center items-center  py-3">
                   <div className="flex max-sm:flex-wrap justify-center items-center gap-5">
-                    {searchData?.twitterProfile &&
+                    {searchData?.calendlyUrl &&
                       <Link to={`${searchData?.calendlyUrl}`} target="_blank">
                         <button
                           type="button"
