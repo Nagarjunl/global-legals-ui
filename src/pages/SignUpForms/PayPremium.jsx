@@ -30,7 +30,7 @@ const people = [
 
 const PayPremium = ({ handleStepClick }) => {
 
-  const [openStatus, setOpenStatus] = useState(false)
+  const [openStatus, setOpenStatus] = useState(false);
 
   return (
     <>
@@ -74,7 +74,8 @@ const PayPremium = ({ handleStepClick }) => {
           <button
             type="button"
             className="rounded bg-blue-600 w-96 h-10  px-2 py-1 text-xs font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-            onClick={() => setOpenStatus(!openStatus)}
+            // onClick={() => setOpenStatus(!openStatus)}
+            onClick={() => handleStepClick(2)}
           >
             Proceed to pay $10
           </button>

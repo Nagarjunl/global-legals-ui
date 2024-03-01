@@ -4,11 +4,13 @@ import PayPremium from "../pages/SignUpForms/PayPremium";
 import Verification from "../pages/SignUpForms/Verification";
 import SelectForm from "../pages/SignUpForms/Forms";
 import { useSelector } from 'react-redux'
+import StripeSubscription from "../pages/Subscription/StripeSubscription";
 
 const steps = [
   { id: "1", name: "Personal Details", href: "#", status: "current" },
   { id: "2", name: "Pay Premium", href: "#", status: "upcoming" },
-  { id: "3", name: "Verification", href: "#", status: "upcoming" },
+  { id: "3", name: "Subscription", href: "#", status: "upcoming" },
+  { id: "4", name: "Verification", href: "#", status: "upcoming" },
 ];
 
 export default function MultiStepper() {
@@ -77,6 +79,11 @@ export default function MultiStepper() {
           </div>
         )}
         {currentStep === 2 && (
+          <div>
+            <StripeSubscription handleStepClick={handleStepClick} fromDashboard={false} />
+          </div>
+        )}
+        {currentStep === 3 && (
           <div>
             <Verification />
           </div>

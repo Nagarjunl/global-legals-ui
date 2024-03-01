@@ -106,13 +106,6 @@ export const userApi = createApi({
           body: {amount: data},
       }),
     }),
-    profileViewCountApi: builder.mutation({
-        query: (data) => ({
-          url: '/frontends/profileviewcount',
-          method: "POST",
-          body: data,
-      }),
-    }),
   })
 })
 
@@ -127,7 +120,6 @@ export const {
   useMakePaymentMutation,
   useCaptchaVerifyMutation,
   usePaymentIntentApiMutation,
-  useProfileViewCountApiMutation,
 
   useGetMembersQuery,
   useGetMemberQuery,

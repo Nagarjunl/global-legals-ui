@@ -91,3 +91,46 @@
 .professional_data a {
     color: #3366CC;
 }
+
+
+/* Target the CardNumberElement */
+.StripeElement {
+    border: 1px solid #ccc;
+    padding: 12px;
+    border-radius: 4px;
+    margin-top: 0.25rem;
+    margin-bottom: 0.25rem;
+}
+
+.address.StripeElement {
+    border: 0px solid #ccc;
+    padding: 0px;
+    border-radius: 0px;
+    margin-top: 0rem;
+    margin-bottom: 0rem;
+}
+
+.StripeElement--focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: 0 0 0 .2rem rgba(0, 123, 255, .25);
+}
+
+.StripeElement--invalid {
+    border: 2px solid #df1b41;
+    padding: 12px;
+    border-radius: 4px;
+    margin-top: 0.25rem;
+    margin-bottom: 0.25rem;
+}
+
+.StripeElement~p {
+    display: none;
+    color: #df1b41;
+}
+
+.StripeElement--invalid~p {
+    display: block;
+}

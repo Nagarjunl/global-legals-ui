@@ -243,19 +243,19 @@ const Homepage = () => {
                 <div className="grid  items-end relative mt-10 lg:justify-items-start ">
                   <div className="relative justify-center">
                     <img src={containerThree} alt="user_image" />
-                    <div className="absolute top-[50px] left-[57px] rounded-full bg-white bg-opacity-20 px-5 py-2  backdrop-blur-md backdrop-filter">
-                      <p className=" text-[20px] font-medium text-white">
+                    <div className="absolute top-[50px] max-sm:left-[25px] left-[57px] rounded-full bg-white bg-opacity-20 px-5 py-2  backdrop-blur-md backdrop-filter">
+                      <p className="font-medium text-white max-sm:text-[17px] text-[20px]">
                         Services we bring to table
                       </p>
                     </div>
-                    <div className="absolute top-[107px] left-[175px] max-sm:left-[57px] rounded-full bg-white bg-opacity-20 px-5 py-2  backdrop-blur-md backdrop-filter">
-                      <p className=" text-[20px] font-medium text-white">
-                        At Affordable prices
+                    <div className="absolute top-[107px] max-sm:left-[25px] left-[175px] max-sm:left-[57px] rounded-full bg-white bg-opacity-20 px-5 py-2  backdrop-blur-md backdrop-filter">
+                      <p className="max-sm:text-[17px] text-[20px] font-medium text-white">
+                        At affordable prices
                       </p>
                     </div>
-                    <div className="absolute top-[164px] left-[57px] rounded-full bg-white bg-opacity-20 px-5 py-2  backdrop-blur-md backdrop-filter">
-                      <p className=" text-[20px] font-medium text-white">
-                        We Offer much more
+                    <div className="absolute top-[164px] max-sm:left-[25px] left-[57px] rounded-full bg-white bg-opacity-20 px-5 py-2  backdrop-blur-md backdrop-filter">
+                      <p className="max-sm:text-[17px] text-[20px] font-medium text-white">
+                        We offer much more
                       </p>
                     </div>
                   </div>
@@ -313,10 +313,10 @@ const Homepage = () => {
                 <div className="absolute bottom-[26px] w-full">
                   <div className="flex align-center  mx-[20px] px-[32px] py-[20px] justify-between rounded-full bg-[#f5f5f5]">
                     <div>
-                      <p className="font-bold text-[24px]">
+                      <p className="font-bold text-[24px] max-sm:text-[20px]">
                         Explore the legal Labyrinth
                       </p>
-                      <p className="font-normal text-[18px] text-[#5F5F5F]">
+                      <p className="font-normal text-[18px] text-[#5F5F5F] max-sm:text-[14px]">
                         Finding the Right Lawyer for your Needs
                       </p>
                     </div>
@@ -335,10 +335,10 @@ const Homepage = () => {
                 <div className="absolute bottom-[26px] w-full">
                   <div className="flex align-center  mx-[20px] px-[32px] py-[20px] justify-between rounded-full bg-[#f5f5f5]">
                     <div>
-                      <p className="font-bold text-[24px]">
+                      <p className="font-bold text-[24px] max-sm:text-[20px]">
                         Your Freedom Matters
                       </p>
-                      <p className="font-normal text-[18px] text-[#5F5F5F]">
+                      <p className="font-normal text-[18px] text-[#5F5F5F] max-sm:text-[14px]">
                         Finding the Perfect Bail Bondsman
                       </p>
                     </div>
