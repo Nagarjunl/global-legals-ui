@@ -243,17 +243,17 @@ const Homepage = () => {
                 <div className="grid  items-end relative mt-10 lg:justify-items-start ">
                   <div className="relative justify-center">
                     <img src={containerThree} alt="user_image" />
-                    <div className="absolute top-[50px] max-sm:left-[25px] left-[57px] rounded-full bg-white bg-opacity-20 px-5 py-2  backdrop-blur-md backdrop-filter">
+                    <div className="absolute top-[50px]  left-[57px] max-sm:left-[25px] rounded-full bg-white bg-opacity-20 px-5 py-2  backdrop-blur-md backdrop-filter">
                       <p className="font-medium text-white max-sm:text-[17px] text-[20px]">
                         Services we bring to table
                       </p>
                     </div>
-                    <div className="absolute top-[107px] max-sm:left-[25px] left-[175px] max-sm:left-[57px] rounded-full bg-white bg-opacity-20 px-5 py-2  backdrop-blur-md backdrop-filter">
+                    <div className="absolute top-[107px] left-[175px] max-sm:left-[25px] rounded-full bg-white bg-opacity-20 px-5 py-2  backdrop-blur-md backdrop-filter">
                       <p className="max-sm:text-[17px] text-[20px] font-medium text-white">
                         At affordable prices
                       </p>
                     </div>
-                    <div className="absolute top-[164px] max-sm:left-[25px] left-[57px] rounded-full bg-white bg-opacity-20 px-5 py-2  backdrop-blur-md backdrop-filter">
+                    <div className="absolute top-[164px] left-[57px]  max-sm:left-[25px] rounded-full bg-white bg-opacity-20 px-5 py-2  backdrop-blur-md backdrop-filter">
                       <p className="max-sm:text-[17px] text-[20px] font-medium text-white">
                         We offer much more
                       </p>
