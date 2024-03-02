@@ -11,12 +11,26 @@ import {
     useCreateSubscriptionMutation,
     useGetProductQuery,
 } from "../../services/stripeAPI";
-import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
+import {
+    CardElement, useElements, useStripe, AddressElement,
+    CardNumberElement,
+    CardExpiryElement,
+    CardCvcElement,
+} from "@stripe/react-stripe-js";
 
 import GlobalLegals from "../../assets/GlobalLegals.svg";
 
+import '../../styles.css';
 
+function CardInputWrapper({ children }) {
+    return (
+        <div className='my-1 rounded-[5px] p-3'>
+            {children}
+        </div>
+    )
+}
 export default function PaymentDialogue(props) {
+
 
     const dispatch = useDispatch();
 
@@ -34,7 +48,7 @@ export default function PaymentDialogue(props) {
     const stripe = useStripe();
     const elements = useElements();
 
-    const plan = 'price_1OnFsGSDcWKAz6oIa3RyemJa';
+    const plan = 'price_1Opl7gSDcWKAz6oIjJqg7xkM';
 
     const [createSubscription] = useCreateSubscriptionMutation();
     const [createMembers] = useCreateMembersMutation();
@@ -42,7 +56,6 @@ export default function PaymentDialogue(props) {
     const currentUserId = useSelector((state) => state.user.current_user.id)
     const formType = useSelector((state) => state.formType.formType);
     const formDatas = useSelector((state) => state.formType.formData);
-
 
     const redirect = () => {
         setOpenStatus(false);
@@ -69,7 +82,17 @@ export default function PaymentDialogue(props) {
 
     const submitSubscribe = async () => {
         setLoading(true);
-        const cardElement = elements.getElement(CardElement);
+        const cardElement = elements.getElement(CardNumberElement);
+
+        const addressElement = elements.getElement('address');
+
+        const { complete, value } = await addressElement.getValue();
+
+        if (complete) {
+            console.log("complete", complete);
+            console.log("complete", value);
+
+        }
 
         // Create Payment method
         const {
@@ -79,6 +102,9 @@ export default function PaymentDialogue(props) {
             type: 'card',
             card: cardElement,
         })
+
+        console.log("paymentMethod", paymentMethod);
+
 
         if (error) {
             alert(error.message);
@@ -102,30 +128,30 @@ export default function PaymentDialogue(props) {
                             payment_method: {
                                 card: cardElement,
                                 billing_details: {
-                                    name: 'Naga',
+                                    name: value.name,
                                     address: {
-                                        city: 'Tirupur',
-                                        country: 'US',
-                                        line1: '7th street',
-                                        line2: 'PKR Layout',
+                                        city: value.address.city,
+                                        country: value.address.country,
+                                        line1: value.address.line1,
+                                        line2: value.address.line2,
                                     },
                                 },
                             },
                             shipping: {
-                                name: 'Naga',
+                                name: value.name,
                                 address: {
-                                    city: 'Tirupur',
-                                    country: 'US',
-                                    line1: '7th street',
-                                    line2: 'PKR Layout',
-                                    postal_code: '22222',
-                                    state: 'Virgina'
+                                    city: value.address.city,
+                                    country: value.address.country,
+                                    line1: value.address.line1,
+                                    line2: value.address.line2,
+                                    postal_code: value.address.postal_code,
+                                    state: value.address.state
                                 },
-                                carrier: "ITE",
-                                phone: "222222222",
-                                tracking_number: "ghg2323232",
+                                // carrier: "ITE",
+                                // phone: "222222222",
+                                // tracking_number: "ghg2323232",
                             },
-                            receipt_email: "naga.career.at@gmail.com",
+                            // receipt_email: "naga.career.at@gmail.com",
                         })
 
                         console.log(paymentIntent);
@@ -146,6 +172,7 @@ export default function PaymentDialogue(props) {
             });
 
     }
+
 
     return (
         <Transition.Root show={openStatus} as={Fragment}>
@@ -175,27 +202,50 @@ export default function PaymentDialogue(props) {
                         >
                             <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg sm:p-6">
                                 <div>
-                                    <div className="mt-3 text-center sm:mt-5">
+                                    <div className="mt-3 sm:mt-5">
                                         <div className="mt-2">
                                             <div className="text-sm text-gray-500">
                                                 <div className="mx-auto container max-sm:px-6 pb-3">
                                                     {!isLoading &&
-                                                        <div className="text-center mt-5 p-3">
-                                                            <div className="flex min-h-full items-end justify-center mb-5">
+                                                        <div className="mt-5 p-3">
+                                                            <div className="flex min-h-full items-center justify-center mb-5">
                                                                 {/* {data?.images.map((img, index) => (
                                                                     <img key={index} src={img} alt="Global Legals" className="text-center" />
                                                                 ))} */}
-                                                                <img src={GlobalLegals} alt="Global Legals" className="text-center" />
+                                                                <img src={GlobalLegals} alt="Global Legals" />
                                                             </div>
 
-                                                            <h3 className="lg:col-span-3 font-bold leading-[34.32px] text-[24px] mb-3">
+                                                            <h3 className="lg:col-span-3 font-bold leading-[34.32px] text-[24px] mb-3 text-center">
                                                                 {data?.name}
                                                             </h3>
 
-                                                            <p className="mb-10">  You can cancel your plan anytime on your settings. </p>
+                                                            <p className="mb-10 text-center">  You can cancel your plan anytime on your settings. </p>
 
                                                             <div className="pt-4">
-                                                                <CardElement />
+                                                                <div className='mb-3'>
+                                                                    <label className="text-gray-800">Enter Card Number</label>
+                                                                    <CardNumberElement />
+                                                                    <p> Please check card number</p>
+                                                                </div>
+
+                                                                <div className='grid grid-cols-2 max-sm:grid-cols-1 gap-4'>
+                                                                    <div className='mb-3 p-Field'>
+                                                                        <label className="p-FieldLabel Label">Expiration</label>
+                                                                        <CardExpiryElement />
+                                                                        <p> Please check expiration date</p>
+                                                                    </div>
+
+                                                                    <div className='mb-3 p-Field'>
+                                                                        <label className="p-FieldLabel Label">CVC</label>
+                                                                        <CardCvcElement />
+                                                                        <p> Please check CVC number</p>
+                                                                    </div>
+                                                                </div>
+
+                                                                {/* <CardElement /> */}
+                                                                <AddressElement options={{
+                                                                    mode: 'billing'
+                                                                }} className='address' />
                                                             </div>
                                                         </div>
                                                     }

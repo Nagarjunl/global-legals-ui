@@ -38,7 +38,7 @@ const StripeSubscription = (props) => {
     const stripe = useStripe();
     const elements = useElements();
 
-    const plan = 'price_1OnFsGSDcWKAz6oIa3RyemJa';
+    const plan = 'price_1Opl7gSDcWKAz6oIjJqg7xkM';
 
     const [createSubscription] = useCreateSubscriptionMutation();
     const [createMembers] = useCreateMembersMutation();
