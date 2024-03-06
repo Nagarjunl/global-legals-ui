@@ -164,11 +164,16 @@ const Homepage = () => {
           <div className="grid grid-flow-row gap-5">
             <div className="max-sm:grid justify-center">
               <h2 className="text-[44px] mb-2 leading-[55.66px] font-bold">
-                Services we Offer
+                What is Global Legals?
               </h2>
-              <p className="font-normal text-[16px] text-[#5F5F5F] mb-10 text-justify">
-                The idea of Global Legals is to help people of all ages find the legal professionals they’re looking for and need very quickly and efficiently. Legal emergencies don't always occur between the hours of 9 am to 5 pm and our legal professionals are here because they are committed to personal, fast, transparent communication and service. This site contains new legal professionals as well as well-established legal professionals who are very knowledgeable in their field and are eager to help. Every legal professional here on Global Legals is licensed, bonded, and insured by the state in which they conduct their work. We assure you that you will be contacted within minutes of contacting the legal professional of your choice. Global Legals aim to provide you with the most cost-efficient legal services. Here at Global Legals, we push for our legal professionals to give lower prices than any other website out there. Global Legals caters to the legal professionals here on this site and pushes them to always put our customers first.
+              <p className="font-normal text-[16px] text-[#5F5F5F] mb-3 text-justify">
+                Global Legals is a directory database created to help people of all ages find the legal professionals they are seeking quickly and efficiently.
               </p>
+              <p className="font-normal text-[16px] text-[#5F5F5F] mb-3 text-justify">
+                Not all legal emergencies occur between the hours of 9 am to 5 pm and that is why our new and established legal professionals who are very knowledgeable in their field, are committed to personal, fast, and transparent communication and service.
+              </p>
+              <p className="font-normal text-[16px] text-[#5F5F5F] mb-10 text-justify">
+                Every legal professional on Global Legals is licensed, bonded, and insured by the state in which they conduct work.               </p>
               <div className="grid grid-cols-4 gap-5 max-lg:grid-cols-2 max-sm:grid-cols-1 max-sm:justify-items-center">
                 <div>
                   <ServiceCard
