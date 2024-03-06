@@ -167,13 +167,13 @@ const Homepage = () => {
                 What is Global Legals?
               </h2>
               <p className="font-normal text-[16px] text-[#5F5F5F] mb-3 text-justify">
-                Global Legals is a directory database created to help people of all ages find the legal professionals they are seeking quickly and efficiently.
-              </p>
+                Global Legals is a directory database created to help people of all ages find the legal professionals they are seeking quickly and efficiently.              </p>
               <p className="font-normal text-[16px] text-[#5F5F5F] mb-3 text-justify">
-                Not all legal emergencies occur between the hours of 9 am to 5 pm and that is why our new and established legal professionals who are very knowledgeable in their field, are committed to personal, fast, and transparent communication and service.
+                Legal emergencies don't always occur between the hours of 9 a.m. and 5 p.m. Every legal professional on this site is knowledgeable in their field and very committed to personal, fast, and transparent communication and service.
               </p>
               <p className="font-normal text-[16px] text-[#5F5F5F] mb-10 text-justify">
-                Every legal professional on Global Legals is licensed, bonded, and insured by the state in which they conduct work.               </p>
+                Every legal professional on this site is licensed, bonded, and insured by whichever state they conduct their work in.
+              </p>
               <div className="grid grid-cols-4 gap-5 max-lg:grid-cols-2 max-sm:grid-cols-1 max-sm:justify-items-center">
                 <div>
                   <ServiceCard
@@ -228,7 +228,7 @@ const Homepage = () => {
                     <BlockText
                       heading={"Your Trusted Resource"}
                       content={
-                        "Whether you need legal advice, investigative services, bail bonds assistance, or security solutions, we've got you covered"
+                        "Whether you need legal advice, investigative services, bail bonds assistance, or security solutions, we've got you covered."
                       }
                     />
                     <BlockText
@@ -248,17 +248,17 @@ const Homepage = () => {
                 <div className="grid  items-end relative mt-10 lg:justify-items-start ">
                   <div className="relative justify-center">
                     <img src={containerThree} alt="user_image" />
-                    <div className="absolute top-[50px]  left-[57px] max-sm:left-[25px] rounded-full bg-white bg-opacity-20 px-5 py-2  backdrop-blur-md backdrop-filter">
+                    <div className="absolute top-[50px]  left-[57px] max-sm:top-[10px] max-sm:left-[25px] rounded-full bg-white bg-opacity-20 px-5 py-2  backdrop-blur-md backdrop-filter">
                       <p className="font-medium text-white max-sm:text-[17px] text-[20px]">
                         Services we bring to table
                       </p>
                     </div>
-                    <div className="absolute top-[107px] left-[175px] max-sm:left-[25px] rounded-full bg-white bg-opacity-20 px-5 py-2  backdrop-blur-md backdrop-filter">
+                    <div className="absolute top-[107px] left-[175px] max-sm:top-[64px] max-sm:left-[25px] rounded-full bg-white bg-opacity-20 px-5 py-2  backdrop-blur-md backdrop-filter">
                       <p className="max-sm:text-[17px] text-[20px] font-medium text-white">
                         At affordable prices
                       </p>
                     </div>
-                    <div className="absolute top-[164px] left-[57px]  max-sm:left-[25px] rounded-full bg-white bg-opacity-20 px-5 py-2  backdrop-blur-md backdrop-filter">
+                    <div className="absolute top-[164px] left-[57px]  max-sm:top-[220px] max-sm:left-[25px] rounded-full bg-white bg-opacity-20 px-5 py-2  backdrop-blur-md backdrop-filter">
                       <p className="max-sm:text-[17px] text-[20px] font-medium text-white">
                         We offer much more
                       </p>
