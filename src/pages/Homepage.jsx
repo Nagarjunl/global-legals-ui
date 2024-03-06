@@ -325,7 +325,9 @@ const Homepage = () => {
                         Finding the Right Lawyer for your Needs
                       </p>
                     </div>
-                    <img src={ArrowCircleRight} alt="" />
+                    <Link to="searchProfile">
+                      <img src={ArrowCircleRight} alt="" />
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -347,7 +349,9 @@ const Homepage = () => {
                         Finding the Perfect Bail Bondsman
                       </p>
                     </div>
-                    <img src={ArrowCircleRight} alt="" />
+                    <Link to="searchProfile">
+                      <img src={ArrowCircleRight} alt="" />
+                    </Link>
                   </div>
                 </div>
               </div>
