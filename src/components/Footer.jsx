@@ -139,14 +139,18 @@ const Footer = () => {
             © 2023 Global Legals
           </p>
           <div className="flex gap-[24px] sm:justify-end">
-            <a href="https://x.com/Globallegals?t=oSwksbs3jJuYReq5Zo8IrA&s=09)" target="_blank">
+            <a href="https://x.com/Globallegals?t=oSwksbs3jJuYReq5Zo8IrA&s=09)" target="_blank" rel="noreferrer">
               <FaTwitter className="text-zinc-600 aspect-square object-contain object-center w-6 h-6 overflow-hidden shrink-0 max-w-full" />
             </a>
-            <FaInstagram className="text-zinc-600 aspect-square object-contain object-center w-6 h-6 overflow-hidden shrink-0 max-w-full" />
-            <FaFacebook className="text-zinc-600 aspect-square object-contain object-center w-6 h-6 overflow-hidden shrink-0 max-w-full" />
-            <FaYoutube className="text-zinc-600 aspect-square object-contain object-center w-6 h-6 overflow-hidden shrink-0 max-w-full" />
+            <a href="https://www.instagram.com/globallegals?utm_source=qr&igsh=MTIzN2NnNnh4bWViOQ==" target="_blank" rel="noreferrer">
+              <FaInstagram className="text-zinc-600 aspect-square object-contain object-center w-6 h-6 overflow-hidden shrink-0 max-w-full" />
+            </a>
+            <a href="https://www.facebook.com/GlobalLegals2023?mibextid=ZbWKwL" target="_blank" rel="noreferrer">
+              <FaFacebook className="text-zinc-600 aspect-square object-contain object-center w-6 h-6 overflow-hidden shrink-0 max-w-full" />
+            </a>
+            {/* <FaYoutube className="text-zinc-600 aspect-square object-contain object-center w-6 h-6 overflow-hidden shrink-0 max-w-full" />
             <FaPinterest className="text-zinc-600 aspect-square object-contain object-center w-6 h-6 overflow-hidden shrink-0 max-w-full  " />
-            <FaLinkedinIn className="text-zinc-600 aspect-square object-contain object-center w-6 h-6 overflow-hidden shrink-0 max-w-full" />
+            <FaLinkedinIn className="text-zinc-600 aspect-square object-contain object-center w-6 h-6 overflow-hidden shrink-0 max-w-full" /> */}
           </div>
         </div>
       </div>
