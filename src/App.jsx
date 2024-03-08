@@ -47,6 +47,7 @@ import PaginatedItems from "./pages/SuperUser/PaginatedItems";
 import AdminLogout from "./pages/SuperUser/AdminLogout";
 import AdminProfile from "./pages/SuperUser/AdminProfile";
 import ResetPassword from "./pages/Auth/ResetPassword";
+import AddFaq from "./pages/SuperUser/AddFaq";
 // import TableData from "./pages/SUbscription/TableData";
 // import PaymentIntent from "./pages/paymentIntent";
 // import SubscribeToPlan from "./pages/Subscription/SubscribeToPlan";
@@ -97,6 +98,7 @@ function App() {
                     <Route path="newEnrolls" element={<NewEnrolls />} />
                     <Route path="unverifiedList" element={<UnverifiedList />} />
                     <Route path="adminprofile" element={<AdminProfile />} />
+                    <Route path="addFaq" element={<AddFaq />} />
                     <Route path='*' exact={true} element={<Error404 />} />
                   </Routes>
                 </AdminLayout>

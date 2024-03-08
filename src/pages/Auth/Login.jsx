@@ -191,10 +191,7 @@ const Login = () => {
               <div className="mt-3 mb-10">
                 <span className="inline-flex items-start rounded-xl bg-blue-50 px-5 py-1  text-xs font-medium text-black ring-1 ring-inset ring-blue-700/10 text-justify">
                   <img src={Paperplane} className=" mt-3 mb-10 mr-2.5" />
-                  This site was built to give everyone a chance to compete with the bigger firms/legal services that are
-                  well-established. It will also allow the smaller/newer legal professionals an opportunity to see how it feels
-                  to not be taken advantage of due to them not spending as much on advertising as the larger firms/legal
-                  services. Global Legals is here to connect you with other legal professionals throughout all 50 states.
+                  Global Legals is here to advertise your business, get you leads, and connect you to other legal professionals throughout all 50 states. Sign up now to enjoy a month free of advertisements.
                 </span>
               </div>
             </div>

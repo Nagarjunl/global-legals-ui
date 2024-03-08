@@ -56,6 +56,19 @@ export const profileApi = createApi({
           body: data,
       }),
     }),
+    postFaq: builder.mutation({
+        query: (data) => ({
+          url: '/admin/create-faq',
+          method: "POST",
+          body: data,
+      }),
+    }),
+    getFaq: builder.query({
+        query: () => ({
+          url: '/admin/get-faq',
+          method: "GET",
+      }),
+    }),
   })
 })
 
@@ -70,7 +83,9 @@ export const {
     useGetProfileViewCountQuery,
     useLazyGetProfileViewCountQuery,
     useLazyNewEnrollReportQuery,
+    useGetFaqQuery,
 
     useProfileViewCountApiMutation,
+    usePostFaqMutation,
     
     } = profileApi;
