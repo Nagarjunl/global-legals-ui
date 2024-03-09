@@ -5,6 +5,7 @@ import customFetchBase from './customFetchBase'
 // Define a service using a base URL and expected endpoints
 export const profileApi = createApi({
   reducerPath: 'profileApi',
+  tagTypes: ["Faq"],
   baseQuery: customFetchBase,
   endpoints: (builder) => ({
     getProfileDayCount: builder.query({
@@ -62,12 +63,21 @@ export const profileApi = createApi({
           method: "POST",
           body: data,
       }),
+      invalidatesTags: ["Faq"],
     }),
     getFaq: builder.query({
-        query: () => ({
-          url: '/admin/get-faq',
-          method: "GET",
+      query: () => ({
+        url: '/admin/get-faq',
+        method: "GET",
       }),
+      providesTags: ["Faq"],
+    }),
+    deleteFaq: builder.mutation({
+      query: (id) => ({
+        url: `/admin/delete-faq/${id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["Faq"],
     }),
   })
 })
@@ -86,6 +96,7 @@ export const {
     useGetFaqQuery,
 
     useProfileViewCountApiMutation,
+    useDeleteFaqMutation,
     usePostFaqMutation,
     
     } = profileApi;

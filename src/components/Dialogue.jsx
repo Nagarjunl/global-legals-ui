@@ -31,7 +31,7 @@ export default function Dialogue(props) {
                 </Transition.Child>
 
                 <div className="fixed inset-0 w-screen overflow-y-auto">
-                    <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+                    <div className="flex min-h-full sm:items-end justify-center max-sm:items-center p-4 text-center sm:items-center sm:p-0">
                         <Transition.Child
                             as={Fragment}
                             enter="ease-out duration-300"
@@ -41,10 +41,10 @@ export default function Dialogue(props) {
                             leaveFrom="opacity-100 translate-y-0 sm:scale-100"
                             leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
                         >
-                            <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-2xl">
+                            <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 w-full sm:max-w-2xl">
                                 <div className="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
                                     <div className="sm:flex sm:items-start">
-                                        <div className="mt-3 text-center  sm:mt-0 sm:text-left">
+                                        <div className="mt-3 text-center  sm:mt-0 sm:text-left w-full">
                                             <h3 className="lg:col-span-3 font-medium leading-[34.32px] text-[24px]">
                                                 {title}
                                             </h3>
@@ -52,9 +52,9 @@ export default function Dialogue(props) {
                                             <div className="flex-1 border-t border-gray-300 mt-3"></div>
 
                                             <div>
-                                                <p className="text-sm text-gray-500">
+                                                <div className="text-sm text-gray-500">
                                                     {message}
-                                                </p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

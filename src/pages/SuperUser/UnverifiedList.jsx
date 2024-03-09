@@ -152,13 +152,13 @@ const UnverifiedList = () => {
             <div className="relative">
                 <Dialogue
                     title="Professional Detail"
-                    message={<ProfessionalDetails open={openStatus} setOpen={setOpenStatus} btnLabel="Veriry" />}
+                    message={<ProfessionalDetails open={openStatus} setOpen={setOpenStatus} btnLabel="Verify" />}
                     btnText="Verify"
                     setOpenStatus={setOpenStatus}
                     openStatus={openStatus}
                     hideButtons={true}
                 />
-            </div >
+            </div>
         </div >
     );
 };

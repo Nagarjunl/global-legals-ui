@@ -1,17 +1,31 @@
-import { useEffect, useState } from 'react';
-import ReactPaginate from 'react-paginate';
-import { useGetFaqQuery, useLazyNewEnrollReportQuery, usePostFaqMutation } from '../../services/profileAPI';
+import { useState } from 'react';
+import { useDeleteFaqMutation, useGetFaqQuery } from '../../services/profileAPI';
 import { MagnifyingGlassIcon } from "@heroicons/react/20/solid";
 
-import Select from 'react-select';
-import { professionals } from "../../constants/constants";
-import { useDispatch, useSelector } from 'react-redux';
-import Datepicker from 'react-tailwindcss-datepicker';
+import Dialogue from "../../components/Dialogue";
+import CreateFaq from './CreateFaq';
+import { FaEdit, FaEye, FaTrash } from 'react-icons/fa';
+
 
 const AddFaq = () => {
 
     const { data, isLoading } = useGetFaqQuery();
-    const [postFaq] = usePostFaqMutation();
+
+    const [openStatus, setOpenStatus] = useState(false);
+
+    const [deleteFaq] = useDeleteFaqMutation();
+
+    const deleteQuestion = async (id) => {
+        try {
+            await deleteFaq(id)
+                .unwrap()
+                .then(() => {
+                    setOpen(!open);
+                });
+        } catch (error) {
+            console.log("error");
+        }
+    }
 
     return (
         <>
@@ -39,6 +53,8 @@ const AddFaq = () => {
 
                                 <div className="max-sm:pt-3">
                                     <button type="submit"
+                                        onClick={() => setOpenStatus(!openStatus)
+                                        }
                                         className="max-sm:w-[100%] rounded-md text-white bg-blue-800 border-blue-800 px-3 py-2 text-sm font-semibol shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 border border-solid ">
                                         Ask Qusetions
                                     </button>
@@ -53,14 +69,24 @@ const AddFaq = () => {
                                 <tr>
                                     <th className="py-2 px-4 border-b text-left">Question</th>
                                     <th className="py-2 px-4 border-b text-left">Answer</th>
+                                    <th className="py-2 px-4 border-b text-left">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {!isLoading && data?.length > 0 ?
                                     data?.map((data) => (
                                         <tr key={data.id}>
-                                            <td className="py-2 px-4 border-b">{data?.question}</td>
+                                            <td className="py-2 px-4 flex items-start border-b">{data?.question}</td>
                                             <td className="py-2 px-4 border-b">{data?.answer}</td>
+                                            <td className="flex items-center justify-center py-2 px-4">
+                                                <div className="flex  gap-4">
+                                                    <button
+                                                        className="hover:text-primary"
+                                                        onClick={() => deleteQuestion(data.id)}>
+                                                        <FaTrash className="aspect-square object-contain object-center w-5 h-5 overflow-hidden shrink-0 max-w-full" />
+                                                    </button>
+                                                </div>
+                                            </td>
                                         </tr>
                                     ))
 
@@ -74,31 +100,18 @@ const AddFaq = () => {
                             </tbody>
                         </table>
                     </div>
-
-                    {/* <div className="mt-10">
-                        <div className="flex items-center justify-between">
-                            <div className="flex flex-1 sm:items-center  sm:justify-end max-sm:justify-center">
-                                <ReactPaginate
-                                    breakLabel="..."
-                                    nextLabel=" > "
-                                    onPageChange={handlePageClick}
-                                    pageRangeDisplayed={4}
-                                    pageCount={pageCount}
-                                    previousLabel=" < "
-                                    renderOnZeroPageCount={null}
-
-                                    containerClassName="isolate inline-flex -space-x-px rounded-md shadow-sm"
-                                    previousLinkClassName="relative inline-flex items-center text-sm rounded-l-md px-4 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
-                                    nextLinkClassName="relative inline-flex items-center text-sm rounded-r-md px-4 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
-                                    pageLinkClassName="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300  focus:z-20 focus:outline-offset-0"
-                                    breakLinkClassName="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
-                                    activeLinkClassName="relative z-10 inline-flex items-center bg-indigo-600 px-4 py-2 text-sm font-semibold text-white focus:z-20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                                />
-                            </div>
-                        </div>
-                    </div> */}
                 </div>
             }
+
+            <div className="relative">
+                <Dialogue
+                    title="Add FAQ"
+                    message={<CreateFaq open={openStatus} setOpen={setOpenStatus} btnLabel="Submit" />}
+                    setOpenStatus={setOpenStatus}
+                    openStatus={openStatus}
+                    hideButtons={true}
+                />
+            </div>
         </>
     )
 }
