@@ -38,7 +38,7 @@ const StripeSubscription = (props) => {
     const stripe = useStripe();
     const elements = useElements();
 
-    const plan = 'price_1Opl7gSDcWKAz6oIjJqg7xkM';
+    const plan = 'price_1OsQDcSDcWKAz6oICN1QkUQL';
 
     const [createSubscription] = useCreateSubscriptionMutation();
     const [createMembers] = useCreateMembersMutation();
@@ -103,7 +103,15 @@ const StripeSubscription = (props) => {
                 payment_method: paymentMethod.id,
             }).unwrap()
                 .then(async (res) => {
+
+                    if (res.error) {
+                        setLoading(false);
+                        alert(" Something went wrong please try again");
+                        return;
+                    }
+
                     const { latest_invoice } = res;
+
                     if (latest_invoice.payment_intent) {
 
                         const { client_secret, status } = latest_invoice.payment_intent;
