@@ -4,7 +4,7 @@ import { MagnifyingGlassIcon } from "@heroicons/react/20/solid";
 
 import Dialogue from "../../components/Dialogue";
 import CreateFaq from './CreateFaq';
-import { FaEdit, FaEye, FaTrash } from 'react-icons/fa';
+import { FaTrash } from 'react-icons/fa';
 
 
 const AddFaq = () => {
@@ -17,11 +17,7 @@ const AddFaq = () => {
 
     const deleteQuestion = async (id) => {
         try {
-            await deleteFaq(id)
-                .unwrap()
-                .then(() => {
-                    setOpen(!open);
-                });
+            await deleteFaq(id).unwrap().then(() => { });
         } catch (error) {
             console.log("error");
         }
@@ -76,9 +72,9 @@ const AddFaq = () => {
                                 {!isLoading && data?.length > 0 ?
                                     data?.map((data) => (
                                         <tr key={data.id}>
-                                            <td className="py-2 px-4 flex items-start border-b">{data?.question}</td>
+                                            <td className="py-2 px-4 border-b">{data?.question}</td>
                                             <td className="py-2 px-4 border-b">{data?.answer}</td>
-                                            <td className="flex items-center justify-center py-2 px-4">
+                                            <td className="py-2 px-4 border-b">
                                                 <div className="flex  gap-4">
                                                     <button
                                                         className="hover:text-primary"
