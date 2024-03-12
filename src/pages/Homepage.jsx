@@ -26,11 +26,16 @@ import PrimaryButton from "../components/PrimaryButton";
 import { useProfileEmailMutation, useCaptchaVerifyMutation } from "../services/userAPI";
 import { Carousel } from 'flowbite-react';
 import { LAWYERS, BAIL_BONDSMAN, SECURITY, PRIVATE_INVESTIGATORS } from "../constants/constants";
+import Dialogue from "../components/Dialogue";
+import ProfessionalContent from "../components/content/ProfessionalContent";
 
 
 const Homepage = () => {
   const captchaRef = useRef(null)
   const [ack, setAck] = useState();
+  const [openStatus, setOpenStatus] = useState(false);
+  const [type, setType] = useState();
+
   const [profileEmail, { isLoading: submitingEmailForm }] = useProfileEmailMutation();
   const [captchaRes] = useCaptchaVerifyMutation();
 
@@ -76,6 +81,11 @@ const Homepage = () => {
     const result = { ...formData, superMail: "naga.career.at@gmail.com", mailFrom: "homePage" }
     submitMailForm(result);
   };
+
+  const setDialogue = (type) => {
+    setType(type);
+    setOpenStatus(!openStatus);
+  }
 
   useEffect(() => {
     setError("captcha", { type: 'custom', message: 'Please Verify Captcha' })
@@ -167,7 +177,7 @@ const Homepage = () => {
                 What is Global Legals?
               </h2>
               <p className="font-normal text-[16px] text-[#5F5F5F] mb-3 text-justify">
-                Global Legals is a directory database created to help people of all ages find the legal professionals they are seeking quickly and efficiently.              </p>
+                Global Legals is an online directory database created to help people of all ages find the legal professionals they are seeking quickly and efficiently.              </p>
               <p className="font-normal text-[16px] text-[#5F5F5F] mb-3 text-justify">
                 Legal emergencies don't always occur between the hours of 9 a.m. and 5 p.m. Every legal professional on this site is knowledgeable in their field and very committed to personal, fast, and transparent communication and service.
               </p>
@@ -307,26 +317,101 @@ const Homepage = () => {
           <h1 className="text-black font-bold text-[44px] mb-10 leading-[55.66px] text-start font-circular-std">
             Your Roadmap to Achieving Growth
           </h1>
-          <div className="grid grid-cols-2 gap-8 max-lg:grid-cols-1">
+          <div className="grid grid-cols-4 gap-4 max-lg:grid-cols-2 max-sm:grid-cols-1  max-sm:items-align-center max-sm:max-w-[400px]">
+            <div className="sm:grid">
+              <div>
+                <button onClick={() => setDialogue(LAWYERS)}>
+                  <img
+                    src={RoadMapImg1}
+                    alt="business"
+                  />
+                </button>
+                <div className="mt-3 border border-gray-300 shadow-md">
+                  <button className="text-left" onClick={() => setDialogue(LAWYERS)}>
+                    <div className="flex align-center px-[15px] pt-[20px] pb-[10px] justify-between bg-[#EFF6FF]">
+                      <div>
+                        <p className="font-bold text-[18px] max-sm:text-[16px]">
+                          Explore the legal Labyrinth
+                        </p>
+                        <p className="font-normal text-[12px] text-[#5F5F5F] max-sm:text-[16px]">
+                          Finding the Right Lawyer for your Needs
+                        </p>
+                      </div>
+                    </div>
+                    <div className="flex align-center px-[15px] justify-between mb-3">
+                      <div>
+                        <p className="font-bold text-[12px] text-[#5F5F5F] max-sm:text-[16px]">
+                          To know more
+                        </p>
+                      </div>
+                      <img src={ArrowCircleRight} alt="" width="25px" />
+                    </div>
+                  </button>
+                </div>
+
+              </div>
+            </div>
+            <div className="sm:grid ">
+              <div className="relative ">
+                <button onClick={() => setDialogue(BAIL_BONDSMAN)}>
+                  <img
+                    src={bailsMan}
+                    alt="business"
+                  />
+                </button>
+
+                <div className="mt-3 border border-gray-300 shadow-md">
+                  <button className="text-left" onClick={() => setDialogue(BAIL_BONDSMAN)}>
+                    <div className="flex align-center px-[15px] pt-[20px] pb-[10px] justify-between bg-[#EFF6FF]">
+                      <div>
+                        <p className="font-bold text-[18px] max-sm:text-[16px]">
+                          Your Freedom Matters
+                        </p>
+                        <p className="font-normal text-[12px] text-[#5F5F5F] max-sm:text-[16px]">
+                          Finding the Perfect Bail Bondsman
+                        </p>
+                      </div>
+                    </div>
+                    <div className="flex align-center px-[15px] justify-between mb-3">
+                      <div>
+                        <p className="font-bold text-[12px] text-[#5F5F5F] max-sm:text-[16px]">
+                          To know more
+                        </p>
+                      </div>
+                      <img src={ArrowCircleRight} alt="" width="25px" />
+                    </div>
+                  </button>
+                </div>
+              </div>
+            </div>
             <div className="sm:grid ">
               <div className="relative">
                 <img
                   src={RoadMapImg1}
                   alt="business"
-                  className="w-[821px] max-h-[548px]"
                 />
-                <div className="absolute bottom-[26px] w-full">
-                  <div className="flex align-center  mx-[20px] px-[32px] py-[20px] justify-between rounded-full bg-[#f5f5f5]">
+                <div className="mt-3 border border-gray-300 shadow-md">
+                  <div className="flex align-center px-[15px] pt-[20px] pb-[10px] justify-between bg-[#EFF6FF]">
                     <div>
-                      <p className="font-bold text-[24px] max-sm:text-[20px]">
+                      <p className="font-bold text-[18px] max-sm:text-[16px]">
                         Explore the legal Labyrinth
                       </p>
-                      <p className="font-normal text-[18px] text-[#5F5F5F] max-sm:text-[14px]">
+                      <p className="font-normal text-[12px] text-[#5F5F5F] max-sm:text-[16px]">
                         Finding the Right Lawyer for your Needs
                       </p>
                     </div>
-                    <Link to="searchProfile">
+                    {/* <Link to="searchProfile">
                       <img src={ArrowCircleRight} alt="" />
+                    </Link> */}
+                  </div>
+                  <div className="flex align-center px-[15px] justify-between mb-3">
+                    <div>
+                      <p className="font-bold text-[12px] text-[#5F5F5F] max-sm:text-[16px]">
+                        To know more
+                      </p>
+                    </div>
+                    <Link to="searchProfile">
+                      <img src={ArrowCircleRight} alt="" width="25px" />
                     </Link>
                   </div>
                 </div>
@@ -337,20 +422,29 @@ const Homepage = () => {
                 <img
                   src={bailsMan}
                   alt="business"
-                  className="w-[821px] max-h-[548px]"
                 />
-                <div className="absolute bottom-[26px] w-full">
-                  <div className="flex align-center  mx-[20px] px-[32px] py-[20px] justify-between rounded-full bg-[#f5f5f5]">
+                <div className="mt-3 border border-gray-300 shadow-md">
+                  <div className="flex align-center px-[15px] pt-[20px] pb-[10px] justify-between bg-[#EFF6FF]">
                     <div>
-                      <p className="font-bold text-[24px] max-sm:text-[20px]">
+                      <p className="font-bold text-[18px] max-sm:text-[16px]">
                         Your Freedom Matters
                       </p>
-                      <p className="font-normal text-[18px] text-[#5F5F5F] max-sm:text-[14px]">
+                      <p className="font-normal text-[12px] text-[#5F5F5F] max-sm:text-[16px]">
                         Finding the Perfect Bail Bondsman
                       </p>
                     </div>
+                    {/* <Link to="searchProfile">
+                      <img src={ArrowCircleRight} alt="" width="25px" />
+                    </Link> */}
+                  </div>
+                  <div className="flex align-center px-[15px] justify-between mb-3">
+                    <div>
+                      <p className="font-bold text-[12px] text-[#5F5F5F] max-sm:text-[16px]">
+                        To know more
+                      </p>
+                    </div>
                     <Link to="searchProfile">
-                      <img src={ArrowCircleRight} alt="" />
+                      <img src={ArrowCircleRight} alt="" width="25px" />
                     </Link>
                   </div>
                 </div>
@@ -532,6 +626,17 @@ const Homepage = () => {
       </div>
 
       <Footer />
+
+      <div className="relative">
+        <Dialogue
+          title=""
+          message={<ProfessionalContent type={type} setOpen={setOpenStatus} />}
+          btnText="Cancel"
+          setOpenStatus={setOpenStatus}
+          openStatus={openStatus}
+          hideButtons={true}
+        />
+      </div>
     </>
   );
 };
