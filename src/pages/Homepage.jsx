@@ -27,8 +27,7 @@ import { useProfileEmailMutation, useCaptchaVerifyMutation } from "../services/u
 import { Carousel } from 'flowbite-react';
 import { LAWYERS, BAIL_BONDSMAN, SECURITY, PRIVATE_INVESTIGATORS } from "../constants/constants";
 import Dialogue from "../components/Dialogue";
-import ProfessionalContent from "../components/content/ProfessionalContent";
-
+import ProfessionalContent from "../components/ProfessionalsContent/ProfessionalContent";
 
 const Homepage = () => {
   const captchaRef = useRef(null)
