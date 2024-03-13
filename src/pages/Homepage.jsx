@@ -6,6 +6,9 @@ import bondBailsman from "../assets/bail bondsman.jpg";
 import privateInvestigators from "../assets/private investigators.jpg";
 import lawyers from "../assets/lawyers.jpg";
 import bailsMan from "../assets/bbm.jpg";
+import privateInvestigator from "../assets/private-investigator.jpg";
+import security from "../assets/security-gl.jpg";
+import banner from "../assets/banner.jpg";
 
 import ServiceCard from "../components/ServiceCard";
 import CardOne from "../assets/New_folder/image 6.png";
@@ -168,6 +171,15 @@ const Homepage = () => {
         </div >
       </div >
 
+      <div className="max-sm:px-6 px-[120px] pt-[120px]">
+        <div className="mx-auto container">
+          <img
+            src={banner}
+            alt="Finding Bail bondsman"
+          />
+        </div>
+      </div>
+
       <div className="max-sm:px-6 p-[120px]">
         <div className="mx-auto container">
           <div className="grid grid-flow-row gap-5">
@@ -322,19 +334,19 @@ const Homepage = () => {
                 <button onClick={() => setDialogue(LAWYERS)}>
                   <img
                     src={RoadMapImg1}
-                    alt="business"
+                    alt="Finding Lawyers"
                   />
                 </button>
-                <div className="mt-3 border border-gray-300 shadow-md">
+                <div className="mt-2 border border-gray-300 shadow-md">
                   <button className="text-left" onClick={() => setDialogue(LAWYERS)}>
                     <div className="flex align-center px-[15px] pt-[20px] pb-[10px] justify-between bg-[#EFF6FF]">
                       <div>
                         <p className="font-bold text-[18px] max-sm:text-[16px]">
-                          Explore the legal Labyrinth
+                          Finding the Perfect Lawyer
                         </p>
-                        <p className="font-normal text-[12px] text-[#5F5F5F] max-sm:text-[16px]">
-                          Finding the Right Lawyer for your Needs
-                        </p>
+                        {/* <p className="font-normal text-[12px] text-[#5F5F5F] max-sm:text-[16px]">
+                          Finding the Right Lawyer
+                        </p> */}
                       </div>
                     </div>
                     <div className="flex align-center px-[15px] justify-between mb-3">
@@ -355,20 +367,21 @@ const Homepage = () => {
                 <button onClick={() => setDialogue(BAIL_BONDSMAN)}>
                   <img
                     src={bailsMan}
-                    alt="business"
+                    alt="Finding Bail bondsman"
                   />
                 </button>
 
-                <div className="mt-3 border border-gray-300 shadow-md">
+                <div className="mt-2 border border-gray-300 shadow-md">
                   <button className="text-left" onClick={() => setDialogue(BAIL_BONDSMAN)}>
                     <div className="flex align-center px-[15px] pt-[20px] pb-[10px] justify-between bg-[#EFF6FF]">
                       <div>
                         <p className="font-bold text-[18px] max-sm:text-[16px]">
-                          Your Freedom Matters
-                        </p>
-                        <p className="font-normal text-[12px] text-[#5F5F5F] max-sm:text-[16px]">
+                          {/* Your Freedom Matters */}
                           Finding the Perfect Bail Bondsman
                         </p>
+                        {/* <p className="font-normal text-[12px] text-[#5F5F5F] max-sm:text-[16px]">
+                          Finding the Perfect Bail Bondsman
+                        </p> */}
                       </div>
                     </div>
                     <div className="flex align-center px-[15px] justify-between mb-3">
@@ -385,23 +398,19 @@ const Homepage = () => {
             </div>
             <div className="sm:grid ">
               <div className="relative">
-                <img
-                  src={RoadMapImg1}
-                  alt="business"
-                />
-                <div className="mt-3 border border-gray-300 shadow-md">
+                <button>
+                  <img
+                    src={privateInvestigator}
+                    alt="finding private investigators"
+                  />
+                </button>
+                <div className="mt-2 border border-gray-300 shadow-md">
                   <div className="flex align-center px-[15px] pt-[20px] pb-[10px] justify-between bg-[#EFF6FF]">
                     <div>
                       <p className="font-bold text-[18px] max-sm:text-[16px]">
-                        Explore the legal Labyrinth
-                      </p>
-                      <p className="font-normal text-[12px] text-[#5F5F5F] max-sm:text-[16px]">
-                        Finding the Right Lawyer for your Needs
+                        Finding the Private Investigators
                       </p>
                     </div>
-                    {/* <Link to="searchProfile">
-                      <img src={ArrowCircleRight} alt="" />
-                    </Link> */}
                   </div>
                   <div className="flex align-center px-[15px] justify-between mb-3">
                     <div>
@@ -418,23 +427,19 @@ const Homepage = () => {
             </div>
             <div className="sm:grid ">
               <div className="relative ">
-                <img
-                  src={bailsMan}
-                  alt="business"
-                />
-                <div className="mt-3 border border-gray-300 shadow-md">
+                <button>
+                  <img
+                    src={security}
+                    alt="Finding security"
+                  />
+                </button>
+                <div className="mt-2 border border-gray-300 shadow-md">
                   <div className="flex align-center px-[15px] pt-[20px] pb-[10px] justify-between bg-[#EFF6FF]">
                     <div>
                       <p className="font-bold text-[18px] max-sm:text-[16px]">
-                        Your Freedom Matters
-                      </p>
-                      <p className="font-normal text-[12px] text-[#5F5F5F] max-sm:text-[16px]">
-                        Finding the Perfect Bail Bondsman
+                        Finding the perfect Security
                       </p>
                     </div>
-                    {/* <Link to="searchProfile">
-                      <img src={ArrowCircleRight} alt="" width="25px" />
-                    </Link> */}
                   </div>
                   <div className="flex align-center px-[15px] justify-between mb-3">
                     <div>

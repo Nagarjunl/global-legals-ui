@@ -106,6 +106,13 @@ export const userApi = createApi({
           body: {amount: data},
       }),
     }),
+    mailQuestion: builder.mutation({
+        query: (data) => ({
+          url: '/frontends/mail-question',
+          method: "POST",
+          body: data,
+      }),
+    }),
   })
 })
 
@@ -120,6 +127,7 @@ export const {
   useMakePaymentMutation,
   useCaptchaVerifyMutation,
   usePaymentIntentApiMutation,
+  useMailQuestionMutation,
 
   useGetMembersQuery,
   useGetMemberQuery,

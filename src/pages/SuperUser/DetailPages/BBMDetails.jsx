@@ -142,49 +142,6 @@ const BBMDetails = ({ data, baseUrl }) => {
                 </div>
             </div>
 
-            <div className="mt-10">
-                <h3 className="mb-4 font-medium leading-[34.32px] text-[24px] text-gray-900 sm:col-span-6">
-                    Insurance Information
-                </h3>
-                <div className="grid xs:grid-cols-1 lg:grid-cols-2 gap-4 border-t border-gray-200 py-3 sm:col-span-1 sm:px-0">
-                    <div>
-                        <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">
-                            Insurance Policy Number
-                        </h5>
-                        <div className="mt-2">
-                            {data?.insurancePolicyNumber ? data?.insurancePolicyNumber : "Not Filled"}
-                        </div>
-                    </div>
-                    <div>
-                        <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">
-                            Insurance Provider
-                        </h5>
-                        <div className="mt-2">
-                            {data?.insuranceProvider ? data?.insuranceProvider : "Not Filled"}
-                        </div>
-                    </div>
-                </div>
-                <div className="grid xs:grid-cols-1 lg:grid-cols-2 gap-4 border-t border-b border-gray-200 py-3 sm:col-span-1 sm:px-0">
-                    <div>
-                        <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">
-                            Coverage Amount
-                        </h5>
-
-                        <div className="mt-2">
-                            {data?.coverageAmount ? data?.coverageAmount : "Not Filled"}
-                        </div>
-                    </div>
-                    <div>
-                        <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">
-                            Experience Date of Insurance
-                        </h5>
-                        <div className="mt-2">
-                            {data?.expirationDateOfInsurance ? data?.expirationDateOfInsurance : "Not Filled"}
-                        </div>
-                    </div>
-                </div>
-            </div>
-
             <div>
                 <div className="mt-10">
                     <h3 className="mb-4 font-medium leading-[34.32px] text-[24px]  sm:col-span-6">
@@ -297,7 +254,7 @@ const BBMDetails = ({ data, baseUrl }) => {
                             Contact number
                         </h5>
                         <div className="mt-2">
-                            {data?.referenceNumber ? data?.referenceNumber : "Not Filled"}
+                            {data?.referenceContactNumber ? data?.referenceContactNumber : "Not Filled"}
                         </div>
                     </div>
                 </div>

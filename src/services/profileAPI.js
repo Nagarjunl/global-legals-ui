@@ -72,6 +72,12 @@ export const profileApi = createApi({
       }),
       providesTags: ["Faq"],
     }),
+    searchFaq: builder.query({
+      query: (searchParams) => ({
+        url: `/admin/searchfaq/${searchParams}`,
+        method: "GET",
+      }),
+    }),
     deleteFaq: builder.mutation({
       query: (id) => ({
         url: `/admin/delete-faq/${id}`,
@@ -94,6 +100,7 @@ export const {
     useLazyGetProfileViewCountQuery,
     useLazyNewEnrollReportQuery,
     useGetFaqQuery,
+    useSearchFaqQuery,
 
     useProfileViewCountApiMutation,
     useDeleteFaqMutation,

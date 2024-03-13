@@ -89,6 +89,17 @@ const StripeSubscription = (props) => {
             } = await stripe.createPaymentMethod({
                 type: 'card',
                 card: cardElement,
+                billing_details: {
+                    name: value.name,
+                    address: {
+                        city: value.address.city,
+                        country: value.address.country,
+                        line1: value.address.line1,
+                        line2: value.address.line2,
+                        postal_code: value.address.postal_code,
+                        state: value.address.state
+                    },
+                },
             })
 
             if (error) {
@@ -100,7 +111,7 @@ const StripeSubscription = (props) => {
             await createSubscription({
                 userId: user.id,
                 plan,
-                payment_method: paymentMethod.id,
+                payment_method: paymentMethod,
             }).unwrap()
                 .then(async (res) => {
 
