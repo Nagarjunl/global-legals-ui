@@ -49,10 +49,9 @@ const AddFaq = () => {
 
                                 <div className="max-sm:pt-3">
                                     <button type="submit"
-                                        onClick={() => setOpenStatus(!openStatus)
-                                        }
+                                        onClick={() => setOpenStatus(!openStatus)}
                                         className="max-sm:w-[100%] rounded-md text-white bg-blue-800 border-blue-800 px-3 py-2 text-sm font-semibol shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 border border-solid ">
-                                        Ask Questions
+                                        Add Questions
                                     </button>
                                 </div>
                             </div>
@@ -102,7 +101,7 @@ const AddFaq = () => {
             <div className="relative">
                 <Dialogue
                     title="Add FAQ"
-                    message={<CreateFaq open={openStatus} setOpen={setOpenStatus} btnLabel="Submit" />}
+                    message={<CreateFaq open={openStatus} setOpen={setOpenStatus} btnLabel="Submit" formType="postQuestion" />}
                     setOpenStatus={setOpenStatus}
                     openStatus={openStatus}
                     hideButtons={true}

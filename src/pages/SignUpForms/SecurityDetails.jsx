@@ -552,88 +552,7 @@ const SecurityDetails = ({ handleStepClick }) => {
             </div>
           </div>
         </div>
-        <div className="grid grid-cols-1 gap-x-6  sm:grid-cols-6 mt-10">
-          <h3 className="font-medium leading-[34.32px] text-[24px] sm:col-span-6">
-            Insurance Information
-          </h3>
-          <div className="sm:col-span-3">
-            <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">
-              Insurance Policy Number
-            </h5>
-            <div className="mt-2">
-              <input
-                type="text"
-                placeholder="Insurance pilicy number"
-                className="block w-full px-2 rounded-md border-0 py-1.5  shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                {...register("insurancePolicyNumber")}
-              />
-            </div>
-          </div>
-          <div className="sm:col-span-3">
-            <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">
-              Insurance Provider
-            </h5>
-            <div className="mt-2">
-              <input
-                type="text"
-                placeholder="Insurance provider"
-                className="block w-full px-2 rounded-md border-0 py-1.5  shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                {...register("insuranceProvider")}
-              />
-            </div>
-          </div>
-          <div className="sm:col-span-3">
-            <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">
-              Coverage Amount
-            </h5>
-            <div className="mt-2">
-              <input
-                type="text"
-                placeholder="Enter Coverage Amount"
-                className="block w-full px-2 rounded-md border-0 py-1.5  shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                {...register("coverageAmount")}
-              />
-            </div>
-          </div>
 
-          <div className="sm:col-span-3">
-            <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">
-              Expiration date of Insurance ( if-applicable)
-            </h5>
-            <div className="mt-2">
-              {/* <Controller
-                name="expirationDateOfInsurance"
-                control={control}
-                rules={{
-                  required: "Date is required",
-                  // max: { value: new Date(), message: "Date cannot be in the future" }
-                }}
-                render={({ field: { onChange, value } }) => {
-                  return (
-                    <DatePicker
-                      onChange={onChange}
-                      selected={value}
-                      placeholder="Enter date of licensing"
-                      className="block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                    />
-                  );
-                }}
-              />                    {
-                errors.expirationDateOfInsurance && (
-                  <p className="text-red-500">{errors.expirationDateOfInsurance.message}</p>
-                )
-              } */}
-
-              <input
-                type="text"
-                {...register("expirationDateOfInsurance")}
-                placeholder="Enter exipiration date of insurance"
-                className="block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-              />
-            </div>
-
-          </div>
-        </div>
         <div className="mt-10 grid grid-cols-1 gap-x-6  sm:grid-cols-6">
           <h3 className="font-medium leading-[34.32px] text-[24px]  sm:col-span-6">
             Certification and Specialization
@@ -728,10 +647,10 @@ const SecurityDetails = ({ handleStepClick }) => {
           />
           <label className="ml-2 font-normal leading-[17.16px] text-[12px]">
             By proceeding, you confirm that you&apos;ve read, comprehended, and
-            consent to abide by our
+            consent to abide by our{" "}
             <span className="text-blue-700 underline">
               Terms and Conditions.
-            </span>
+            </span>{" "}
             Your commitment to reviewing our terms ensures a comprehensive
             understanding of the guidelines governing your use of Global Legals
           </label>
