@@ -74,9 +74,10 @@ export const profileApi = createApi({
     }),
     searchFaq: builder.query({
       query: (searchParams) => ({
-        url: `/admin/searchfaq/${searchParams}`,
+        url: `/frontends/searchfaq/${searchParams}`,
         method: "GET",
       }),
+      providesTags: ["Faq"],
     }),
     deleteFaq: builder.mutation({
       query: (id) => ({

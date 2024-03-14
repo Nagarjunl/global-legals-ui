@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { useDeleteFaqMutation, useGetFaqQuery } from '../../services/profileAPI';
+import { useEffect, useState } from 'react';
+import { useDeleteFaqMutation, useGetFaqQuery, useSearchFaqQuery } from '../../services/profileAPI';
 import { MagnifyingGlassIcon } from "@heroicons/react/20/solid";
 
 import Dialogue from "../../components/Dialogue";
@@ -9,9 +9,11 @@ import { FaTrash } from 'react-icons/fa';
 
 const AddFaq = () => {
 
-    const { data, isLoading } = useGetFaqQuery();
+    // const { data, isLoading } = useGetFaqQuery();
 
     const [openStatus, setOpenStatus] = useState(false);
+    const [searchParams, setSearchParams] = useState();
+
 
     const [deleteFaq] = useDeleteFaqMutation();
 
@@ -22,6 +24,34 @@ const AddFaq = () => {
             console.log("error");
         }
     }
+
+    const { data, isLoading } = useSearchFaqQuery(searchParams, {
+        skip: searchParams === undefined,
+    });
+
+    const searchQuestions = (e) => {
+        console.log(e.target.value);
+        if (e.target.value === "") {
+            setSearchParams("true")
+        }
+        delayedFetchSearchResults(e.target.value);
+    }
+
+    const debounce = (func, delay) => {
+        let timeoutId;
+        return function (...args) {
+            clearTimeout(timeoutId);
+            timeoutId = setTimeout(() => func.apply(this, args), delay);
+        };
+    };
+
+    const delayedFetchSearchResults = debounce((query) => {
+        setSearchParams(query);
+    }, 500);
+
+    useEffect(() => {
+        setSearchParams("true")
+    }, []);
 
     return (
         <>
@@ -44,6 +74,7 @@ const AddFaq = () => {
                                         type="text"
                                         className="block w-full rounded-md border-0 py-[7px] pl-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                         placeholder="Search Question"
+                                        onChange={(e) => searchQuestions(e)}
                                     />
                                 </div>
 

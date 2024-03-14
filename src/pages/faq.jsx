@@ -5,7 +5,7 @@ import { MagnifyingGlassIcon } from "@heroicons/react/20/solid";
 import PropTypes from 'prop-types';
 import Dialogue from "../components/Dialogue";
 import CreateFaq from "./SuperUser/CreateFaq";
-import { useGetFaqQuery, useSearchFaqQuery } from "../services/profileAPI";
+import { useSearchFaqQuery } from "../services/profileAPI";
 
 const minusIcon = '-'
 const plusIcon = '+'
