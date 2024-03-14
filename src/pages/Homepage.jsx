@@ -171,14 +171,14 @@ const Homepage = () => {
         </div >
       </div >
 
-      <div className="max-sm:px-6 px-[120px] pt-[120px]">
+      {/* <div className="max-sm:px-6 px-[120px] pt-[120px]">
         <div className="mx-auto container">
           <img
             src={banner}
             alt="Finding Bail bondsman"
           />
         </div>
-      </div>
+      </div> */}
 
       <div className="max-sm:px-6 p-[120px]">
         <div className="mx-auto container">
