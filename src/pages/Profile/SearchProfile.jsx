@@ -106,7 +106,7 @@ function SearchProfile() {
   }, [searchData, setSearchParams]);
 
   useEffect(() => {
-    if (searchKeys === "undefined") {
+    if (searchKeys === undefined || searchKeys === "undefined") {
       setSearchParams("true");
     } else {
       setSearchParams(searchKeys);
