@@ -123,6 +123,14 @@ const StripeSubscription = (props) => {
 
                     const { latest_invoice } = res;
 
+                    if (latest_invoice.status === "paid") {
+                        if (fromDashboard === false) {
+                            submitMembers(formDatas);
+                        } else {
+                            redirect();
+                        }
+                    }
+
                     if (latest_invoice.payment_intent) {
 
                         const { client_secret, status } = latest_invoice.payment_intent;
@@ -152,7 +160,6 @@ const StripeSubscription = (props) => {
                                         state: value.address.state
                                     },
                                 },
-                                receipt_email: "ragavidharshini9897@gmail.com",
                             })
 
                             if (confirmationError) {

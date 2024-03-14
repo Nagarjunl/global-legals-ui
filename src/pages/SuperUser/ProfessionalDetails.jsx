@@ -38,7 +38,6 @@ const ProfessionalDetails = (props) => {
             await verifyUser(id)
                 .unwrap()
                 .then((res) => {
-                    console.log(res);
                     setOpenStatus(!openStatus);
                     setOpen(false);
                 });
