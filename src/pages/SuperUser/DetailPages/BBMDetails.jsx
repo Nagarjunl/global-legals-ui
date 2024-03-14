@@ -182,7 +182,7 @@ const BBMDetails = ({ data, baseUrl }) => {
                                 Years of Experience as a Bail Bondsman
                             </h5>
                             <div className="mt-2">
-                                {data?.bondsmanExperience ? data?.bondsmanExperience : "Not Filled"}
+                                {data?.experience ? data?.experience : "Not Filled"}
                             </div>
                         </div>
                     </div>

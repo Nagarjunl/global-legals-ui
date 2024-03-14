@@ -13,7 +13,8 @@ const ProfileCard = ({ data, hideSchedule }) => {
           <div className="flex items-center justify-center">
             {
               data?.idProof ?
-                <img className="w-auto h-[200px]" src={`${baseUrl}${data?.idProof}`} alt="frame" />
+                // <img className="w-auto h-[200px]" src={`${baseUrl}${data?.idProof}`} alt="frame" />
+                <img className="w-auto h-[200px]" src={`${data?.idProof}`} alt="frame" />
                 :
                 <img className="w-auto h-[200px]" src={profileImg} alt="frame" />
             }
@@ -112,29 +113,6 @@ const ProfileCard = ({ data, hideSchedule }) => {
                   </h5>
                   <div className="mt-2">
                     {data?.companyWebsite}
-                  </div>
-                </div>
-              }
-
-              {data?.bondsmanExperience !== "null" &&
-                <div>
-                  <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">
-                    Experience as a Bail Bondsman
-                  </h5>
-                  <div className="mt-2">
-                    {data?.bondsmanExperience}
-                  </div>
-                </div>
-              }
-
-              {data?.yearsOfExperience !== "null" &&
-                <div>
-                  <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">
-                    Experience as a PI:
-                  </h5>
-
-                  <div className="mt-2">
-                    {data?.yearsOfExperience}
                   </div>
                 </div>
               }

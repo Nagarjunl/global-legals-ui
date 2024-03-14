@@ -110,7 +110,7 @@ const SECDetails = ({ data, baseUrl }) => {
                         </h5>
 
                         <div className="mt-2">
-                            {data?.companyWebsite ? data?.companyWebsite : "Not Filled"}
+                            {data?.experience ? data?.experience : "Not Filled"}
                         </div>
                     </div>
                 </div>

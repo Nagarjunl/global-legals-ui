@@ -109,7 +109,7 @@ const PIDetails = ({ data, baseUrl }) => {
                         </h5>
 
                         <div className="mt-2">
-                            {data?.yearsOfExperience ? data.yearsOfExperience : 'Not Filled'}
+                            {data?.experience ? data.experience : 'Not Filled'}
                         </div>
                     </div>
                 </div>

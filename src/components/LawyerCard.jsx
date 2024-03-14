@@ -16,7 +16,8 @@ const LawyerCard = ({ data }) => {
             <div className="flex justify-center p-5">
               {
                 data?.idProof ?
-                  <img className="w-auto h-[200px]" src={`${baseUrl}${data?.idProof}`} alt="frame" />
+                  // <img className="w-auto h-[200px]" src={`${baseUrl}${data?.idProof}`} alt="frame" />
+                  <img className="w-auto h-[200px]" src={`${data?.idProof}`} alt="frame" />
                   :
                   <img className="w-auto h-[200px]" src={profileImg} alt="frame" />
               }

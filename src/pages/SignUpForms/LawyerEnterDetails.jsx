@@ -58,11 +58,9 @@ const LawyerEnterDetails = ({ handleStepClick, superUser }) => {
     try {
       await captchaRes(token).unwrap()
         .then((res) => {
-          console.log(res);
           if (res.success) {
             clearErrors("captcha");
           }
-
         });
     } catch (error) {
       console.log("error");
@@ -366,16 +364,10 @@ const LawyerEnterDetails = ({ handleStepClick, superUser }) => {
                 <div className="mt-2">
                   <input
                     type="text"
-                    name="first-name"
-                    id="first-name"
                     {...register("experience")}
-                    autoComplete="given-name"
-                    placeholder="Enter Years of experience"
+                    placeholder="Enter your experience"
                     className="block w-full rounded-md px-2 border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
-                  {errors.experience && (
-                    <p className="text-red-500">{errors.experience.message}</p>
-                  )}
                 </div>
               </div>
 
