@@ -183,13 +183,13 @@ function BondBailsman({ handleStepClick }) {
                 <div className="grid xs:grid-cols-1 lg:grid-cols-2 gap-4">
                   <div className="">
                     <h5 className="font-normal leading-[17.16px] text-[12px]">
-                      Full Legal Business Name *
+                      Owner/Agent Name *
                     </h5>
                     <div className="mt-2">
                       <input
                         {...register("clientName", { required: "This field is required" })}
                         className="block w-full p-3  rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                        placeholder="Enter Business Name"
+                        placeholder="Enter Owner/Agent Name"
                       />
                       {errors.clientName && (
                         <p className="font-normal leading-[17.16px] text-[12px] text-red-500 mt-2">
@@ -243,7 +243,7 @@ function BondBailsman({ handleStepClick }) {
                       <input
                         {...register("businessPhoneNumber", { required: "This field is required" })}
                         className="block w-full p-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                        placeholder="Enter your location "
+                        placeholder="Enter your Phone Number "
                       />
                       {errors.businessPhoneNumber && (
                         <p className="font-normal leading-[17.16px] text-[12px] text-red-500 mt-2">
@@ -265,28 +265,18 @@ function BondBailsman({ handleStepClick }) {
                         className="block w-full p-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                         placeholder="Enter Company Website"
                       />
-                      {errors.companyWebsite && (
-                        <p className="text-red-500">
-                          {errors.companyWebsite.message}
-                        </p>
-                      )}
                     </div>
                   </div>
                   <div className="mt-2">
                     <h5 className="font-normal leading-[17.16px] text-[12px]">
-                      Owner Agent Information
+                      Full Legal Business Name
                     </h5>
                     <div className="mt-2">
                       <input
                         {...register("ownerAgentInformation")}
                         className="block w-full p-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                        placeholder="Enter Owner Agent Information"
+                        placeholder="Enter Full Legal Business Name"
                       />
-                      {errors.ownerAgentInformation && (
-                        <p className="text-red-500">
-                          {errors.ownerAgentInformation.message}
-                        </p>
-                      )}
                     </div>
                   </div>
                 </div>
@@ -352,9 +342,6 @@ function BondBailsman({ handleStepClick }) {
                     />
                   }
                 />
-                {errors.professional && (
-                  <p className="text-red-500">{errors.professional.message}</p>
-                )}
               </div>
             </div>
           </div>
@@ -374,9 +361,6 @@ function BondBailsman({ handleStepClick }) {
                   placeholder="Enter License Number"
                   className="block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
-                {errors.licenseNumber && (
-                  <p className="text-red-500">{errors.licenseNumber.message}</p>
-                )}
               </div>
             </div>
             <div className="sm:col-span-3">
@@ -424,11 +408,6 @@ function BondBailsman({ handleStepClick }) {
                   placeholder="Enter Licensing Authority"
                   className="block px-2 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
-                {errors.licensingAuthority && (
-                  <p className="text-red-500">
-                    {errors.licensingAuthority.message}
-                  </p>
-                )}
               </div>
             </div>
             <div className="sm:col-span-3">
@@ -442,11 +421,6 @@ function BondBailsman({ handleStepClick }) {
                   placeholder="Enter Bonding Capacity"
                   className="block px-2 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
-                {errors.bondingCapacity && (
-                  <p className="text-red-500">
-                    {errors.bondingCapacity.message}
-                  </p>
-                )}
               </div>
             </div>
           </div>
@@ -458,20 +432,15 @@ function BondBailsman({ handleStepClick }) {
               </h3>
               <div className="sm:col-span-3">
                 <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">
-                  Areas Covered
+                  Coverage Areas
                 </h5>
                 <div className="mt-2">
                   <input
                     type="text"
-                    {...register("areasCovered")}
-                    placeholder="Enter Areas Covered"
+                    {...register("coverageArea")}
+                    placeholder="Alaska, Moscow, Alabama"
                     className="block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
-                  {errors.areasCovered && (
-                    <p className="text-red-500">
-                      {errors.areasCovered.message}
-                    </p>
-                  )}
                 </div>
               </div>
               <div className="sm:col-span-3">
@@ -485,9 +454,6 @@ function BondBailsman({ handleStepClick }) {
                     placeholder="Enter Fee Structure"
                     className="block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
-                  {errors.feeStructure && (
-                    <p className="text-red-500">{errors.feeStructure.message}</p>
-                  )}
                 </div>
               </div>
               <div className="sm:col-span-3">
@@ -501,9 +467,6 @@ function BondBailsman({ handleStepClick }) {
                     className="block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     {...register("typesOfBonds")}
                   />
-                  {errors.typesOfBonds && (
-                    <p className="text-red-500">{errors.typesOfBonds.message}</p>
-                  )}
                 </div>
               </div>
 
@@ -530,20 +493,8 @@ function BondBailsman({ handleStepClick }) {
 
             <div className="flex justify-between  flex-wrap flex-row w-full mt-2">
               <p className="mt-2 text-[14px]">
-                Boost Your Profile! Connect Google Reviews and Testimonials to
-                showcase your expertise. Click below to
-                <br /> elevate your professional reputation on Global legals
+                Click below to elevate your professional reputation on Global legals.
               </p>
-              {/* <button className="mt-2 flex items-center justify-center px-4 py-2 border border-gray-300 rounded-md bg-white text-gray-700 hover:bg-gray-100 focus:outline-none focus:border-blue-300 focus:ring focus:ring-blue-200 w-72">
-                <div className="flex justify-center">
-                  <img
-                    src={GoogleImage}
-                    alt="Google Logo"
-                    className="w-[20px] h-[20px]"
-                  />
-                  <p className="ml-3">Connect with Google</p>
-                </div>
-              </button> */}
             </div>
           </div>
 
@@ -556,16 +507,10 @@ function BondBailsman({ handleStepClick }) {
               <div className="mt-2">
                 <input
                   type="text"
-                  name="first-name"
                   {...register("calendlyUrl")}
-                  placeholder="Calendly Event Link"
+                  placeholder="https://www.calendly.com"
                   className="block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
-                {errors.calendlyUrl && (
-                  <p className="text-red-500">
-                    {errors.calendlyUrl.message}
-                  </p>
-                )}
               </div>
             </div>
             <div className="sm:col-span-3">
@@ -575,7 +520,7 @@ function BondBailsman({ handleStepClick }) {
               <div className="mt-2">
                 <input
                   type="text"
-                  placeholder="Linkedin profile"
+                  placeholder="https://www.linkedin.com"
                   className="block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   {...register("linkedInProfile")}
                 />
@@ -589,7 +534,7 @@ function BondBailsman({ handleStepClick }) {
               <div className="mt-2">
                 <input
                   type="text"
-                  placeholder="Twitter Profile"
+                  placeholder="https://www.twitter.com"
                   className="block w-full  px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   {...register("twitterProfile")}
                 />

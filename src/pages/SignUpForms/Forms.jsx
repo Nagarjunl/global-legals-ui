@@ -65,7 +65,7 @@ const SelectForm = ({ handleStepClick }) => {
               <p className="mt-2 text-[14px]">
                 Choose your profession from the options below to tailor the form
                 to your specific needs. Let&apos;s ensure we <br />
-                provide you with the best experience on Globallegals
+                provide you with the best experience on Global Legals
               </p>
             </div>
           </div>
