@@ -312,9 +312,6 @@ const SecurityDetails = ({ handleStepClick }) => {
                   />
                 }
               />
-              {errors.professional && (
-                <p className="text-red-500">{errors.professional.message}</p>
-              )}
             </div>
           </div>
         </div>
@@ -514,12 +511,12 @@ const SecurityDetails = ({ handleStepClick }) => {
           </h3>
           <div className="sm:col-span-3">
             <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">
-              Type of Security Services Offered
+              Type of Services Offered
             </h5>
             <div className="mt-2">
               <input
                 type="text"
-                placeholder="Insurance pilicy number"
+                placeholder="Enter your services"
                 className="block w-full px-2 rounded-md border-0 py-1.5  shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 {...register("tsso")}
               />
@@ -532,7 +529,7 @@ const SecurityDetails = ({ handleStepClick }) => {
             <div className="mt-2">
               <input
                 type="text"
-                placeholder="Coverage Areas"
+                placeholder="Alaska, Moscow, Alabama"
                 className="block w-full px-2 rounded-md border-0 py-1.5  shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 {...register("coverageArea")}
               />
@@ -616,13 +613,17 @@ const SecurityDetails = ({ handleStepClick }) => {
           </div>
         </div>
 
+
+        <div className="flex-1 border-t border-gray-300 mt-7"></div>
+
+
         <div className="flex mt-5">
           <input
             type="checkbox"
-            id="myCheckbox"
             className="form-checkbox h-5 w-[29px] text-indigo-600"
             {...register("rpCheckboxOne", { required: "Please tick the box" })}
           />
+
           <label className="ml-2 font-normal leading-[17.16px] text-[12px]">
             I hereby grant consent to Globallegals for a background check,
             including professional and educational details. I authorize the
@@ -641,7 +642,6 @@ const SecurityDetails = ({ handleStepClick }) => {
         <div className="flex mt-5">
           <input
             type="checkbox"
-            id="myCheckbox"
             className="form-checkbox h-5 w-5 text-indigo-600"
             {...register("rpCheckboxTwo", { required: "Please tick the box" })}
           />
@@ -662,6 +662,7 @@ const SecurityDetails = ({ handleStepClick }) => {
         )}
 
         <div className="flex-1 border-t border-gray-300 mt-7"></div>
+
         <div className="mt-10">
           <h3 className="font-medium leading-[34.32px] text-[24px]">
             Professional Enhancement
@@ -669,9 +670,8 @@ const SecurityDetails = ({ handleStepClick }) => {
 
           <div className="flex justify-between  flex-wrap flex-row w-full mt-2">
             <p className="mt-2 text-[14px]">
-              Boost Your Profile! Connect Google Reviews and Testimonials to
-              showcase your expertise. Click below to
-              <br /> elevate your professional reputation on Global legals
+              {/* Boost Your Profile! Connect Google Reviews and Testimonials to showcase your expertise. */}
+              Click below to elevate your professional reputation on Global legals.
             </p>
             {/* <button className="mt-2 flex items-center justify-center px-4 py-2 border border-gray-300 rounded-md bg-white text-gray-700 hover:bg-gray-100 focus:outline-none focus:border-blue-300 focus:ring focus:ring-blue-200 w-72">
               <div className="flex justify-center">
@@ -695,9 +695,8 @@ const SecurityDetails = ({ handleStepClick }) => {
             <div className="mt-2">
               <input
                 type="text"
-                name="first-name"
                 {...register("calendlyUrl")}
-                placeholder="Calendly Event Link"
+                placeholder="https://www.calendly.com"
                 className="block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
               {errors.calendlyUrl && (
@@ -716,7 +715,7 @@ const SecurityDetails = ({ handleStepClick }) => {
             <div className="mt-2">
               <input
                 type="text"
-                placeholder="Linkedin profile"
+                placeholder="https://www.linkedin.com"
                 className="block w-full px-2 rounded-md border-0 py-1.5  shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 {...register("linkedInProfile")}
               />
@@ -730,7 +729,7 @@ const SecurityDetails = ({ handleStepClick }) => {
             <div className="mt-2">
               <input
                 type="text"
-                placeholder="Twitter Profile"
+                placeholder="https://www.twitter.com"
                 className="block w-full  px-2 rounded-md border-0 py-1.5  shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 {...register("twitterProfile")}
               />

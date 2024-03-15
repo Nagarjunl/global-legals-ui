@@ -4,8 +4,8 @@ import { addTokens, removeTokens } from "../reducers/auth/authSlice";
 
 const mutex = new Mutex();
 
-// const baseUrl = import.meta.env.VITE_API_URL;
-const baseUrl = "https://api.chitmanager.com/";
+const baseUrl = import.meta.env.VITE_API_URL;
+// const baseUrl = "https://api.chitmanager.com/";
 
 const baseQuery = fetchBaseQuery({
   baseUrl,

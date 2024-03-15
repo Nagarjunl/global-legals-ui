@@ -301,9 +301,6 @@ const LawyerEnterDetails = ({ handleStepClick, superUser }) => {
                     />
                   }
                 />
-                {errors.professional && (
-                  <p className="text-red-500">{errors.professional.message}</p>
-                )}
               </div>
             </div>
           </div>
@@ -320,18 +317,10 @@ const LawyerEnterDetails = ({ handleStepClick, superUser }) => {
                 <div className="mt-2">
                   <input
                     type="text"
-                    name="first-name"
-                    id="first-name"
                     {...register("practicingLaw")}
-                    autoComplete="given-name"
                     placeholder="Enter practicing law firm"
                     className="block w-full rounded-md px-2 border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
-                  {errors.practicingLaw && (
-                    <p className="text-red-500">
-                      {errors.practicingLaw.message}
-                    </p>
-                  )}
                 </div>
               </div>
               <div className="sm:col-span-3">
@@ -342,18 +331,10 @@ const LawyerEnterDetails = ({ handleStepClick, superUser }) => {
                 <div className="mt-2">
                   <input
                     type="text"
-                    name="first-name"
-                    id="first-name"
+                    placeholder="Civil Law, Tax Law, Media Law"
                     {...register("legalSpecialization")}
-                    autoComplete="given-name"
-                    placeholder="Enter Legal Specialization"
                     className="block w-full rounded-md px-2 border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
-                  {errors.legalSpecialization && (
-                    <p className="text-red-500">
-                      {errors.legalSpecialization.message}
-                    </p>
-                  )}
                 </div>
               </div>
               <div className="sm:col-span-3 ">
@@ -378,40 +359,24 @@ const LawyerEnterDetails = ({ handleStepClick, superUser }) => {
                 <div className="mt-2">
                   <input
                     type="text"
-                    name="last-name"
-                    id="last-name"
                     {...register("licenseNumber")}
-                    autoComplete="family-name"
                     placeholder="Enter License Number"
                     className="block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
-                  {errors.licenseNumber && (
-                    <p className="text-red-500">
-                      {errors.licenseNumber.message}
-                    </p>
-                  )}
                 </div>
               </div>
               <div className="sm:col-span-3">
                 <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">
-                  Areas Served till now
+                  Coverage Areas
                 </h5>
 
                 <div className="mt-2">
                   <input
                     type="text"
-                    name="first-name"
-                    id="first-name"
-                    {...register("servedTillNow")}
-                    autoComplete="given-name"
-                    placeholder="Enter Areas Served till now"
+                    {...register("coverageArea")}
+                    placeholder="Alaska, Moscow, Alabama"
                     className="block w-full rounded-md px-2 border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
-                  {errors.servedTillNow && (
-                    <p className="text-red-500">
-                      {errors.servedTillNow.message}
-                    </p>
-                  )}
                 </div>
               </div>
               <div className="sm:col-span-3">
@@ -422,16 +387,10 @@ const LawyerEnterDetails = ({ handleStepClick, superUser }) => {
                 <div className="mt-2">
                   <input
                     type="text"
-                    name="first-name"
-                    id="first-name"
                     {...register("lawField")}
-                    autoComplete="given-name"
-                    placeholder="Enter Specialized in"
+                    placeholder="Enter your specialization"
                     className="block w-full rounded-md px-2 border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
-                  {errors.lawField && (
-                    <p className="text-red-500">{errors.lawField.message}</p>
-                  )}
                 </div>
               </div>
               <div className="sm:col-span-3">
@@ -442,19 +401,13 @@ const LawyerEnterDetails = ({ handleStepClick, superUser }) => {
                 <div className="mt-2">
                   <input
                     type="text"
-                    name="first-name"
-                    id="first-name"
                     {...register("languages")}
-                    autoComplete="given-name"
-                    placeholder="Enter Language"
+                    placeholder="English, Spanish, German"
                     className="block w-full rounded-md px-2 border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
-                  {errors.languages && (
-                    <p className="text-red-500">{errors.languages.message}</p>
-                  )}
                 </div>
               </div>
-            </div>{" "}
+            </div>
           </div>
           <div>
             <h3 className="font-medium leading-[34.32px] text-[24px] mt-10">
@@ -463,23 +416,13 @@ const LawyerEnterDetails = ({ handleStepClick, superUser }) => {
 
             <div className="flex justify-between  flex-wrap flex-row w-full mt-2">
               <p className="mt-2 text-[14px]">
-                Boost Your Profile! Connect Google Reviews and Testimonials to
-                showcase your expertise. Click below to
-                <br /> elevate your professional reputation on Global legals
+                Click below to  elevate your professional reputation on Global legals.
               </p>
-              {/* <button className="mt-2 flex items-center justify-center px-4 py-2 border border-gray-300 rounded-md bg-white text-gray-700 hover:bg-gray-100 focus:outline-none focus:border-blue-300 focus:ring focus:ring-blue-200 w-72">
-                <div className="flex justify-center">
-                  <img
-                    src={GoogleImage}
-                    alt="Google Logo"
-                    className="w-[20px] h-[20px]"
-                  />
-                  <p className="ml-3">Connect with Google</p>
-                </div>
-              </button> */}
             </div>
           </div>
+
           <div className="flex-1 border-t border-gray-300 mt-3"></div>
+
           <div className="mt-10 grid grid-cols-1 gap-x-6 sm:grid-cols-6">
 
             <div className="sm:col-span-6">
@@ -489,16 +432,10 @@ const LawyerEnterDetails = ({ handleStepClick, superUser }) => {
               <div className="mt-2">
                 <input
                   type="text"
-                  name="first-name"
                   {...register("calendlyUrl")}
-                  placeholder="Calendly Event Link"
+                  placeholder="https://www.calendly.com"
                   className="block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
-                {errors.calendlyUrl && (
-                  <p className="text-red-500">
-                    {errors.calendlyUrl.message}
-                  </p>
-                )}
               </div>
             </div>
 
@@ -509,18 +446,10 @@ const LawyerEnterDetails = ({ handleStepClick, superUser }) => {
               <div className="mt-2">
                 <input
                   type="text"
-                  name="first-name"
                   {...register("linkedInProfile")}
-                  id="first-name"
-                  placeholder="Linkedin profile"
-                  autoComplete="given-name"
+                  placeholder="https://www.linkedin.com"
                   className="block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
-                {errors.linkedInProfile && (
-                  <p className="text-red-500">
-                    {errors.linkedInProfile.message}
-                  </p>
-                )}
               </div>
             </div>
 
@@ -531,18 +460,10 @@ const LawyerEnterDetails = ({ handleStepClick, superUser }) => {
               <div className="mt-2">
                 <input
                   type="text"
-                  name="last-name"
                   {...register("twitterProfile")}
-                  id="last-name"
-                  autoComplete="family-name"
-                  placeholder="Twitter Profile"
+                  placeholder="https://www.twitter.com"
                   className="block w-full  px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
-                {errors.twitterProfile && (
-                  <p className="text-red-500">
-                    {errors.twitterProfile.message}
-                  </p>
-                )}
               </div>
             </div>
           </div>
