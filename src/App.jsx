@@ -151,7 +151,7 @@ function App() {
 
           <Route path="pagination" element={<PaginatedItems />} />
           <Route path="adminlogout" element={<AdminLogout />} />
-          <Route path="password-reset-link/:email/:token" element={<ResetPassword />} />
+          <Route path="reset-password/:email/:token" element={<ResetPassword />} />
 
           {/* <Route
             path="subscribe"
