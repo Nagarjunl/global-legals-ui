@@ -5,6 +5,7 @@ import profileImg from "../assets/avator.png";
 const baseUrl = "https://api.chitmanager.com/";
 
 const ProfileCard = ({ data, hideSchedule }) => {
+
   return (
     <div className="rounded-l mt-3 mb-6 ">
       <div className="bg-white p-2 w-full max-w-auto sm:w-full sm:p-4 h-auto sm:h-auto rounded-2xl shadow-lg select-none border border-gray-300">
@@ -13,8 +14,13 @@ const ProfileCard = ({ data, hideSchedule }) => {
           <div className="flex items-center justify-center">
             {
               data?.idProof ?
-                // <img className="w-auto h-[200px]" src={`${baseUrl}${data?.idProof}`} alt="frame" />
-                <img className="w-auto h-[200px]" src={`${data?.idProof}`} alt="frame" />
+                <>
+                  {data?.idProof.includes("https://") ?
+                    <img className="w-auto h-[200px]" src={`${data?.idProof}`} alt="frame" />
+                    :
+                    <img className="w-auto h-[200px]" src={`${baseUrl}${data?.idProof}`} alt="frame" />
+                  }
+                </>
                 :
                 <img className="w-auto h-[200px]" src={profileImg} alt="frame" />
             }

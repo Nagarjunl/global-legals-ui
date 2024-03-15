@@ -8,6 +8,8 @@ import profileImg from "../assets/avator.png";
 const baseUrl = "https://api.chitmanager.com/";
 
 const LawyerCard = ({ data }) => {
+  const idp = data?.idProof;
+  const proof = idp.includes("https://");
   return (
     <>
       <div>
@@ -16,8 +18,13 @@ const LawyerCard = ({ data }) => {
             <div className="flex justify-center p-5">
               {
                 data?.idProof ?
-                  // <img className="w-auto h-[200px]" src={`${baseUrl}${data?.idProof}`} alt="frame" />
-                  <img className="w-auto h-[200px]" src={`${data?.idProof}`} alt="frame" />
+                  <>
+                    {proof === true ?
+                      <img className="w-auto h-[200px]" src={`${data?.idProof}`} alt="frame" />
+                      :
+                      <img className="w-auto h-[200px]" src={`${baseUrl}${data?.idProof}`} alt="frame" />
+                    }
+                  </>
                   :
                   <img className="w-auto h-[200px]" src={profileImg} alt="frame" />
               }
