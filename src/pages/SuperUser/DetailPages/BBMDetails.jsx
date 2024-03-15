@@ -151,10 +151,10 @@ const BBMDetails = ({ data, baseUrl }) => {
 
                         <div>
                             <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">
-                                Areas Covered
+                                Coverage Areas
                             </h5>
                             <div className="mt-2">
-                                {data?.areasCovered ? data?.areasCovered : "Not Filled"}
+                                {data?.coverageArea ? data?.coverageArea : "Not Filled"}
                             </div>
                         </div>
                         <div>

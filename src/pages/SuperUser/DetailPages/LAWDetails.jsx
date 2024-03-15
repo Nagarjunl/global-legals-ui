@@ -131,11 +131,11 @@ const LAWDetails = ({ data, baseUrl }) => {
                     <div className="grid xs:grid-cols-1 lg:grid-cols-2 gap-4 border-t border-gray-200 py-3 sm:col-span-1 sm:px-0">
                         <div>
                             <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">
-                                Areas Served till now
+                                Coverage Areas
                             </h5>
 
                             <div className="mt-2">
-                                {data?.servedTillNow ? data?.servedTillNow : "Not Filled"}
+                                {data?.coverageArea ? data?.coverageArea : "Not Filled"}
                             </div>
                         </div>
                         <div>
