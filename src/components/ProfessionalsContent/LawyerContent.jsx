@@ -25,7 +25,7 @@ const LawyerContent = () => {
             </p>
 
             <p className="font-normal text-[14px] text-[#5F5F5F] mb-3 text-justify">
-                5. 	<b>Consider Experience and Expertise: </b>Use <b>GlobalLegals. com</b> to find a lawyer with experience handling cases like yours. An experienced lawyer will likely better understand the legal issues involved and how to navigate them effectively.
+                5. 	<b>Consider Experience and Expertise: </b>Use <b>GlobalLegals.com</b> to find a lawyer with experience handling cases like yours. An experienced lawyer will likely better understand the legal issues involved and how to navigate them effectively.
             </p>
 
             <p className="font-normal text-[14px] text-[#5F5F5F] mb-3 text-justify">

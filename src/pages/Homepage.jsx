@@ -615,9 +615,11 @@ const Homepage = () => {
                   Your Expertise, Our Network, Perfect Match
                 </p>
               </div>
-              <button className="p-5 bg-black text-white">
-                Explore Services
-              </button>
+              <Link to={"/searchProfile"}>
+                <button className="p-5 bg-black text-white">
+                  Explore Professionals
+                </button>
+              </Link>
             </div>
             <div className="lg:absolute sm:right-10 sm:bottom-0">
               <img
