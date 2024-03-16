@@ -118,11 +118,11 @@ const ProfileDetails = ({ hideSchedule }) => {
         <div className="mt-5">
           <ProfileCard data={searchData} hideSchedule={hideSchedule} />
         </div>
-        <div className="max-md:px-2 mb-7">
+        {/* <div className="max-md:px-2 mb-7">
           <div className="pt-2 professional_data">
             <div dangerouslySetInnerHTML={{ __html: searchData?.professional }} />
           </div>
-        </div>
+        </div> */}
 
         {!hideSchedule ? (
           <>
