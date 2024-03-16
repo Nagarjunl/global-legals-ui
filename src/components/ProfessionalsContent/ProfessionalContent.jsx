@@ -3,6 +3,8 @@ import BBMContent from "./BBMContent";
 import LawyerContent from "./LawyerContent";
 
 import PropTypes from 'prop-types';
+import SecurityContent from "./SecurityContent";
+import PIContent from "./PIContent";
 
 
 const ProfessionalContent = (props) => {
@@ -17,13 +19,13 @@ const ProfessionalContent = (props) => {
                 <LawyerContent />
             }
 
-            {/* {type === PRIVATE_INVESTIGATORS &&
-                <PIDetails data={data} baseUrl={baseUrl} profileImg={profileImg} />
+            {type === PRIVATE_INVESTIGATORS &&
+                <PIContent />
             }
 
             {type === SECURITY &&
-                <SECDetails data={data} baseUrl={baseUrl} profileImg={profileImg} />
-            } */}
+                <SecurityContent />
+            }
 
             <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
                 <button

@@ -8,7 +8,6 @@ import lawyers from "../assets/lawyers.jpg";
 import bailsMan from "../assets/bbm.jpg";
 import privateInvestigator from "../assets/private-investigator.jpg";
 import security from "../assets/security-gl.jpg";
-import banner from "../assets/banner.jpg";
 
 import ServiceCard from "../components/ServiceCard";
 import CardOne from "../assets/New_folder/image 6.png";
@@ -398,59 +397,61 @@ const Homepage = () => {
             </div>
             <div className="sm:grid ">
               <div className="relative">
-                <button>
+                <button onClick={() => setDialogue(PRIVATE_INVESTIGATORS)}>
                   <img
                     src={privateInvestigator}
                     alt="finding private investigators"
                   />
                 </button>
+
                 <div className="mt-2 border border-gray-300 shadow-md">
-                  <div className="flex align-center px-[15px] pt-[20px] pb-[10px] justify-between bg-[#EFF6FF]">
-                    <div>
-                      <p className="font-bold text-[18px] max-sm:text-[16px]">
-                        Finding the Private Investigators
-                      </p>
+                  <button className="text-left" onClick={() => setDialogue(PRIVATE_INVESTIGATORS)}>
+                    <div className="flex align-center px-[15px] pt-[20px] pb-[10px] justify-between bg-[#EFF6FF]">
+                      <div>
+                        <p className="font-bold text-[18px] max-sm:text-[16px]">
+                          Finding the Private Investigators
+                        </p>
+                      </div>
                     </div>
-                  </div>
-                  <div className="flex align-center px-[15px] justify-between mb-3">
-                    <div>
-                      <p className="font-bold text-[12px] text-[#5F5F5F] max-sm:text-[16px]">
-                        To know more
-                      </p>
-                    </div>
-                    <Link to="searchProfile">
+                    <div className="flex align-center px-[15px] justify-between mb-3">
+                      <div>
+                        <p className="font-bold text-[12px] text-[#5F5F5F] max-sm:text-[16px]">
+                          To know more
+                        </p>
+                      </div>
                       <img src={ArrowCircleRight} alt="" width="25px" />
-                    </Link>
-                  </div>
+                    </div>
+                  </button>
                 </div>
               </div>
             </div>
             <div className="sm:grid ">
               <div className="relative ">
-                <button>
+                <button onClick={() => setDialogue(SECURITY)}>
                   <img
                     src={security}
                     alt="Finding security"
                   />
                 </button>
+
                 <div className="mt-2 border border-gray-300 shadow-md">
-                  <div className="flex align-center px-[15px] pt-[20px] pb-[10px] justify-between bg-[#EFF6FF]">
-                    <div>
-                      <p className="font-bold text-[18px] max-sm:text-[16px]">
-                        Finding the perfect Security
-                      </p>
+                  <button className="text-left" onClick={() => setDialogue(SECURITY)}>
+                    <div className="flex align-center px-[15px] pt-[20px] pb-[10px] justify-between bg-[#EFF6FF]">
+                      <div>
+                        <p className="font-bold text-[18px] max-sm:text-[16px]">
+                          Finding the perfect Security
+                        </p>
+                      </div>
                     </div>
-                  </div>
-                  <div className="flex align-center px-[15px] justify-between mb-3">
-                    <div>
-                      <p className="font-bold text-[12px] text-[#5F5F5F] max-sm:text-[16px]">
-                        To know more
-                      </p>
-                    </div>
-                    <Link to="searchProfile">
+                    <div className="flex align-center px-[15px] justify-between mb-3">
+                      <div>
+                        <p className="font-bold text-[12px] text-[#5F5F5F] max-sm:text-[16px]">
+                          To know more
+                        </p>
+                      </div>
                       <img src={ArrowCircleRight} alt="" width="25px" />
-                    </Link>
-                  </div>
+                    </div>
+                  </button>
                 </div>
               </div>
             </div>

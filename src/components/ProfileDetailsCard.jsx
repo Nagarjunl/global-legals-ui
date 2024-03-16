@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import profileImg from "../assets/avator.png";
 
-// const baseUrl = import.meta.env.VITE_API_URL;
-const baseUrl = "https://api.chitmanager.com/";
+const baseUrl = import.meta.env.VITE_API_URL;
+// const baseUrl = "https://api.chitmanager.com/";
 
 const ProfileCard = ({ data, hideSchedule }) => {
 
@@ -65,7 +65,7 @@ const ProfileCard = ({ data, hideSchedule }) => {
                 </div>
               </div>
 
-              {data?.practicingLaw !== "null" &&
+              {data?.practicingLaw !== "null" || data?.practicingLaw !== "" || data?.practicingLaw !== null &&
                 <div>
                   <h5 className="font-normal leading-[17.16px] text-[12px]">
                     Name of practicing law firm
@@ -76,7 +76,7 @@ const ProfileCard = ({ data, hideSchedule }) => {
                 </div>
               }
 
-              {data?.legalSpecialization !== "null" &&
+              {data?.legalSpecialization !== "null" || data?.legalSpecialization !== "" || data?.legalSpecialization !== null &&
                 <div>
                   <h5 className="font-normal leading-[17.16px] text-[12px]">
                     Legal Specialization
@@ -88,7 +88,7 @@ const ProfileCard = ({ data, hideSchedule }) => {
                 </div>
               }
 
-              {data?.experience !== "null" &&
+              {data?.experience !== "null" || data?.experience !== "" || data?.experience !== null &&
                 <div>
                   <h5 className="font-normal leading-[17.16px] text-[12px]">
                     Years of Experience
@@ -100,7 +100,7 @@ const ProfileCard = ({ data, hideSchedule }) => {
                 </div>
               }
 
-              {data?.languages !== "null" &&
+              {data?.languages !== "null" || data?.languages !== "" || data?.languages !== null &&
                 <div>
                   <h5 className="font-normal leading-[17.16px] text-[12px]">
                     Languages Spoken
@@ -112,7 +112,7 @@ const ProfileCard = ({ data, hideSchedule }) => {
                 </div>
               }
 
-              {data?.companyWebsite !== "null" &&
+              {data?.companyWebsite !== "null" || data?.companyWebsite !== "" || data?.companyWebsite !== null &&
                 <div>
                   <h5 className="font-normal leading-[17.16px] text-[12px]">
                     Company website
@@ -123,7 +123,7 @@ const ProfileCard = ({ data, hideSchedule }) => {
                 </div>
               }
 
-              {data?.coverageArea !== "null" &&
+              {data?.coverageArea !== "null" || data?.coverageArea !== "" || data?.coverageArea !== null &&
                 <div>
                   <h5 className="font-normal leading-[17.16px] text-[12px] mt-2">
                     Coverage Areas
