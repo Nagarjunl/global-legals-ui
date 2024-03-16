@@ -45,7 +45,7 @@ const BBMDetails = ({ data, baseUrl }) => {
                                     Business Phone number *
                                 </h5>
                                 <div className="mt-2">
-                                    {data?.businessPhoneNumber}
+                                    {data?.contactNumber}
                                 </div>
                             </div>
                         </div>
