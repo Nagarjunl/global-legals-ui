@@ -7,10 +7,11 @@ import { FaLinkedinIn } from "react-icons/fa6";
 import { useForm } from "react-hook-form";
 import { useProfileEmailMutation } from "../services/userAPI";
 import { useState } from "react";
+import PropTypes from 'prop-types';
 
 
-const Footer = () => {
-
+const Footer = (props) => {
+  const { setDialogue } = props;
   const [ack, setAck] = useState();
   const [profileEmail, { isLoading: submitingEmailForm }] = useProfileEmailMutation();
 
@@ -52,7 +53,7 @@ const Footer = () => {
             </div> */}
 
             <div className="lg:col-span-2 md:col-span-2">
-              <p className="text-slate-600 text-lg font-bold leading-7 mb-2">
+              <p className="text-black text-lg font-bold leading-7 mb-2">
                 Exclusive Offers For You
               </p>
               <p className="text-slate-600 text-xs leading-5 whitespace-nowrap mb-2">
@@ -60,10 +61,10 @@ const Footer = () => {
               </p>
               <form onSubmit={handleSubmit(onSubmit)}>
                 <div>
-                  <div className="relative w-[310px]">
+                  <div className="relative sm:w-[400px]  max-sm:w-full">
                     <input
                       type="email"
-                      className="block w-full rounded-full p-4 ps-10 text-sm text-gray-900 border border-gray-300  bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
+                      className="block w-full rounded-full p-4  text-sm text-gray-900 border border-gray-300  bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
                       placeholder="Enter Your Email Address"
                       {...register("footerEmail", { required: "Email is required" })}
                     />
@@ -72,7 +73,7 @@ const Footer = () => {
                         <button
                           type="submit"
                           disabled={submitingEmailForm}
-                          className=" text-white absolute  end-2.5 bottom-2.5 bg-teal-900 focus:ring-4 focus:outline-none font-medium rounded-full text-sm px-6 h-9"
+                          className=" text-white absolute  end-2.5 bottom-[0.5rem] bg-teal-900 focus:ring-4 focus:outline-none font-medium rounded-full text-sm px-6 h-9"
                         >
                           send
                         </button>
@@ -102,10 +103,15 @@ const Footer = () => {
             <div>
               <p className="text-black text-lg font-bold"> Privacy Policy </p>
               <p className="text-zinc-600 text-sm font-[450] whitespace-nowrap mt-2">
-                Terms and Condition
+                <button onClick={() => setDialogue("TERMS")}>
+                  Terms and Condition
+                </button>
               </p>
+
               <p className="text-zinc-600 text-sm font-[450] whitespace-nowrap mt-2">
-                Private Policy
+                <button onClick={() => setDialogue("PRIVACY")}>
+                  Privacy Policy
+                </button>
               </p>
             </div>
 
@@ -159,3 +165,7 @@ const Footer = () => {
 };
 
 export default Footer;
+
+Footer.propTypes = {
+  setDialogue: PropTypes.func,
+}
