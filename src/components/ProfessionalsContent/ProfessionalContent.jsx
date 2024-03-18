@@ -5,6 +5,8 @@ import LawyerContent from "./LawyerContent";
 import PropTypes from 'prop-types';
 import SecurityContent from "./SecurityContent";
 import PIContent from "./PIContent";
+import TermsAndConditions from "../TermsAndConditions/TermsAndConditions";
+import PrivacyPolicy from "../TermsAndConditions/PrivacyPolicy";
 
 
 const ProfessionalContent = (props) => {
@@ -25,6 +27,13 @@ const ProfessionalContent = (props) => {
 
             {type === SECURITY &&
                 <SecurityContent />
+            }
+
+            {type === "TERMS" &&
+                <TermsAndConditions />
+            }
+            {type === "PRIVACY" &&
+                <PrivacyPolicy />
             }
 
             <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">

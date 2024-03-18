@@ -102,7 +102,7 @@ const Homepage = () => {
               <div className="grid items-center max-md:justify-center  justify-start my-7">
                 <div>
                   <p className="text-white italic text-[16px] mb-10 flex leading-[17.8px] font-medium mb-2">
-                    We're here for all your legal service needs. They are all here in one location!
+                    We're here for all your legal service needs. All in one location!
                   </p>
                   <h1 className="text-white font-circular-std flex text-[40px] leading-[55.66px] font-bold mb-5">
                     Effortlessly Locate the Ideal Legal Professional Services
@@ -632,7 +632,7 @@ const Homepage = () => {
         </div>
       </div>
 
-      <Footer />
+      <Footer setDialogue={setDialogue} />
 
       <div className="relative">
         <Dialogue
