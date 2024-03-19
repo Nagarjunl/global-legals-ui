@@ -101,14 +101,14 @@ const Footer = (props) => {
             </div>
 
             <div>
-              <p className="text-black text-lg font-bold"> Privacy Policy </p>
-              <p className="text-zinc-600 text-sm font-[450] whitespace-nowrap mt-2">
+              <p className="text-black text-lg font-bold"> Site Info </p>
+              <p className="text-zinc-600 font-semibold text-[15px] whitespace-nowrap mt-2">
                 <button onClick={() => setDialogue("TERMS")}>
                   Terms and Condition
                 </button>
               </p>
 
-              <p className="text-zinc-600 text-sm font-[450] whitespace-nowrap mt-2">
+              <p className="text-zinc-600 font-semibold text-[15px] whitespace-nowrap mt-2">
                 <button onClick={() => setDialogue("PRIVACY")}>
                   Privacy Policy
                 </button>
@@ -119,11 +119,14 @@ const Footer = (props) => {
               <p className="text-black text-lg font-bold whitespace-nowrap">
                 About
               </p>
-              <p className="text-zinc-600 text-sm font-[450] whitespace-nowrap mt-2">
+              <p className="text-zinc-600 font-semibold text-[15px] whitespace-nowrap mt-2">
                 About us
               </p>
-              <p className="text-zinc-600 text-sm font-[450] whitespace-nowrap mt-2">
-                Global Certified
+              <p className="text-zinc-600 font-semibold text-[15px] whitespace-nowrap mt-2">
+                Contact us
+              </p>
+              <p className="text-zinc-600 text-[13px] font-[450] mt-2">
+                1361 W. WADE HAMPTON STE. F PMB 250 GREER, SC 29650
               </p>
             </div>
 
