@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 import { Disclosure } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import GlobalLegals from "../assets/GlobalLegals.svg";
+import GlobalLegals from "../assets/GlobalLegalsLine.png";
 import GlobalWhite from "../assets/GlobalLegalsWhite.png";
 import PropTypes from "prop-types";
 
@@ -11,7 +11,7 @@ const Nav = ({ page }) => {
   const currentPage = page;
 
   return (
-    <Disclosure as="nav" className="shadow">
+    <Disclosure as="nav" className="shadow bg-white">
       {({ open }) => (
         <>
           <div className="mx-auto max-w-full px-2 sm:px-6 lg:px-8">
@@ -35,7 +35,7 @@ const Nav = ({ page }) => {
                       <Link to="/">
                         <img
                           className="h-12 w-auto"
-                          src={GlobalWhite}
+                          src={GlobalLegals}
                           alt="Global Legals"
                         />
                       </Link>
@@ -57,7 +57,7 @@ const Nav = ({ page }) => {
                       <Link
                         to={"/"}
                         className={`block py-2 px-3 md:p-0 
-                        ${currentPage !== "home" ? "text-white-700" : "text-white"}
+                        ${currentPage !== "home" ? "text-white-700" : "text-black"}
                         `}
                         aria-current="page"
                       >
@@ -68,7 +68,7 @@ const Nav = ({ page }) => {
                       <Link
                         to={"/searchProfile"}
                         className={`block py-2 px-3 md:p-0 
-                        ${currentPage !== "home" ? "text-white-700" : "text-white"}
+                        ${currentPage !== "home" ? "text-white-700" : "text-black"}
                         `}
                         aria-current="page"
                       >
@@ -79,7 +79,7 @@ const Nav = ({ page }) => {
                       <Link
                         to={"/faq"}
                         className={`block py-2 px-3 md:p-0 
-                        ${currentPage !== "home" ? "text-white-700" : "text-white"}
+                        ${currentPage !== "home" ? "text-white-700" : "text-black"}
                         `}
                         aria-current="page"
                       >
@@ -89,7 +89,7 @@ const Nav = ({ page }) => {
                     <li>
                       <Link
                         to="/auth/login"
-                        className={`font-bold hover:bg-green-900 hover:text-white hover:font-semibold focus:ring-4 focus:outline-none  rounded-full text-sm px-6 py-3 ${currentPage === "home" ? "bg-white text-green-900" : "bg-green-900 text-white"}`}
+                        className={`font-bold hover:bg-green-900 hover:text-white hover:font-semibold focus:ring-4 focus:outline-none  rounded-full text-sm px-6 py-3 ${currentPage === "home" ? "bg-green-900 text-white" : "bg-green-900 text-white"}`}
                       >Business Signup</Link>
                     </li>
                   </ul>
@@ -115,7 +115,7 @@ const Nav = ({ page }) => {
                 as="a"
                 href="/searchProfile"
                 className={`block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700 
-                ${currentPage === "home" ? "text-white" : "text-white-700"}
+                ${currentPage === "home" ? "text-black" : "text-white-700"}
                 ${currentPage === "profile" ? "border-l-4 border-indigo-500 bg-indigo-50" : ""}
                 `}
               >
@@ -125,7 +125,7 @@ const Nav = ({ page }) => {
                 as="a"
                 href="/faq"
                 className={`block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700 
-                ${currentPage === "home" ? "text-white" : "text-white-700"}
+                ${currentPage === "home" ? "text-black" : "text-white-700"}
                 ${currentPage === "faq" ? "border-l-4 border-indigo-500 bg-indigo-50" : ""}
                 `}
               >
@@ -134,7 +134,7 @@ const Nav = ({ page }) => {
               <Disclosure.Button
                 as="a"
                 href="/auth/login"
-                className={`block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700 ${currentPage === "home" ? "text-white" : "text-white-700"}`}
+                className={`block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700 ${currentPage === "home" ? "text-black" : "text-white-700"}`}
               >
                 Business Signup
               </Disclosure.Button>
