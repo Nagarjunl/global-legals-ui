@@ -1,4 +1,4 @@
-import { CheckIcon } from '@heroicons/react/20/solid'
+// import { CheckIcon } from '@heroicons/react/20/solid';
 import {
     useCancelSubscriptionMutation, useGetSubscriptionsQuery,
     // useResumeSubscriptionMutation
@@ -8,14 +8,24 @@ import { useSelector } from 'react-redux';
 import PaymentDialogue from '../Subscription/paymentDialogue';
 import StripeSubscription from '../Subscription/StripeSubscription';
 
-const includedFeatures = [
-    'Private forum access',
-    'Member resources',
-    'Entry to annual conference',
-    'Official member t-shirt',
-]
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from '@stripe/stripe-js';
+// const stripePromise = await loadStripe('pk_test_51OWvGSSDcWKAz6oIiMvnjQToKrOu7Pp4aHIKugWHpMTx4K19CajJQDPkx9RnQutL2QxS7cTPIL2yPfRrDefNZig600U6nDGFWZ');
+
+// const includedFeatures = [
+//     'Private forum access',
+//     'Member resources',
+//     'Entry to annual conference',
+//     'Official member t-shirt',
+// ]
+
+const initStripe = async () => {
+    return await loadStripe('pk_test_51OWvGSSDcWKAz6oIiMvnjQToKrOu7Pp4aHIKugWHpMTx4K19CajJQDPkx9RnQutL2QxS7cTPIL2yPfRrDefNZig600U6nDGFWZ');
+};
 
 export default function Plans() {
+    const stripePromise = initStripe();
+
     const [userId, setUserId] = useState();
     const [openStatus, setOpenStatus] = useState(false);
     const [showSubscription, setShowSubscription] = useState(false);
@@ -50,11 +60,13 @@ export default function Plans() {
         <>
 
             {showSubscription ?
-                <StripeSubscription
-                    showSubscription={showSubscription}
-                    setShowSubscription={setShowSubscription}
-                    fromDashboard={true}
-                />
+                <Elements stripe={stripePromise}>
+                    <StripeSubscription
+                        showSubscription={showSubscription}
+                        setShowSubscription={setShowSubscription}
+                        fromDashboard={true}
+                    />
+                </Elements>
                 :
                 <div className="bg-white">
                     <div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -67,7 +79,7 @@ export default function Plans() {
 
                                 <h3 className="text-2xl font-bold tracking-tight text-gray-900"> Cancellation</h3>
                                 <p className="mt-6 text-base leading-7 text-gray-600">
-                                    Cancel anytime with our simple and convenient cancellation process."
+                                    Cancel anytime with our simple and convenient cancellation process.
                                 </p>
                                 {/* <div className="mt-10 flex items-center gap-x-4">
                                     <h4 className="flex-none text-sm font-semibold leading-6 text-indigo-600">What’s included</h4>
