@@ -6,6 +6,14 @@ import SelectForm from "../pages/SignUpForms/Forms";
 import { useSelector } from 'react-redux'
 import StripeSubscription from "../pages/Subscription/StripeSubscription";
 
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from '@stripe/stripe-js';
+// const stripePromise = await loadStripe('pk_test_51OWvGSSDcWKAz6oIiMvnjQToKrOu7Pp4aHIKugWHpMTx4K19CajJQDPkx9RnQutL2QxS7cTPIL2yPfRrDefNZig600U6nDGFWZ');
+
+const initStripe = async () => {
+  return await loadStripe('pk_test_51OWvGSSDcWKAz6oIiMvnjQToKrOu7Pp4aHIKugWHpMTx4K19CajJQDPkx9RnQutL2QxS7cTPIL2yPfRrDefNZig600U6nDGFWZ');
+};
+
 const steps = [
   { id: "1", name: "Personal Details", href: "#", status: "current" },
   { id: "2", name: "Pay Premium", href: "#", status: "upcoming" },
@@ -14,6 +22,8 @@ const steps = [
 ];
 
 export default function MultiStepper() {
+  const stripePromise = initStripe();
+
   const [currentStep, setCurrentStep] = useState(0);
   const formSubmited = useSelector((state) => state.formType.formSubmit);
   // const quota = useSelector((state) => state.user.current_user.quota);
@@ -23,6 +33,8 @@ export default function MultiStepper() {
     if (!formSubmited)
       setCurrentStep(index);
   };
+
+
 
   return (
     <>
@@ -80,7 +92,9 @@ export default function MultiStepper() {
         )}
         {currentStep === 2 && (
           <div>
-            <StripeSubscription handleStepClick={handleStepClick} fromDashboard={false} />
+            <Elements stripe={stripePromise}>
+              <StripeSubscription handleStepClick={handleStepClick} fromDashboard={false} />
+            </Elements>
           </div>
         )}
         {currentStep === 3 && (
