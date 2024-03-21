@@ -4,8 +4,8 @@ import CircleImg from "../assets/circle.png";
 import PrimaryButton from "./PrimaryButton";
 import profileImg from "../assets/avator.png";
 
-// const baseUrl = import.meta.env.VITE_API_URL;
-const baseUrl = "https://api.chitmanager.com/";
+const baseUrl = import.meta.env.VITE_API_URL;
+// const baseUrl = "https://api.chitmanager.com/";
 
 const LawyerCard = ({ data }) => {
   const idp = data?.idProof;

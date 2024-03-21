@@ -30,10 +30,13 @@ import { Carousel } from 'flowbite-react';
 import { LAWYERS, BAIL_BONDSMAN, SECURITY, PRIVATE_INVESTIGATORS } from "../constants/constants";
 import Dialogue from "../components/Dialogue";
 import ProfessionalContent from "../components/ProfessionalsContent/ProfessionalContent";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+const captchaKey = import.meta.env.VITE_CAPTCHA_KEY;
 
 const Homepage = () => {
   const captchaRef = useRef(null)
-  const [ack, setAck] = useState();
   const [openStatus, setOpenStatus] = useState(false);
   const [type, setType] = useState();
 
@@ -69,9 +72,9 @@ const Homepage = () => {
     try {
       await profileEmail(data).unwrap()
         .then(() => {
-          setAck("We will contact you soon !");
           reset();
           captchaRef.current.reset();
+          showToast()
         });
     } catch (error) {
       console.log("error");
@@ -79,7 +82,7 @@ const Homepage = () => {
   }
 
   const onSubmit = (formData) => {
-    const result = { ...formData, superMail: "naga.career.at@gmail.com", mailFrom: "homePage" }
+    const result = { ...formData, mailFrom: "homePage" }
     submitMailForm(result);
   };
 
@@ -87,6 +90,8 @@ const Homepage = () => {
     setType(type);
     setOpenStatus(!openStatus);
   }
+
+  const showToast = () => toast("Mail has been sent. Will Contact you soon.");
 
   useEffect(() => {
     setError("captcha", { type: 'custom', message: 'Please Verify Captcha' })
@@ -146,7 +151,7 @@ const Homepage = () => {
                     >
                       Bail Bondsman
                     </Link>
-                    <Link className=" text-white  font-circular-std text-sm font-medium  justify-center  py-1 px-2 items-center   rounded-full border border-white "
+                    <Link className=" text-white  font-circular-std text-sm font-medium  justify-center  py-1 px-2 items-centermrounded-full border border-white "
                       to={`/searchProfile/${SECURITY}`}
                     >
                       Security
@@ -169,15 +174,6 @@ const Homepage = () => {
           </div >
         </div >
       </div >
-
-      {/* <div className="max-sm:px-6 px-[120px] pt-[120px]">
-        <div className="mx-auto container">
-          <img
-            src={banner}
-            alt="Finding Bail bondsman"
-          />
-        </div>
-      </div> */}
 
       <div className="max-sm:px-6 p-[120px]">
         <div className="mx-auto container">
@@ -480,14 +476,13 @@ const Homepage = () => {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 ">
                     <div>
                       <label
-                        htmlFor="input1"
                         className="block font-normal text-gray text-xs mb-2"
                       >
                         Full Name
                       </label>
                       <input
                         type="text"
-                        className="mt-1 p-3 border rounded-md w-full"
+                        className="mt-1 p-2 border rounded-md w-full"
                         {...register("fullName", {
                           required: "This field is required",
                         })}
@@ -500,7 +495,6 @@ const Homepage = () => {
                     </div>
                     <div>
                       <label
-                        htmlFor="input2"
                         className="block font-normal text-gray text-xs mb-2"
                       >
                         Email Address
@@ -522,7 +516,6 @@ const Homepage = () => {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-3">
                     <div>
                       <label
-                        htmlFor="input1"
                         className="block font-normal text-gray text-xs mb-2"
                       >
                         Phone Number
@@ -535,10 +528,9 @@ const Homepage = () => {
                     </div>
                     <div>
                       <label
-                        htmlFor="input2"
                         className="block font-normal text-gray text-xs mb-2"
                       >
-                        Preferred Contact method
+                        Preferred contact method
                       </label>
                       <input
                         type="text"
@@ -557,7 +549,7 @@ const Homepage = () => {
                     <textarea
                       rows="4"
                       className="w-full p-2 border rounded-md"
-                      {...register("about")}
+                      {...register("inquiryDetails")}
                     ></textarea>
                   </div>
                   <div className=" grid grid-cols-2 justify-between  mt-5 max-md:grid-cols-1  gap-3">
@@ -568,7 +560,7 @@ const Homepage = () => {
                         </p>
                       )}
                       <ReCAPTCHA
-                        sitekey="6LfAUjgpAAAAABQcBX1BtSezxeoNoBDoZk9XPS7T"
+                        sitekey={captchaKey}
                         onChange={() => verifyRecaptcha()}
                         ref={captchaRef}
                       />
@@ -591,7 +583,6 @@ const Homepage = () => {
                           </div>
                       }
                     </div>
-                    <h2 className=" font-bold text-2xl mb-[-20px] mt-6 text-green-600 dark:text-green-500 pb-3">{ack}</h2>
                   </div>
                 </div>
               </form>
@@ -632,7 +623,9 @@ const Homepage = () => {
         </div>
       </div>
 
-      <Footer setDialogue={setDialogue} />
+      <ToastContainer />
+
+      <Footer setDialogue={setDialogue} showToast={showToast} />
 
       <div className="relative">
         <Dialogue

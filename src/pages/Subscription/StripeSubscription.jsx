@@ -21,6 +21,9 @@ import {
 
 import '../../styles.css';
 
+const stripePriceId = import.meta.env.VITE_STRIPE_PRICE_ID;
+
+
 const StripeSubscription = (props) => {
     const { showSubscription, setShowSubscription, handleStepClick, fromDashboard } = props;
 
@@ -38,7 +41,7 @@ const StripeSubscription = (props) => {
     const stripe = useStripe();
     const elements = useElements();
 
-    const plan = 'price_1OsQDcSDcWKAz6oICN1QkUQL';
+    const plan = stripePriceId;
 
     const [createSubscription] = useCreateSubscriptionMutation();
     const [createMembers] = useCreateMembersMutation();
@@ -164,6 +167,7 @@ const StripeSubscription = (props) => {
 
                             if (confirmationError) {
                                 console.error(confirmationError);
+                                setLoading(false);
                                 alert(" Unable to confirm card");
                                 return;
                             }
@@ -200,6 +204,10 @@ const StripeSubscription = (props) => {
                                 </h3>
 
                                 <p className="mb-10">  You can cancel your plan anytime on your settings. </p>
+                                <div className='flex w-10/12'>
+                                    <div className='mr-2 text-red-600 text-sm'> * </div>
+                                    <p className="mb-10 text-red-600 text-sm">  Please do not refresh the page while processing your bank transfer to ensure a smooth transaction.</p>
+                                </div>
                             </div>
 
                             <div>
@@ -229,6 +237,11 @@ const StripeSubscription = (props) => {
                                 }} className='address' />
 
                                 <div className="mt-5 sm:mt-4">
+                                    <div className='flex mt-3 w-10/12'>
+                                        <div className='mr-2 text-red-600 text-xs'> * </div>
+                                        <p className="mb-4 text-red-600 text-xs">  Please do not refresh the page while processing your bank transfer to ensure a smooth transaction.</p>
+                                    </div>
+
                                     {!loading ?
                                         <button
                                             type="button"
@@ -250,6 +263,7 @@ const StripeSubscription = (props) => {
                                             </button>
                                         </div>
                                     }
+
                                 </div>
                             </div>
                         </div>

@@ -1,19 +1,18 @@
 import { useEffect, useState } from 'react';
-import { useDeleteFaqMutation, useGetFaqQuery, useSearchFaqQuery } from '../../services/profileAPI';
+import { useDeleteFaqMutation, useSearchFaqQuery } from '../../services/profileAPI';
 import { MagnifyingGlassIcon } from "@heroicons/react/20/solid";
 
 import Dialogue from "../../components/Dialogue";
 import CreateFaq from './CreateFaq';
 import { FaTrash } from 'react-icons/fa';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const AddFaq = () => {
 
-    // const { data, isLoading } = useGetFaqQuery();
-
     const [openStatus, setOpenStatus] = useState(false);
     const [searchParams, setSearchParams] = useState();
-
 
     const [deleteFaq] = useDeleteFaqMutation();
 
@@ -48,6 +47,8 @@ const AddFaq = () => {
     const delayedFetchSearchResults = debounce((query) => {
         setSearchParams(query);
     }, 500);
+
+    const showToast = () => toast("Question Added");
 
     useEffect(() => {
         setSearchParams("true")
@@ -129,10 +130,12 @@ const AddFaq = () => {
                 </div>
             }
 
+            <ToastContainer />
+
             <div className="relative">
                 <Dialogue
                     title="Add FAQ"
-                    message={<CreateFaq open={openStatus} setOpen={setOpenStatus} btnLabel="Submit" formType="postQuestion" />}
+                    message={<CreateFaq open={openStatus} setOpen={setOpenStatus} btnLabel="Submit" formType="postQuestion" showToast={showToast} />}
                     setOpenStatus={setOpenStatus}
                     openStatus={openStatus}
                     hideButtons={true}

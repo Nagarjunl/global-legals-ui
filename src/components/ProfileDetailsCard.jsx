@@ -3,8 +3,8 @@ import profileImg from "../assets/avator.png";
 import { FaPhoneSquareAlt, FaEnvelope, FaMapMarkerAlt, FaBlackTie } from "react-icons/fa";
 import { BAIL_BONDSMAN, LAWYERS, PRIVATE_INVESTIGATORS, SECURITY } from '../constants/constants';
 
-// const baseUrl = import.meta.env.VITE_API_URL;
-const baseUrl = "https://api.chitmanager.com/";
+const baseUrl = import.meta.env.VITE_API_URL;
+// const baseUrl = "https://api.chitmanager.com/";
 
 const ProfileCard = ({ data, hideSchedule }) => {
 

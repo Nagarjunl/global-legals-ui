@@ -60,16 +60,20 @@ export default function Plans() {
                     <div className="mx-auto max-w-7xl px-6 lg:px-8">
                         <div className="mx-auto my-16 max-w-2xl rounded-3xl ring-1 ring-gray-200 sm:mt-20 lg:mx-0 lg:flex lg:max-w-none">
                             <div className="p-8 sm:p-10 lg:flex-auto">
-                                <h3 className="text-2xl font-bold tracking-tight text-gray-900">Lifetime membership</h3>
-                                <p className="mt-6 text-base leading-7 text-gray-600">
-                                    Lorem ipsum dolor sit amet consect etur adipisicing elit. Itaque amet indis perferendis blanditiis
-                                    repellendus etur quidem assumenda.
+                                <h3 className="text-2xl font-bold tracking-tight text-gray-900">Monthly Billing </h3>
+                                <p className="my-5 text-base leading-7 text-gray-600">
+                                    Enjoy seamless services with hassle-free monthly billing.
                                 </p>
-                                <div className="mt-10 flex items-center gap-x-4">
+
+                                <h3 className="text-2xl font-bold tracking-tight text-gray-900"> Cancellation</h3>
+                                <p className="mt-6 text-base leading-7 text-gray-600">
+                                    Cancel anytime with our simple and convenient cancellation process."
+                                </p>
+                                {/* <div className="mt-10 flex items-center gap-x-4">
                                     <h4 className="flex-none text-sm font-semibold leading-6 text-indigo-600">What’s included</h4>
                                     <div className="h-px flex-auto bg-gray-100" />
-                                </div>
-                                <ul
+                                </div> */}
+                                {/* <ul
                                     role="list"
                                     className="mt-8 grid grid-cols-1 gap-4 text-sm leading-6 text-gray-600 sm:grid-cols-2 sm:gap-6"
                                 >
@@ -79,7 +83,7 @@ export default function Plans() {
                                             {feature}
                                         </li>
                                     ))}
-                                </ul>
+                                </ul> */}
                             </div>
                             <div className="-mt-2 p-2 lg:mt-0 lg:w-full lg:max-w-md lg:flex-shrink-0">
                                 <div className="rounded-2xl bg-gray-50 py-10 text-center ring-1 ring-inset ring-gray-900/5 lg:flex lg:flex-col lg:justify-center lg:py-16">
@@ -96,7 +100,7 @@ export default function Plans() {
                                                 {subscription?.data?.map(sub => (
                                                     <div key={sub.id}>
                                                         <p className="mt-6 text-xs leading-5 text-gray-600">
-                                                            Next payment of {sub?.plan?.amount} due {" "}
+                                                            Next payment of $10 due {" "}
                                                             {new Date(sub.current_period_end * 1000).toUTCString()}
                                                         </p>
                                                         {!cancelingSubscription ?

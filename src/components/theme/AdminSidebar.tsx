@@ -147,7 +147,7 @@ const AdminSidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                 </NavLink>
               </li>
               
-              <li>
+              {/* <li>
                 <NavLink
                   to="searchKeywords"
                   className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-normal duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
@@ -181,7 +181,7 @@ const AdminSidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                   </svg>
                   Search Keyword
                 </NavLink>
-              </li>
+              </li> */}
               
               <li>
                 <NavLink

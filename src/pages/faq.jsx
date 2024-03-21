@@ -7,6 +7,9 @@ import Dialogue from "../components/Dialogue";
 import CreateFaq from "./SuperUser/CreateFaq";
 import { useSearchFaqQuery } from "../services/profileAPI";
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const minusIcon = '-'
 const plusIcon = '+'
 
@@ -41,14 +44,11 @@ const Faq = () => {
     const [openStatus, setOpenStatus] = useState(false);
     const [searchParams, setSearchParams] = useState();
 
-    // const { data, isLoading } = useGetFaqQuery();
-
     const { data, isLoading } = useSearchFaqQuery(searchParams, {
         skip: searchParams === undefined,
     });
 
     const searchQuestions = (e) => {
-        console.log(e.target.value);
         if (e.target.value === "") {
             setSearchParams("true")
         }
@@ -66,6 +66,8 @@ const Faq = () => {
     const delayedFetchSearchResults = debounce((query) => {
         setSearchParams(query);
     }, 500);
+
+    const showToast = () => toast("Mail has been sent. Thank you for your support.");
 
     useEffect(() => {
         setSearchParams("true")
@@ -119,6 +121,9 @@ const Faq = () => {
                     }
                 </div>
             </div >
+
+            <ToastContainer />
+
             <div className="mx-auto container sm:px-6 lg:px-8 mt-[80px]">
                 <Footer />
             </div>
@@ -126,12 +131,14 @@ const Faq = () => {
             <div className="relative">
                 <Dialogue
                     title="Ask Your Question"
-                    message={<CreateFaq open={openStatus} setOpen={setOpenStatus} btnLabel="Submit" formType="askQuestion" />}
+                    message={<CreateFaq open={openStatus} setOpen={setOpenStatus} btnLabel="Submit" formType="askQuestion" showToast={showToast} />}
                     setOpenStatus={setOpenStatus}
                     openStatus={openStatus}
                     hideButtons={true}
                 />
             </div>
+
+
 
         </>
     )
