@@ -120,7 +120,7 @@ const Footer = (props) => {
 
       <div className="bg-white container mx-auto  max-sm:px-6 px-[80px] py-[24px]">
         <div className="grid grid-cols-2 max-md:grid-cols-1 justify-between  gap-5">
-          <p className="text-slate-600 text-xs font-bold leading-5 grow whitespace-nowrap my-auto max-md:max-w-full">
+          <p className="text-slate-600 text-xs font-bold leading-5 grow my-auto max-md:max-w-full">
             © 2024 Global Legals. All rights reserved. Design & Developed by <a href="https://snappyzappy.com/" target="_blank" rel="noreferrer" className="text-gray-300">Snappy Zappy</a>
           </p>
           <div className="flex gap-[24px] md:justify-end max-md:justify-start">
