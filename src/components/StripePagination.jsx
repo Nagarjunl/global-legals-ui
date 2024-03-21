@@ -5,7 +5,8 @@ export default function StripePagination({
     setPreviousId,
     hasMore,
     next,
-    previous
+    previous,
+    initTrue
 }) {
 
     console.log(hasMore);
@@ -21,7 +22,7 @@ export default function StripePagination({
                             }}
                             href='#'
                             className="bg-white border-gray-300 text-gray-500 hover:bg-blue-200 relative inline-flex items-center px-4 py-2 border text-sm font-medium"
-                            disabled={hasMore === false && previous === true}
+                            disabled={hasMore === false && previous === true || initTrue}
                         >
                             Previous
                         </button>
@@ -51,4 +52,5 @@ StripePagination.propTypes = {
     hasMore: PropTypes.bool,
     next: PropTypes.bool,
     previous: PropTypes.bool,
+    initTrue: PropTypes.bool,
 }

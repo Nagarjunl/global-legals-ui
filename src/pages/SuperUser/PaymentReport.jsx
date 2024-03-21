@@ -13,6 +13,8 @@ const PaymentReport = () => {
     const [next, setNext] = useState();
     const [previous, setPrevious] = useState();
 
+    const [initTrue, setInitTrue] = useState(true);
+
 
     const user = useSelector((state) =>
         state.user.current_user.role === "Founder" ?
@@ -25,12 +27,13 @@ const PaymentReport = () => {
 
     useEffect(() => {
         if (user !== null) {
-            setLimit(2);
+            setLimit(60);
             setUserId(user.id);
         }
     }, [user, setUserId])
 
     const setNextId = () => {
+        setInitTrue(false);
         setNext(true);
         setPrevious(false);
         setEndingBefore(undefined);
@@ -38,6 +41,7 @@ const PaymentReport = () => {
     };
 
     const setPreviousId = () => {
+        setInitTrue(false);
         setNext(false);
         setPrevious(true);
         setEndingBefore(data.data[0].id)
@@ -105,15 +109,20 @@ const PaymentReport = () => {
             </div>
 
             {!isLoading &&
-                <div className="mt-6">
-                    <StripePagination
-                        setNextId={setNextId}
-                        setPreviousId={setPreviousId}
-                        hasMore={data?.has_more}
-                        next={next}
-                        previous={previous}
-                    />
-                </div>
+                <>
+                    {data?.count > 60 &&
+                        <div className="mt-6">
+                            <StripePagination
+                                setNextId={setNextId}
+                                setPreviousId={setPreviousId}
+                                hasMore={data?.has_more}
+                                next={next}
+                                previous={previous}
+                                initTrue={initTrue}
+                            />
+                        </div>
+                    }
+                </>
             }
 
         </div>

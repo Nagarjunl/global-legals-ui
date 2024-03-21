@@ -14,7 +14,7 @@ import {
   useProfileViewCountApiMutation,
 } from "../../services/profileAPI";
 import { useForm } from "react-hook-form";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 import "../../../src/styles.css";
 import Nav from "../../components/Nav";
@@ -25,11 +25,14 @@ import { FaLinkedinIn } from "react-icons/fa6";
 import { useDispatch, useSelector } from "react-redux";
 import { addProfileViewCount } from "../../reducers/profileSlice";
 
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const ProfileDetails = ({ hideSchedule }) => {
   const { mainId, slug } = useParams();
 
   const navigate = useNavigate();
-  const [ack, setAck] = useState();
   const dispatch = useDispatch();
 
   const profileViews = useSelector(state => state.profile.profileViews);
@@ -72,7 +75,7 @@ const ProfileDetails = ({ hideSchedule }) => {
     try {
       await profileEmail(data).unwrap()
         .then(() => {
-          setAck("We will contact you soon!");
+          showToast();
         });
     } catch (error) {
       console.log("error");
@@ -83,6 +86,8 @@ const ProfileDetails = ({ hideSchedule }) => {
     const result = { ...formData, profileMail: searchData?.businessMail, mailFrom: "profile" }
     submitMailForm(result);
   };
+
+  const showToast = () => toast("Your mail has been sent.");
 
   useEffect(() => {
     if (!fetchingMembers && slug !== undefined) {
@@ -118,11 +123,6 @@ const ProfileDetails = ({ hideSchedule }) => {
         <div className="mt-5">
           <ProfileCard data={searchData} hideSchedule={hideSchedule} />
         </div>
-        {/* <div className="max-md:px-2 mb-7">
-          <div className="pt-2 professional_data">
-            <div dangerouslySetInnerHTML={{ __html: searchData?.professional }} />
-          </div>
-        </div> */}
 
         {!hideSchedule ? (
           <>
@@ -360,7 +360,6 @@ const ProfileDetails = ({ hideSchedule }) => {
                             </div>
                         }
                       </div>
-                      <h2 className=" font-bold text-2xl mb-[-20px] mt-6 text-green-600 dark:text-green-500 pb-3">{ack}</h2>
                     </form>
                   </div>
                 </div>
@@ -389,6 +388,8 @@ const ProfileDetails = ({ hideSchedule }) => {
           <Footer />
         </div>
       )}
+
+      <ToastContainer />
     </>
   );
 };

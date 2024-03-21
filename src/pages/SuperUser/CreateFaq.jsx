@@ -7,7 +7,7 @@ import { useMailQuestionMutation } from "../../services/userAPI";
 
 const CreateFaq = (props) => {
 
-    const { open, setOpen, hideButtons, btnLabel, formType } = props;
+    const { open, setOpen, hideButtons, btnLabel, formType, showToast } = props;
     const cancelButtonRef = useRef(null)
 
     const [postFaq, { isLoading }] = usePostFaqMutation();
@@ -31,6 +31,7 @@ const CreateFaq = (props) => {
                 .unwrap()
                 .then(() => {
                     setOpen(!open);
+                    showToast();
                 });
         } catch (error) {
             console.log("error");
@@ -43,6 +44,7 @@ const CreateFaq = (props) => {
                 .unwrap()
                 .then(() => {
                     setOpen(!open);
+                    showToast();
                 });
         } catch (error) {
             console.log("error");
@@ -260,4 +262,5 @@ CreateFaq.propTypes = {
     hideButtons: PropTypes.bool,
     btnLabel: PropTypes.string,
     formType: PropTypes.string,
+    showToast: PropTypes.func,
 }

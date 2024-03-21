@@ -1,18 +1,12 @@
 import { FaInstagram } from "react-icons/fa";
-import { FaYoutube } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
-import { FaPinterest } from "react-icons/fa";
-import { FaLinkedinIn } from "react-icons/fa6";
 import { useForm } from "react-hook-form";
 import { useProfileEmailMutation } from "../services/userAPI";
-import { useState } from "react";
 import PropTypes from 'prop-types';
 
-
 const Footer = (props) => {
-  const { setDialogue } = props;
-  const [ack, setAck] = useState();
+  const { setDialogue, showToast } = props;
   const [profileEmail, { isLoading: submitingEmailForm }] = useProfileEmailMutation();
 
   const {
@@ -25,7 +19,7 @@ const Footer = (props) => {
     try {
       await profileEmail(data).unwrap()
         .then(() => {
-          setAck("We will contact you soon!");
+          showToast();
         });
     } catch (error) {
       console.log("error");
@@ -33,7 +27,7 @@ const Footer = (props) => {
   }
 
   const onSubmit = (formData) => {
-    const result = { ...formData, superMail: "naga.career.at@gmail.com", mailFrom: "footerForm" }
+    const result = { ...formData, mailFrom: "footerForm" }
     submitMailForm(result);
   };
   return (
@@ -41,17 +35,6 @@ const Footer = (props) => {
       <div className="bg-white max-sm:px-6 px-[120px] py-[45px] border-b-[color:var(--Border,#D5E3EF)] border-b border-solid">
         <div className="mx-auto container">
           <div className="grid lg:grid-cols-4 gap-[45px]  max-sm:grid-cols-1">
-            {/* <div className="lg:col-span-2 md:col-span-2">
-              <p className="text-slate-600 text-lg font-bold leading-7 mb-2">
-                From Founder
-              </p>
-              <p className="text-slate-600">
-                Having a website with only legal professionals makes it one less thing a person must worry about when
-                searching for legal help. “Let us do the leg work in gathering the legal professionals you need
-                throughout the 50 states. You already have enough on your mind.
-              </p>
-            </div> */}
-
             <div className="lg:col-span-2 md:col-span-2">
               <p className="text-black text-lg font-bold leading-7 mb-2">
                 Exclusive Offers For You
@@ -95,7 +78,6 @@ const Footer = (props) => {
                       {errors?.footerEmail?.message}{" "}
                     </p>
                   )}
-                  <p className=" font-bold text-2xl mb-[-20px] mt-6 text-green-600 dark:text-green-500 pb-3">{ack}</p>
                 </div>
               </form>
             </div>
@@ -120,7 +102,9 @@ const Footer = (props) => {
                 About
               </p>
               <p className="text-zinc-600 font-semibold text-[15px] whitespace-nowrap mt-2">
-                About us
+                <button onClick={() => setDialogue("ABOUT")}>
+                  About us
+                </button>
               </p>
               <p className="text-zinc-600 font-semibold text-[15px] whitespace-nowrap mt-2">
                 Contact us
@@ -131,23 +115,15 @@ const Footer = (props) => {
             </div>
 
           </div>
-
-          {/* <div>
-            <p className="text-[12px]">
-              <a href="#" className="text-blue-700"> Terms & Conditions </a>
-              |
-              <a href="#" className="text-blue-700"> Private Policies</a>
-            </p>
-          </div> */}
         </div>
       </div>
 
       <div className="bg-white container mx-auto  max-sm:px-6 px-[80px] py-[24px]">
-        <div className="grid grid-cols-2 max-sm:grid-cols-1 justify-between gap-5">
+        <div className="grid grid-cols-2 max-md:grid-cols-1 justify-between  gap-5">
           <p className="text-slate-600 text-xs font-bold leading-5 grow whitespace-nowrap my-auto max-md:max-w-full">
-            © 2023 Global Legals
+            © 2024 Global Legals. All rights reserved. Design & Developed by <a href="https://snappyzappy.com/" target="_blank" rel="noreferrer" className="text-gray-300">Snappy Zappy</a>
           </p>
-          <div className="flex gap-[24px] sm:justify-end">
+          <div className="flex gap-[24px] md:justify-end max-md:justify-start">
             <a href="https://x.com/Globallegals?t=oSwksbs3jJuYReq5Zo8IrA&s=09)" target="_blank" rel="noreferrer">
               <FaTwitter className="text-zinc-600 aspect-square object-contain object-center w-6 h-6 overflow-hidden shrink-0 max-w-full" />
             </a>
@@ -157,9 +133,6 @@ const Footer = (props) => {
             <a href="https://www.facebook.com/GlobalLegals2023?mibextid=ZbWKwL" target="_blank" rel="noreferrer">
               <FaFacebook className="text-zinc-600 aspect-square object-contain object-center w-6 h-6 overflow-hidden shrink-0 max-w-full" />
             </a>
-            {/* <FaYoutube className="text-zinc-600 aspect-square object-contain object-center w-6 h-6 overflow-hidden shrink-0 max-w-full" />
-            <FaPinterest className="text-zinc-600 aspect-square object-contain object-center w-6 h-6 overflow-hidden shrink-0 max-w-full  " />
-            <FaLinkedinIn className="text-zinc-600 aspect-square object-contain object-center w-6 h-6 overflow-hidden shrink-0 max-w-full" /> */}
           </div>
         </div>
       </div>
@@ -171,4 +144,5 @@ export default Footer;
 
 Footer.propTypes = {
   setDialogue: PropTypes.func,
+  showToast: PropTypes.func,
 }

@@ -4,8 +4,8 @@ import { addTokens, removeTokens } from "../reducers/auth/authSlice";
 
 const mutex = new Mutex();
 
-// const baseUrl = import.meta.env.VITE_API_URL;
-const baseUrl = "https://api.chitmanager.com/";
+const baseUrl = import.meta.env.VITE_API_URL;
+// const baseUrl = "https://api.chitmanager.com/";
 
 const baseQuery = fetchBaseQuery({
   baseUrl,
@@ -22,6 +22,7 @@ const customFetchBase = async (args, api, extraOptions) => {
   await mutex.waitForUnlock();
 
   let result = await baseQuery(args, api, extraOptions);
+  
   if (result.error?.data?.statusCode === 401) {
     if (!mutex.isLocked()) {
       const release = await mutex.acquire();
@@ -45,7 +46,6 @@ const customFetchBase = async (args, api, extraOptions) => {
           result = await baseQuery(args, api, extraOptions);
         } else {
           api.dispatch(removeTokens());
-          console.log("hjhjhjjhjhjhjhjhj")
           window.location.href = "/";
         }
       } finally {

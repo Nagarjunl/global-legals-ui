@@ -88,12 +88,6 @@ export default function PaymentDialogue(props) {
 
         const { complete, value } = await addressElement.getValue();
 
-        if (complete) {
-            console.log("complete", complete);
-            console.log("complete", value);
-
-        }
-
         // Create Payment method
         const {
             paymentMethod,
@@ -147,11 +141,7 @@ export default function PaymentDialogue(props) {
                                     postal_code: value.address.postal_code,
                                     state: value.address.state
                                 },
-                                // carrier: "ITE",
-                                // phone: "222222222",
-                                // tracking_number: "ghg2323232",
                             },
-                            // receipt_email: "naga.career.at@gmail.com",
                         })
 
                         console.log(paymentIntent);

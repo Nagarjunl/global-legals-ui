@@ -15,8 +15,10 @@ import { formData, formDataIdProof, formImgStatus } from "../../reducers/formTyp
 import { useUpdateMemberMutation, useGetMemberFromSuperIdQuery, useCaptchaVerifyMutation } from "../../services/userAPI";
 import "../../styles.css";
 
-// const baseUrl = import.meta.env.VITE_API_URL;
-const baseUrl = "https://api.chitmanager.com/";
+const baseUrl = import.meta.env.VITE_API_URL;
+// const baseUrl = "https://api.chitmanager.com/";
+const captchaKey = import.meta.env.VITE_CAPTCHA_KEY;
+
 
 const PrivateInvestigators = ({ handleStepClick }) => {
   const { memberId } = useParams();
@@ -759,7 +761,7 @@ const PrivateInvestigators = ({ handleStepClick }) => {
               </p>
             )}
             <ReCAPTCHA
-              sitekey="6LfAUjgpAAAAABQcBX1BtSezxeoNoBDoZk9XPS7T"
+              sitekey={captchaKey}
               onChange={() => verifyRecaptcha()}
               ref={captchaRef}
             />

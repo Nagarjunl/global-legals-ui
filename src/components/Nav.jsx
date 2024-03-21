@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { Disclosure } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import GlobalLegals from "../assets/GlobalLegalsLine.png";
-import GlobalWhite from "../assets/GlobalLegalsWhite.png";
 import PropTypes from "prop-types";
 
 const Nav = ({ page }) => {

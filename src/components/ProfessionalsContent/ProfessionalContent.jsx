@@ -7,7 +7,7 @@ import SecurityContent from "./SecurityContent";
 import PIContent from "./PIContent";
 import TermsAndConditions from "../TermsAndConditions/TermsAndConditions";
 import PrivacyPolicy from "../TermsAndConditions/PrivacyPolicy";
-
+import AboutUs from "../Aboutus/AboutUs";
 
 const ProfessionalContent = (props) => {
     const { setOpen, type } = props;
@@ -32,8 +32,13 @@ const ProfessionalContent = (props) => {
             {type === "TERMS" &&
                 <TermsAndConditions />
             }
+
             {type === "PRIVACY" &&
                 <PrivacyPolicy />
+            }
+
+            {type === "ABOUT" &&
+                <AboutUs />
             }
 
             <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">

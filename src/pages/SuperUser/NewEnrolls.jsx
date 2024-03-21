@@ -20,7 +20,7 @@ const NewEnrolls = () => {
         endDate: null
     });
 
-    const [limit] = useState(4);
+    const [limit] = useState(50);
     const [offset, setOffset] = useState(0);
     const [pageCount, setPageCount] = useState(0);
 

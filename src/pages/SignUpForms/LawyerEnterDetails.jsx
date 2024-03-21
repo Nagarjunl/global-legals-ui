@@ -16,8 +16,9 @@ import { useUpdateMemberMutation, useGetMemberFromSuperIdQuery, useCaptchaVerify
 
 import "../../styles.css";
 
-// const baseUrl = import.meta.env.VITE_API_URL;
-const baseUrl = "https://api.chitmanager.com/";
+const baseUrl = import.meta.env.VITE_API_URL;
+// const baseUrl = "https://api.chitmanager.com/";
+const captchaKey = import.meta.env.VITE_CAPTCHA_KEY;
 
 const LawyerEnterDetails = ({ handleStepClick, superUser }) => {
   const { memberId } = useParams();
@@ -499,7 +500,7 @@ const LawyerEnterDetails = ({ handleStepClick, superUser }) => {
                   </p>
                 )}
                 <ReCAPTCHA
-                  sitekey="6LfAUjgpAAAAABQcBX1BtSezxeoNoBDoZk9XPS7T"
+                  sitekey={captchaKey}
                   onChange={() => verifyRecaptcha()}
                   ref={captchaRef}
                 />
