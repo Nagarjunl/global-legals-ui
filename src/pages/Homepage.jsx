@@ -151,7 +151,7 @@ const Homepage = () => {
                     >
                       Bail Bondsman
                     </Link>
-                    <Link className=" text-white  font-circular-std text-sm font-medium  justify-center  py-1 px-2 items-centermrounded-full border border-white "
+                    <Link className=" text-white  font-circular-std text-sm font-medium  justify-center  py-1 px-2 items-center   rounded-full border border-white "
                       to={`/searchProfile/${SECURITY}`}
                     >
                       Security
