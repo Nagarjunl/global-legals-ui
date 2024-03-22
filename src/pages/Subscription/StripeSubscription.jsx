@@ -23,7 +23,6 @@ import '../../styles.css';
 
 const stripePriceId = import.meta.env.VITE_STRIPE_PRICE_ID;
 
-
 const StripeSubscription = (props) => {
     const { showSubscription, setShowSubscription, handleStepClick, fromDashboard } = props;
 
