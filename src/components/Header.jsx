@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import GlobalLegals from "../assets/GlobalLegals.svg";
-import UserIcon from "../assets/UserIcon.svg";
+import UserIcon from "../assets/UserIcon.png";
 import { removeTokens } from "../reducers/auth/authSlice";
 import { useDispatch } from "react-redux";
 import { removeUser } from "../reducers/userSlice";

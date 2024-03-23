@@ -5,7 +5,7 @@ import { removeTokens } from "../../reducers/auth/authSlice";
 
 import { useDispatch, useSelector } from "react-redux";
 
-import UserOne from '../../assets/user/user-01.png';
+import UserOne from '../../assets/user-01.png';
 import React from 'react';
 
 const DropdownUser = () => {
