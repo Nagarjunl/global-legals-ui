@@ -1,4 +1,4 @@
-import verification from "../../assets/Verification.svg";
+import verification from "../../assets/Verification.png";
 
 const people = [
   {
